@@ -199,6 +199,48 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             bool isSuccess = default;
             int rowsAffected;
             string procedure = "[SpAddVaccineRecord]";
+            var parameters = new
+            {
+                extract = vaxEvent.Extract_Type,
+                vaxId = vaxEvent.Vaccine_Event_Id,
+                adminDate = vaxEvent.Administration_Date,
+                vaxType = vaxEvent.Vaccine_Type,
+                vaxProduct = vaxEvent.Vaccine_Product,
+                vaxManufacturer = vaxEvent.Vaccine_Manufacturer,
+                lotNumber = vaxEvent.Lot_Number,
+                vaxExperation = vaxEvent.Vaccine_Experation_Date,
+                vaxAdminSite = vaxEvent.Vaccine_Admin_Site,
+                vaxAdminRoute = vaxEvent.Vaccine_Admin_Route,
+                doseNumber = vaxEvent.Dose_Number,
+                seriesComplete = vaxEvent.Vaccine_Series_Complete,
+                responsibleOrg = vaxEvent.Responsible_Organization,
+                adminLoc = vaxEvent.Administrated_Location,
+                vPin = vaxEvent.Vtcks_Pin,
+                locType = vaxEvent.Administrated_Loc_Type,
+                street = vaxEvent.Admin_Street_Address,
+                city = vaxEvent.Admin_City,
+                county = vaxEvent.Admin_County,
+                state = vaxEvent.Admin_State,
+                zip = vaxEvent.Admin_Zip,
+                providerSuffix = vaxEvent.Admin_Suffix,
+                comorbidity = vaxEvent.Comorbidity_Status,
+                serology = vaxEvent.Serology_Results,
+                pprl = vaxEvent.PPRL
+            };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    rowsAffected = db.Execute(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch(Exception ex)
+            { throw ex; }
+
+            isSuccess = rowsAffected > 0 ? true : false;
 
             return isSuccess;
         }

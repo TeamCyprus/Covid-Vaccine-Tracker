@@ -49,6 +49,8 @@ namespace Covid_Vaccine_Tracker.UI
         // When the form loads determine user type and bind view options to combo-boxs
         private void ViewForm_Load(object sender, EventArgs e)
         {
+
+
             // Make sure Datagrid view has no persisting data from before
             RecordsDg.DataSource = null;
             // Ceck to see which type of user to get respective views

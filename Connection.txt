@@ -1,0 +1,1 @@
+@"Server=mc-sluggo.stlcc.edu; Database= IS253_Palmer; User id= palmer;Password= palmer;"

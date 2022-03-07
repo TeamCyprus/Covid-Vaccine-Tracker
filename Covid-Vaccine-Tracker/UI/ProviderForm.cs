@@ -564,8 +564,8 @@ namespace Covid_Vaccine_Tracker.UI
         {
             do
             {
-                // Generate a random string 10 chars long with with 3 letters use digits 0-9 and letter A-Z
-                GeneratedPatientId = IdGenerator.GenerateId(10, 3, 0, 9, 'A', 'Z');
+                // Generate a random string 10 chars long with with 4 letters use digits 0-9 and letter A-Z
+                GeneratedPatientId = IdGenerator.GenerateId(10, 4, 0, 9, 'A', 'Z');
                 // Check that id does not exist already
                 IdExist = PatientDB.CheckPatientId(GeneratedPatientId);
 
@@ -703,11 +703,9 @@ namespace Covid_Vaccine_Tracker.UI
             // need to call the overloaded constructor for the vaccineForm and pass in the Provider object
             // create at sign in with providers username
 
-            DisplaySuccess("Feature coming soon, code for inputting vaccine records is out of scope for this sprint", appTitle);
-
             // Start of code for sprint that includes input vaccine record
-            //VaccineRecordForm vaxForm = new VaccineRecordForm(ActiveProvider);
-            //vaxForm.ShowDialog();
+            VaccineRecordForm vaxForm = new VaccineRecordForm(ActiveProvider);
+            vaxForm.ShowDialog();
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -773,8 +771,7 @@ namespace Covid_Vaccine_Tracker.UI
                                 // Vaccine form is out of scope for this sprint so display message box notification
                                 // Now call vax form to enter all vaccine information
                                 // In the future must pass in the provider to the vaccineForm also but for this sprint dont
-                                //VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient,GeneratedPPRL);
-                                VaccineRecordForm VaxForm = new VaccineRecordForm();
+                                VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient,GeneratedPPRL);
                                 VaxForm.ShowDialog();
 
                             }

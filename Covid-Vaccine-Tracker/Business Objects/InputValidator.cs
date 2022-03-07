@@ -128,7 +128,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         {
             bool validData;
             string eMsg = string.Empty;
-            Regex rgx = new Regex(@"[0-9]{6}?[a-zA-Z]{4}?");
+            Regex rgx = new Regex(@"[0-9]{7}?[a-zA-Z]{3}?");
 
             if (!rgx.IsMatch(input))
             {
@@ -137,7 +137,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 
             }
             else
-                validData = false;
+                validData = true;
 
             return (validData, eMsg);
         }
@@ -145,7 +145,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         {
             bool validData;
             string eMsg = string.Empty;
-            Regex rgx = new Regex(@"[0-9]{6}?[a-zA-Z]{4}?");
+            Regex rgx = new Regex(@"[0-9]{7}?[a-zA-Z]{3}?");
 
             if (!rgx.IsMatch(input))
             {
@@ -154,7 +154,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 
             }
             else
-                validData = false;
+                validData = true;
 
             return (validData, eMsg);
         }
@@ -168,10 +168,9 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {
                 validData = false;
                 eMsg = "Invalid format, PPRL must be in 000000XXXX format";
-
             }
             else
-                validData = false;
+                validData = true;
 
             return (validData, eMsg);
         }
@@ -227,7 +226,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 eMsg = "Invalid format, Lot Number must be in 00000XXXXX format";
             }
             else
-                validData = false;
+                validData = true;
 
             return (validData, eMsg);
         }

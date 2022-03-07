@@ -109,11 +109,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return patientId;
         }
-        public static string GetPPRLNumber(string patientID)
+        public static string ReturnPPRL(string patientID)
         {
             string pprl;
-            string procedure = "[SpGetPPRLNumber]";
-            var parameter = new { patientId = patientID };
+            string procedure = "[SpReturnPPRL]";
+            var parameter = new { pId = patientID };
 
             try
             {
@@ -128,6 +128,26 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             { throw ex; }
 
             return pprl;
+        }
+        public static PPRL GetPPRLNumber(string patientID)
+        {
+            PPRL requestedPPRL = new PPRL();
+            string procedure = "[SpGetPPRLNumber]";
+            var parameter = new { patientId = patientID };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    requestedPPRL = db.QuerySingle<PPRL>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return requestedPPRL;
         }
         public static bool VerifyNewPPRL(string pprlNum)
         {
