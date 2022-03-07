@@ -128,7 +128,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         {
             bool validData;
             string eMsg = string.Empty;
-            Regex rgx = new Regex(@"[0-9]{7}?[a-zA-Z]{3}?");
+            Regex rgx = new Regex(@"[0-9]{6}?[a-zA-Z]{4}?");
 
             if (!rgx.IsMatch(input))
             {
