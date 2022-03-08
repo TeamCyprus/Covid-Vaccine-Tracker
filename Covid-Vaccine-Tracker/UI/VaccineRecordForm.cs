@@ -46,7 +46,7 @@ namespace Covid_Vaccine_Tracker.UI
         List<States> daStates = new List<States>();
 
         // Error Occured will be true if the vaccine record object is not created so bad data wont go to db
-        bool ErrorOccured;
+        bool ErrorOccured, dataSubmitted;
         (bool, string) FormIsValid;
 
         public VaccineRecordForm()
@@ -256,6 +256,7 @@ namespace Covid_Vaccine_Tracker.UI
         {
             bool valid = true;
             string emsg = string.Empty;
+            DateTime Today = DateTime.Today, Past = DateTime.Today.AddYears(-3);
 
             try
             {
@@ -302,10 +303,28 @@ namespace Covid_Vaccine_Tracker.UI
                     emsg = "Must enter expiration date";
                     tbx = 6;
                 }
+                else if (ExperationDateDp.Value <= Today)
+                {
+                    valid = false;
+                    emsg = "Vaccine experation date is today, cannot administer vaccine";
+                    tbx = 6;
+                }
                 else if (!DateAdminDp.Checked)
                 {
                     valid = false;
                     emsg = "Must enter date administered";
+                    tbx = 7;
+                }
+                else if (DateAdminDp.Value <= Past)
+                {
+                    valid = false;
+                    emsg = "Date administered must be after vaccines were created";
+                    tbx = 7;
+                }
+                else if (DateAdminDp.Value > Today)
+                {
+                    valid = false;
+                    emsg = "Date administered cannot be in the future";
                     tbx = 7;
                 }
                 else if (ComorbitiyCbx.SelectedIndex <= -1)
@@ -543,12 +562,10 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // Note when Vaccine is added and it is a existing patient must get the patients id from txtbox
             // and then use the Patient id to retrieve the patient's PPRL and then store the vax record with the pprl
-
-            // This section needs to be coded
-            // and the Checkform method needs to be finshed 
-            // Check Providerform for a reference
-            // CheckForm() line 188 ish
             ResetErrorPv();
+            // Zac
+            // Reset dataSubmitted so form knows wether or not to change the vaccine event id for new vaccine record entry
+            dataSubmitted = false;
             vaxRecord = new VaccineRecord();
             GetNewVaxEventId();
             int tbx = -1;
@@ -570,6 +587,8 @@ namespace Covid_Vaccine_Tracker.UI
                             ResetInputs(true);
                             VaxEventIdTxt.Text = GeneratedVaxEventId;
                             SetIdControlType("Patient");
+                            // set dataSubmitted to true so new vaccine event it will be created
+                            dataSubmitted = true;
                         }
                         else
                             DisplayError("Vaccine record has not been added", AppTitle);
@@ -582,16 +601,21 @@ namespace Covid_Vaccine_Tracker.UI
             }
             else
                 SetErrorPv(tbx, FormIsValid.Item2);
-            // At the end of the Add event these things must happen inorder to allow a provider to keep entering 
-            // vaccine records for existing patients
-            // 1) call ResetInputs and pass in true to clear out the ids
-            ResetInputs(true);
-            // 2) Get a new vacinne event id
-            GetNewVaxEventId();
-            // 3) Allow provider to enter existing patient id bc patient id
-            // will be used to get PPRL number for vax record storage
-            SetIdControlType("Patient");
-            // Then exit this method
+
+            if (dataSubmitted)
+            {
+                // At the end of the Add event these things must happen inorder to allow a provider to keep entering 
+                // vaccine records for existing patients
+                // 1) call ResetInputs and pass in true to clear out the ids
+                ResetInputs(true);
+                // 2) Get a new vacinne event id
+                GetNewVaxEventId();
+                // 3) Allow provider to enter existing patient id bc patient id
+                // will be used to get PPRL number for vax record storage
+                SetIdControlType("Patient");
+                // Then exit this method
+                VaxEventIdTxt.Text = GeneratedVaxEventId;
+            }
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)

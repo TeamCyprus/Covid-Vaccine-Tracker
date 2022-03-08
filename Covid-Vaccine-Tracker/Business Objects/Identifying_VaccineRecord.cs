@@ -374,6 +374,22 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 { throw ex; }
             }
         }
+        public string Vax_Series_Complete
+        {
+            get => this.vax_series_complete;
+            set
+            {
+                (bool, string) validData = InputValidator.IsValidStringData(value);
+                if (value.Length > 7)
+                    throw new Exception("Vaccine series status must be 7 characters or less");
+                else if (string.IsNullOrEmpty(value))
+                    throw new Exception("Vaccine series status cannot be empty or null");
+                else if (!validData.Item1)
+                    throw new Exception(validData.Item2);
+                else
+                    this.vax_series_complete = value;
+            }
+        }
         public string Company
         {
             get => this.company;
