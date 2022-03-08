@@ -16,22 +16,46 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 {
     public class Identifying_VaccineRecord
     {
+        public string id;
         public string first_name;
         public string last_name;
         public DateTime date_of_birth;
+        public string race1;
+        public string race2;
         public string city;
         public string county;
         public string state;
         public string extract_type;
         public string pprl;
         public string vaccine_event_id;
-        public DateTime date;
+        public DateTime vaccination_date;
         public string vaccine_type;
         public string dose_number;
         public string vax_series_complete;
         public string company;
 
-        // need to test dataannotations and then add
+        public string Id
+        {
+            get => this.id; // The "getter" is a lambda that returns the value of Id property 
+            set
+            {
+                try // Surronding with try should catch errors wrong data type
+                {
+                    (bool, string) validData = InputValidator.IsValidIdFormat(value);
+
+                    if (value.Length > 10) // If string longer then 10 chars
+                        throw new Exception("Id must be 10 characters or less");
+                    else if (string.IsNullOrEmpty(value)) // If string is null or empty
+                        throw new Exception("Id cannot be empty or null");
+                    else if (!validData.Item1) // If validData.item1 = false ID is in wrong format
+                        throw new Exception(validData.Item2);
+                    else
+                        this.id = value; // If good assign value to Id
+                }
+                catch (Exception ex)
+                { throw ex; }
+            }
+        }
         public string First_Name
         {
             get => this.first_name; // Lambda to get the value
@@ -170,6 +194,52 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 { throw ex; }
             }
         }
+        public string Race1
+        {
+            get => this.race1;
+            set
+            {
+                try
+                {
+                    // Check input against regexs
+                    (bool, string) validData = InputValidator.IsValidStringData(value);
+
+                    if (value.Length > 75)
+                        throw new Exception("Race must be 75 characters or less");
+                    else if (string.IsNullOrEmpty(value))
+                        throw new Exception("Race cannot be empty or null");
+                    else if (!validData.Item1)
+                        throw new Exception("Race" + validData.Item2);
+                    else
+                        this.race1 = value;
+                }
+                catch (Exception ex)
+                { throw ex; }
+            }
+        }
+        public string Race2
+        {
+            get => this.race2;
+            set
+            {
+                try
+                {
+                    // Check input against regexs
+                    (bool, string) validData = InputValidator.IsValidStringData(value);
+
+                    if (value.Length > 75)
+                        throw new Exception("Race must be 75 characters or less");
+                    else if (string.IsNullOrEmpty(value))
+                        throw new Exception("Race cannot be empty or null");
+                    else if (!validData.Item1)
+                        throw new Exception("Race" + validData.Item2);
+                    else
+                        this.race2 = value;
+                }
+                catch (Exception ex)
+                { throw ex; }
+            }
+        }
         public string Extract_Type
         {
             get => this.extract_type;
@@ -237,9 +307,9 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 { throw ex; }
             }
         }
-        public DateTime Date
+        public DateTime Vaccination_Date
         {
-            get => this.date;
+            get => this.vaccination_date;
             set
             {
                 try
@@ -254,7 +324,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                     else if (!validData.Item1)
                         throw new Exception(validData.Item2);
                     else
-                        this.date = value;
+                        this.vaccination_date = value;
                 }
                 catch (Exception ex)
                 { throw ex; }

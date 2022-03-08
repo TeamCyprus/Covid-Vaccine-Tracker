@@ -490,10 +490,18 @@ namespace Covid_Vaccine_Tracker.UI
                 // Check if pprl was passed into constructor or if need to retireve pprl from DB
                 if (NeedPPRL)
                 {
-                    //PPRL pprl = new PPRL();
-                    string pId = IdTxt.Text.Trim();
-                    //pprl = PPRLDB.GetPPRLNumber(pId);                    
-                    vaxRecord.PPRL = PPRLDB.ReturnPPRL(pId);
+                    // Check that the patient exists in the systems
+                    bool patientExist = PPRLDB.VerifyPatient(IdTxt.Text.Trim());
+
+                    if (patientExist)
+                    {
+                        //PPRL pprl = new PPRL();
+                        string pId = IdTxt.Text.Trim();
+                        //pprl = PPRLDB.GetPPRLNumber(pId);                    
+                        vaxRecord.PPRL = PPRLDB.ReturnPPRL(pId);
+                    }
+                    else
+                        DisplayError("Patient does not exist", AppTitle);
                 }
                 else
                     vaxRecord.PPRL = IdTxt.Text.Trim();

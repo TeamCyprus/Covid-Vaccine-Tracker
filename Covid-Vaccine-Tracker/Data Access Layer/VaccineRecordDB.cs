@@ -46,7 +46,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // using dapper each object will map to a row from the query
             List<Identifying_VaccineRecord> vaxRecords = new List<Identifying_VaccineRecord>();
             // Specify stored procedure to use
-            string procedure = "[SpGetAllVaccines_ProviderView]";
+            string procedure = "[SpGetAllVaccines_Provider]";
 
             // Use a try catch block to catch any errors
             try
@@ -76,7 +76,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             List<Identifying_VaccineRecord> vaxRecord = new List<Identifying_VaccineRecord>();
             
             // Specify the stored procedure to use
-            string procedure = "[SpGetPatientVaccines_ProviderView]";
+            string procedure = "[SpGetPatientVaccines_Provider]";
             // Specify the parameter **Note parameter name must match the name  in procedure
             // ie pId is the name of the parameter in the stored procedure 
             var parameter = new { pId = patientId };
@@ -108,7 +108,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             List<Identifying_VaccineRecord> vaxRecord = new List<Identifying_VaccineRecord>();
 
             // Procedure to use
-            string procedure = "[SpGetSeries_ProviderView]";
+            string procedure = "[SpGetSeries_Provider]";
             // Parameters of procedure **Note the parameter name must match name in database
             // ie seriesValue is the name of the parameter in the stored procedure
             var parameter = new { seriesValue = seriesStatus };
@@ -192,6 +192,26 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             { throw ex; }
 
             return identifyingRecords;
+        }
+        public static List<Identifying_VaccineRecord> GetVaccinesByRace_I(string Race)
+        {
+            List<Identifying_VaccineRecord> vaccineRecords = new List<Identifying_VaccineRecord>();
+            string procedure = "[SpGetVaccinesByRace_Provider]";
+            var parameter = new { race = Race };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    vaccineRecords = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return vaccineRecords;
         }
         // The methods below are used for CRUD and the Cdc vaccine records and use the Vaccine Record class
         public static bool AddVaccine(VaccineRecord vaxEvent)
@@ -364,6 +384,25 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaccineRecords;
         }
+        public static List<VaccineRecord> GetVaccineByRace_D(string Race)
+        {
+            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            string procedure = "[SpGetVaccinesByRace]";
+            var parameter = new { race= Race };
 
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return vaccineRecords;
+        }
     }
 }

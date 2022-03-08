@@ -169,6 +169,26 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return pprlFound;
         }
+        public static bool VerifyPatient(string patientId)
+        {
+            bool pprlFound;
+            string procedure = "[SpVerifyPatientPPRL]";
+            var parameters = new { pId = patientId };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    pprlFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return pprlFound;
+        }
         
     }
 }
