@@ -2,7 +2,7 @@
 // by Zachary Palmer 2/15/2022
 ///<summary>
 /// This class holds the values for the Joined Patient, PPRLs, and Vaccine_Records tables.
-/// It is used by the Provider user type it allows Identifying Patient info to be displayed with Vax info
+/// It is used by the Provider user type, it allows Identifying Patient info to be displayed with Vaccine info
 /// </summary>
 using System;
 using System.Collections.Generic;

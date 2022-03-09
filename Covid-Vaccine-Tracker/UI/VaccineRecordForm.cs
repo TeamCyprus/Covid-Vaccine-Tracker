@@ -597,7 +597,7 @@ namespace Covid_Vaccine_Tracker.UI
                     //    DisplayError("There was an issue creating a vaccine record", AppTitle);
                 }
                 catch (Exception ex)
-                { throw ex; }
+                { DisplayError(ex.Message,AppTitle); }
             }
             else
                 SetErrorPv(tbx, FormIsValid.Item2);

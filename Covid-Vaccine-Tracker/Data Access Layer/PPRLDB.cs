@@ -1,4 +1,10 @@
-﻿using System;
+﻿// PPRLDB by Zachary Palmer
+///<summary>
+/// This class is used to hold the data from the PPRL table. Privacy Perserving Linkage is an id
+/// that is used to link a patient to a vaccine record
+/// 
+/// </summary>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
