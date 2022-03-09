@@ -128,6 +128,12 @@ namespace Covid_Vaccine_Tracker.UI
                     break;
             }
         }
+        private void GetNewIds()
+        {
+            GetNewPatientId();
+            GetNewPPRL();
+            PatientIdTxt.Text = GeneratedPatientId;
+        }
         private void ResetErrorPv()
         {
             // clears the current positionn of ErrorProvider if any
@@ -565,7 +571,7 @@ namespace Covid_Vaccine_Tracker.UI
             do
             {
                 // Generate a random string 10 chars long with with 4 letters use digits 0-9 and letter A-Z
-                GeneratedPatientId = IdGenerator.GenerateId(10, 4, 0, 9, 'A', 'Z');
+                GeneratedPatientId = IdGenerator.GenerateId(10, 3, 0, 9, 'A', 'Z');
                 // Check that id does not exist already
                 IdExist = PatientDB.CheckPatientId(GeneratedPatientId);
 
