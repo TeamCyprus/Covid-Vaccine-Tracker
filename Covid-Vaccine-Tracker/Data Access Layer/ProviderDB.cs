@@ -48,7 +48,26 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return provider;
         }
+        public static bool VerifyProvider(string pId, string Fname, string Lname)
+        {
+            bool providerFound;
+            string procedure = "[SpVerifyProvider]";
+            var parameters = new { id = pId, firstname = Fname, lastname = Lname };
 
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    providerFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return providerFound;
+        }
     }
 
 }

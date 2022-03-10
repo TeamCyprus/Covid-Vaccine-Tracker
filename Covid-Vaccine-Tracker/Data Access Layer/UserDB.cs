@@ -71,9 +71,8 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         public static bool VerifyUsername(string Entered_username)
         {
             bool foundUser = false;
-            string username = string.Empty;
-            string procedure = "[SpGetUsername]";
-            var parameter = new { usr = Entered_username };
+            string procedure = "[SpVerifyUsername]";
+            var parameter = new { user = Entered_username };
 
             try
             {
@@ -81,14 +80,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
-                    username = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                    foundUser = db.ExecuteScalar<bool>(procedure, parameter, commandType: CommandType.StoredProcedure);
                 }
             }
             catch(Exception ex)
             { throw ex; }
-
-            if (!string.IsNullOrEmpty(username))
-                foundUser = true;
 
             return foundUser;
         }
