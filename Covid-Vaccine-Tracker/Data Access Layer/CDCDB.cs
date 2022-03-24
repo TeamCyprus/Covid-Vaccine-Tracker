@@ -50,11 +50,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             return cdcUsr;
         }
 
-        public static bool VerifyCDCUser(string pId, string Fname, string Mname, string Lname)
+        public static bool VerifyCDCUser(string Fname, string Lname)
         {
             bool cdcUserFound;
             string procedure = "[SpVerifyCDCUser]";
-            var parameters = new { id = pId, fname = Fname, mname = Mname, lname = Lname };
+            var parameters = new { fname = Fname, lname = Lname };
 
             try
             {

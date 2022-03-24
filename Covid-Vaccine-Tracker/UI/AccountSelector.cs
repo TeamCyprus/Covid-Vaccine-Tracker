@@ -54,8 +54,10 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // Make sure that the selected index on combobox is not -1 when the Next button is clicked
 
-            // If the provider option is selected then make sure that a number is entered in the VtcksPin textbox
-            // If provider then double check that the vtcks is in the system with the VtcksDB.VerifyVtck method
+            // If the provider option is selected then verify a vtcks pin  is entered in the VtcksPin textbox
+
+            // If provider account type then double check that the vtcks is in the system with the VtcksDB.VerifyVtck method
+
             // if Vtck exists in system then call the SignUpform and pass in the Account Type and VtckPin like so 
             // SignUpForm SignUp = new SignUpForm("Provider", vtcksPin); NOTE vtcksPin is an optional arguemnt to this method
             // then call the form like so SignUp.ShowDialog();
@@ -63,6 +65,8 @@ namespace Covid_Vaccine_Tracker.UI
             // if CDC user selected then jsut call the sign up form like above but only pass in the account type
             // Remember vtcksPin is an optional arguemnt to the SignUp form conctructor so you do not have to pass it in
             // unless the user type is Provider
+            // still use SignUpForm SignUp = new SignUpForm();
+            // SignUp.ShowDialog()  only pass in "CDC" as a string for cdc user types
         }
 
         // every time a new value is picked in the combobox this method below will be called
@@ -73,10 +77,12 @@ namespace Covid_Vaccine_Tracker.UI
                 case 0: // sets the value of each flag for account type having a flag for both is kinda redundant
                     IsProvider = true;
                     IsCDC = false;
+                    VtckInput("Enable");
                     break;
                 case 1:
                     IsProvider = false;
                     IsCDC = true;
+                    VtckInput("Disable");
                     break;
             }
         }
