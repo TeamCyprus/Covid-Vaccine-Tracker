@@ -190,6 +190,28 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // return insert status
             return isSuccess;
         }
+        // method that determines if the vtck pin exisits in the organization table
+        // if method returns true yser has provider access if false then user does not have providerr access
+        public static bool VerifyProviderAccess(string Vtck)
+        {
+            bool providerFound;
+            string procedure = "[SpVerifyProviderAccess]";
+            var parameters = new { vPin = Vtck };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    providerFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return providerFound;
+        }
     }
 
 }
