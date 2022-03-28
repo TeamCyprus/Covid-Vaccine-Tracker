@@ -153,56 +153,56 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // Create lists that will store respective record type
             List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
-            //(bool, string) isValid;
-            //int Tbx = -1;
-            // determine the view selected index vale then get data from the database and then stores it in a list
-            //try
-            //{
-            //    switch (indx)
-            //    {
-            //        case 0:
-            //            vaccineRecords = VaccineRecordDB.GetVaccineRecords_D();
-            //            break;
-            //        case 1:
-            //            vaccineRecords = VaccineRecordDB.GetVaccinesBySeriesStatus_D("Yes");
-            //            break;
-            //        case 2:
-            //            vaccineRecords = VaccineRecordDB.GetVaccinesBySeriesStatus_D("No");
-            //            break;
-            //        case 3:
-            //            isValid = CheckForm(ref Tbx);
-            //            if (isValid.Item1)
-            //            {
-            //                string doseNumber = SearchValTxt.Text.Trim();
-            //                vaccineRecords = VaccineRecordDB.GetVaccinesByDose_D(doseNumber);
-            //            }
-            //            else
-            //                SetErrorPv(Tbx, isValid.Item2);
-            //            break;
-            //        case 4:
-            //            isValid = CheckForm(ref Tbx);
-            //            if (isValid.Item1)
-            //            {
-            //                string city = SearchValTxt.Text.Trim();
-            //                vaccineRecords = VaccineRecordDB.GetVaccinesByCity_D(city);
-            //            }
-            //            else
-            //                SetErrorPv(Tbx, isValid.Item2);
-            //            break;
-            //        case 5:
-            //            isValid = CheckForm(ref Tbx);
-            //            if (isValid.Item1)
-            //            {
-            //                string county= SearchValTxt.Text.Trim();
-            //                vaccineRecords = VaccineRecordDB.GetVaccineByCounty_D(county);
-            //            }
-            //            else
-            //                SetErrorPv(Tbx, isValid.Item2);
-            //            break;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{ throw ex; }
+            (bool, string) isValid;
+            int Tbx = -1;
+            //determine the view selected index vale then get data from the database and then stores it in a list
+            try
+            {
+                switch (indx)
+                {
+                    case 0:
+                        vaccineRecords = VaccineRecordDB.GetVaccineRecords_D();
+                        break;
+                    case 1:
+                        vaccineRecords = VaccineRecordDB.GetVaccinesBySeriesStatus_D("Yes");
+                        break;
+                    case 2:
+                        vaccineRecords = VaccineRecordDB.GetVaccinesBySeriesStatus_D("No");
+                        break;
+                    case 3:
+                        isValid = CheckForm(ref Tbx);
+                        if (isValid.Item1)
+                        {
+                            string doseNumber = SearchValTxt.Text.Trim();
+                            vaccineRecords = VaccineRecordDB.GetVaccinesByDose_D(doseNumber);
+                        }
+                        else
+                            SetErrorPv(Tbx, isValid.Item2);
+                        break;
+                    case 4:
+                        isValid = CheckForm(ref Tbx);
+                        if (isValid.Item1)
+                        {
+                            string city = SearchValTxt.Text.Trim();
+                            vaccineRecords = VaccineRecordDB.GetVaccinesByCity_D(city);
+                        }
+                        else
+                            SetErrorPv(Tbx, isValid.Item2);
+                        break;
+                    case 5:
+                        isValid = CheckForm(ref Tbx);
+                        if (isValid.Item1)
+                        {
+                            string county = SearchValTxt.Text.Trim();
+                            vaccineRecords = VaccineRecordDB.GetVaccineByCounty_D(county);
+                        }
+                        else
+                            SetErrorPv(Tbx, isValid.Item2);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
 
             return vaccineRecords;
         }

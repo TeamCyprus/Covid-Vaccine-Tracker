@@ -18,6 +18,7 @@ namespace Covid_Vaccine_Tracker.UI
     {
         List<User_Type> types = new List<User_Type>();
         bool IsProvider, IsCDC;
+        string AppTitle = "Covid Vaccine Tracker";
 
         public AccountSelector()
         {
@@ -32,11 +33,15 @@ namespace Covid_Vaccine_Tracker.UI
                     VtckPinTxt.Enabled = true;
                     VtckPinTxt.Visible = true;
                     VtckPinTxt.ReadOnly = false;
+                    vtckLbl.Enabled = true;
+                    vtckLbl.Visible = true;
                     break;
                 case "Disable":
                     VtckPinTxt.Enabled = false;
                     VtckPinTxt.Visible = false;
                     VtckPinTxt.ReadOnly = true;
+                    vtckLbl.Enabled = false;
+                    vtckLbl.Visible = false;
                     break;
             }
         }
@@ -57,6 +62,25 @@ namespace Covid_Vaccine_Tracker.UI
             // If the provider option is selected then verify a vtcks pin  is entered in the VtcksPin textbox
 
             // If provider account type then double check that the vtcks is in the system with the VtcksDB.VerifyVtck method
+
+           if (IsCDC)
+            {
+                SignupForm signUp = new SignupForm("CDC");
+                signUp.ShowDialog();
+            }
+           else if (IsProvider)
+            {
+                string enteredVtck = VtckPinTxt.Text;
+                bool vtckExists = VtcksDB.VerifyVtck(enteredVtck);
+                if (vtckExists)
+                {
+                    SignupForm signUp = new SignupForm("Provider", enteredVtck);
+                    signUp.ShowDialog();
+                }
+                else if (!vtckExists)
+                    DisplayError("Vtcks Pin not found, access denied", AppTitle);
+            }
+
 
             // if Vtck exists in system then call the SignUpform and pass in the Account Type and VtckPin like so 
             // SignUpForm SignUp = new SignUpForm("Provider", vtcksPin); NOTE vtcksPin is an optional arguemnt to this method
@@ -85,6 +109,16 @@ namespace Covid_Vaccine_Tracker.UI
                     VtckInput("Disable");
                     break;
             }
+        }
+        private void DisplaySuccess(string msg, string title)
+        {
+            // displays a message box with ok button and information icon used for successful actions
+            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void DisplayError(string msg, string title)
+        {
+            // displays a message box iwth ok button and error icon used for unsuccessful actions
+            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
