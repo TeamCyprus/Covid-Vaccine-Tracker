@@ -15,6 +15,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
     {
         public static string GetConnection()
         {
+            // this method gets the connection string to the database from
+            // the DBConnector class
+
             string conStr = null;
 
             try
@@ -45,6 +48,27 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             { throw ex; }
 
             return cdcUsr;
+        }
+
+        public static bool VerifyCDCUser(string Fname, string Lname)
+        {
+            bool cdcUserFound;
+            string procedure = "[SpVerifyCDCUser]";
+            var parameters = new { fname = Fname, lname = Lname };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    cdcUserFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return cdcUserFound;
         }
     }
 }

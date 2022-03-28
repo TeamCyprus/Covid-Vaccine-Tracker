@@ -97,9 +97,9 @@
     <Compile Include="Business Objects\Vaccine_Route.cs" />
     <Compile Include="Business Objects\Vaccine_Type.cs" />
     <Compile Include="Business Objects\Views.cs" />
+    <Compile Include="Business Objects\Vtcks.cs" />
     <Compile Include="Data Access Layer\AnwsersDB.cs" />
     <Compile Include="Data Access Layer\CDCDB.cs" />
-    <Compile Include="Data Access Layer\CDCRecordDB.cs" />
     <Compile Include="Data Access Layer\DBConnector.cs" />
     <Compile Include="Data Access Layer\DosesDB.cs" />
     <Compile Include="Data Access Layer\EthnicitiesDB.cs" />
@@ -124,6 +124,7 @@
     <Compile Include="Data Access Layer\Vax_RoutesDB.cs" />
     <Compile Include="Data Access Layer\Vax_TypesDB.cs" />
     <Compile Include="Data Access Layer\ViewDB.cs" />
+    <Compile Include="Data Access Layer\VtcksDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\AccountSelector.cs">

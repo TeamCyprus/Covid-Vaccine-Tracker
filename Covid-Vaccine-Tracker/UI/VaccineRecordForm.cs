@@ -25,7 +25,7 @@ namespace Covid_Vaccine_Tracker.UI
 
         string AppTitle = "Covid Vaccine Tracker";
         // when form load it extract type needs to be set to PPRL
-        Provider ActiveProvider = new Provider(); //ActiveProvider is the provider that logged in.
+        Provider ActiveProvider = new Provider();
         Patient CurrentPatient = new Patient();
         VaccineRecord vaxRecord;
         bool ExisitingPatient, NeedPPRL;
@@ -43,9 +43,10 @@ namespace Covid_Vaccine_Tracker.UI
         List<Vaccine_Route> vRoutes = new List<Vaccine_Route>();
         List<Location_Types> lTypes = new List<Location_Types>();
         List<Provider_Suffix> pSuffixes = new List<Provider_Suffix>();
+        List<States> daStates = new List<States>();
 
         // Error Occured will be true if the vaccine record object is not created so bad data wont go to db
-        bool ErrorOccured = false;
+        bool ErrorOccured, dataSubmitted;
         (bool, string) FormIsValid;
 
         public VaccineRecordForm()
@@ -57,13 +58,12 @@ namespace Covid_Vaccine_Tracker.UI
         public VaccineRecordForm(Provider currentProvider)
         {
             InitializeComponent();
-            // copy provider from loginform > providerform> vaxform
+            // copy provider
             ActiveProvider = currentProvider.CopyProvider();
             // If exisiting patient then doctor enters in Patient id
             // Note before vax record is stored must retrieve the PPRL number
             ExisitingPatient = true;
             NeedPPRL = true;
-            //true as in it's needed?
         }
         // overloaded method to pass in patient data
         public VaccineRecordForm(Provider currentProvider, Patient patient, string pprl)
@@ -145,7 +145,7 @@ namespace Covid_Vaccine_Tracker.UI
                 AdminStreetTxt.Text = ActiveProvider.Location_Street_Address;
                 AdminCityTxt.Text = ActiveProvider.Location_City;
                 AdminCountyTxt.Text = ActiveProvider.Location_County;
-                AdminStateTxt.Text = ActiveProvider.Location_State;
+                AdminStateCbx.SelectedIndex = AdminStateCbx.FindString(ActiveProvider.Location_State);
                 AdminZipTxt.Text = ActiveProvider.Location_Zipcode;
                 ProviderSuffixCbx.SelectedIndex = ProviderSuffixCbx.FindString(ActiveProvider.Provider_Suffix);
                 VtckPinTxt.Text = ActiveProvider.Vtcks_Pin;
@@ -163,7 +163,7 @@ namespace Covid_Vaccine_Tracker.UI
                     requestedID = PPRLDB.GetPatientId(searchVal);
                     break;
                 case "PPRL": // this is used if a patient is exisiting patient
-                    requestedID = PPRLDB.GetPPRLNumber(searchVal);
+                    requestedID = PPRLDB.GetPPRLNumber(searchVal).PPRL_Number;
                     break;
             }
 
@@ -171,7 +171,7 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void SetErrorPv(int txtBx, string emsg)
         {
-            switch(txtBx)
+            switch (txtBx)
             {
                 case 0:
                     ErrorPv.SetError(ExtractTxt, emsg);
@@ -237,7 +237,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ErrorPv.SetError(AdminCountyTxt, emsg);
                     break;
                 case 21:
-                    ErrorPv.SetError(AdminStateTxt, emsg);
+                    ErrorPv.SetError(AdminStateCbx, emsg);
                     break;
                 case 22:
                     ErrorPv.SetError(AdminZipTxt, emsg);
@@ -253,13 +253,13 @@ namespace Covid_Vaccine_Tracker.UI
             ErrorPv.Clear();
         }
         private (bool,string) CheckForm(ref int tbx)
-        { 
+        {
             bool valid = true;
             string emsg = string.Empty;
+            DateTime Today = DateTime.Today, Past = DateTime.Today.AddYears(-3);
+
             try
             {
-
-                //input validation to make sure nothing is left blank
                 if (string.IsNullOrEmpty(ExtractTxt.Text))
                 {
                     valid = false;
@@ -303,10 +303,28 @@ namespace Covid_Vaccine_Tracker.UI
                     emsg = "Must enter expiration date";
                     tbx = 6;
                 }
+                else if (ExperationDateDp.Value <= Today)
+                {
+                    valid = false;
+                    emsg = "Vaccine experation date is today, cannot administer vaccine";
+                    tbx = 6;
+                }
                 else if (!DateAdminDp.Checked)
                 {
                     valid = false;
                     emsg = "Must enter date administered";
+                    tbx = 7;
+                }
+                else if (DateAdminDp.Value <= Past)
+                {
+                    valid = false;
+                    emsg = "Date administered must be after vaccines were created";
+                    tbx = 7;
+                }
+                else if (DateAdminDp.Value > Today)
+                {
+                    valid = false;
+                    emsg = "Date administered cannot be in the future";
                     tbx = 7;
                 }
                 else if (ComorbitiyCbx.SelectedIndex <= -1)
@@ -387,10 +405,10 @@ namespace Covid_Vaccine_Tracker.UI
                     emsg = "County cannot be blank";
                     tbx = 20;
                 }
-                else if (string.IsNullOrEmpty(AdminStateTxt.Text))
+                else if (AdminStateCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "State cannot be blank";
+                    emsg = "Must select a state";
                     tbx = 21;
                 }
                 else if (string.IsNullOrEmpty(AdminZipTxt.Text))
@@ -406,14 +424,8 @@ namespace Covid_Vaccine_Tracker.UI
                     tbx = 23;
                 }
             }
-            catch(Exception ex)
-            {throw ex;}
-            //else if (string.IsNullOrEmpty(VtckPinTxt.Text))
-            //{
-            //    valid = false;
-            //    emsg = "Vtcks pin cannot be blank";
-            //    tbx = 24;
-            //}
+            catch (Exception ex)
+            { throw ex; }
 
             // The rest of validation goes here
             // Check all textboxes for string.isnullorempty() and Check comob-boxes for selected index <= -1
@@ -448,7 +460,7 @@ namespace Covid_Vaccine_Tracker.UI
             AdminStreetTxt.Text = string.Empty;
             AdminCityTxt.Text = string.Empty;
             AdminCountyTxt.Text = string.Empty;
-            AdminStateTxt.Text = string.Empty;
+            AdminStateCbx.SelectedIndex = -1;
             AdminZipTxt.Text = string.Empty;
             ProviderSuffixCbx.SelectedIndex = -1;           
         }
@@ -462,7 +474,6 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box iwth ok button and error icon used for unsuccessful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        //this should run after checkform()
         private void SetVaccineRecord(VaccineRecord vaxRecord)
         {
             int CbxIndex;
@@ -471,7 +482,7 @@ namespace Covid_Vaccine_Tracker.UI
             {
                 // Vaccine groupbox
                 vaxRecord.Extract_Type = ExtractTxt.Text.Trim();
-                vaxRecord.Vaccine_Event_Id = VaxEventIdTxt.Text;
+                vaxRecord.Vaccine_Event_Id = VaxEventIdTxt.Text.Trim();
                 // set combox values use list and cbx index to save DB calls
                 CbxIndex = VaxTypeCbx.SelectedIndex;
                 vaxRecord.Vaccine_Type = vTypes[CbxIndex].Type_CVX;
@@ -479,16 +490,16 @@ namespace Covid_Vaccine_Tracker.UI
                 vaxRecord.Vaccine_Product = vProducts[CbxIndex].Product_NDC;
                 CbxIndex = VaxManufacturerCbx.SelectedIndex;
                 vaxRecord.Vaccine_Manufacturer = vManufacturers[CbxIndex].Manufactuer;
-                vaxRecord.Lot_Number = LotNumberTxt.Text.Trim();
+                vaxRecord.Lot_Number = LotNumberTxt.Text;
                 vaxRecord.Vaccine_Experation_Date = ExperationDateDp.Value;
                 vaxRecord.Administration_Date = DateAdminDp.Value;
                 // Patient groupbox
                 CbxIndex = ComorbitiyCbx.SelectedIndex;
                 vaxRecord.Comorbidity_Status = resp1[CbxIndex].Response_Type;
                 CbxIndex = SerologyCbx.SelectedIndex;
-                vaxRecord.Serology_Results = resp2[CbxIndex].Response_Type; 
+                vaxRecord.Serology_Results = resp2[CbxIndex].Response_Type;
                 CbxIndex = DoseNumberCbx.SelectedIndex;
-                vaxRecord.Dose_Number = doses[CbxIndex].Id; 
+                vaxRecord.Dose_Number = doses[CbxIndex].Id;
                 CbxIndex = SeriesCompleteCbx.SelectedIndex;
                 vaxRecord.Vaccine_Series_Complete = resp3[CbxIndex].Response_Type;
                 CbxIndex = AdminSiteCbx.SelectedIndex;
@@ -496,12 +507,23 @@ namespace Covid_Vaccine_Tracker.UI
                 CbxIndex = AdminRouteCbx.SelectedIndex;
                 vaxRecord.Vaccine_Admin_Route = vRoutes[CbxIndex].Route;
                 // Check if pprl was passed into constructor or if need to retireve pprl from DB
-                //need to get pprl if we are entering patient ID when going straight to vax form
                 if (NeedPPRL)
-                    vaxRecord.PPRL = PPRLDB.GetPPRLNumber(IdTxt.Text.Trim());
-                //don't need pprl because it will be pre-entered after creating new patient
+                {
+                    // Check that the patient exists in the systems
+                    bool patientExist = PPRLDB.VerifyPatient(IdTxt.Text.Trim());
+
+                    if (patientExist)
+                    {
+                        //PPRL pprl = new PPRL();
+                        string pId = IdTxt.Text.Trim();
+                        //pprl = PPRLDB.GetPPRLNumber(pId);                    
+                        vaxRecord.PPRL = PPRLDB.ReturnPPRL(pId);
+                    }
+                    else
+                        DisplayError("Patient does not exist", AppTitle);
+                }
                 else
-                    vaxRecord.PPRL = IdTxt.Text; //check the required length of pprl
+                    vaxRecord.PPRL = IdTxt.Text.Trim();
                 // Provider groupbox
                 vaxRecord.Responsible_Organization = OrganizationTxt.Text.Trim();
                 vaxRecord.Administrated_Location = AdminLocTxt.Text.Trim();
@@ -510,21 +532,23 @@ namespace Covid_Vaccine_Tracker.UI
                 vaxRecord.Admin_Street_Address = AdminStreetTxt.Text.Trim();
                 vaxRecord.Admin_City = AdminCityTxt.Text.Trim();
                 vaxRecord.Admin_County = AdminCountyTxt.Text.Trim();
-                vaxRecord.Admin_State = AdminStateTxt.Text.Trim();
+                CbxIndex = AdminStateCbx.SelectedIndex;
+                vaxRecord.Admin_State = daStates[CbxIndex].Name;
                 vaxRecord.Admin_Zip = AdminZipTxt.Text;
                 CbxIndex = ProviderSuffixCbx.SelectedIndex;
                 vaxRecord.Admin_Suffix = pSuffixes[CbxIndex].Code;
-                //vaxRecord.Vtcks_Pin = VtckPinTxt.Text.Trim(); add this when provider actually logs in, out of scope in sprint 3
+                vaxRecord.Vtcks_Pin = VtckPinTxt.Text.Trim();
             }
             catch(Exception ex)
             {
                 ErrorOccured = true;
-                DisplayError(ex.Message, AppTitle);
+                throw ex; 
             }
         }
         private void GetNewVaxEventId()
         {
-            bool vaxEventExist = false;
+            bool vaxEventExist = default;
+
             do
             {
                 // Generate a new vaccine event id
@@ -532,14 +556,16 @@ namespace Covid_Vaccine_Tracker.UI
                 GeneratedVaxEventId = IdGenerator.GenerateId(10, 4, 0, 9, 'A', 'Z');
                 vaxEventExist = VaccineRecordDB.VerifyNewVaxEventID(GeneratedVaxEventId);
             }
-            //sergio: changed this to while true instead of !vaxEventExist, otherwise if there is a unique ID it's
-            //stuck in an infinite loop
             while (vaxEventExist);
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            ErrorOccured = false;
+            // Note when Vaccine is added and it is a existing patient must get the patients id from txtbox
+            // and then use the Patient id to retrieve the patient's PPRL and then store the vax record with the pprl
             ResetErrorPv();
+            // Zac
+            // Reset dataSubmitted so form knows wether or not to change the vaccine event id for new vaccine record entry
+            dataSubmitted = false;
             vaxRecord = new VaccineRecord();
             GetNewVaxEventId();
             int tbx = -1;
@@ -553,39 +579,43 @@ namespace Covid_Vaccine_Tracker.UI
                     if (!ErrorOccured)
                     {
                         //VaxSuccess = VaccineRecordDB.AddVaccine(vaxRecord);
-                        VaxSuccess = true; //temporaritly setting this to true until AddVaccine is defined. 
+                        VaxSuccess = VaccineRecordDB.AddVaccine(vaxRecord);
+                        
                         if (VaxSuccess)
                         {
                             DisplaySuccess("Vaccine record has been successfully added", AppTitle);
                             ResetInputs(true);
                             VaxEventIdTxt.Text = GeneratedVaxEventId;
                             SetIdControlType("Patient");
+                            // set dataSubmitted to true so new vaccine event it will be created
+                            dataSubmitted = true;
                         }
                         else
                             DisplayError("Vaccine record has not been added", AppTitle);
                     }
                     //else
                     //    DisplayError("There was an issue creating a vaccine record", AppTitle);
-                } catch(Exception ex)
-                { throw ex; }
+                }
+                catch (Exception ex)
+                { DisplayError(ex.Message,AppTitle); }
             }
             else
                 SetErrorPv(tbx, FormIsValid.Item2);
-            // Note when Vaccine is added and it is a existing patient must get the patients id from txtbox
-            // and then use the Patient id to retrieve the patient's PPRL and then store the vax record with the pprl
 
-            // This section needs to be coded
-            // and the Checkform method needs to be finshed 
-            // Check Providerform for a reference
-            // CheckForm() line 188 ish
-
-            // At the end of the Add event these things must happen inorder to allow a provider to keep entering 
-            // vaccine records for existing patients
-            // 1) call ResetInputs and pass in true to clear out the ids
-            // 2) Get a new vaccine event id
-            // 3) Allow provider to enter existing patient id bc patient id
-            // will be used to get PPRL number for vax record storage
-            // Then exit this method
+            if (dataSubmitted)
+            {
+                // At the end of the Add event these things must happen inorder to allow a provider to keep entering 
+                // vaccine records for existing patients
+                // 1) call ResetInputs and pass in true to clear out the ids
+                ResetInputs(true);
+                // 2) Get a new vacinne event id
+                GetNewVaxEventId();
+                // 3) Allow provider to enter existing patient id bc patient id
+                // will be used to get PPRL number for vax record storage
+                SetIdControlType("Patient");
+                // Then exit this method
+                VaxEventIdTxt.Text = GeneratedVaxEventId;
+            }
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)
@@ -593,8 +623,6 @@ namespace Covid_Vaccine_Tracker.UI
             // Since clear btn is clicked before data submitted call resetInputs and pass false
             ResetInputs(false);
         }
-
-
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
@@ -610,9 +638,117 @@ namespace Covid_Vaccine_Tracker.UI
             // Dont need to check if cancel was selected because not closing app or not closing form
             // is what cancel should do
         }
-
-        private void VaccineRecordForm_Load(object sender, EventArgs e) 
+        void LotNumber_Rejected(object sender, MaskInputRejectedEventArgs e)
         {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
+
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (LotNumberTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show("Patient Id cannot only be 10 digits long", LotNumberTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == LotNumberTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", LotNumberTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", LotNumberTxt, 25, -20, 2500);
+            }
+        }
+        void Id_Rejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
+
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (IdTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show("Patient Id cannot only be 10 digits long", IdTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == IdTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", IdTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", IdTxt, 25, -20, 2500);
+            }
+        }
+        void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
+
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (AdminZipTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show("Patient Id cannot only be 10 digits long", AdminZipTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == AdminZipTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", AdminZipTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", AdminZipTxt, 25, -20, 2500);
+            }
+        }
+        void Vtcks_Rejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
+
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (VtckPinTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show("Patient Id cannot only be 10 digits long", VtckPinTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == VtckPinTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", VtckPinTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", VtckPinTxt, 25, -20, 2500);
+            }
+        }
+        private void VaccineRecordForm_Load(object sender, EventArgs e)
+        {
+            // Add mask Rejected events
+            LotNumberTxt.MaskInputRejected += new MaskInputRejectedEventHandler(LotNumber_Rejected);
+            IdTxt.MaskInputRejected += new MaskInputRejectedEventHandler(Id_Rejected);
+            AdminZipTxt.MaskInputRejected += new MaskInputRejectedEventHandler(Zip_Rejected);
+            VtckPinTxt.MaskInputRejected += new MaskInputRejectedEventHandler(Vtcks_Rejected);
             // Use method to get a new vaccine event id
             GetNewVaxEventId();
 
@@ -622,8 +758,7 @@ namespace Covid_Vaccine_Tracker.UI
                 SetIdControlType("Patient");
 
             // Diable addbtn until all inputs are filled
-            //AddControl("Disable");
-
+            AddControl("Enable");
 
             // Populate the list with DB data
             resp1 = ResponsesDB.GetResponses();
@@ -636,11 +771,12 @@ namespace Covid_Vaccine_Tracker.UI
             vAdminSites = Vax_Admin_StitesDB.GetAdminSites();
             vRoutes = Vax_RoutesDB.GetRoutes();
             lTypes = Location_TypeDB.GetLocationTypes();
+            daStates = StatesDB.GetStates();
             pSuffixes = Provider_SuffixDB.GetSuffixes();
 
             // Bind combo-boxs with data from lists
             VaxTypeCbx.DataSource = vTypes;
-            VaxTypeCbx.DisplayMember = "Location_Type";
+            VaxTypeCbx.DisplayMember = "Type_CVX";
             VaxTypeCbx.ValueMember = "Code";
 
             VaxProductCbx.DataSource = vProducts;
@@ -662,6 +798,10 @@ namespace Covid_Vaccine_Tracker.UI
             LocTypeCbx.DataSource = lTypes;
             LocTypeCbx.DisplayMember = "Location_Type";
             LocTypeCbx.ValueMember = "Code";
+
+            AdminStateCbx.DataSource = daStates;
+            AdminStateCbx.DisplayMember = "Name";
+            AdminStateCbx.ValueMember = "Abbreviation";
 
             ProviderSuffixCbx.DataSource = pSuffixes;
             ProviderSuffixCbx.DisplayMember = "Suffix";

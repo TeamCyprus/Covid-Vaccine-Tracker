@@ -51,7 +51,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.label27 = new System.Windows.Forms.Label();
             this.AdminZipTxt = new System.Windows.Forms.MaskedTextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.AdminStateTxt = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.AdminCountyTxt = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -83,6 +82,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.AdminSiteCbx = new System.Windows.Forms.ComboBox();
             this.IdTxt = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AdminStateCbx = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -119,9 +119,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.Controls.Add(this.VaxTypeCbx);
             this.groupBox1.Controls.Add(this.VaxEventIdTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(86, 61);
+            this.groupBox1.Location = new System.Drawing.Point(53, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(549, 191);
+            this.groupBox1.Size = new System.Drawing.Size(636, 191);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vaccine Information";
@@ -129,7 +129,7 @@ namespace Covid_Vaccine_Tracker.UI
             // ExtractTxt
             // 
             this.ExtractTxt.Enabled = false;
-            this.ExtractTxt.Location = new System.Drawing.Point(36, 45);
+            this.ExtractTxt.Location = new System.Drawing.Point(19, 45);
             this.ExtractTxt.Name = "ExtractTxt";
             this.ExtractTxt.ReadOnly = true;
             this.ExtractTxt.Size = new System.Drawing.Size(131, 24);
@@ -139,61 +139,61 @@ namespace Covid_Vaccine_Tracker.UI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(164, 128);
+            this.label10.Location = new System.Drawing.Point(334, 24);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(113, 18);
-            this.label10.TabIndex = 12;
+            this.label10.TabIndex = 4;
             this.label10.Text = "Experation Date";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 128);
+            this.label9.Location = new System.Drawing.Point(168, 76);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 18);
-            this.label9.TabIndex = 10;
+            this.label9.TabIndex = 8;
             this.label9.Text = "Lot Number";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(367, 75);
+            this.label8.Location = new System.Drawing.Point(374, 128);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(151, 18);
-            this.label8.TabIndex = 8;
+            this.label8.TabIndex = 14;
             this.label8.Text = "Vaccine Manufacturer";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(196, 75);
+            this.label7.Location = new System.Drawing.Point(293, 76);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 18);
-            this.label7.TabIndex = 6;
+            this.label7.TabIndex = 10;
             this.label7.Text = "Vaccine Product";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 75);
+            this.label6.Location = new System.Drawing.Point(16, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 18);
-            this.label6.TabIndex = 4;
+            this.label6.TabIndex = 12;
             this.label6.Text = "Vaccine Type";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(322, 126);
+            this.label5.Location = new System.Drawing.Point(16, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 18);
-            this.label5.TabIndex = 14;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Date Administered";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(196, 24);
+            this.label4.Location = new System.Drawing.Point(184, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 18);
             this.label4.TabIndex = 2;
@@ -202,7 +202,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 24);
+            this.label1.Location = new System.Drawing.Point(16, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 18);
             this.label1.TabIndex = 0;
@@ -211,61 +211,61 @@ namespace Covid_Vaccine_Tracker.UI
             // ExperationDateDp
             // 
             this.ExperationDateDp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ExperationDateDp.Location = new System.Drawing.Point(167, 147);
+            this.ExperationDateDp.Location = new System.Drawing.Point(337, 43);
             this.ExperationDateDp.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.ExperationDateDp.Name = "ExperationDateDp";
             this.ExperationDateDp.ShowUpDown = true;
             this.ExperationDateDp.Size = new System.Drawing.Size(110, 24);
-            this.ExperationDateDp.TabIndex = 13;
+            this.ExperationDateDp.TabIndex = 5;
             // 
             // LotNumberTxt
             // 
-            this.LotNumberTxt.Location = new System.Drawing.Point(36, 149);
+            this.LotNumberTxt.Location = new System.Drawing.Point(171, 97);
             this.LotNumberTxt.Mask = "00000LLLLL";
             this.LotNumberTxt.Name = "LotNumberTxt";
             this.LotNumberTxt.Size = new System.Drawing.Size(83, 24);
-            this.LotNumberTxt.TabIndex = 11;
+            this.LotNumberTxt.TabIndex = 9;
             this.LotNumberTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.LotNumberTxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // DateAdminDp
             // 
             this.DateAdminDp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateAdminDp.Location = new System.Drawing.Point(325, 147);
+            this.DateAdminDp.Location = new System.Drawing.Point(19, 95);
             this.DateAdminDp.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.DateAdminDp.Name = "DateAdminDp";
             this.DateAdminDp.ShowUpDown = true;
             this.DateAdminDp.Size = new System.Drawing.Size(110, 24);
-            this.DateAdminDp.TabIndex = 15;
+            this.DateAdminDp.TabIndex = 7;
             // 
             // VaxManufacturerCbx
             // 
             this.VaxManufacturerCbx.FormattingEnabled = true;
-            this.VaxManufacturerCbx.Location = new System.Drawing.Point(370, 96);
+            this.VaxManufacturerCbx.Location = new System.Drawing.Point(377, 149);
             this.VaxManufacturerCbx.Name = "VaxManufacturerCbx";
-            this.VaxManufacturerCbx.Size = new System.Drawing.Size(142, 26);
-            this.VaxManufacturerCbx.TabIndex = 9;
+            this.VaxManufacturerCbx.Size = new System.Drawing.Size(243, 26);
+            this.VaxManufacturerCbx.TabIndex = 15;
             // 
             // VaxProductCbx
             // 
             this.VaxProductCbx.FormattingEnabled = true;
-            this.VaxProductCbx.Location = new System.Drawing.Point(199, 96);
+            this.VaxProductCbx.Location = new System.Drawing.Point(296, 97);
             this.VaxProductCbx.Name = "VaxProductCbx";
-            this.VaxProductCbx.Size = new System.Drawing.Size(150, 26);
-            this.VaxProductCbx.TabIndex = 7;
+            this.VaxProductCbx.Size = new System.Drawing.Size(275, 26);
+            this.VaxProductCbx.TabIndex = 11;
             // 
             // VaxTypeCbx
             // 
             this.VaxTypeCbx.FormattingEnabled = true;
-            this.VaxTypeCbx.Location = new System.Drawing.Point(36, 96);
+            this.VaxTypeCbx.Location = new System.Drawing.Point(19, 149);
             this.VaxTypeCbx.Name = "VaxTypeCbx";
-            this.VaxTypeCbx.Size = new System.Drawing.Size(142, 26);
-            this.VaxTypeCbx.TabIndex = 5;
+            this.VaxTypeCbx.Size = new System.Drawing.Size(333, 26);
+            this.VaxTypeCbx.TabIndex = 13;
             // 
             // VaxEventIdTxt
             // 
             this.VaxEventIdTxt.Enabled = false;
-            this.VaxEventIdTxt.Location = new System.Drawing.Point(199, 45);
+            this.VaxEventIdTxt.Location = new System.Drawing.Point(187, 45);
             this.VaxEventIdTxt.Mask = "000000LLLL";
             this.VaxEventIdTxt.Name = "VaxEventIdTxt";
             this.VaxEventIdTxt.ReadOnly = true;
@@ -278,7 +278,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(463, 137);
+            this.label27.Location = new System.Drawing.Point(405, 137);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(61, 18);
             this.label27.TabIndex = 14;
@@ -286,7 +286,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AdminZipTxt
             // 
-            this.AdminZipTxt.Location = new System.Drawing.Point(466, 156);
+            this.AdminZipTxt.Location = new System.Drawing.Point(408, 156);
             this.AdminZipTxt.Mask = "00000";
             this.AdminZipTxt.Name = "AdminZipTxt";
             this.AdminZipTxt.Size = new System.Drawing.Size(83, 24);
@@ -297,23 +297,16 @@ namespace Covid_Vaccine_Tracker.UI
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(262, 137);
+            this.label26.Location = new System.Drawing.Point(270, 137);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(42, 18);
             this.label26.TabIndex = 12;
             this.label26.Text = "State";
             // 
-            // AdminStateTxt
-            // 
-            this.AdminStateTxt.Location = new System.Drawing.Point(265, 156);
-            this.AdminStateTxt.Name = "AdminStateTxt";
-            this.AdminStateTxt.Size = new System.Drawing.Size(183, 24);
-            this.AdminStateTxt.TabIndex = 13;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(21, 137);
+            this.label25.Location = new System.Drawing.Point(17, 137);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(55, 18);
             this.label25.TabIndex = 10;
@@ -321,7 +314,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AdminCountyTxt
             // 
-            this.AdminCountyTxt.Location = new System.Drawing.Point(24, 156);
+            this.AdminCountyTxt.Location = new System.Drawing.Point(20, 156);
             this.AdminCountyTxt.Name = "AdminCountyTxt";
             this.AdminCountyTxt.Size = new System.Drawing.Size(215, 24);
             this.AdminCountyTxt.TabIndex = 11;
@@ -329,7 +322,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(331, 82);
+            this.label24.Location = new System.Drawing.Point(327, 82);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(33, 18);
             this.label24.TabIndex = 8;
@@ -337,7 +330,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AdminCityTxt
             // 
-            this.AdminCityTxt.Location = new System.Drawing.Point(334, 103);
+            this.AdminCityTxt.Location = new System.Drawing.Point(330, 103);
             this.AdminCityTxt.Name = "AdminCityTxt";
             this.AdminCityTxt.Size = new System.Drawing.Size(215, 24);
             this.AdminCityTxt.TabIndex = 9;
@@ -345,7 +338,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(21, 82);
+            this.label23.Location = new System.Drawing.Point(17, 82);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(105, 18);
             this.label23.TabIndex = 6;
@@ -353,7 +346,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AdminStreetTxt
             // 
-            this.AdminStreetTxt.Location = new System.Drawing.Point(24, 103);
+            this.AdminStreetTxt.Location = new System.Drawing.Point(20, 103);
             this.AdminStreetTxt.Name = "AdminStreetTxt";
             this.AdminStreetTxt.Size = new System.Drawing.Size(285, 24);
             this.AdminStreetTxt.TabIndex = 7;
@@ -361,7 +354,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(22, 189);
+            this.label22.Location = new System.Drawing.Point(18, 189);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(103, 18);
             this.label22.TabIndex = 16;
@@ -370,16 +363,16 @@ namespace Covid_Vaccine_Tracker.UI
             // ProviderSuffixCbx
             // 
             this.ProviderSuffixCbx.FormattingEnabled = true;
-            this.ProviderSuffixCbx.Location = new System.Drawing.Point(25, 208);
+            this.ProviderSuffixCbx.Location = new System.Drawing.Point(21, 208);
             this.ProviderSuffixCbx.Name = "ProviderSuffixCbx";
-            this.ProviderSuffixCbx.Size = new System.Drawing.Size(200, 26);
+            this.ProviderSuffixCbx.Size = new System.Drawing.Size(230, 26);
             this.ProviderSuffixCbx.TabIndex = 17;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(190, 26);
+            this.label20.Location = new System.Drawing.Point(184, 26);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(121, 18);
             this.label20.TabIndex = 2;
@@ -389,7 +382,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.SerologyCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SerologyCbx.FormattingEnabled = true;
-            this.SerologyCbx.Location = new System.Drawing.Point(193, 47);
+            this.SerologyCbx.Location = new System.Drawing.Point(187, 47);
             this.SerologyCbx.Name = "SerologyCbx";
             this.SerologyCbx.Size = new System.Drawing.Size(105, 26);
             this.SerologyCbx.TabIndex = 3;
@@ -398,16 +391,16 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.ComorbitiyCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComorbitiyCbx.FormattingEnabled = true;
-            this.ComorbitiyCbx.Location = new System.Drawing.Point(35, 47);
+            this.ComorbitiyCbx.Location = new System.Drawing.Point(19, 47);
             this.ComorbitiyCbx.Name = "ComorbitiyCbx";
-            this.ComorbitiyCbx.Size = new System.Drawing.Size(131, 26);
+            this.ComorbitiyCbx.Size = new System.Drawing.Size(137, 26);
             this.ComorbitiyCbx.TabIndex = 1;
             // 
             // lbl
             // 
             this.lbl.AutoSize = true;
             this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl.Location = new System.Drawing.Point(32, 26);
+            this.lbl.Location = new System.Drawing.Point(16, 26);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(134, 18);
             this.lbl.TabIndex = 0;
@@ -416,7 +409,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(262, 189);
+            this.label18.Location = new System.Drawing.Point(274, 189);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(70, 18);
             this.label18.TabIndex = 18;
@@ -424,11 +417,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // VtckPinTxt
             // 
-            this.VtckPinTxt.Enabled = false;
-            this.VtckPinTxt.Location = new System.Drawing.Point(265, 208);
+            this.VtckPinTxt.Location = new System.Drawing.Point(277, 208);
             this.VtckPinTxt.Mask = "0000LL";
             this.VtckPinTxt.Name = "VtckPinTxt";
-            this.VtckPinTxt.ReadOnly = true;
             this.VtckPinTxt.Size = new System.Drawing.Size(93, 24);
             this.VtckPinTxt.TabIndex = 19;
             this.VtckPinTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -438,7 +429,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(418, 30);
+            this.label17.Location = new System.Drawing.Point(394, 30);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(101, 18);
             this.label17.TabIndex = 4;
@@ -447,15 +438,15 @@ namespace Covid_Vaccine_Tracker.UI
             // LocTypeCbx
             // 
             this.LocTypeCbx.FormattingEnabled = true;
-            this.LocTypeCbx.Location = new System.Drawing.Point(421, 49);
+            this.LocTypeCbx.Location = new System.Drawing.Point(397, 49);
             this.LocTypeCbx.Name = "LocTypeCbx";
-            this.LocTypeCbx.Size = new System.Drawing.Size(155, 26);
+            this.LocTypeCbx.Size = new System.Drawing.Size(223, 26);
             this.LocTypeCbx.TabIndex = 5;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(220, 30);
+            this.label16.Location = new System.Drawing.Point(206, 30);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(154, 18);
             this.label16.TabIndex = 2;
@@ -463,7 +454,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AdminLocTxt
             // 
-            this.AdminLocTxt.Location = new System.Drawing.Point(223, 51);
+            this.AdminLocTxt.Location = new System.Drawing.Point(209, 51);
             this.AdminLocTxt.Name = "AdminLocTxt";
             this.AdminLocTxt.Size = new System.Drawing.Size(175, 24);
             this.AdminLocTxt.TabIndex = 3;
@@ -472,7 +463,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(22, 30);
+            this.label15.Location = new System.Drawing.Point(18, 30);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(178, 18);
             this.label15.TabIndex = 0;
@@ -481,7 +472,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(447, 26);
+            this.label14.Location = new System.Drawing.Point(471, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(118, 18);
             this.label14.TabIndex = 6;
@@ -490,7 +481,7 @@ namespace Covid_Vaccine_Tracker.UI
             // SeriesCompleteCbx
             // 
             this.SeriesCompleteCbx.FormattingEnabled = true;
-            this.SeriesCompleteCbx.Location = new System.Drawing.Point(450, 47);
+            this.SeriesCompleteCbx.Location = new System.Drawing.Point(474, 47);
             this.SeriesCompleteCbx.Name = "SeriesCompleteCbx";
             this.SeriesCompleteCbx.Size = new System.Drawing.Size(105, 26);
             this.SeriesCompleteCbx.TabIndex = 7;
@@ -498,7 +489,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(322, 26);
+            this.label13.Location = new System.Drawing.Point(334, 26);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 18);
             this.label13.TabIndex = 4;
@@ -507,15 +498,15 @@ namespace Covid_Vaccine_Tracker.UI
             // AdminRouteCbx
             // 
             this.AdminRouteCbx.FormattingEnabled = true;
-            this.AdminRouteCbx.Location = new System.Drawing.Point(220, 101);
+            this.AdminRouteCbx.Location = new System.Drawing.Point(238, 101);
             this.AdminRouteCbx.Name = "AdminRouteCbx";
-            this.AdminRouteCbx.Size = new System.Drawing.Size(155, 26);
+            this.AdminRouteCbx.Size = new System.Drawing.Size(181, 26);
             this.AdminRouteCbx.TabIndex = 11;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(217, 80);
+            this.label12.Location = new System.Drawing.Point(235, 80);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 18);
             this.label12.TabIndex = 10;
@@ -524,7 +515,7 @@ namespace Covid_Vaccine_Tracker.UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(32, 80);
+            this.label11.Location = new System.Drawing.Point(20, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 18);
             this.label11.TabIndex = 8;
@@ -533,7 +524,7 @@ namespace Covid_Vaccine_Tracker.UI
             // IDlbl
             // 
             this.IDlbl.AutoSize = true;
-            this.IDlbl.Location = new System.Drawing.Point(402, 80);
+            this.IDlbl.Location = new System.Drawing.Point(464, 80);
             this.IDlbl.Name = "IDlbl";
             this.IDlbl.Size = new System.Drawing.Size(129, 18);
             this.IDlbl.TabIndex = 12;
@@ -541,7 +532,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // OrganizationTxt
             // 
-            this.OrganizationTxt.Location = new System.Drawing.Point(25, 51);
+            this.OrganizationTxt.Location = new System.Drawing.Point(21, 51);
             this.OrganizationTxt.Name = "OrganizationTxt";
             this.OrganizationTxt.Size = new System.Drawing.Size(175, 24);
             this.OrganizationTxt.TabIndex = 1;
@@ -549,7 +540,7 @@ namespace Covid_Vaccine_Tracker.UI
             // DoseNumberCbx
             // 
             this.DoseNumberCbx.FormattingEnabled = true;
-            this.DoseNumberCbx.Location = new System.Drawing.Point(325, 47);
+            this.DoseNumberCbx.Location = new System.Drawing.Point(337, 47);
             this.DoseNumberCbx.Name = "DoseNumberCbx";
             this.DoseNumberCbx.Size = new System.Drawing.Size(98, 26);
             this.DoseNumberCbx.TabIndex = 5;
@@ -557,16 +548,16 @@ namespace Covid_Vaccine_Tracker.UI
             // AdminSiteCbx
             // 
             this.AdminSiteCbx.FormattingEnabled = true;
-            this.AdminSiteCbx.Location = new System.Drawing.Point(35, 101);
+            this.AdminSiteCbx.Location = new System.Drawing.Point(19, 101);
             this.AdminSiteCbx.Name = "AdminSiteCbx";
-            this.AdminSiteCbx.Size = new System.Drawing.Size(155, 26);
+            this.AdminSiteCbx.Size = new System.Drawing.Size(171, 26);
             this.AdminSiteCbx.TabIndex = 9;
             // 
             // IdTxt
             // 
             this.IdTxt.Enabled = false;
-            this.IdTxt.Location = new System.Drawing.Point(405, 101);
-            this.IdTxt.Mask = "0000000LLL";
+            this.IdTxt.Location = new System.Drawing.Point(467, 101);
+            this.IdTxt.Mask = "0000000LLLL";
             this.IdTxt.Name = "IdTxt";
             this.IdTxt.ReadOnly = true;
             this.IdTxt.Size = new System.Drawing.Size(114, 24);
@@ -578,6 +569,7 @@ namespace Covid_Vaccine_Tracker.UI
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.AdminStateCbx);
             this.groupBox2.Controls.Add(this.OrganizationTxt);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label15);
@@ -585,7 +577,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox2.Controls.Add(this.AdminLocTxt);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.AdminStateTxt);
             this.groupBox2.Controls.Add(this.LocTypeCbx);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label17);
@@ -599,13 +590,21 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.AdminStreetTxt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(62, 425);
+            this.groupBox2.Location = new System.Drawing.Point(53, 425);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(596, 255);
+            this.groupBox2.Size = new System.Drawing.Size(636, 255);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Administed Location Information";
             this.toolTip1.SetToolTip(this.groupBox2, "Information about where the vaccination took place");
+            // 
+            // AdminStateCbx
+            // 
+            this.AdminStateCbx.FormattingEnabled = true;
+            this.AdminStateCbx.Location = new System.Drawing.Point(273, 156);
+            this.AdminStateCbx.Name = "AdminStateCbx";
+            this.AdminStateCbx.Size = new System.Drawing.Size(97, 26);
+            this.AdminStateCbx.TabIndex = 13;
             // 
             // groupBox3
             // 
@@ -625,9 +624,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox3.Controls.Add(this.DoseNumberCbx);
             this.groupBox3.Controls.Add(this.AdminSiteCbx);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(62, 266);
+            this.groupBox3.Location = new System.Drawing.Point(53, 266);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(596, 145);
+            this.groupBox3.Size = new System.Drawing.Size(636, 145);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Patient Information";
@@ -654,7 +653,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(722, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(743, 27);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -703,7 +702,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(722, 706);
+            this.ClientSize = new System.Drawing.Size(743, 706);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -733,7 +732,6 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.MaskedTextBox AdminZipTxt;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox AdminStateTxt;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox AdminCountyTxt;
         private System.Windows.Forms.Label label24;
@@ -790,5 +788,6 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripButton ClearBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton ExitBtn;
+        private System.Windows.Forms.ComboBox AdminStateCbx;
     }
 }

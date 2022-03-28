@@ -29,6 +29,7 @@ namespace Covid_Vaccine_Tracker.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.VtckPinTxt = new System.Windows.Forms.MaskedTextBox();
@@ -40,19 +41,38 @@ namespace Covid_Vaccine_Tracker.UI
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.HospitalTxt = new System.Windows.Forms.TextBox();
+            this.ProviderSuffixCBX = new System.Windows.Forms.ComboBox();
+            this.CountyTxt = new System.Windows.Forms.TextBox();
             this.VerifyPwdTxt = new System.Windows.Forms.TextBox();
-            this.LnameTxt = new System.Windows.Forms.TextBox();
-            this.PasswordTxt = new System.Windows.Forms.TextBox();
-            this.FnameTxt = new System.Windows.Forms.TextBox();
+            this.PwdTxt = new System.Windows.Forms.TextBox();
             this.UsernameTxt = new System.Windows.Forms.TextBox();
-            this.PatientIdTxt = new System.Windows.Forms.TextBox();
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.ClearBtn = new System.Windows.Forms.Button();
-            this.ExitBtn = new System.Windows.Forms.Button();
+            this.LnameTxt = new System.Windows.Forms.TextBox();
+            this.FnameTxt = new System.Windows.Forms.TextBox();
+            this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.AddBtn = new System.Windows.Forms.ToolStripButton();
+            this.ClearBtn = new System.Windows.Forms.ToolStripButton();
+            this.ExitBtn = new System.Windows.Forms.ToolStripButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.StateCbx = new System.Windows.Forms.ComboBox();
+            this.CityTxt = new System.Windows.Forms.TextBox();
+            this.StreetAddressTxt = new System.Windows.Forms.TextBox();
+            this.LocationTypeTxt = new System.Windows.Forms.TextBox();
+            this.FacilityTxt = new System.Windows.Forms.TextBox();
+            this.OrganizationTxt = new System.Windows.Forms.TextBox();
+            this.ZipTxt = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -61,41 +81,39 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.Controls.Add(this.VtckPinTxt);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.HospitalTxt);
+            this.groupBox1.Controls.Add(this.ProviderSuffixCBX);
             this.groupBox1.Controls.Add(this.VerifyPwdTxt);
-            this.groupBox1.Controls.Add(this.LnameTxt);
-            this.groupBox1.Controls.Add(this.PasswordTxt);
-            this.groupBox1.Controls.Add(this.FnameTxt);
+            this.groupBox1.Controls.Add(this.PwdTxt);
             this.groupBox1.Controls.Add(this.UsernameTxt);
-            this.groupBox1.Controls.Add(this.PatientIdTxt);
+            this.groupBox1.Controls.Add(this.LnameTxt);
+            this.groupBox1.Controls.Add(this.FnameTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(67, 41);
+            this.groupBox1.Location = new System.Drawing.Point(25, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(482, 272);
+            this.groupBox1.Size = new System.Drawing.Size(653, 156);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Account Information";
             // 
             // VtckPinTxt
             // 
-            this.VtckPinTxt.Location = new System.Drawing.Point(235, 215);
+            this.VtckPinTxt.Location = new System.Drawing.Point(421, 53);
             this.VtckPinTxt.Mask = "000000";
             this.VtckPinTxt.Name = "VtckPinTxt";
             this.VtckPinTxt.Size = new System.Drawing.Size(66, 24);
             this.VtckPinTxt.TabIndex = 18;
+            this.VtckPinTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(329, 196);
+            this.label9.Location = new System.Drawing.Point(508, 30);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 18);
             this.label9.TabIndex = 17;
@@ -105,7 +123,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(232, 196);
+            this.label8.Location = new System.Drawing.Point(418, 32);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 18);
             this.label8.TabIndex = 16;
@@ -115,17 +133,17 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 194);
+            this.label7.Location = new System.Drawing.Point(24, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 18);
+            this.label7.Size = new System.Drawing.Size(92, 18);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Primary Hospital";
+            this.label7.Text = "Organization";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(269, 140);
+            this.label6.Location = new System.Drawing.Point(446, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 18);
             this.label6.TabIndex = 14;
@@ -135,7 +153,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(269, 86);
+            this.label5.Location = new System.Drawing.Point(214, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 18);
             this.label5.TabIndex = 13;
@@ -145,7 +163,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 140);
+            this.label4.Location = new System.Drawing.Point(235, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 18);
             this.label4.TabIndex = 12;
@@ -155,7 +173,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 86);
+            this.label3.Location = new System.Drawing.Point(24, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 18);
             this.label3.TabIndex = 11;
@@ -164,134 +182,300 @@ namespace Covid_Vaccine_Tracker.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 32);
+            this.label2.Location = new System.Drawing.Point(24, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 18);
             this.label2.TabIndex = 10;
             this.label2.Text = "Username";
             // 
-            // label1
+            // ProviderSuffixCBX
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 18);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Patient Id";
+            this.ProviderSuffixCBX.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProviderSuffixCBX.FormattingEnabled = true;
+            this.ProviderSuffixCBX.Location = new System.Drawing.Point(511, 51);
+            this.ProviderSuffixCBX.Name = "ProviderSuffixCBX";
+            this.ProviderSuffixCBX.Size = new System.Drawing.Size(121, 26);
+            this.ProviderSuffixCBX.TabIndex = 8;
             // 
-            // comboBox1
+            // CountyTxt
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(332, 217);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 26);
-            this.comboBox1.TabIndex = 8;
-            // 
-            // HospitalTxt
-            // 
-            this.HospitalTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HospitalTxt.Location = new System.Drawing.Point(27, 215);
-            this.HospitalTxt.Name = "HospitalTxt";
-            this.HospitalTxt.Size = new System.Drawing.Size(183, 24);
-            this.HospitalTxt.TabIndex = 6;
+            this.CountyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CountyTxt.Location = new System.Drawing.Point(425, 107);
+            this.CountyTxt.Name = "CountyTxt";
+            this.CountyTxt.Size = new System.Drawing.Size(183, 24);
+            this.CountyTxt.TabIndex = 6;
             // 
             // VerifyPwdTxt
             // 
             this.VerifyPwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerifyPwdTxt.Location = new System.Drawing.Point(268, 161);
+            this.VerifyPwdTxt.Location = new System.Drawing.Point(449, 111);
             this.VerifyPwdTxt.Name = "VerifyPwdTxt";
             this.VerifyPwdTxt.Size = new System.Drawing.Size(183, 24);
             this.VerifyPwdTxt.TabIndex = 5;
             // 
-            // LnameTxt
+            // PwdTxt
             // 
-            this.LnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LnameTxt.Location = new System.Drawing.Point(268, 107);
-            this.LnameTxt.Name = "LnameTxt";
-            this.LnameTxt.Size = new System.Drawing.Size(183, 24);
-            this.LnameTxt.TabIndex = 4;
-            // 
-            // PasswordTxt
-            // 
-            this.PasswordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordTxt.Location = new System.Drawing.Point(27, 161);
-            this.PasswordTxt.Name = "PasswordTxt";
-            this.PasswordTxt.Size = new System.Drawing.Size(183, 24);
-            this.PasswordTxt.TabIndex = 3;
-            // 
-            // FnameTxt
-            // 
-            this.FnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FnameTxt.Location = new System.Drawing.Point(27, 107);
-            this.FnameTxt.Name = "FnameTxt";
-            this.FnameTxt.Size = new System.Drawing.Size(183, 24);
-            this.FnameTxt.TabIndex = 2;
+            this.PwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PwdTxt.Location = new System.Drawing.Point(238, 111);
+            this.PwdTxt.Name = "PwdTxt";
+            this.PwdTxt.Size = new System.Drawing.Size(183, 24);
+            this.PwdTxt.TabIndex = 4;
             // 
             // UsernameTxt
             // 
             this.UsernameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameTxt.Location = new System.Drawing.Point(235, 53);
+            this.UsernameTxt.Location = new System.Drawing.Point(27, 111);
             this.UsernameTxt.Name = "UsernameTxt";
-            this.UsernameTxt.Size = new System.Drawing.Size(180, 24);
-            this.UsernameTxt.TabIndex = 1;
+            this.UsernameTxt.Size = new System.Drawing.Size(183, 24);
+            this.UsernameTxt.TabIndex = 2;
             // 
-            // PatientIdTxt
+            // LnameTxt
             // 
-            this.PatientIdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientIdTxt.Location = new System.Drawing.Point(27, 53);
-            this.PatientIdTxt.Name = "PatientIdTxt";
-            this.PatientIdTxt.Size = new System.Drawing.Size(100, 24);
-            this.PatientIdTxt.TabIndex = 0;
+            this.LnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LnameTxt.Location = new System.Drawing.Point(217, 53);
+            this.LnameTxt.Name = "LnameTxt";
+            this.LnameTxt.Size = new System.Drawing.Size(180, 24);
+            this.LnameTxt.TabIndex = 1;
+            // 
+            // FnameTxt
+            // 
+            this.FnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FnameTxt.Location = new System.Drawing.Point(27, 53);
+            this.FnameTxt.Name = "FnameTxt";
+            this.FnameTxt.Size = new System.Drawing.Size(166, 24);
+            this.FnameTxt.TabIndex = 0;
+            // 
+            // ErrorPv
+            // 
+            this.ErrorPv.ContainerControl = this;
+            this.ErrorPv.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorPv.Icon")));
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddBtn,
+            this.ClearBtn,
+            this.ExitBtn});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(703, 28);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // AddBtn
             // 
-            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBtn.Location = new System.Drawing.Point(87, 343);
+            this.AddBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddBtn.Image")));
+            this.AddBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(102, 34);
-            this.AddBtn.TabIndex = 1;
+            this.AddBtn.Size = new System.Drawing.Size(58, 25);
             this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // ClearBtn
             // 
-            this.ClearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearBtn.Location = new System.Drawing.Point(257, 343);
+            this.ClearBtn.Image = ((System.Drawing.Image)(resources.GetObject("ClearBtn.Image")));
+            this.ClearBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(102, 34);
-            this.ClearBtn.TabIndex = 2;
+            this.ClearBtn.Size = new System.Drawing.Size(66, 25);
             this.ClearBtn.Text = "Clear";
-            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Location = new System.Drawing.Point(427, 343);
+            this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
+            this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(102, 34);
-            this.ExitBtn.TabIndex = 3;
+            this.ExitBtn.Size = new System.Drawing.Size(54, 25);
             this.ExitBtn.Text = "Exit";
-            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.ZipTxt);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.StateCbx);
+            this.groupBox2.Controls.Add(this.CountyTxt);
+            this.groupBox2.Controls.Add(this.CityTxt);
+            this.groupBox2.Controls.Add(this.StreetAddressTxt);
+            this.groupBox2.Controls.Add(this.LocationTypeTxt);
+            this.groupBox2.Controls.Add(this.FacilityTxt);
+            this.groupBox2.Controls.Add(this.OrganizationTxt);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(25, 223);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(653, 209);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Facility Information";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(175, 143);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 18);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Zipcode";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(24, 140);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 18);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "State";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(223, 86);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 18);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "City";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(217, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 18);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Primary Facility";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(24, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 18);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Street Address";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(422, 86);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 18);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "County";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(425, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(101, 18);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Location Type";
+            // 
+            // StateCbx
+            // 
+            this.StateCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StateCbx.FormattingEnabled = true;
+            this.StateCbx.Location = new System.Drawing.Point(27, 161);
+            this.StateCbx.Name = "StateCbx";
+            this.StateCbx.Size = new System.Drawing.Size(121, 26);
+            this.StateCbx.TabIndex = 8;
+            // 
+            // CityTxt
+            // 
+            this.CityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CityTxt.Location = new System.Drawing.Point(226, 107);
+            this.CityTxt.Name = "CityTxt";
+            this.CityTxt.Size = new System.Drawing.Size(183, 24);
+            this.CityTxt.TabIndex = 5;
+            // 
+            // StreetAddressTxt
+            // 
+            this.StreetAddressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StreetAddressTxt.Location = new System.Drawing.Point(27, 107);
+            this.StreetAddressTxt.Name = "StreetAddressTxt";
+            this.StreetAddressTxt.Size = new System.Drawing.Size(183, 24);
+            this.StreetAddressTxt.TabIndex = 4;
+            // 
+            // LocationTypeTxt
+            // 
+            this.LocationTypeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationTypeTxt.Location = new System.Drawing.Point(426, 53);
+            this.LocationTypeTxt.Name = "LocationTypeTxt";
+            this.LocationTypeTxt.Size = new System.Drawing.Size(183, 24);
+            this.LocationTypeTxt.TabIndex = 2;
+            // 
+            // FacilityTxt
+            // 
+            this.FacilityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FacilityTxt.Location = new System.Drawing.Point(220, 53);
+            this.FacilityTxt.Name = "FacilityTxt";
+            this.FacilityTxt.Size = new System.Drawing.Size(180, 24);
+            this.FacilityTxt.TabIndex = 1;
+            // 
+            // OrganizationTxt
+            // 
+            this.OrganizationTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrganizationTxt.Location = new System.Drawing.Point(27, 53);
+            this.OrganizationTxt.Name = "OrganizationTxt";
+            this.OrganizationTxt.Size = new System.Drawing.Size(166, 24);
+            this.OrganizationTxt.TabIndex = 0;
+            // 
+            // ZipTxt
+            // 
+            this.ZipTxt.Location = new System.Drawing.Point(178, 163);
+            this.ZipTxt.Mask = "00000";
+            this.ZipTxt.Name = "ZipTxt";
+            this.ZipTxt.Size = new System.Drawing.Size(87, 24);
+            this.ZipTxt.TabIndex = 19;
+            this.ZipTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SignupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(616, 402);
-            this.Controls.Add(this.ExitBtn);
-            this.Controls.Add(this.ClearBtn);
-            this.Controls.Add(this.AddBtn);
+            this.ClientSize = new System.Drawing.Size(703, 450);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";
+            this.Load += new System.EventHandler(this.SignupForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -307,17 +491,33 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox HospitalTxt;
+        private System.Windows.Forms.ComboBox ProviderSuffixCBX;
+        private System.Windows.Forms.TextBox CountyTxt;
         private System.Windows.Forms.TextBox VerifyPwdTxt;
-        private System.Windows.Forms.TextBox LnameTxt;
-        private System.Windows.Forms.TextBox PasswordTxt;
-        private System.Windows.Forms.TextBox FnameTxt;
+        private System.Windows.Forms.TextBox PwdTxt;
         private System.Windows.Forms.TextBox UsernameTxt;
-        private System.Windows.Forms.TextBox PatientIdTxt;
-        private System.Windows.Forms.Button AddBtn;
-        private System.Windows.Forms.Button ClearBtn;
-        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.TextBox LnameTxt;
+        private System.Windows.Forms.TextBox FnameTxt;
+        private System.Windows.Forms.ErrorProvider ErrorPv;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton AddBtn;
+        private System.Windows.Forms.ToolStripButton ClearBtn;
+        private System.Windows.Forms.ToolStripButton ExitBtn;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox StateCbx;
+        private System.Windows.Forms.TextBox CityTxt;
+        private System.Windows.Forms.TextBox StreetAddressTxt;
+        private System.Windows.Forms.TextBox LocationTypeTxt;
+        private System.Windows.Forms.TextBox FacilityTxt;
+        private System.Windows.Forms.TextBox OrganizationTxt;
+        private System.Windows.Forms.MaskedTextBox ZipTxt;
     }
 }

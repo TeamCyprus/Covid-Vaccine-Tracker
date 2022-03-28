@@ -261,7 +261,6 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         public static bool VerifyPatient(string pId, string Fname, string Mname, string Lname)
         {
             bool patientFound;
-            Patient requstedPatient = new Patient();
             string procedure = "[SpVerifyPatient]";
             var parameters = new {id = pId, fname = Fname, mname = Mname, lname = Lname };
 
@@ -271,13 +270,8 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    requstedPatient = db.QuerySingle<Patient>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                    patientFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
                 }
-
-                if (requstedPatient != null)
-                    patientFound = true;
-                else
-                    patientFound = false;
             }
             catch (Exception ex)
             { throw ex; }

@@ -49,6 +49,8 @@ namespace Covid_Vaccine_Tracker.UI
         // When the form loads determine user type and bind view options to combo-boxs
         private void ViewForm_Load(object sender, EventArgs e)
         {
+
+
             // Make sure Datagrid view has no persisting data from before
             RecordsDg.DataSource = null;
             // Ceck to see which type of user to get respective views
@@ -234,7 +236,7 @@ namespace Covid_Vaccine_Tracker.UI
                         if (isValid.Item1)
                         {
                             string doseNumber = SearchValTxt.Text.Trim();
-                            vaccineRecords = VaccineRecordDB.GetVaxSeries_I(doseNumber);
+                            vaccineRecords = VaccineRecordDB.GetVaccinesByDose_I(doseNumber);
                         }
                         else
                             SetErrorPv(Tbx, isValid.Item2);
@@ -259,7 +261,17 @@ namespace Covid_Vaccine_Tracker.UI
                         else
                             SetErrorPv(Tbx, isValid.Item2);
                         break;
-                    case 6: // Vaccine records by patient
+                    case 6: // vax by race
+                        isValid = CheckForm(ref Tbx);
+                        if (isValid.Item1)
+                        {
+                            string race = SearchValTxt.Text.Trim();
+                            vaccineRecords = VaccineRecordDB.GetVaccinesByRace_I(race);
+                        }
+                        else
+                            SetErrorPv(Tbx, isValid.Item2);
+                        break;
+                    case 7: // Vaccine records by patient
                         isValid = CheckForm(ref Tbx);
                         if (isValid.Item1) // If patient id is not null or empty then find patient's records
                         {
@@ -288,14 +300,18 @@ namespace Covid_Vaccine_Tracker.UI
             //double check that these call the correct methods
             switch (indx)
             {
-                case 7: // Patient information
+                case 8: // Patient information
                     isValid = CheckForm(ref Tbx);
                     if (isValid.Item1) // If patient id is not null or empty assign first element in list to patient 
-                        patientRecords.Add(PatientDB.GetPatient(SearchValTxt.Text));
+                    {
+                        string patientId = SearchValTxt.Text.Trim();
+                        // add patient to patient list
+                        patientRecords.Add(PatientDB.GetPatient(patientId));
+                    }
                     else
                         SetErrorPv(Tbx, isValid.Item2);
                     break;
-                case 8: // All patient information
+                case 9: // All patient information
                     patientRecords = PatientDB.GetPatients();
                     break;
             }
@@ -332,17 +348,32 @@ namespace Covid_Vaccine_Tracker.UI
                     else if (!IsCdcUser)
                     {
                         // If IsCdcUser is false & combo-bx selected index <= 4 then get the records for selected view
-                        if (selectedView <= 6)
+                        if (selectedView <= 7)
                         {
                             vaxRecords_Provider = GetVaccineRecords_Provider(selectedView);
                             // Then bind the list to the Records Datagrid control
                             RecordsDg.DataSource = vaxRecords_Provider;
+
+                            // if no record was found then tell the user and then pull up all records
+                            if (vaxRecords_Provider.Count() <= 0)
+                            { 
+                                DisplaySuccess("There were no vaccine records found for specified search criteria", AppTitle);
+                                vaxRecords_Provider = VaccineRecordDB.GetVaccineRecords_I();
+                                RecordsDg.DataSource = vaxRecords_Provider;
+                            }
                         }
                         // If IsCdcUser false & combo-bx selected index > 4
-                        else if (selectedView >= 7)
+                        else if (selectedView >= 8)
                         {
                             patientRecords = GetPatientRecords_Provider(selectedView);
                             RecordsDg.DataSource = patientRecords;
+                            // if no record was found then tell teh user and then pull up all records
+                            if (patientRecords.Count() <= 0)
+                            {
+                                DisplaySuccess("There were no patient records found for specified search criteria", AppTitle);
+                                patientRecords = PatientDB.GetPatients();
+                                RecordsDg.DataSource = patientRecords;
+                            }
                         }
                     }
                     else // something unexpected happened this is probably unessacary and redundant
@@ -393,10 +424,10 @@ namespace Covid_Vaccine_Tracker.UI
             // If provider wants to view patient vaccine info or patient info display patient id txtbox
             if (!IsCdcUser)
             {
-                if (ViewsCbx.SelectedIndex <= 3 || ViewsCbx.SelectedIndex == 8)
+                if (ViewsCbx.SelectedIndex <= 2 || ViewsCbx.SelectedIndex == 9)
                     ValueInput("Disable");
 
-                else if (ViewsCbx.SelectedIndex == 6 || ViewsCbx.SelectedIndex == 7)
+                else if (ViewsCbx.SelectedIndex == 7 || ViewsCbx.SelectedIndex == 8)
                 {
                     SetLabelText("Patient Id");
                     ValueInput("Enable");
@@ -415,6 +446,9 @@ namespace Covid_Vaccine_Tracker.UI
                             break;
                         case 5:
                             SetLabelText("County");
+                            break;
+                        case 6:
+                            SetLabelText("Race");
                             break;
                     }
                 }

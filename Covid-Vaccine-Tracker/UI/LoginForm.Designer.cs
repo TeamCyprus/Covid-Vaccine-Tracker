@@ -40,6 +40,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
             this.ForgotPwdLbl = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +133,12 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,5 +171,6 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ErrorProvider ErrorPv;
         private System.Windows.Forms.Label ForgotPwdLbl;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

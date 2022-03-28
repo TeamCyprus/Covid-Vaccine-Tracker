@@ -85,9 +85,11 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {
                 try
                 {
+                    DateTime noVaxDate = DateTime.Today.AddYears(-3);
+
                     (bool, string) valid = InputValidator.IsValidDate(value);
 
-                    if (value > DateTime.Today || value < DateTime.Now.AddYears(-3))
+                    if (value > DateTime.Today || value < noVaxDate)
                         ThrowError("Invald date, date of vaccine administration is out of bounds");
                     else if (string.IsNullOrEmpty(value.ToString()))
                         ThrowError("Administration date cannot be blank");

@@ -168,7 +168,6 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {
                 validData = false;
                 eMsg = "Invalid format, PPRL must be in 000000XXXX format";
-
             }
             else
                 validData = true;

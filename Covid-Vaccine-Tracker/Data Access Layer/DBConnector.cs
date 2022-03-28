@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 // need using statement below to access app.config file to get connection string 
 // also have to add a reference to it in solution explorer
 using System.Configuration;
+using System.IO;
 
 namespace Covid_Vaccine_Tracker.Data_Access_Layer
 {
@@ -23,7 +24,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             {
                 connectionString = ConfigurationManager.ConnectionStrings["Covid_Vaccine_Tracker_Connection"].ConnectionString;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { throw ex; }
 
             if (string.IsNullOrEmpty(connectionString))
@@ -32,5 +33,21 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             else
                 return connectionString;
         }
+        //public static string GetConnectionString()
+        //{
+        //    var conStr = string.Empty;
+        //    // this method reads connection string from a file so conString is not on github
+        //    try
+        //    {
+        //        using(var sReader = new StreamReader("Connection.txt"))
+        //        {
+        //            conStr = sReader.ReadLine();
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    { throw ex; }
+
+        //    return conStr;
+        //}
     }
 }

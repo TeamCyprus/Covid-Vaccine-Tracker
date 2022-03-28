@@ -128,6 +128,12 @@ namespace Covid_Vaccine_Tracker.UI
                     break;
             }
         }
+        private void GetNewIds()
+        {
+            GetNewPatientId();
+            GetNewPPRL();
+            PatientIdTxt.Text = GeneratedPatientId;
+        }
         private void ResetErrorPv()
         {
             // clears the current positionn of ErrorProvider if any
@@ -564,7 +570,7 @@ namespace Covid_Vaccine_Tracker.UI
         {
             do
             {
-                // Generate a random string 10 chars long with with 3 letters use digits 0-9 and letter A-Z
+                // Generate a random string 10 chars long with with 4 letters use digits 0-9 and letter A-Z
                 GeneratedPatientId = IdGenerator.GenerateId(10, 3, 0, 9, 'A', 'Z');
                 // Check that id does not exist already
                 IdExist = PatientDB.CheckPatientId(GeneratedPatientId);
@@ -694,22 +700,18 @@ namespace Covid_Vaccine_Tracker.UI
             // Allow provider to enter a patient id for patient to update
             PatientIdTxt.ReadOnly = false;
         }
-        private async void VaccineRecordItem_Click(object sender, EventArgs e)
+        private void VaccineRecordItem_Click(object sender, EventArgs e)
         {
             // Clear out any old data on form
-            InputControls("Disable");
-            DisableButtons();
             ResetForm();
-            ResetErrorLbl();
             // If new vaccine record selected call the VaccineRecord form
             // Inorder to have the Provider data needed for the vax form
             // need to call the overloaded constructor for the vaccineForm and pass in the Provider object
             // create at sign in with providers username
 
             // Start of code for sprint that includes input vaccine record
-            VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider);
-            //async/await Task.Run() makes it so that while the VaxForm is loading or freezes, i can still control the provider form. 
-            await Task.Run(() => VaxForm.ShowDialog());
+            VaccineRecordForm vaxForm = new VaccineRecordForm(ActiveProvider);
+            vaxForm.ShowDialog();
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
