@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B609E6E-EC79-4F7E-8FE8-A93703349026}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Covid_Vaccine_Tracker</RootNamespace>
+    <AssemblyName>Covid-Vaccine-Tracker</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business Objects\Anwsers.cs" />
+    <Compile Include="Business Objects\CDC.cs" />
+    <Compile Include="Business Objects\CDCRecordcs.cs" />
+    <Compile Include="Business Objects\Dose.cs" />
+    <Compile Include="Business Objects\Ethnicity.cs" />
+    <Compile Include="Business Objects\Extracts.cs" />
+    <Compile Include="Business Objects\Provider.cs" />
+    <Compile Include="Business Objects\IdGenerator.cs" />
+    <Compile Include="Business Objects\InputValidator.cs" />
+    <Compile Include="Business Objects\Location_Types.cs" />
+    <Compile Include="Business Objects\Patient.cs" />
+    <Compile Include="Business Objects\PPRL.cs" />
+    <Compile Include="Business Objects\Provider_Suffix.cs" />
+    <Compile Include="Business Objects\Race.cs" />
+    <Compile Include="Business Objects\Response.cs" />
+    <Compile Include="Business Objects\Sex.cs" />
+    <Compile Include="Business Objects\States.cs" />
+    <Compile Include="Business Objects\Stats.cs" />
+    <Compile Include="Business Objects\User.cs" />
+    <Compile Include="Business Objects\User_Type.cs" />
+    <Compile Include="Business Objects\VaccineRecord.cs" />
+    <Compile Include="Business Objects\Identifying_VaccineRecord.cs" />
+    <Compile Include="Business Objects\Vaccine_Admin_Site.cs" />
+    <Compile Include="Business Objects\Vaccine_Manufacturer.cs" />
+    <Compile Include="Business Objects\Vaccine_Product.cs" />
+    <Compile Include="Business Objects\Vaccine_Route.cs" />
+    <Compile Include="Business Objects\Vaccine_Type.cs" />
+    <Compile Include="Business Objects\Views.cs" />
+    <Compile Include="Data Access Layer\AnwsersDB.cs" />
+    <Compile Include="Data Access Layer\CDCDB.cs" />
+    <Compile Include="Data Access Layer\CDCRecordDB.cs" />
+    <Compile Include="Data Access Layer\DBConnector.cs" />
+    <Compile Include="Data Access Layer\DosesDB.cs" />
+    <Compile Include="Data Access Layer\EthnicitiesDB.cs" />
+    <Compile Include="Data Access Layer\ExtractsDB.cs" />
+    <Compile Include="Data Access Layer\Location_TypeDB.cs" />
+    <Compile Include="Data Access Layer\PatientDB.cs" />
+    <Compile Include="Data Access Layer\PPRLDB.cs" />
+    <Compile Include="Data Access Layer\Protector.cs" />
+    <Compile Include="Data Access Layer\ProviderDB.cs" />
+    <Compile Include="Data Access Layer\Provider_SuffixDB.cs" />
+    <Compile Include="Data Access Layer\RacesDB.cs" />
+    <Compile Include="Data Access Layer\ResponsesDB.cs" />
+    <Compile Include="Data Access Layer\SexesDB.cs" />
+    <Compile Include="Data Access Layer\StatesDB.cs" />
+    <Compile Include="Data Access Layer\StatsDB.cs" />
+    <Compile Include="Data Access Layer\UserDB.cs" />
+    <Compile Include="Data Access Layer\User_TypesDB.cs" />
+    <Compile Include="Data Access Layer\VaccineRecordDB.cs" />
+    <Compile Include="Data Access Layer\Vax_Admin_StitesDB.cs" />
+    <Compile Include="Data Access Layer\Vax_ManufacturersDB.cs" />
+    <Compile Include="Data Access Layer\Vax_ProductsDB.cs" />
+    <Compile Include="Data Access Layer\Vax_RoutesDB.cs" />
+    <Compile Include="Data Access Layer\Vax_TypesDB.cs" />
+    <Compile Include="Data Access Layer\ViewDB.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AccountSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AccountSelector.Designer.cs">
+      <DependentUpon>AccountSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ViewForm.Designer.cs">
+      <DependentUpon>ViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProviderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProviderForm.Designer.cs">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SignupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SignupForm.Designer.cs">
+      <DependentUpon>SignupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VaccineRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VaccineRecordForm.Designer.cs">
+      <DependentUpon>VaccineRecordForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\AccountSelector.resx">
+      <DependentUpon>AccountSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ViewForm.resx">
+      <DependentUpon>ViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProviderForm.resx">
+      <DependentUpon>ProviderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SignupForm.resx">
+      <DependentUpon>SignupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VaccineRecordForm.resx">
+      <DependentUpon>VaccineRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

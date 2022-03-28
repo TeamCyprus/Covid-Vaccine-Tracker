@@ -48,11 +48,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return provider;
         }
-        public static bool VerifyProvider(string pId, string Fname, string Lname)
+        public static bool VerifyProvider(string id, string Fname, string Lname)
         {
             bool providerFound;
             string procedure = "[SpVerifyProvider]";
-            var parameters = new { id = pId, firstname = Fname, lastname = Lname };
+            var parameters = new { pid = id, firstname = Fname, lastname = Lname };
 
             try
             {
@@ -72,7 +72,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         {
             bool providerFound;
             string procedure = "[SpVerifyProviderVtck]";
-            var parameters = new { vtck = Vtck, firstname = Fname, lastname = Lname };
+            var parameters = new { vPin = Vtck, firstname = Fname, lastname = Lname };
 
             try
             {
@@ -190,13 +190,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // return insert status
             return isSuccess;
         }
-        // method that determines if the vtck pin exisits in the organization table
-        // if method returns true yser has provider access if false then user does not have providerr access
-        public static bool VerifyProviderAccess(string Vtck)
+        public static bool VerifyProviderId(string Pid)
         {
-            bool providerFound;
-            string procedure = "[SpVerifyProviderAccess]";
-            var parameters = new { vPin = Vtck };
+            bool providerIdFound;
+            string procedure = "[SpVerifyProviderId]";
+            var parameters = new { id = Pid };
 
             try
             {
@@ -204,14 +202,33 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    providerFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                    providerIdFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
                 }
             }
             catch (Exception ex)
             { throw ex; }
 
-            return providerFound;
+            return providerIdFound;
+        }
+        public static bool VerifyUsername(string username)
+        {
+            bool usernameFound;
+            string procedure = "[SpVerifyUsername]";
+            var parameters = new { user = username };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usernameFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usernameFound;
         }
     }
-
 }

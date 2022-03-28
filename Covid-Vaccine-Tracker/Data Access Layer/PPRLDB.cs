@@ -127,6 +127,8 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
+                    //111111aaa is a patient Id that I used. It returns null because that id has no PPRL. We create that pprl when we create 
+                    //a new patient. So add a patient, remember the id, and now it will return a pprl when you run this. 
                     pprl = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
                 }
             }

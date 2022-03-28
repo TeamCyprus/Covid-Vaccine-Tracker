@@ -273,7 +273,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 {
                     (bool, string) valid = InputValidator.IsValidDose(value);
 
-                    if (value.Length > 3)
+                    if (value.Length > 3) //what is this? 
                         ThrowError("Dose number must be 3 characters or less");
                     else if (string.IsNullOrEmpty(value))
                         ThrowError("Dose number cannot be empty or null");

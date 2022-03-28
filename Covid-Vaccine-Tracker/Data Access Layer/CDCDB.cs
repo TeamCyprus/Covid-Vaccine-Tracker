@@ -50,11 +50,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             return cdcUsr;
         }
 
-        public static bool VerifyCDCUser(string Fname, string Lname)
+        public static bool VerifyCDCUser( string Fname, string Lname)
         {
             bool cdcUserFound;
             string procedure = "[SpVerifyCDCUser]";
-            var parameters = new { fname = Fname, lname = Lname };
+            var parameters = new {firstname = Fname, lastname = Lname };
 
             try
             {
@@ -69,6 +69,73 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             { throw ex; }
 
             return cdcUserFound;
+        }
+        public static bool VerifyCDCId(string CDCid)
+        {
+            bool providerIdFound;
+            string procedure = "[SpVerifyCdcId]";
+            var parameters = new { id = CDCid };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    providerIdFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return providerIdFound;
+        }
+        public static bool AddCDCuser(CDC cdc_usr)
+        {
+            bool isSuccess;
+            int rowsAffected;
+            string procedure = "[SpAddCDCUser]";
+
+            var parameters = new
+            {
+                id = cdc_usr.Id,
+                usrname = cdc_usr.Username,
+                fname = cdc_usr.First_name,
+                lname = cdc_usr.Last_name,
+            };
+
+            try
+            {
+                string connectionStr = GetConnection();
+                using (IDbConnection db = new SqlConnection(connectionStr))
+                {
+                    rowsAffected = db.Execute(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+            isSuccess = rowsAffected > 0 ? true : false;
+            return isSuccess;
+        }
+        public static bool VerifyUsername(string username)
+        {
+            bool usernameFound;
+            string procedure = "[SpVerifyUsername]";
+            var parameters = new { user = username};
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usernameFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usernameFound;
         }
     }
 }

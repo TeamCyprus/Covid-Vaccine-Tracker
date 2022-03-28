@@ -474,7 +474,7 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box iwth ok button and error icon used for unsuccessful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        private void SetVaccineRecord(VaccineRecord vaxRecord)
+        private void  SetVaccineRecord(VaccineRecord vaxRecord)
         {
             int CbxIndex;
 

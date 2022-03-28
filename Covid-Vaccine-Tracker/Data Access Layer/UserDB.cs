@@ -128,7 +128,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return requestedUsr;
         }
-        public static bool AddUser(User user)
+        public static bool AddUser(User user, string encryptPW)
         {
             // variable to determine if succesful insert or not
             bool isSuccess;
@@ -142,7 +142,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             var parameters = new
             {
                 username = user.Username,
-                password = user.Password,
+                password = encryptPW,
                 userType = user.User_Type
             };
 
