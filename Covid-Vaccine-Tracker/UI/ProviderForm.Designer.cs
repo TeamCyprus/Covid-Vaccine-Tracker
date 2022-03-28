@@ -90,6 +90,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MaintenanceItem,
             this.ViewItem});
@@ -97,7 +98,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(994, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1325, 34);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,14 +110,14 @@ namespace Covid_Vaccine_Tracker.UI
             this.VaccineRecordItem});
             this.MaintenanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaintenanceItem.Name = "MaintenanceItem";
-            this.MaintenanceItem.Size = new System.Drawing.Size(111, 24);
+            this.MaintenanceItem.Size = new System.Drawing.Size(138, 30);
             this.MaintenanceItem.Text = "Maintenance";
             this.MaintenanceItem.ToolTipText = "Perform maintenance on patient or vaccine data";
             // 
             // NewPatientItem
             // 
             this.NewPatientItem.Name = "NewPatientItem";
-            this.NewPatientItem.Size = new System.Drawing.Size(253, 26);
+            this.NewPatientItem.Size = new System.Drawing.Size(315, 32);
             this.NewPatientItem.Text = "Add New Patient";
             this.NewPatientItem.ToolTipText = "Add a new patient to the system";
             this.NewPatientItem.Click += new System.EventHandler(this.NewPatientItem_Click);
@@ -124,7 +125,7 @@ namespace Covid_Vaccine_Tracker.UI
             // UpdatePatientItem
             // 
             this.UpdatePatientItem.Name = "UpdatePatientItem";
-            this.UpdatePatientItem.Size = new System.Drawing.Size(253, 26);
+            this.UpdatePatientItem.Size = new System.Drawing.Size(315, 32);
             this.UpdatePatientItem.Text = "Update Patient";
             this.UpdatePatientItem.ToolTipText = "Update a existing patient\'s information";
             this.UpdatePatientItem.Click += new System.EventHandler(this.UpdatePatientItem_Click);
@@ -132,7 +133,7 @@ namespace Covid_Vaccine_Tracker.UI
             // VaccineRecordItem
             // 
             this.VaccineRecordItem.Name = "VaccineRecordItem";
-            this.VaccineRecordItem.Size = new System.Drawing.Size(253, 26);
+            this.VaccineRecordItem.Size = new System.Drawing.Size(315, 32);
             this.VaccineRecordItem.Text = "Add New Vaccine Record";
             this.VaccineRecordItem.ToolTipText = "Add a new vaccine for an existing patient";
             this.VaccineRecordItem.Click += new System.EventHandler(this.VaccineRecordItem_Click);
@@ -140,7 +141,7 @@ namespace Covid_Vaccine_Tracker.UI
             // ViewItem
             // 
             this.ViewItem.Name = "ViewItem";
-            this.ViewItem.Size = new System.Drawing.Size(56, 24);
+            this.ViewItem.Size = new System.Drawing.Size(67, 30);
             this.ViewItem.Text = "View";
             this.ViewItem.ToolTipText = "View Vaccine Records";
             this.ViewItem.Click += new System.EventHandler(this.ViewItem_Click);
@@ -159,10 +160,11 @@ namespace Covid_Vaccine_Tracker.UI
             // ExtractTxt
             // 
             this.ExtractTxt.Enabled = false;
-            this.ExtractTxt.Location = new System.Drawing.Point(34, 69);
+            this.ExtractTxt.Location = new System.Drawing.Point(45, 85);
+            this.ExtractTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ExtractTxt.Name = "ExtractTxt";
             this.ExtractTxt.ReadOnly = true;
-            this.ExtractTxt.Size = new System.Drawing.Size(131, 24);
+            this.ExtractTxt.Size = new System.Drawing.Size(173, 29);
             this.ExtractTxt.TabIndex = 2;
             this.ExtractTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.ExtractTxt, "Specifies if record is Personaly Identifying");
@@ -171,9 +173,10 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.Race2Cbx.Enabled = false;
             this.Race2Cbx.FormattingEnabled = true;
-            this.Race2Cbx.Location = new System.Drawing.Point(342, 236);
+            this.Race2Cbx.Location = new System.Drawing.Point(456, 290);
+            this.Race2Cbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Race2Cbx.Name = "Race2Cbx";
-            this.Race2Cbx.Size = new System.Drawing.Size(284, 26);
+            this.Race2Cbx.Size = new System.Drawing.Size(377, 32);
             this.Race2Cbx.TabIndex = 27;
             this.toolTip1.SetToolTip(this.Race2Cbx, "Patient Race 2 is not required");
             // 
@@ -212,9 +215,11 @@ namespace Covid_Vaccine_Tracker.UI
             this.patientGB.Controls.Add(this.FnameTxt);
             this.patientGB.Controls.Add(this.label1);
             this.patientGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientGB.Location = new System.Drawing.Point(26, 79);
+            this.patientGB.Location = new System.Drawing.Point(35, 97);
+            this.patientGB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.patientGB.Name = "patientGB";
-            this.patientGB.Size = new System.Drawing.Size(943, 310);
+            this.patientGB.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.patientGB.Size = new System.Drawing.Size(1257, 382);
             this.patientGB.TabIndex = 1;
             this.patientGB.TabStop = false;
             this.patientGB.Text = "Patient Information";
@@ -226,9 +231,10 @@ namespace Covid_Vaccine_Tracker.UI
             this.ErrorLbl.Enabled = false;
             this.ErrorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ErrorLbl.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLbl.Location = new System.Drawing.Point(450, 48);
+            this.ErrorLbl.Location = new System.Drawing.Point(600, 59);
+            this.ErrorLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ErrorLbl.Name = "ErrorLbl";
-            this.ErrorLbl.Size = new System.Drawing.Size(493, 20);
+            this.ErrorLbl.Size = new System.Drawing.Size(608, 25);
             this.ErrorLbl.TabIndex = 30;
             this.ErrorLbl.Text = "This error lbl will only be seen if an error occurs with patient properties";
             this.ErrorLbl.Visible = false;
@@ -236,10 +242,11 @@ namespace Covid_Vaccine_Tracker.UI
             // DOBpicker
             // 
             this.DOBpicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DOBpicker.Location = new System.Drawing.Point(674, 126);
+            this.DOBpicker.Location = new System.Drawing.Point(899, 155);
+            this.DOBpicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DOBpicker.Name = "DOBpicker";
             this.DOBpicker.ShowUpDown = true;
-            this.DOBpicker.Size = new System.Drawing.Size(112, 24);
+            this.DOBpicker.Size = new System.Drawing.Size(148, 29);
             this.DOBpicker.TabIndex = 11;
             this.DOBpicker.Value = new System.DateTime(1960, 11, 19, 0, 0, 0, 0);
             // 
@@ -247,17 +254,19 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.StatesCbx.Enabled = false;
             this.StatesCbx.FormattingEnabled = true;
-            this.StatesCbx.Location = new System.Drawing.Point(766, 177);
+            this.StatesCbx.Location = new System.Drawing.Point(1021, 218);
+            this.StatesCbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StatesCbx.Name = "StatesCbx";
-            this.StatesCbx.Size = new System.Drawing.Size(62, 26);
+            this.StatesCbx.Size = new System.Drawing.Size(81, 32);
             this.StatesCbx.TabIndex = 21;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(810, 105);
+            this.label15.Location = new System.Drawing.Point(1080, 129);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(33, 18);
+            this.label15.Size = new System.Drawing.Size(43, 24);
             this.label15.TabIndex = 12;
             this.label15.Text = "Sex";
             // 
@@ -265,71 +274,80 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.SexCbx.Enabled = false;
             this.SexCbx.FormattingEnabled = true;
-            this.SexCbx.Location = new System.Drawing.Point(813, 124);
+            this.SexCbx.Location = new System.Drawing.Point(1084, 153);
+            this.SexCbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SexCbx.Name = "SexCbx";
-            this.SexCbx.Size = new System.Drawing.Size(92, 26);
+            this.SexCbx.Size = new System.Drawing.Size(121, 32);
             this.SexCbx.TabIndex = 13;
             // 
             // PatientIdTxt
             // 
             this.PatientIdTxt.Enabled = false;
-            this.PatientIdTxt.Location = new System.Drawing.Point(208, 69);
+            this.PatientIdTxt.Location = new System.Drawing.Point(277, 85);
+            this.PatientIdTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PatientIdTxt.Mask = "0000000LLL";
             this.PatientIdTxt.Name = "PatientIdTxt";
             this.PatientIdTxt.ReadOnly = true;
-            this.PatientIdTxt.Size = new System.Drawing.Size(100, 24);
+            this.PatientIdTxt.Size = new System.Drawing.Size(132, 29);
             this.PatientIdTxt.TabIndex = 3;
             this.PatientIdTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(519, 158);
+            this.label11.Location = new System.Drawing.Point(692, 194);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 18);
+            this.label11.Size = new System.Drawing.Size(69, 24);
             this.label11.TabIndex = 18;
             this.label11.Text = "County";
             // 
             // CountyTxt
             // 
             this.CountyTxt.Enabled = false;
-            this.CountyTxt.Location = new System.Drawing.Point(522, 179);
+            this.CountyTxt.Location = new System.Drawing.Point(696, 220);
+            this.CountyTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CountyTxt.Name = "CountyTxt";
-            this.CountyTxt.Size = new System.Drawing.Size(225, 24);
+            this.CountyTxt.Size = new System.Drawing.Size(299, 29);
             this.CountyTxt.TabIndex = 19;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 48);
+            this.label14.Location = new System.Drawing.Point(41, 59);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 18);
+            this.label14.Size = new System.Drawing.Size(115, 24);
             this.label14.TabIndex = 0;
             this.label14.Text = "Extract Type";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(227, 105);
+            this.label13.Location = new System.Drawing.Point(303, 129);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 18);
+            this.label13.Size = new System.Drawing.Size(120, 24);
             this.label13.TabIndex = 6;
             this.label13.Text = "Middle name";
             // 
             // MnameTxt
             // 
             this.MnameTxt.Enabled = false;
-            this.MnameTxt.Location = new System.Drawing.Point(230, 126);
+            this.MnameTxt.Location = new System.Drawing.Point(307, 155);
+            this.MnameTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MnameTxt.Name = "MnameTxt";
-            this.MnameTxt.Size = new System.Drawing.Size(196, 24);
+            this.MnameTxt.Size = new System.Drawing.Size(260, 29);
             this.MnameTxt.TabIndex = 7;
+            this.MnameTxt.TextChanged += new System.EventHandler(this.MnameTxt_TextChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(647, 215);
+            this.label12.Location = new System.Drawing.Point(863, 265);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(63, 18);
+            this.label12.Size = new System.Drawing.Size(80, 24);
             this.label12.TabIndex = 28;
             this.label12.Text = "Ethnicity";
             // 
@@ -337,26 +355,29 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.EthnicityCbx.Enabled = false;
             this.EthnicityCbx.FormattingEnabled = true;
-            this.EthnicityCbx.Location = new System.Drawing.Point(650, 236);
+            this.EthnicityCbx.Location = new System.Drawing.Point(867, 290);
+            this.EthnicityCbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EthnicityCbx.Name = "EthnicityCbx";
-            this.EthnicityCbx.Size = new System.Drawing.Size(166, 26);
+            this.EthnicityCbx.Size = new System.Drawing.Size(220, 32);
             this.EthnicityCbx.TabIndex = 29;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(339, 215);
+            this.label10.Location = new System.Drawing.Point(452, 265);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 18);
+            this.label10.Size = new System.Drawing.Size(69, 24);
             this.label10.TabIndex = 26;
             this.label10.Text = "Race 2";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(31, 215);
+            this.label9.Location = new System.Drawing.Point(41, 265);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 18);
+            this.label9.Size = new System.Drawing.Size(69, 24);
             this.label9.TabIndex = 24;
             this.label9.Text = "Race 1";
             // 
@@ -364,27 +385,30 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.Race1Cbx.Enabled = false;
             this.Race1Cbx.FormattingEnabled = true;
-            this.Race1Cbx.Location = new System.Drawing.Point(34, 236);
+            this.Race1Cbx.Location = new System.Drawing.Point(45, 290);
+            this.Race1Cbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Race1Cbx.Name = "Race1Cbx";
-            this.Race1Cbx.Size = new System.Drawing.Size(284, 26);
+            this.Race1Cbx.Size = new System.Drawing.Size(377, 32);
             this.Race1Cbx.TabIndex = 25;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(844, 156);
+            this.label8.Location = new System.Drawing.Point(1125, 192);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 18);
+            this.label8.Size = new System.Drawing.Size(80, 24);
             this.label8.TabIndex = 22;
             this.label8.Text = "Zipcode";
             // 
             // ZipTxt
             // 
             this.ZipTxt.Enabled = false;
-            this.ZipTxt.Location = new System.Drawing.Point(847, 177);
+            this.ZipTxt.Location = new System.Drawing.Point(1129, 218);
+            this.ZipTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ZipTxt.Mask = "00000";
             this.ZipTxt.Name = "ZipTxt";
-            this.ZipTxt.Size = new System.Drawing.Size(58, 24);
+            this.ZipTxt.Size = new System.Drawing.Size(76, 29);
             this.ZipTxt.TabIndex = 23;
             this.ZipTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ZipTxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
@@ -392,95 +416,106 @@ namespace Covid_Vaccine_Tracker.UI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(763, 156);
+            this.label7.Location = new System.Drawing.Point(1017, 192);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.Size = new System.Drawing.Size(51, 24);
             this.label7.TabIndex = 20;
             this.label7.Text = "State";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(275, 158);
+            this.label6.Location = new System.Drawing.Point(367, 194);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 18);
+            this.label6.Size = new System.Drawing.Size(40, 24);
             this.label6.TabIndex = 16;
             this.label6.Text = "City";
             // 
             // CityTxt
             // 
             this.CityTxt.Enabled = false;
-            this.CityTxt.Location = new System.Drawing.Point(278, 179);
+            this.CityTxt.Location = new System.Drawing.Point(371, 220);
+            this.CityTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CityTxt.Name = "CityTxt";
-            this.CityTxt.Size = new System.Drawing.Size(225, 24);
+            this.CityTxt.Size = new System.Drawing.Size(299, 29);
             this.CityTxt.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 158);
+            this.label5.Location = new System.Drawing.Point(41, 194);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 18);
+            this.label5.Size = new System.Drawing.Size(133, 24);
             this.label5.TabIndex = 14;
             this.label5.Text = "Street Address";
             // 
             // StreetTxt
             // 
             this.StreetTxt.Enabled = false;
-            this.StreetTxt.Location = new System.Drawing.Point(34, 179);
+            this.StreetTxt.Location = new System.Drawing.Point(45, 220);
+            this.StreetTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StreetTxt.Name = "StreetTxt";
-            this.StreetTxt.Size = new System.Drawing.Size(225, 24);
+            this.StreetTxt.Size = new System.Drawing.Size(299, 29);
             this.StreetTxt.TabIndex = 15;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(671, 105);
+            this.label4.Location = new System.Drawing.Point(895, 129);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 18);
+            this.label4.Size = new System.Drawing.Size(110, 24);
             this.label4.TabIndex = 10;
             this.label4.Text = "Date of Birth";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(449, 105);
+            this.label3.Location = new System.Drawing.Point(599, 129);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 18);
+            this.label3.Size = new System.Drawing.Size(96, 24);
             this.label3.TabIndex = 8;
             this.label3.Text = "Last name";
             // 
             // LnameTxt
             // 
             this.LnameTxt.Enabled = false;
-            this.LnameTxt.Location = new System.Drawing.Point(452, 126);
+            this.LnameTxt.Location = new System.Drawing.Point(603, 155);
+            this.LnameTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LnameTxt.Name = "LnameTxt";
-            this.LnameTxt.Size = new System.Drawing.Size(196, 24);
+            this.LnameTxt.Size = new System.Drawing.Size(260, 29);
             this.LnameTxt.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 105);
+            this.label2.Location = new System.Drawing.Point(41, 129);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 18);
+            this.label2.Size = new System.Drawing.Size(98, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "First name";
             // 
             // FnameTxt
             // 
             this.FnameTxt.Enabled = false;
-            this.FnameTxt.Location = new System.Drawing.Point(34, 126);
+            this.FnameTxt.Location = new System.Drawing.Point(45, 155);
+            this.FnameTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FnameTxt.Name = "FnameTxt";
-            this.FnameTxt.Size = new System.Drawing.Size(170, 24);
+            this.FnameTxt.Size = new System.Drawing.Size(225, 29);
             this.FnameTxt.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(205, 48);
+            this.label1.Location = new System.Drawing.Point(273, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 18);
+            this.label1.Size = new System.Drawing.Size(86, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Patient Id";
             // 
@@ -488,6 +523,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddBtn,
             this.toolStripSeparator1,
@@ -496,9 +532,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn,
             this.toolStripSeparator3,
             this.ExitBtn});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 34);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(994, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1325, 32);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -508,7 +544,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.AddBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddBtn.Image")));
             this.AddBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(57, 24);
+            this.AddBtn.Size = new System.Drawing.Size(70, 29);
             this.AddBtn.Text = "Add";
             this.AddBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.AddBtn.ToolTipText = "Add patient";
@@ -517,7 +553,7 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // UpdateBtn
             // 
@@ -525,7 +561,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.UpdateBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateBtn.Image")));
             this.UpdateBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(78, 24);
+            this.UpdateBtn.Size = new System.Drawing.Size(97, 29);
             this.UpdateBtn.Text = "Update";
             this.UpdateBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.UpdateBtn.ToolTipText = "Update patient";
@@ -534,7 +570,7 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
             // 
             // ClearBtn
             // 
@@ -542,7 +578,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn.Image = ((System.Drawing.Image)(resources.GetObject("ClearBtn.Image")));
             this.ClearBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(63, 24);
+            this.ClearBtn.Size = new System.Drawing.Size(80, 29);
             this.ClearBtn.Text = "Clear";
             this.ClearBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ClearBtn.ToolTipText = "Clear form";
@@ -551,7 +587,7 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
             // ExitBtn
             // 
@@ -559,7 +595,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
             this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(53, 24);
+            this.ExitBtn.Size = new System.Drawing.Size(66, 29);
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExitBtn.ToolTipText = "Exit Application";
@@ -567,15 +603,16 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ProviderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(994, 413);
+            this.ClientSize = new System.Drawing.Size(1325, 508);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.patientGB);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ProviderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Portal";
