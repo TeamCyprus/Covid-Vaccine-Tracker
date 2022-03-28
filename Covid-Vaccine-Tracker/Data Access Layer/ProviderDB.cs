@@ -48,11 +48,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return provider;
         }
-        public static bool VerifyProvider(string pId, string Fname, string Lname)
+        public static bool VerifyProvider(string id, string Fname, string Lname)
         {
             bool providerFound;
             string procedure = "[SpVerifyProvider]";
-            var parameters = new { id = pId, firstname = Fname, lastname = Lname };
+            var parameters = new { pid = id, firstname = Fname, lastname = Lname };
 
             try
             {
@@ -72,7 +72,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         {
             bool providerFound;
             string procedure = "[SpVerifyProviderVtck]";
-            var parameters = new { vtck = Vtck, firstname = Fname, lastname = Lname };
+            var parameters = new { vPin = Vtck, firstname = Fname, lastname = Lname };
 
             try
             {
@@ -190,6 +190,45 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // return insert status
             return isSuccess;
         }
-    }
+        public static bool VerifyProviderId(string Pid)
+        {
+            bool providerIdFound;
+            string procedure = "[SpVerifyProviderId]";
+            var parameters = new { id = Pid };
 
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    providerIdFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return providerIdFound;
+        }
+        public static bool VerifyUsername(string username)
+        {
+            bool usernameFound;
+            string procedure = "[SpVerifyUsername]";
+            var parameters = new { user = username };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usernameFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usernameFound;
+        }
+    }
 }

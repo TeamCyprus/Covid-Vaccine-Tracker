@@ -42,6 +42,37 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 
             return (validInput, errMsg);
         }
+        //sergio
+        public static (bool,string) isValidUsername(string input)
+        {
+            bool validInput;
+            string errMsg = string.Empty;
+            
+            Regex rgx = new Regex(@"^[a-zA-Z0-9_]*$"); //letters,numbers and underscores only
+            if (!rgx.IsMatch(input))
+            {
+                validInput = false;
+                errMsg = "username allows letters, numbers or underscores only";
+            }
+            else
+                validInput = true;
+            return (validInput, errMsg);
+        }
+        public static (bool,string) isValidPwd(string input)
+        {
+            bool validInput;
+            string errMsg = string.Empty;
+
+            Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+            if (!rgx.IsMatch(input))
+            {
+                validInput = false;
+                errMsg = "Password must be atleast 8 characters long, contain atleast one uppercase, one lowercase, and a number";
+            }
+            else
+                validInput = true;
+            return (validInput, errMsg);
+        }
         public static (bool, string) IsValidStreet(string input)
         {
             bool validInput;
