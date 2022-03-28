@@ -98,6 +98,7 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void LoginBtn_Click(object sender, EventArgs e)
         {
+            
             int textBx = -1;
             bool validUser, validPwd;
             string storedPwd;           
@@ -121,6 +122,7 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         // Get the stored pwd for that user
                         storedPwd = UserDB.GetPassword(usr.Username);
+                        int storedPwdLen = storedPwd.Length;
                         // verify that the entered pwd and stored pwd are the same the entered pwd is 
                         // passed into the method then encrypted and compared
                         validPwd = Protector.Compare(storedPwd, usr.Password);

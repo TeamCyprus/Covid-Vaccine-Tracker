@@ -71,14 +71,17 @@ namespace Covid_Vaccine_Tracker.UI
            else if (IsProvider)
             {
                 string enteredVtck = VtckPinTxt.Text;
-                bool vtckExists = VtcksDB.VerifyVtck(enteredVtck);
-                if (vtckExists)
+                bool vtckExists = VtcksDB.VerifyProviderAccess(enteredVtck);
+                bool accountExists = VtcksDB.VerifyVtck(enteredVtck);
+                if (vtckExists && !accountExists)
                 {
                     SignupForm signUp = new SignupForm("Provider", enteredVtck);
                     signUp.ShowDialog();
                 }
                 else if (!vtckExists)
                     DisplayError("Vtcks Pin not found, access denied", AppTitle);
+                else if (accountExists)
+                    DisplayError("Vtcks pin entered already has an account registered", AppTitle);
             }
 
 

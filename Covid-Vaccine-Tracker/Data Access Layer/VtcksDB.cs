@@ -48,5 +48,25 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vtckFound;
         }
+        public static bool VerifyProviderAccess(string vId)
+        {
+            bool vtckFound;
+            string procedure = "[SpVerifyProviderAccess]";
+            var parameters = new { vPin = vId };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    vtckFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return vtckFound;
+        }
     }
 }

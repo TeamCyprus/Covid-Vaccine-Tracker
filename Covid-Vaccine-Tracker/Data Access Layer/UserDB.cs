@@ -92,7 +92,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         {
             string pwd;
             string procedure = "[SpGetPassword]";
-            var parameter = new { usr = username }; // typo found here - Ryan
+            var parameter = new { usr = username };
 
             try
             {

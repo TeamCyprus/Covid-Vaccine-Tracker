@@ -21,14 +21,14 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {
                 try
                 {
-                    (bool, string) validData = InputValidator.isValidPwd(value);
+                    //(bool, string) validData = InputValidator.isValidPwd(value);
 
                     if (value.Length > 65)
                         throw new Exception("Password must be 65 characters or less");
                     else if (string.IsNullOrEmpty(value))
                         throw new Exception("Provider suffix cannot be empty or null");
-                    else if (!validData.Item1)
-                        throw new Exception(validData.Item2);
+                    //else if (!validData.Item1)
+                    //    throw new Exception(validData.Item2);
                     else
                         this.password = value;
                 }
