@@ -18,6 +18,8 @@ namespace Covid_Vaccine_Tracker.UI
     {
         List<User_Type> types = new List<User_Type>();
         bool IsProvider, IsCDC;
+        string AppTitle = "Covid Vaccine Tracker";
+        string AccountType;
 
         public AccountSelector()
         {
@@ -32,11 +34,15 @@ namespace Covid_Vaccine_Tracker.UI
                     VtckPinTxt.Enabled = true;
                     VtckPinTxt.Visible = true;
                     VtckPinTxt.ReadOnly = false;
+                    vtckLbl.Enabled = true;
+                    vtckLbl.Visible = true;
                     break;
                 case "Disable":
                     VtckPinTxt.Enabled = false;
                     VtckPinTxt.Visible = false;
                     VtckPinTxt.ReadOnly = true;
+                    vtckLbl.Enabled = false;
+                    vtckLbl.Visible = false;
                     break;
             }
         }
@@ -63,6 +69,23 @@ namespace Covid_Vaccine_Tracker.UI
             // if CDC user selected then jsut call the sign up form like above but only pass in the account type
             // Remember vtcksPin is an optional arguemnt to the SignUp form conctructor so you do not have to pass it in
             // unless the user type is Provider
+            if (IsCDC)
+            {
+                SignupForm signUp = new SignupForm("CDC");
+                signUp.ShowDialog();
+            }
+            else if (IsProvider)
+            {
+                string enteredVtck = VtckPinTxt.Text;
+                bool vtckExists = VtcksDB.VerifyVtck(enteredVtck);
+                if (vtckExists)
+                {
+                    SignupForm signUp = new SignupForm("Provider", enteredVtck);
+                    signUp.ShowDialog();
+                }
+                else if (!vtckExists)
+                    DisplayError("Vtcks Pin not found, access denied", AppTitle);
+            }
         }
 
         // every time a new value is picked in the combobox this method below will be called
@@ -73,12 +96,34 @@ namespace Covid_Vaccine_Tracker.UI
                 case 0: // sets the value of each flag for account type having a flag for both is kinda redundant
                     IsProvider = true;
                     IsCDC = false;
+                    VtckInput("Enable");
+                    AccountType = "Provider";
                     break;
                 case 1:
                     IsProvider = false;
                     IsCDC = true;
+                    VtckInput("Disable");
+                    AccountType = "CDC";
                     break;
             }
+        }
+        private void DisplayError(string msg, string title)
+        { MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        private (bool, string) VerifyItemSelected()
+        {
+            // This checks to make sure that the user selected a record view type
+            bool valid;
+            string eMsg = string.Empty;
+
+            if (ViewsCbx.SelectedIndex <= -1)
+            {
+                valid = false;
+                eMsg = "You must select a record veiw type";
+            }
+            else
+                valid = true;
+
+            return (valid, eMsg);
         }
     }
 }

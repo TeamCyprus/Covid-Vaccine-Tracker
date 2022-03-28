@@ -44,10 +44,10 @@ namespace Covid_Vaccine_Tracker.UI
             switch(usertype)
             {
                 case "Provider":
-                    userFound = ProviderDB.VerifyProvider(); // need to pass in id, fname, lname
+                    userFound = ProviderDB.VerifyProvider("","",""); // need to pass in id, fname, lname
                     break;
                 case "CDC":
-                    userFound = CDCDB.VerifyCDCUser();// need to pass in id, fname, lname
+                    userFound = CDCDB.VerifyCDCUser("","","","");// need to pass in id, fname, lname
                     break;
             }
 

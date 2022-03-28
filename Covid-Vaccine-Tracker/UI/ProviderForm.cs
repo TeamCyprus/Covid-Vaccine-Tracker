@@ -800,6 +800,12 @@ namespace Covid_Vaccine_Tracker.UI
             else
                 SetErrorPv(tbx, IsValid.Item2);
         }
+
+        private void MnameTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             // Reset any errors from bfore

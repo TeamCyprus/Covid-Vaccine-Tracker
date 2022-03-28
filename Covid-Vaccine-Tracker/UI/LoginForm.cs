@@ -173,5 +173,10 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // account recovery form needs to be called not sure if we are putting this in the current sprint
         }
+
+        private void UsernameTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

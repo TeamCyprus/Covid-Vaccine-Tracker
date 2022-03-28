@@ -48,9 +48,10 @@ namespace Covid_Vaccine_Tracker.UI
             // LoginBtn
             // 
             this.LoginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginBtn.Location = new System.Drawing.Point(240, 258);
+            this.LoginBtn.Location = new System.Drawing.Point(320, 318);
+            this.LoginBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(125, 30);
+            this.LoginBtn.Size = new System.Drawing.Size(167, 37);
             this.LoginBtn.TabIndex = 0;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = true;
@@ -59,26 +60,30 @@ namespace Covid_Vaccine_Tracker.UI
             // PasswordTxt
             // 
             this.PasswordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordTxt.Location = new System.Drawing.Point(127, 104);
+            this.PasswordTxt.Location = new System.Drawing.Point(169, 128);
+            this.PasswordTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PasswordTxt.Name = "PasswordTxt";
-            this.PasswordTxt.Size = new System.Drawing.Size(214, 26);
+            this.PasswordTxt.Size = new System.Drawing.Size(284, 30);
             this.PasswordTxt.TabIndex = 1;
             // 
             // UsernameTxt
             // 
             this.UsernameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsernameTxt.Location = new System.Drawing.Point(127, 52);
+            this.UsernameTxt.Location = new System.Drawing.Point(169, 64);
+            this.UsernameTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.UsernameTxt.Name = "UsernameTxt";
-            this.UsernameTxt.Size = new System.Drawing.Size(214, 26);
+            this.UsernameTxt.Size = new System.Drawing.Size(284, 30);
             this.UsernameTxt.TabIndex = 2;
+            this.UsernameTxt.TextChanged += new System.EventHandler(this.UsernameTxt_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(123, 29);
+            this.label1.Location = new System.Drawing.Point(164, 36);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 20);
+            this.label1.Size = new System.Drawing.Size(102, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
@@ -86,9 +91,10 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(123, 81);
+            this.label2.Location = new System.Drawing.Point(164, 100);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 20);
+            this.label2.Size = new System.Drawing.Size(98, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
             // 
@@ -96,9 +102,10 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.CreateAccountLbl.AutoSize = true;
             this.CreateAccountLbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.CreateAccountLbl.Location = new System.Drawing.Point(160, 133);
+            this.CreateAccountLbl.Location = new System.Drawing.Point(213, 164);
+            this.CreateAccountLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CreateAccountLbl.Name = "CreateAccountLbl";
-            this.CreateAccountLbl.Size = new System.Drawing.Size(136, 13);
+            this.CreateAccountLbl.Size = new System.Drawing.Size(177, 17);
             this.CreateAccountLbl.TabIndex = 5;
             this.CreateAccountLbl.Text = "Create Account, Click Here";
             this.CreateAccountLbl.Click += new System.EventHandler(this.CreateAccountLbl_Click);
@@ -112,9 +119,10 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.ForgotPwdLbl.AutoSize = true;
             this.ForgotPwdLbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.ForgotPwdLbl.Location = new System.Drawing.Point(264, 291);
+            this.ForgotPwdLbl.Location = new System.Drawing.Point(352, 358);
+            this.ForgotPwdLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ForgotPwdLbl.Name = "ForgotPwdLbl";
-            this.ForgotPwdLbl.Size = new System.Drawing.Size(86, 13);
+            this.ForgotPwdLbl.Size = new System.Drawing.Size(114, 17);
             this.ForgotPwdLbl.TabIndex = 6;
             this.ForgotPwdLbl.Text = "Forgot Password";
             this.ForgotPwdLbl.Click += new System.EventHandler(this.ForgotPwdLbl_Click);
@@ -127,9 +135,11 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.Controls.Add(this.CreateAccountLbl);
             this.groupBox1.Controls.Add(this.PasswordTxt);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(69, 60);
+            this.groupBox1.Location = new System.Drawing.Point(92, 74);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(470, 179);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(627, 220);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -141,14 +151,15 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(608, 329);
+            this.ClientSize = new System.Drawing.Size(811, 405);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ForgotPwdLbl);
             this.Controls.Add(this.LoginBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).EndInit();
