@@ -51,7 +51,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.LoginBtn.Location = new System.Drawing.Point(240, 258);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(125, 30);
-            this.LoginBtn.TabIndex = 0;
+            this.LoginBtn.TabIndex = 2;
             this.LoginBtn.Text = "Login";
             this.LoginBtn.UseVisualStyleBackColor = true;
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
@@ -61,6 +61,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.PasswordTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTxt.Location = new System.Drawing.Point(127, 104);
             this.PasswordTxt.Name = "PasswordTxt";
+            this.PasswordTxt.PasswordChar = '*';
             this.PasswordTxt.Size = new System.Drawing.Size(214, 26);
             this.PasswordTxt.TabIndex = 1;
             // 
@@ -70,7 +71,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.UsernameTxt.Location = new System.Drawing.Point(127, 52);
             this.UsernameTxt.Name = "UsernameTxt";
             this.UsernameTxt.Size = new System.Drawing.Size(214, 26);
-            this.UsernameTxt.TabIndex = 2;
+            this.UsernameTxt.TabIndex = 0;
             // 
             // label1
             // 
@@ -99,7 +100,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.CreateAccountLbl.Location = new System.Drawing.Point(160, 133);
             this.CreateAccountLbl.Name = "CreateAccountLbl";
             this.CreateAccountLbl.Size = new System.Drawing.Size(136, 13);
-            this.CreateAccountLbl.TabIndex = 5;
+            this.CreateAccountLbl.TabIndex = 2;
             this.CreateAccountLbl.Text = "Create Account, Click Here";
             this.CreateAccountLbl.Click += new System.EventHandler(this.CreateAccountLbl_Click);
             // 
@@ -115,7 +116,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ForgotPwdLbl.Location = new System.Drawing.Point(264, 291);
             this.ForgotPwdLbl.Name = "ForgotPwdLbl";
             this.ForgotPwdLbl.Size = new System.Drawing.Size(86, 13);
-            this.ForgotPwdLbl.TabIndex = 6;
+            this.ForgotPwdLbl.TabIndex = 1;
             this.ForgotPwdLbl.Text = "Forgot Password";
             this.ForgotPwdLbl.Click += new System.EventHandler(this.ForgotPwdLbl_Click);
             // 

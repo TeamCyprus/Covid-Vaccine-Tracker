@@ -18,7 +18,8 @@ namespace Covid_Vaccine_Tracker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProviderForm());
+            Application.Run(new LoginForm());
+            //Application.Run(new ProviderForm());
         }
     }
 }

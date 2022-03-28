@@ -133,13 +133,15 @@ namespace Covid_Vaccine_Tracker.UI
                             // Now check the user type and call the correct form
                             switch(ActiveUsr.User_Type)
                             {
-                                case "Healthcare Provider":
+                                case "Provider":
                                     Provider provider = new Provider();
                                     provider = ProviderDB.GetProvider(ActiveUsr.Username);
                                     ProviderForm Pform = new ProviderForm(provider);
                                     Pform.ShowDialog();
                                     break;
-                                case "CDC User":
+                                case "CDC":
+                                    //CDC cdc = new CDC();
+                                    //cdc = CDCDB.GetCDCUser(ActiveUsr.Username);
                                     ViewForm CdcView = new ViewForm(true);
                                     CdcView.ShowDialog();
                                     break;
@@ -166,11 +168,13 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void CreateAccountLbl_Click(object sender, EventArgs e)
         {
-            // this event needs the sign up form to be called
+            AccountSelector selector = new AccountSelector();
+            selector.ShowDialog();
         }
 
         private void ForgotPwdLbl_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("To be implemented in another sprint", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // account recovery form needs to be called not sure if we are putting this in the current sprint
         }
 

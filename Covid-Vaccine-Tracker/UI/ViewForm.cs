@@ -142,7 +142,7 @@ namespace Covid_Vaccine_Tracker.UI
             if (ViewsCbx.SelectedIndex <= -1)
             {
                 valid = false;
-                eMsg = "You must select a record veiw type";
+                eMsg = "You must select a record view type";
             }
             else
                 valid = true;

@@ -9,7 +9,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 {
     public static class Protector
     {
-        readonly static byte[] _salty = Convert.FromBase64String("Banana");
+        readonly static byte[] _salty = Encoding.Unicode.GetBytes("7BANANAS");
 
         public static string Encryptor(string pwd)
         {
