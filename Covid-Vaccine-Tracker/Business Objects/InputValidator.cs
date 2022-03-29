@@ -58,21 +58,21 @@ namespace Covid_Vaccine_Tracker.Business_Objects
                 validInput = true;
             return (validInput, errMsg);
         }
-        //public static (bool,string) isValidPwd(string input)
-        //{
-        //    bool validInput;
-        //    string errMsg = string.Empty;
+        public static (bool, string) isValidPwd(string input)
+        {
+            bool validInput;
+            string errMsg = string.Empty;
 
-        //    Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
-        //    if (!rgx.IsMatch(input))
-        //    {
-        //        validInput = false;
-        //        errMsg = "Password must be atleast 8 characters long, contain atleast one uppercase, one lowercase, and a number";
-        //    }
-        //    else
-        //        validInput = true;
-        //    return (validInput, errMsg);
-        //}
+            Regex rgx = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+            if (!rgx.IsMatch(input))
+            {
+                validInput = false;
+                errMsg = "Password must be atleast 8 characters long, contain atleast one uppercase, one lowercase, and a number";
+            }
+            else
+                validInput = true;
+            return (validInput, errMsg);
+        }
         public static (bool, string) IsValidStreet(string input)
         {
             bool validInput;

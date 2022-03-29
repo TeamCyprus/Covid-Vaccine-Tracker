@@ -193,6 +193,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.VerifyPwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerifyPwdTxt.Location = new System.Drawing.Point(449, 111);
             this.VerifyPwdTxt.Name = "VerifyPwdTxt";
+            this.VerifyPwdTxt.PasswordChar = '*';
             this.VerifyPwdTxt.Size = new System.Drawing.Size(183, 24);
             this.VerifyPwdTxt.TabIndex = 5;
             // 
@@ -201,6 +202,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.PwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PwdTxt.Location = new System.Drawing.Point(238, 111);
             this.PwdTxt.Name = "PwdTxt";
+            this.PwdTxt.PasswordChar = '*';
             this.PwdTxt.Size = new System.Drawing.Size(183, 24);
             this.PwdTxt.TabIndex = 4;
             // 

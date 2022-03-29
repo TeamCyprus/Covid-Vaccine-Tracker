@@ -48,11 +48,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return provider;
         }
-        public static bool VerifyProvider(string id, string Fname, string Lname)
+        public static bool VerifyProvider(string Fname, string Lname)
         {
             bool providerFound;
             string procedure = "[SpVerifyProvider]";
-            var parameters = new { pid = id, firstname = Fname, lastname = Lname };
+            var parameters = new {firstname = Fname, lastname = Lname };
 
             try
             {

@@ -56,7 +56,13 @@ namespace Covid_Vaccine_Tracker.UI
                 groupBox2.Enabled = false;
                 groupBox2.Visible = false;
                 VtckPinTxt.Enabled = false;
+                VtckPinTxt.Visible = false;
                 ProviderSuffixCBX.Enabled = false;
+                ProviderSuffixCBX.Visible = false;
+                label8.Enabled = false;
+                label8.Visible = false;
+                label9.Enabled = false;
+                label9.Visible = false;
                 Size = new Size(719, 255);
             }
         }
@@ -102,11 +108,11 @@ namespace Covid_Vaccine_Tracker.UI
                     try
                     {
                         //rename to userFound. Exit out here? 
-                        userFound = ProviderDB.VerifyProviderVtck(vtcks, firstname, lastname); //could this be for updating?
+                        userFound = ProviderDB.VerifyProvider(firstname, lastname); //could this be for updating?
                         if (userFound)
                         {
-                            DisplaySuccess("That Vtcks pin, first and last name already exists.", AppTitle);
-                            this.Close(); //closes out because vtcks already linked with first and last name
+                            throw new Exception("That provider already exists.");
+                            //this.Close(); //closes out because vtcks already linked with first and last name
                         }
                     }
                     catch (Exception ex) { throw ex; }
@@ -124,8 +130,8 @@ namespace Covid_Vaccine_Tracker.UI
                     userFound = CDCDB.VerifyCDCUser(firstname, lastname); //could this be for updating?
                     if (userFound)
                     {
-                        DisplaySuccess("That CDC user already exists.", AppTitle);
-                        this.Close(); //closes out because vtcks already linked with first and last name
+                        throw new Exception("That CDC user already exists.");
+                        //this.Close(); //closes out because vtcks already linked with first and last name
                     }
                     try
                     {
@@ -280,6 +286,9 @@ namespace Covid_Vaccine_Tracker.UI
             try
             {
                 newUser.Username = username;
+                (bool, string) validData = InputValidator.isValidPwd(PwdTxt.Text);
+                if (!validData.Item1)
+                    throw new Exception(validData.Item2);
                 newUser.Password = PwdTxt.Text;
                 if (PwdTxt.Text != VerifyPwdTxt.Text)
                     throw new Exception("Passwords don't match");
