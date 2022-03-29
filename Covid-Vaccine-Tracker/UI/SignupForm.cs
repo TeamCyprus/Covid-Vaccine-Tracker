@@ -1,4 +1,12 @@
-﻿using System;
+﻿// Sign Up form - by Template by Zach Palmer - Coded by Sergio Ochoa
+///<summary>
+/// This form is used to create accounts for the two user types Provider and CDC
+/// The account selector form passes the account type and a vtck pin if user is a provider
+/// the form verifies that the user does not exist in the database and then inserts them in to the 
+/// appropriate database table and stores their username and password the passwords are encrypted with a Sha Has and salt
+/// then stored in the database
+/// </summary>
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

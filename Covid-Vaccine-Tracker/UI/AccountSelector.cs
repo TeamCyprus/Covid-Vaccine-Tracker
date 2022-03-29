@@ -1,4 +1,15 @@
-﻿using System;
+﻿// Account Selector form Template by Zach Palmer - Coded by Omar Arshad
+///<summary>
+/// This form is used by the user to select an account type
+/// the two account types as of now are Provider and CDC
+/// if provider account type is selected then the form prompts the user to enter a vtcks pin number 
+/// that is associated with the organization the provider works for
+/// if the vtcks pin does matches the user is allowed to create provider account
+/// if not the user is not allowed to create a provider account
+/// since data a cdc user would see is deidentified and can not be manipulated by a cdc user
+/// no validation is needed for a cdc user
+/// </summary>
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

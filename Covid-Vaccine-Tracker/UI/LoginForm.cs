@@ -1,8 +1,8 @@
-﻿// Login Form by Zach Palmer & Ryan G
+﻿// Login Form by Zach Palmer & Ryan Gerhardt
 ///<summary>
 /// This form is the begining point of finished app
 /// A user either logs in with their existing credentials or
-/// a user creates an account passwords are encrypted then stored in database
+/// a user creates an account passwords are encrypted using a Sha Hash function and salt then stored in database
 /// </summary>
 
 using System;
