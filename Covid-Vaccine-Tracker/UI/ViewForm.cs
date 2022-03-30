@@ -478,5 +478,11 @@ namespace Covid_Vaccine_Tracker.UI
             }
         }
 
+        private void ReportBtn_Click(object sender, EventArgs e)
+        {
+            // need to add code that disables the report btn for providers
+            VaccineReportForm vaccineReport = new VaccineReportForm();
+            vaccineReport.ShowDialog();
+        }
     }
 }
