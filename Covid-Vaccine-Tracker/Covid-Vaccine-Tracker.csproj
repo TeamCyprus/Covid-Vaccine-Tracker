@@ -93,6 +93,7 @@
     <Compile Include="Business Objects\Dose.cs" />
     <Compile Include="Business Objects\Ethnicity.cs" />
     <Compile Include="Business Objects\Extracts.cs" />
+    <Compile Include="Business Objects\Identifying_VaccineRecords_View.cs" />
     <Compile Include="Business Objects\Provider.cs" />
     <Compile Include="Business Objects\IdGenerator.cs" />
     <Compile Include="Business Objects\InputValidator.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Business Objects\User_Type.cs" />
     <Compile Include="Business Objects\VaccineRecord.cs" />
     <Compile Include="Business Objects\Identifying_VaccineRecord.cs" />
+    <Compile Include="Business Objects\VaccineRecords_View.cs" />
     <Compile Include="Business Objects\Vaccine_Admin_Site.cs" />
     <Compile Include="Business Objects\Vaccine_Manufacturer.cs" />
     <Compile Include="Business Objects\Vaccine_Product.cs" />
