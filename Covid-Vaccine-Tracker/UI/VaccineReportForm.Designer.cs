@@ -35,7 +35,7 @@ namespace Covid_Vaccine_Tracker.UI
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Covid_Vaccine_Tracker.Data Access Layer.VaccineReport.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Covid_Vaccine_Tracker.UI.VaccineReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;

@@ -226,6 +226,7 @@
     <EmbeddedResource Include="UI\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\VaccineReport.rdlc" />
     <EmbeddedResource Include="UI\VaccineReportForm.resx">
       <DependentUpon>VaccineReportForm.cs</DependentUpon>
     </EmbeddedResource>
