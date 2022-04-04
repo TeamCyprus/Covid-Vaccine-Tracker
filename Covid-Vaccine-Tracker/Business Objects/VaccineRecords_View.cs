@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Covid_Vaccine_Tracker.Business_Objects
 {
-    class VaccineRecords_View
+    public class VaccineRecords_View
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Covid_Vaccine_Tracker.Business_Objects
 {
-    class Identifying_VaccineRecords_View
+    public class Identifying_VaccineRecords_View
     {
         public string id;
         public string first_name;

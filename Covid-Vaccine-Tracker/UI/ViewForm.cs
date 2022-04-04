@@ -149,10 +149,10 @@ namespace Covid_Vaccine_Tracker.UI
 
             return (valid, eMsg);
         }
-        private List<VaccineRecord> GetRecords_CDC(int indx)
+        private List<VaccineRecords_View> GetRecords_CDC(int indx)
         {
             // Create lists that will store respective record type
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             (bool, string) isValid;
             int Tbx = -1;
             //determine the view selected index vale then get data from the database and then stores it in a list
@@ -206,11 +206,11 @@ namespace Covid_Vaccine_Tracker.UI
 
             return vaccineRecords;
         }
-        private List<Identifying_VaccineRecord> GetVaccineRecords_Provider(int indx)
+        private List<Identifying_VaccineRecords_View> GetVaccineRecords_Provider(int indx)
         {
             // This method determines what vaccine records view was selected
             // Create lists that will store respective record type
-            List<Identifying_VaccineRecord> vaccineRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> vaccineRecords = new List<Identifying_VaccineRecords_View>();
             // Create a list to hold patient objects incase patinet(s) info is viewed
             List<Patient> patientRecords = new List<Patient>();
             (bool, string) isValid;
@@ -321,8 +321,8 @@ namespace Covid_Vaccine_Tracker.UI
         private void EnterBtn_Click(object sender, EventArgs e)
         {           
             // Lists to hold respective records
-            List<VaccineRecord> vaxRecords_CDC = new List<VaccineRecord>();
-            List<Identifying_VaccineRecord> vaxRecords_Provider = new List<Identifying_VaccineRecord>();
+            List<VaccineRecords_View> vaxRecords_CDC = new List<VaccineRecords_View>();
+            List<Identifying_VaccineRecords_View> vaxRecords_Provider = new List<Identifying_VaccineRecords_View>();
             List<Patient> patientRecords = new List<Patient>();
             // Single patient to hold patient record
             Patient patientRequest = new Patient();
