@@ -30,7 +30,7 @@ namespace Covid_Vaccine_Tracker.UI
         string GenerateProviderOrCdcId;
         string encryptedPW;
         (bool, string) isValid;
-        bool ErrorOccured;
+        bool ErrorOccured, dataSubmitted = false;
         Provider NewProvider = new Provider();
         CDC NewCDCuser = new CDC();
         User newUser = new User();
@@ -39,6 +39,15 @@ namespace Covid_Vaccine_Tracker.UI
         List<States> daStates = new List<States>();
         List<Provider_Suffix> suffixes = new List<Provider_Suffix>();
 
+        // create event to close account selector form
+        public event EventHandler CloseAccountSelector;
+        // method to raise the event
+        private void RaiseCloseSelector()
+        {
+            var handler = CloseAccountSelector;
+            if (handler != null)
+                CloseAccountSelector(this, EventArgs.Empty);
+        }
         public SignupForm()
         {
             InitializeComponent();
@@ -481,14 +490,20 @@ namespace Covid_Vaccine_Tracker.UI
                             if (userSuccess && Success)
                             {
                                 DisplaySuccess("User created successfully", AppTitle);
-                                this.Close(); //wouldn't this go to account selector? 
-                                //
+                                dataSubmitted = true;
+                                // this raises the CloseAccountSelector event so user goes back to the login screen
+                                RaiseCloseSelector();
+                                
                             }
                             else
+                            {
+                                dataSubmitted = false;
                                 DisplayError("Error. User has not been added", AppTitle);
+                            }
                         }
                         else
                         {
+                            dataSubmitted = false;
                             DisplayError("Account with that username already exists.", AppTitle);
                         }
 
@@ -555,16 +570,26 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            DialogResult closeForm = MessageBox.Show("Do you wish to close the entire application?", AppTitle,
-             MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            // the two messages to ask the user
+            string dataSavedMsg = "Do you wish to close the entire application?";
+            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the entire application?";
+            string Msg;
 
+            // determine which message needs to be displayed
+            if (!dataSubmitted)
+                Msg = dataNotSavedMsg;
+            else if (dataSubmitted)
+                Msg = dataSavedMsg;
+
+            // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+            DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the entire application?", AppTitle,
+                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
                 Application.Exit();
-            // Check to see if no btn was selected
+            // Check to see if no btn was selected the raise closeSelectir event
             else if (closeForm == DialogResult.No)
-                this.Close();
+                RaiseCloseSelector();
             // Dont need to check if cancel was selected because not closing app or not closing form
             // is what cancel should do
         }

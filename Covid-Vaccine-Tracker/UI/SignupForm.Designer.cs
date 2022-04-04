@@ -77,7 +77,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.groupBox1.Controls.Add(this.VtckPinTxt);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
@@ -93,6 +93,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.Controls.Add(this.LnameTxt);
             this.groupBox1.Controls.Add(this.FnameTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.groupBox1.Location = new System.Drawing.Point(25, 52);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(653, 156);
@@ -102,7 +103,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // VtckPinTxt
             // 
+            this.VtckPinTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.VtckPinTxt.Enabled = false;
+            this.VtckPinTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VtckPinTxt.Location = new System.Drawing.Point(421, 53);
             this.VtckPinTxt.Mask = "0000LL";
             this.VtckPinTxt.Name = "VtckPinTxt";
@@ -181,7 +184,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ProviderSuffixCBX
             // 
+            this.ProviderSuffixCBX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.ProviderSuffixCBX.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProviderSuffixCBX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ProviderSuffixCBX.FormattingEnabled = true;
             this.ProviderSuffixCBX.Location = new System.Drawing.Point(511, 51);
             this.ProviderSuffixCBX.Name = "ProviderSuffixCBX";
@@ -190,7 +195,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // VerifyPwdTxt
             // 
+            this.VerifyPwdTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.VerifyPwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerifyPwdTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VerifyPwdTxt.Location = new System.Drawing.Point(449, 111);
             this.VerifyPwdTxt.Name = "VerifyPwdTxt";
             this.VerifyPwdTxt.PasswordChar = '*';
@@ -199,7 +206,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // PwdTxt
             // 
+            this.PwdTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.PwdTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PwdTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.PwdTxt.Location = new System.Drawing.Point(238, 111);
             this.PwdTxt.Name = "PwdTxt";
             this.PwdTxt.PasswordChar = '*';
@@ -208,7 +217,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // UsernameTxt
             // 
+            this.UsernameTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.UsernameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.UsernameTxt.Location = new System.Drawing.Point(27, 111);
             this.UsernameTxt.Name = "UsernameTxt";
             this.UsernameTxt.Size = new System.Drawing.Size(183, 24);
@@ -216,7 +227,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // LnameTxt
             // 
+            this.LnameTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.LnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LnameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.LnameTxt.Location = new System.Drawing.Point(217, 53);
             this.LnameTxt.Name = "LnameTxt";
             this.LnameTxt.Size = new System.Drawing.Size(180, 24);
@@ -224,7 +237,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // FnameTxt
             // 
+            this.FnameTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.FnameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FnameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.FnameTxt.Location = new System.Drawing.Point(27, 53);
             this.FnameTxt.Name = "FnameTxt";
             this.FnameTxt.Size = new System.Drawing.Size(166, 24);
@@ -242,7 +257,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // CountyTxt
             // 
+            this.CountyTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.CountyTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CountyTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.CountyTxt.Location = new System.Drawing.Point(425, 107);
             this.CountyTxt.Name = "CountyTxt";
             this.CountyTxt.Size = new System.Drawing.Size(183, 24);
@@ -261,6 +278,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddBtn,
@@ -274,6 +292,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AddBtn
             // 
+            this.AddBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.AddBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddBtn.Image")));
             this.AddBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddBtn.Name = "AddBtn";
@@ -284,6 +303,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ClearBtn
             // 
+            this.ClearBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.ClearBtn.Image = ((System.Drawing.Image)(resources.GetObject("ClearBtn.Image")));
             this.ClearBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClearBtn.Name = "ClearBtn";
@@ -294,6 +314,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ExitBtn
             // 
+            this.ExitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
             this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExitBtn.Name = "ExitBtn";
@@ -304,7 +325,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.groupBox2.Controls.Add(this.ZipTxt);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label7);
@@ -322,6 +343,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox2.Controls.Add(this.FacilityTxt);
             this.groupBox2.Controls.Add(this.OrganizationTxt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.groupBox2.Location = new System.Drawing.Point(25, 223);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(653, 209);
@@ -331,6 +353,8 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ZipTxt
             // 
+            this.ZipTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
+            this.ZipTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ZipTxt.Location = new System.Drawing.Point(178, 163);
             this.ZipTxt.Mask = "00000";
             this.ZipTxt.Name = "ZipTxt";
@@ -410,7 +434,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // StateCbx
             // 
+            this.StateCbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.StateCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StateCbx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.StateCbx.FormattingEnabled = true;
             this.StateCbx.Location = new System.Drawing.Point(27, 161);
             this.StateCbx.Name = "StateCbx";
@@ -419,7 +445,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // CityTxt
             // 
+            this.CityTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.CityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CityTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.CityTxt.Location = new System.Drawing.Point(226, 107);
             this.CityTxt.Name = "CityTxt";
             this.CityTxt.Size = new System.Drawing.Size(183, 24);
@@ -427,7 +455,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // StreetAddressTxt
             // 
+            this.StreetAddressTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.StreetAddressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StreetAddressTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.StreetAddressTxt.Location = new System.Drawing.Point(27, 107);
             this.StreetAddressTxt.Name = "StreetAddressTxt";
             this.StreetAddressTxt.Size = new System.Drawing.Size(183, 24);
@@ -435,7 +465,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // LocationTypeTxt
             // 
+            this.LocationTypeTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.LocationTypeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationTypeTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.LocationTypeTxt.Location = new System.Drawing.Point(426, 53);
             this.LocationTypeTxt.Name = "LocationTypeTxt";
             this.LocationTypeTxt.Size = new System.Drawing.Size(183, 24);
@@ -443,7 +475,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // FacilityTxt
             // 
+            this.FacilityTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.FacilityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FacilityTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.FacilityTxt.Location = new System.Drawing.Point(220, 53);
             this.FacilityTxt.Name = "FacilityTxt";
             this.FacilityTxt.Size = new System.Drawing.Size(180, 24);
@@ -451,7 +485,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // OrganizationTxt
             // 
+            this.OrganizationTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.OrganizationTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrganizationTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.OrganizationTxt.Location = new System.Drawing.Point(27, 53);
             this.OrganizationTxt.Name = "OrganizationTxt";
             this.OrganizationTxt.Size = new System.Drawing.Size(166, 24);
@@ -461,7 +497,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.ClientSize = new System.Drawing.Size(703, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);

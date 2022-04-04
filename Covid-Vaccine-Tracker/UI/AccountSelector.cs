@@ -31,6 +31,15 @@ namespace Covid_Vaccine_Tracker.UI
         bool IsProvider, IsCDC;
         string AppTitle = "Covid Vaccine Tracker";
 
+        // Inorder to close the signup form with event need to have a global variable for the SignUpScreen name
+        SignupForm SignUp;
+        // this is the method that recieves the event sent from SignUpForm to close this screen
+        // and that way after exiting the signUpForm user returns to login screen
+
+        private void HandleCloseAccountSelector(object sender, EventArgs args)
+        {
+            this.Close();
+        }
         public AccountSelector()
         {
             InitializeComponent();
@@ -76,8 +85,12 @@ namespace Covid_Vaccine_Tracker.UI
 
            if (IsCDC)
             {
-                SignupForm signUp = new SignupForm("CDC");
-                signUp.ShowDialog();
+                // use the global variable for signupform
+                SignUp = new SignupForm("CDC");
+                // adds event handler so when signup form is closed it will send event
+                // to this form then both forms will close so login screen is active form
+                SignUp.CloseAccountSelector += HandleCloseAccountSelector;
+                SignUp.ShowDialog();
             }
            else if (IsProvider)
             {
@@ -86,8 +99,12 @@ namespace Covid_Vaccine_Tracker.UI
                 bool accountExists = VtcksDB.VerifyVtck(enteredVtck);
                 if (vtckExists && !accountExists)
                 {
-                    SignupForm signUp = new SignupForm("Provider", enteredVtck);
-                    signUp.ShowDialog();
+                    // use the global variable for signupform
+                    SignUp = new SignupForm("Provider", enteredVtck);
+                    // adds event handler so when signup form is closed it will send event
+                    // to this form then both forms will close so login screen is active form
+                    SignUp.CloseAccountSelector += HandleCloseAccountSelector;
+                    SignUp.ShowDialog();
                 }
                 else if (!vtckExists)
                     DisplayError("Vtcks Pin not found, access denied", AppTitle);

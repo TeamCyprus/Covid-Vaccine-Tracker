@@ -1,0 +1,13 @@
+Race 1 join query
+select pat.Race1, count(distinct vr.Vaccine_Event_Id) as vax_id
+from PPRLs pprl
+join Patients pat on pprl.Patient_Id = pat.Id
+join Vaccine_Records vr on pprl.PPRL_Number = vr.PPRL
+group by pat.Race1;
+
+Race2 join query
+select pat.Race2, count(distinct vr.Vaccine_Event_Id) as vax_id
+from PPRLs pprl
+join Patients pat on pprl.Patient_Id = pat.Id
+join Vaccine_Records vr on pprl.PPRL_Number = vr.PPRL
+group by pat.Race2
