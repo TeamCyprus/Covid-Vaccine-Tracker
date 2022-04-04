@@ -45,9 +45,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ChartBtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExitBtn = new System.Windows.Forms.ToolStripButton();
             this.ReportBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ExitBtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsDg)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -57,6 +57,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.label1.Location = new System.Drawing.Point(29, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 20);
@@ -65,7 +66,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // ViewsCbx
             // 
+            this.ViewsCbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.ViewsCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewsCbx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ViewsCbx.FormattingEnabled = true;
             this.ViewsCbx.Location = new System.Drawing.Point(33, 68);
             this.ViewsCbx.Name = "ViewsCbx";
@@ -77,6 +80,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.IdLbl.AutoSize = true;
             this.IdLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.IdLbl.Location = new System.Drawing.Point(30, 104);
             this.IdLbl.Name = "IdLbl";
             this.IdLbl.Size = new System.Drawing.Size(68, 18);
@@ -86,7 +90,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // SearchValTxt
             // 
+            this.SearchValTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.SearchValTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchValTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.SearchValTxt.Location = new System.Drawing.Point(33, 125);
             this.SearchValTxt.Name = "SearchValTxt";
             this.SearchValTxt.Size = new System.Drawing.Size(100, 24);
@@ -102,28 +108,31 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.RecordsDg.AllowUserToAddRows = false;
             this.RecordsDg.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Linen;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SaddleBrown;
             this.RecordsDg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.RecordsDg.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.RecordsDg.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.NavajoWhite;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkKhaki;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.RecordsDg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.RecordsDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RecordsDg.Cursor = System.Windows.Forms.Cursors.No;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SeaShell;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkKhaki;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.RecordsDg.DefaultCellStyle = dataGridViewCellStyle3;
-            this.RecordsDg.GridColor = System.Drawing.Color.Black;
+            this.RecordsDg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.RecordsDg.Location = new System.Drawing.Point(10, 166);
             this.RecordsDg.Name = "RecordsDg";
             this.RecordsDg.ReadOnly = true;
@@ -132,6 +141,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EnterBtn,
@@ -143,17 +153,18 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1544, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(1544, 28);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // EnterBtn
             // 
             this.EnterBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.EnterBtn.Image = ((System.Drawing.Image)(resources.GetObject("EnterBtn.Image")));
             this.EnterBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EnterBtn.Name = "EnterBtn";
-            this.EnterBtn.Size = new System.Drawing.Size(66, 29);
+            this.EnterBtn.Size = new System.Drawing.Size(66, 25);
             this.EnterBtn.Text = "Enter";
             this.EnterBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.EnterBtn.Click += new System.EventHandler(this.EnterBtn_Click);
@@ -161,15 +172,16 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // ChartBtn
             // 
             this.ChartBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChartBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ChartBtn.Image = ((System.Drawing.Image)(resources.GetObject("ChartBtn.Image")));
             this.ChartBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ChartBtn.Name = "ChartBtn";
-            this.ChartBtn.Size = new System.Drawing.Size(77, 29);
+            this.ChartBtn.Size = new System.Drawing.Size(77, 25);
             this.ChartBtn.Text = "Chart";
             this.ChartBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ChartBtn.Click += new System.EventHandler(this.ChartBtn_Click);
@@ -177,25 +189,16 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
-            this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(54, 29);
-            this.ExitBtn.Text = "Exit";
-            this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // ReportBtn
             // 
+            this.ReportBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
             this.ReportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ReportBtn.Name = "ReportBtn";
-            this.ReportBtn.Size = new System.Drawing.Size(87, 29);
+            this.ReportBtn.Size = new System.Drawing.Size(77, 25);
             this.ReportBtn.Text = "Report";
             this.ReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
@@ -203,13 +206,25 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
+            this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(54, 25);
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.ClientSize = new System.Drawing.Size(1544, 460);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.RecordsDg);

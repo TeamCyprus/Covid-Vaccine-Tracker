@@ -69,6 +69,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.LocationTypeTxt = new System.Windows.Forms.TextBox();
             this.FacilityTxt = new System.Windows.Forms.TextBox();
             this.OrganizationTxt = new System.Windows.Forms.TextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -282,7 +284,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddBtn,
+            this.toolStripSeparator1,
             this.ClearBtn,
+            this.toolStripSeparator2,
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -493,6 +497,16 @@ namespace Covid_Vaccine_Tracker.UI
             this.OrganizationTxt.Size = new System.Drawing.Size(166, 24);
             this.OrganizationTxt.TabIndex = 0;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            // 
             // SignupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,5 +573,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.TextBox FacilityTxt;
         private System.Windows.Forms.TextBox OrganizationTxt;
         private System.Windows.Forms.MaskedTextBox ZipTxt;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

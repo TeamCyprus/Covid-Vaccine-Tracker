@@ -43,6 +43,8 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // AccountCbx
             // 
+            this.AccountCbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.AccountCbx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.AccountCbx.FormattingEnabled = true;
             this.AccountCbx.Location = new System.Drawing.Point(130, 41);
             this.AccountCbx.Name = "AccountCbx";
@@ -85,7 +87,9 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // VtckPinTxt
             // 
+            this.VtckPinTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.VtckPinTxt.Enabled = false;
+            this.VtckPinTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VtckPinTxt.Location = new System.Drawing.Point(188, 88);
             this.VtckPinTxt.Mask = "0000LL";
             this.VtckPinTxt.Name = "VtckPinTxt";
@@ -99,20 +103,22 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // NextBtn
             // 
+            this.NextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.NextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.NextBtn.Location = new System.Drawing.Point(176, 126);
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.Size = new System.Drawing.Size(123, 34);
             this.NextBtn.TabIndex = 4;
             this.NextBtn.Text = "Next";
-            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.UseVisualStyleBackColor = false;
             this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
             // AccountSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.ClientSize = new System.Drawing.Size(475, 172);
             this.Controls.Add(this.VtckPinTxt);
             this.Controls.Add(this.NextBtn);
