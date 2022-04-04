@@ -30,9 +30,9 @@ namespace Covid_Vaccine_Tracker.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
             this.VaxChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -95,17 +95,17 @@ namespace Covid_Vaccine_Tracker.UI
             this.VaxChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VaxChart.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             this.VaxChart.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            chartArea1.Name = "ChartArea1";
-            this.VaxChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.VaxChart.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.VaxChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.VaxChart.Legends.Add(legend3);
             this.VaxChart.Location = new System.Drawing.Point(15, 14);
             this.VaxChart.Name = "VaxChart";
             this.VaxChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.VaxChart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.VaxChart.Series.Add(series3);
             this.VaxChart.Size = new System.Drawing.Size(703, 376);
             this.VaxChart.TabIndex = 9;
             this.VaxChart.Text = "chart1";
@@ -625,6 +625,12 @@ namespace Covid_Vaccine_Tracker.UI
             this.MovingAvgTxt.TabIndex = 10;
             this.MovingAvgTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.MovingAvgTxt, "7 day rolling average for doses administered per day");
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
+            this.toolTip1.IsBalloon = true;
             // 
             // ChartForm
             // 
