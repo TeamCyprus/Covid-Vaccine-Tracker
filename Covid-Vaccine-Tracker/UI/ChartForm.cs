@@ -10,8 +10,11 @@ namespace Covid_Vaccine_Tracker.UI
 {
     public partial class ChartForm : Form
     {
+        // int holds the "index" of chart type from chart menu items
+        int cIndex = -1;
         string AppTitle = "Covid Vaccine Tracker", DataErrorMsg = "Could not find data to match search filter, please try again later";
-        bool lineChart, barChart, pieChart, stackedBar, gnattChart, stackedColumn, histo, tornadChart, threeD, dataSelected = false;
+        bool dataSelected = false;
+        bool barChart, lineChart, pieChart, stackedBar, column, stackedCol, stepLine, area, stackedArea, kagi, bubble, funnel, pyrmaid;
         // need a basic list to store data lists inorder to have only one Create bar&line chart method
         List<Stats> statsList = new List<Stats>();
         Dictionary<int, string> Titles = new Dictionary<int, string>()
@@ -28,7 +31,6 @@ namespace Covid_Vaccine_Tracker.UI
             {10, "Vaccine Administered by Manufacturer" },
             {11, "Top 3 Vaccine Manufacturers" }
         };
-        
         
         public ChartForm()
         {
@@ -94,7 +96,7 @@ namespace Covid_Vaccine_Tracker.UI
                 }
                 else // no data
                     DisplayError(DataErrorMsg, AppTitle);
-
+                //barChart, lineChart, pieChart, stackedBar, column, stackedCol, stepLine, area, stackedArea, kagi, bubble, funnel, pyrmaid;
                 // create selected chart pass in list and title key
                 if (barChart)
                     CreateBarChart(statsList, 1);
@@ -102,6 +104,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 1);
                 else if (pieChart)
                     CreatePieChart(statsList, 1);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 1);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -143,6 +148,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 2);
                 else if (pieChart)
                     CreatePieChart(statsList, 2);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 2);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -175,6 +183,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 3);
                 else if (pieChart)
                     CreatePieChart(statsList, 3);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 3);
             }
             catch(Exception ex)
             { DisplayError(ex.Message,AppTitle); }
@@ -205,6 +216,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 4);
                 else if (pieChart)
                     CreatePieChart(statsList, 4);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 4);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -234,6 +248,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 5);
                 else if (pieChart)
                     CreatePieChart(statsList, 5);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 5);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -264,6 +281,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 6);
                 else if (pieChart)
                     CreatePieChart(statsList, 6);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 6);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -293,6 +313,9 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 7);
                 else if (pieChart)
                     CreatePieChart(statsList, 7);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 7);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -324,14 +347,60 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateLineChart(statsList, 8);
                 else if (pieChart)
                     CreatePieChart(statsList, 8);
+                // if not any of 3 base charts get create specific chart
+                else
+                    CreateChart(statsList, cIndex, 8);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
 
-        private void threeDbtn_Click(object sender, EventArgs e)
+        private void StackedBarBtn_Click(object sender, EventArgs e)
         {
-            threeD = true;
+            cIndex = 1;
+        }
+        private void ColumnBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 2;
+        }
+        private void StackedColumnBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 3;
+        }
+        private void StepLineBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 4;
+        }
+
+        private void SplineAreaBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 5;
+        }
+        private void StackedAreaBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 6;
+        }
+
+        private void KagiBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 7;
+        }
+
+        private void BubbleBtn_Click(object sender, EventArgs e)
+        {
+            // buble chart requires atleaset 2 y values
+            cIndex = 8;
+        }
+
+
+        private void FunnelBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 9;
+        }
+
+        private void PyrimidBtn_Click(object sender, EventArgs e)
+        {
+            cIndex = 10;
         }
 
         private void EthnicityBtn_Click(object sender, EventArgs e)
@@ -363,7 +432,6 @@ namespace Covid_Vaccine_Tracker.UI
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
-
         private void manufacturerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<ManufacturerVaccine> manufacturers = new List<ManufacturerVaccine>();
@@ -490,7 +558,23 @@ namespace Covid_Vaccine_Tracker.UI
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
         }
+        private void CreateChart(List<Stats> vaccineList, int chartIdx, int titleKey)
+        {
+            SetChartType(chartIdx);
+            this.VaxChart.Titles.Add(Titles[titleKey]);
 
+            if (vaccineList.Count > 0)
+            {
+                for (int dp = 0; dp < vaccineList.Count; dp++)
+                {
+                    string xPoint = vaccineList.ElementAt(dp).DataName;
+                    int yPoint = vaccineList.ElementAt(dp).DataValue;
+                    VaxChart.Series[0].Points.AddXY(xPoint, yPoint);
+                }
+            }
+            else // no data in list
+                DisplayError(DataErrorMsg, AppTitle);
+        }
         private void ChartForm_Load(object sender, EventArgs e)
         {
             int totalDose = 0, numPpl = 0;
@@ -520,7 +604,48 @@ namespace Covid_Vaccine_Tracker.UI
             StdTxt.Text = std.ToString();
             VarTxt.Text = variance.ToString();
         }
-
+        private void SetChartType(int chartIndx)
+        {
+            try
+            {
+                // determine the index of chart to determine chart type
+                switch (chartIndx)
+                {
+                    case 1:
+                        VaxChart.Series[0].ChartType = SeriesChartType.StackedBar;
+                        break;
+                    case 2:
+                        VaxChart.Series[0].ChartType = SeriesChartType.Column;
+                        break;
+                    case 3:
+                        VaxChart.Series[0].ChartType = SeriesChartType.StackedColumn;
+                        break;
+                    case 4:
+                        VaxChart.Series[0].ChartType = SeriesChartType.StepLine;
+                        break;
+                    case 5:
+                        VaxChart.Series[0].ChartType = SeriesChartType.SplineArea;
+                        break;
+                    case 6:
+                        VaxChart.Series[0].ChartType = SeriesChartType.StackedArea;
+                        break;
+                    case 7:
+                        VaxChart.Series[0].ChartType = SeriesChartType.Kagi;
+                        break;
+                    case 8:
+                        VaxChart.Series[0].ChartType = SeriesChartType.Bubble;
+                        break;
+                    case 9:
+                        VaxChart.Series[0].ChartType = SeriesChartType.Funnel;
+                        break;
+                    case 10:
+                        VaxChart.Series[0].ChartType = SeriesChartType.Pyramid;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            { DisplayError(ex.Message, AppTitle); }
+        }
         private void DisplaySuccess(string msg, string title)
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
