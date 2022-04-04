@@ -11,7 +11,7 @@ namespace Covid_Vaccine_Tracker.UI
     public partial class ChartForm : Form
     {
         string AppTitle = "Covid Vaccine Tracker", DataErrorMsg = "Could not find data to match search filter, please try again later";
-        bool lineChart, barChart, dataSelected = false;
+        bool lineChart, barChart, pieChart, stackedBar, gnattChart, stackedColumn, histo, tornadChart, threeD, dataSelected = false;
         // need a basic list to store data lists inorder to have only one Create bar&line chart method
         List<Stats> statsList = new List<Stats>();
         Dictionary<int, string> Titles = new Dictionary<int, string>()
@@ -46,7 +46,12 @@ namespace Covid_Vaccine_Tracker.UI
             lineChart = true;
             barChart = false;
         }
-
+        private void PieBtn_Click(object sender, EventArgs e)
+        {
+            pieChart = true;
+            lineChart = false;
+            barChart = false;
+        }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
@@ -92,9 +97,11 @@ namespace Covid_Vaccine_Tracker.UI
 
                 // create selected chart pass in list and title key
                 if (barChart)
-                    CreateBarChart(statsList,1);
+                    CreateBarChart(statsList, 1);
                 else if (lineChart)
-                    CreateLineChart(statsList,1);
+                    CreateLineChart(statsList, 1);
+                else if (pieChart)
+                    CreatePieChart(statsList, 1);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -134,6 +141,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 2);
                 else if (lineChart)
                     CreateLineChart(statsList, 2);
+                else if (pieChart)
+                    CreatePieChart(statsList, 2);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -164,6 +173,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 3);
                 else if (lineChart)
                     CreateLineChart(statsList, 3);
+                else if (pieChart)
+                    CreatePieChart(statsList, 3);
             }
             catch(Exception ex)
             { DisplayError(ex.Message,AppTitle); }
@@ -192,6 +203,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 4);
                 else if (lineChart)
                     CreateLineChart(statsList, 4);
+                else if (pieChart)
+                    CreatePieChart(statsList, 4);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -219,6 +232,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 5);
                 else if (lineChart)
                     CreateLineChart(statsList, 5);
+                else if (pieChart)
+                    CreatePieChart(statsList, 5);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -247,6 +262,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 6);
                 else if (lineChart)
                     CreateLineChart(statsList, 6);
+                else if (pieChart)
+                    CreatePieChart(statsList, 6);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -274,6 +291,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 7);
                 else if (lineChart)
                     CreateLineChart(statsList, 7);
+                else if (pieChart)
+                    CreatePieChart(statsList, 7);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -303,9 +322,16 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 8);
                 else if (lineChart)
                     CreateLineChart(statsList, 8);
+                else if (pieChart)
+                    CreatePieChart(statsList, 8);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
+        }
+
+        private void threeDbtn_Click(object sender, EventArgs e)
+        {
+            threeD = true;
         }
 
         private void EthnicityBtn_Click(object sender, EventArgs e)
@@ -331,6 +357,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 9);
                 else if (lineChart)
                     CreateLineChart(statsList, 9);
+                else if (pieChart)
+                    CreatePieChart(statsList, 9);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -359,6 +387,8 @@ namespace Covid_Vaccine_Tracker.UI
                     CreateBarChart(statsList, 10);
                 else if (lineChart)
                     CreateLineChart(statsList, 10);
+                else if (pieChart)
+                    CreatePieChart(statsList, 10);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -383,9 +413,11 @@ namespace Covid_Vaccine_Tracker.UI
                     DisplayError(DataErrorMsg, AppTitle);
 
                 if (barChart)
-                    CreateBarChart(statsList, 10);
+                    CreateBarChart(statsList, 11);
                 else if (lineChart)
-                    CreateLineChart(statsList, 10);
+                    CreateLineChart(statsList, 11);
+                else if (pieChart)
+                    CreatePieChart(statsList, 11);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -458,6 +490,7 @@ namespace Covid_Vaccine_Tracker.UI
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
         }
+
         private void ChartForm_Load(object sender, EventArgs e)
         {
             int totalDose = 0, numPpl = 0;
