@@ -58,7 +58,12 @@ namespace Covid_Vaccine_Tracker.UI
                 RecordViews = ViewDB.GetCdcViews();
 
             if (!IsCdcUser)
+            {
                 RecordViews = ViewDB.GetProviderViews();
+
+                //disables reporting
+                ReportBtn.Enabled = false;
+            }
 
             // Bind views to combo box
             ViewsCbx.DataSource = RecordViews;
