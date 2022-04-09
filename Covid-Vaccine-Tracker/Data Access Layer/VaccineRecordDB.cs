@@ -40,11 +40,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         }
         // The next 3 methods use the Identifying_VaccineRecord class for the Provider views
         // They do not perform any CRUD. Only methods that use VaccineRecord performs crud or CDC views
-        public static List<Identifying_VaccineRecord> GetVaccineRecords_I()
+        public static List<Identifying_VaccineRecords_View> GetVaccineRecords_I()
         {
             // Create a list to hold the rows from the database
             // using dapper each object will map to a row from the query
-            List<Identifying_VaccineRecord> vaxRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> vaxRecords = new List<Identifying_VaccineRecords_View>();
             // Specify stored procedure to use
             string procedure = "[SpGetAllVaccines_Provider]";
 
@@ -59,7 +59,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
                 {
                     // assign the rows returned from query to the list of objects
                     // include the procedure and commandType
-                    vaxRecords = db.Query<Identifying_VaccineRecord>(procedure, commandType: CommandType.StoredProcedure).ToList();
+                    vaxRecords = db.Query<Identifying_VaccineRecords_View>(procedure, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             // catch errors and throw back to calling code
@@ -69,11 +69,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // Return the list of objects 
             return vaxRecords;
         }
-        public static List<Identifying_VaccineRecord> GetVaccineRecord_I(string patientId)
+        public static List<Identifying_VaccineRecords_View> GetVaccineRecord_I(string patientId)
         {
             // Create a IdentifyingVaxRecord object list to hold the row(s) returned
             // since a patient can have multiple vaccines need a list incase nultiple rows returned
-            List<Identifying_VaccineRecord> vaxRecord = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> vaxRecord = new List<Identifying_VaccineRecords_View>();
             
             // Specify the stored procedure to use
             string procedure = "[SpGetPatientVaccines_Provider]";
@@ -91,7 +91,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
                     // Assign vaxRecord object to the row returned from database
-                    vaxRecord = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaxRecord = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             // Thorw any errors back to calling code
@@ -101,11 +101,11 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // Return list of objects
             return vaxRecord;
         }
-        public static List<Identifying_VaccineRecord> GetVaxSeries_I(string seriesStatus)
+        public static List<Identifying_VaccineRecords_View> GetVaxSeries_I(string seriesStatus)
         {
             // Yes, No, or Unknown will be passed in and then rows with VaxSereis complete equal to that value
             // will be returned 
-            List<Identifying_VaccineRecord> vaxRecord = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> vaxRecord = new List<Identifying_VaccineRecords_View>();
 
             // Procedure to use
             string procedure = "[SpGetSeries_Provider]";
@@ -124,7 +124,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
                 {
                     // Assign list to rows returned 
                     // pass in the procedure, parameter and procedure
-                    vaxRecord = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaxRecord = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch(Exception ex)
@@ -133,9 +133,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // Return list
             return vaxRecord;
         }
-        public static List<Identifying_VaccineRecord> GetVaccinesByDose_I(string doseNumb)
+        public static List<Identifying_VaccineRecords_View> GetVaccinesByDose_I(string doseNumb)
         {
-            List<Identifying_VaccineRecord> identifyingRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> identifyingRecords = new List<Identifying_VaccineRecords_View>();
             string procedure = "[SpGetVaccineByDose_Provider]";
             var parameter = new { dose = doseNumb };
 
@@ -145,7 +145,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
-                    identifyingRecords = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    identifyingRecords = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch(Exception ex)
@@ -153,9 +153,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return identifyingRecords;
         }
-        public static List<Identifying_VaccineRecord> GetVaccineByCity_I(string City)
+        public static List<Identifying_VaccineRecords_View> GetVaccineByCity_I(string City)
         {
-            List<Identifying_VaccineRecord> identifyingRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> identifyingRecords = new List<Identifying_VaccineRecords_View>();
             string procedure = "[SpGetVaccineByCity_Provider]";
             var parameter = new { city = City };
 
@@ -165,7 +165,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    identifyingRecords = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    identifyingRecords = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -173,9 +173,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return identifyingRecords;
         }
-        public static List<Identifying_VaccineRecord> GetVaccineByCounty_I(string County)
+        public static List<Identifying_VaccineRecords_View> GetVaccineByCounty_I(string County)
         {
-            List<Identifying_VaccineRecord> identifyingRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> identifyingRecords = new List<Identifying_VaccineRecords_View>();
             string procedure = "[SpGetVaccineByCounty_Provider]";
             var parameter = new { county = County };
 
@@ -185,7 +185,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    identifyingRecords = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    identifyingRecords = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -193,9 +193,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return identifyingRecords;
         }
-        public static List<Identifying_VaccineRecord> GetVaccinesByRace_I(string Race)
+        public static List<Identifying_VaccineRecords_View> GetVaccinesByRace_I(string Race)
         {
-            List<Identifying_VaccineRecord> vaccineRecords = new List<Identifying_VaccineRecord>();
+            List<Identifying_VaccineRecords_View> vaccineRecords = new List<Identifying_VaccineRecords_View>();
             string procedure = "[SpGetVaccinesByRace_Provider]";
             var parameter = new { race = Race };
 
@@ -205,7 +205,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<Identifying_VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<Identifying_VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -285,9 +285,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaxIdFound;
         }
-        public static List<VaccineRecord> GetVaccineRecords_D()
+        public static List<VaccineRecords_View> GetVaccineRecords_D()
         {
-            List<VaccineRecord> vaxRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaxRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetVaccineRecords]";
 
             try
@@ -296,7 +296,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaxRecords = db.Query<VaccineRecord>(procedure, commandType: CommandType.StoredProcedure).ToList();
+                    vaxRecords = db.Query<VaccineRecords_View>(procedure, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch(Exception ex)
@@ -304,9 +304,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaxRecords;
         }
-        public static List<VaccineRecord> GetVaccinesBySeriesStatus_D(string seriesStatus)
+        public static List<VaccineRecords_View> GetVaccinesBySeriesStatus_D(string seriesStatus)
         {
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetSeriesByStatus_CDC]";
             var parameter = new { status = seriesStatus };
 
@@ -316,7 +316,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -324,9 +324,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaccineRecords;
         }
-        public static List<VaccineRecord> GetVaccinesByDose_D(string doseNum)
+        public static List<VaccineRecords_View> GetVaccinesByDose_D(string doseNum)
         {
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetVaccineByDose]";
             var parameter = new { dose = doseNum };
 
@@ -336,7 +336,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -344,9 +344,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaccineRecords;
         }
-        public static List<VaccineRecord> GetVaccinesByCity_D(string City)
+        public static List<VaccineRecords_View> GetVaccinesByCity_D(string City)
         {
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetVaccineByCity]";
             var parameter = new { city = City };
 
@@ -356,7 +356,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -364,9 +364,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaccineRecords;
         }
-        public static List<VaccineRecord> GetVaccineByCounty_D(string County)
+        public static List<VaccineRecords_View> GetVaccineByCounty_D(string County)
         {
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetVaccineByCounty]";
             var parameter = new { county = County };
 
@@ -376,7 +376,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
@@ -384,9 +384,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return vaccineRecords;
         }
-        public static List<VaccineRecord> GetVaccineByRace_D(string Race)
+        public static List<VaccineRecords_View> GetVaccineByRace_D(string Race)
         {
-            List<VaccineRecord> vaccineRecords = new List<VaccineRecord>();
+            List<VaccineRecords_View> vaccineRecords = new List<VaccineRecords_View>();
             string procedure = "[SpGetVaccinesByRace]";
             var parameter = new { race= Race };
 
@@ -396,7 +396,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    vaccineRecords = db.Query<VaccineRecord>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
+                    vaccineRecords = db.Query<VaccineRecords_View>(procedure, parameter, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
