@@ -203,15 +203,75 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return sexes;
         }
-        public static List<RaceVaccine> GetRaceVaccines()
+        //public static List<RaceVaccine> GetPrimaryRaceVaccines()
+        //{
+        //    // there are two columns for race so create two lists of races then put them together
+        //    List<RaceVaccine> races1 = new List<RaceVaccine>();
+        //    List<RaceVaccine> races2 = new List<RaceVaccine>();
+        //    // create a list to hold list 1 and 2
+        //    List<RaceVaccine> races = new List<RaceVaccine>();
+        //    string procedure1 = "[SpGetRace1Vaccines]";
+        //    string procedure2 = "[SpGetRace2Vaccines]";
+
+        //    try
+        //    {
+        //        string conStr = GetConnection();
+
+        //        using (IDbConnection db = new SqlConnection(conStr))
+        //        {
+        //            races1 = db.Query<RaceVaccine>(procedure1, commandType: CommandType.StoredProcedure).ToList();
+        //            races2 = db.Query<RaceVaccine>(procedure2, commandType: CommandType.StoredProcedure).ToList();
+        //        }
+        //        // now check each list to get correct count
+        //        // races1.Except will return every thing in races1 that is not in races2
+        //        races = (List<RaceVaccine>)races1.Except(races2);
+
+        //        // now go through the list and find the values that are the same then add them to the list
+        //        foreach(RaceVaccine r1 in races1)
+        //            foreach(RaceVaccine r2 in races2)
+        //            {
+        //                if (r1.Race == r2.Race)
+        //                {
+        //                    //RaceVaccine updateRaceCount = new RaceVaccine(r1.Race, (r1.Doses_Administered + r2.Doses_Administered));
+        //                    RaceVaccine updatedRaceCount = new RaceVaccine();
+        //                    updatedRaceCount.Race = r1.Race;
+        //                    updatedRaceCount.Doses_Administered = r1.Doses_Administered + r2.Doses_Administered;
+        //                    races.Add(updatedRaceCount);
+        //                }
+        //            }
+        //        // now get the left over items from races1
+        //        for (int item = 0; item < races.Count; item++)
+        //        {
+        //            for (int item2 = 0; item < races1.Count; item2++)
+        //            {
+        //                if (races[item].Race != races1[item2].Race)
+        //                    races.Append(races1[item2]);
+        //            }
+        //        }
+        //        // now get the left over items from races2
+        //        for (int item = 0; item < races.Count; item++)
+        //        {
+        //            for (int item2 = 0; item < races2.Count; item2++)
+        //            {
+        //                if (races[item].Race != races1[item2].Race)
+        //                    races.Append(races2[item2]);
+        //            }
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    { throw ex; }
+
+        //    return races;
+
+        //}
+        public static List<RaceVaccine> GetPrimaryRaceVaccines()
         {
             // there are two columns for race so create two lists of races then put them together
             List<RaceVaccine> races1 = new List<RaceVaccine>();
-            List<RaceVaccine> races2 = new List<RaceVaccine>();
+            
             // create a list to hold list 1 and 2
             List<RaceVaccine> races = new List<RaceVaccine>();
             string procedure1 = "[SpGetRace1Vaccines]";
-            string procedure2 = "[SpGetRace2Vaccines]";
 
             try
             {
@@ -220,27 +280,35 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
                     races1 = db.Query<RaceVaccine>(procedure1, commandType: CommandType.StoredProcedure).ToList();
-                    races2 = db.Query<RaceVaccine>(procedure2, commandType: CommandType.StoredProcedure).ToList();
                 }
-                // now check each list to get correct count
-                // races1.Except will return every thing in races1 that is not in races2
-                races = (List<RaceVaccine>)races1.Except(races2);
 
-                // now go through the list and find the values that are the same then add them to the list
-                foreach(RaceVaccine r1 in races1)
-                    foreach(RaceVaccine r2 in races2)
-                    {
-                        if (r1.Race == r2.Race)
-                        {
-                            RaceVaccine updateRaceCount = new RaceVaccine(r1.Race, (r1.Doses_Administered + r2.Doses_Administered));
-                            races.Add(updateRaceCount);
-                        }
-                    }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { throw ex; }
 
-            return races;
+            return races1;
+
+        }
+        public static List<RaceVaccine> GetSecondaryRaceVaccines()
+        {
+            // there are two columns for race so create two lists of races then put them together
+            List<RaceVaccine> races2 = new List<RaceVaccine>();
+            string procedure1 = "[SpGetRace2Vaccines]";
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    races2 = db.Query<RaceVaccine>(procedure1, commandType: CommandType.StoredProcedure).ToList();
+                }
+
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return races2;
 
         }
         public static List<EthnicityVaccine> GetEthnicityVaccines()

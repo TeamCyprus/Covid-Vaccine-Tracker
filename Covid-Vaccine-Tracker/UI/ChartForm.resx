@@ -135,7 +135,7 @@
         lAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BarBtn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BarBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKaSURBVDhPndJ/LNRxHMfxj9qsWammmpFf1ZlDnZifo+tY
@@ -152,7 +152,7 @@
         7WLe5pa1NgL3vzno1yKjfy3Ok2X6x1jfJn0Wy0xvmPEfgLRcmWa/4/UAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="LineBtn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LineBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH7SURBVDhPlVH9S1NhGH1RUIyZ3tlwLNChFpXkwvygD5yl
@@ -167,37 +167,37 @@
         +iYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="PieBtn1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="PieBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="LoadBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVDhPtYxfSFNhGIe/s8qLWsVWizW7sN1ImTXyqiIh
+        ykhCR2PME5ZlYjISpq4aWyYN2pqtJps1JgmZ5vozpZCWa/bHiHWxnV0UdpUkkVjgVRfVTevXebdTZKzy
+        pgce+Hi/533Zf2RBNcdxQyS9peF8KdBz3KI7tyMRkPSmmfT5L+QGjsmjt4ZH4AuEstKbZvQnRX9CaeSY
+        Iv7EWI5UpQYpXouwvQFnOoPoDdMRRZwaKf4dTQ1jq8e7bCfxumYF3jvVmO1Woc+6ExdHqtF6wYyWwClQ
+        k2vnoN3PWFGixXMTl/lyfPCo8DG2Cp+eq3DabkBsgkfgcQlMvaXY3VElHilK5HayFNeKJg913EBlkx8h
+        Yxm8B3S41LwOD4OFCA1YkZ5qx1C6AseH12OXuQ517dfFI8XJ3C5X0sO4UuGHa88+QtvoO9x9MQOzw4c2
+        TxNG0w70J/RoDOjwa5vdnYOsTFD6X8Icncb9yc+we9wYGwuiy1cPn3srrpyvADVSnYeCLYLCncSm/klY
+        702j238EmVkvvs3wyLxS4qrfBGqkOg+Ldwhr9A6oaz3YcGIAqdg2ZKY24uuEGl8eLIHF5gA1Up0H+R6B
+        t4bBt17DvkYv+s5txpuIEm8HlyLq0oK39IAaqc6Doko46hpHc+czWLxPUW8bhP6wC3sPOmE6FkKDMw5q
+        pPonC0ULRXVs+fYwW2kQ/io11OZ2aJfJRJeJqkU185RacYfJvgOIFxcxB0ZwGgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="ExitBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -218,6 +218,9 @@
         SUVORK5CYII=
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>

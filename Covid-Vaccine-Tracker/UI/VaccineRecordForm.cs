@@ -28,7 +28,7 @@ namespace Covid_Vaccine_Tracker.UI
         Provider ActiveProvider = new Provider();
         Patient CurrentPatient = new Patient();
         VaccineRecord vaxRecord;
-        bool ExisitingPatient, NeedPPRL;
+        bool ExisitingPatient, NeedPPRL, possibleDataLoss;
         Extracts ExtractType = new Extracts();
         string GeneratedVaxEventId, currentPPRL;
         // List to hold all of the combobox values
@@ -462,7 +462,11 @@ namespace Covid_Vaccine_Tracker.UI
             AdminCountyTxt.Text = string.Empty;
             AdminStateCbx.SelectedIndex = -1;
             AdminZipTxt.Text = string.Empty;
-            ProviderSuffixCbx.SelectedIndex = -1;           
+            ProviderSuffixCbx.SelectedIndex = -1;
+            // reset data loss flag
+            possibleDataLoss = true;
+            // redundant for testing purposes
+            dataSumbitted = false;
         }
         private void DisplaySuccess(string msg, string title)
         {
@@ -584,11 +588,12 @@ namespace Covid_Vaccine_Tracker.UI
                         if (VaxSuccess)
                         {
                             DisplaySuccess("Vaccine record has been successfully added", AppTitle);
+                            // set dataSubmitted to true so new vaccine event it will be created
+                            dataSubmitted = true;
+                            possibleDataLoss = false;
                             ResetInputs(true);
                             VaxEventIdTxt.Text = GeneratedVaxEventId;
                             SetIdControlType("Patient");
-                            // set dataSubmitted to true so new vaccine event it will be created
-                            dataSubmitted = true;
                         }
                         else
                             DisplayError("Vaccine record has not been added", AppTitle);
@@ -625,14 +630,24 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            DialogResult closeForm = MessageBox.Show("Do You wish to close the entire application?", AppTitle,
-             MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            // the two messages to ask the user
+            string dataSavedMsg = "Do you wish to close the entire application?";
+            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
+            string Msg = string.Empty;
 
+            // determine which message needs to be displayed
+            if (!dataSubmitted)
+                Msg = dataNotSavedMsg;
+            else if (dataSubmitted)
+                Msg = dataSavedMsg;
+
+            // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+            DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
+                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
                 Application.Exit();
-            // Check to see if no btn was selected
+            // Check to see if no btn was selected the raise closeSelectir event
             else if (closeForm == DialogResult.No)
                 this.Close();
             // Dont need to check if cancel was selected because not closing app or not closing form
@@ -690,6 +705,30 @@ namespace Covid_Vaccine_Tracker.UI
                 ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", IdTxt, 25, -20, 2500);
             }
         }
+
+        private void VaccineRecordForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
+                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    // Checks to see if yes button was selected
+                    if (closeForm == DialogResult.Yes)
+                        this.Close();
+                    // Check to see if no btn was selected the raise closeSelectir event
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                    // Dont need to check if cancel was selected because not closing app or not closing form
+                    // is what cancel should do
+                }
+            }
+        }
+
         void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
         {
             // Create a tool tip object to display message in

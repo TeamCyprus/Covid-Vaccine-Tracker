@@ -54,11 +54,6 @@ namespace Covid_Vaccine_Tracker.Business_Objects
     }
     public class RaceVaccine
     {
-        public RaceVaccine(string race, int doses)
-        {
-            this.Race = race;
-            this.Doses_Administered = doses;
-        }
         public string Race { get; set; }
         public int Doses_Administered { get; set; }
     }
@@ -75,7 +70,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
     // this class can be used for top3 manufacturer also
     public class ManufacturerVaccine
     {
-        public string Vaccine_Manufacturer { get; set; }
+        public string Manufacturer { get; set; }
         public int Doses_Administered { get; set; }
     }
     public class VaccineCity

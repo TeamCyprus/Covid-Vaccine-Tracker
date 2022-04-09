@@ -353,7 +353,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.MnameTxt.Name = "MnameTxt";
             this.MnameTxt.Size = new System.Drawing.Size(196, 24);
             this.MnameTxt.TabIndex = 7;
-            this.MnameTxt.TextChanged += new System.EventHandler(this.MnameTxt_TextChanged);
             // 
             // label12
             // 
@@ -629,6 +628,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.Name = "ProviderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Portal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProviderForm_FormClosing);
             this.Load += new System.EventHandler(this.ProviderForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

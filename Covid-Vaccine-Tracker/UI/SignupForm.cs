@@ -30,7 +30,7 @@ namespace Covid_Vaccine_Tracker.UI
         string GenerateProviderOrCdcId;
         string encryptedPW;
         (bool, string) isValid;
-        bool ErrorOccured, dataSubmitted = false;
+        bool ErrorOccured, dataSubmitted = false, possibleDataLoss = true;
         Provider NewProvider = new Provider();
         CDC NewCDCuser = new CDC();
         User newUser = new User();
@@ -492,12 +492,13 @@ namespace Covid_Vaccine_Tracker.UI
                                 DisplaySuccess("User created successfully", AppTitle);
                                 dataSubmitted = true;
                                 // this raises the CloseAccountSelector event so user goes back to the login screen
+                                possibleDataLoss = false;
                                 RaiseCloseSelector();
-                                
                             }
                             else
                             {
                                 dataSubmitted = false;
+                                possibleDataLoss = true;
                                 DisplayError("Error. User has not been added", AppTitle);
                             }
                         }
@@ -572,8 +573,8 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // the two messages to ask the user
             string dataSavedMsg = "Do you wish to close the entire application?";
-            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the entire application?";
-            string Msg;
+            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
+            string Msg = string.Empty;
 
             // determine which message needs to be displayed
             if (!dataSubmitted)
@@ -582,7 +583,7 @@ namespace Covid_Vaccine_Tracker.UI
                 Msg = dataSavedMsg;
 
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the entire application?", AppTitle,
+            DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
                  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
@@ -610,7 +611,29 @@ namespace Covid_Vaccine_Tracker.UI
             ProviderSuffixCBX.DisplayMember = "Suffix";
             ProviderSuffixCBX.ValueMember = "Code";
         }
-
+        // code to help prevent data loss
+        private void SignupForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
+                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    // Checks to see if yes button was selected
+                    if (closeForm == DialogResult.Yes)
+                        RaiseCloseSelector();
+                    // Check to see if no btn was selected the raise closeSelectir event
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                    // Dont need to check if cancel was selected because not closing app or not closing form
+                    // is what cancel should do
+                }
+            }
+        }
         private void ZipTxt_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             ToolTip ErrorTip = new ToolTip();

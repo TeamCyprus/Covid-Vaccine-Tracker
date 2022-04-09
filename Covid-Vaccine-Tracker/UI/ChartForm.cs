@@ -12,14 +12,16 @@ namespace Covid_Vaccine_Tracker.UI
     {
         List<VaccineRollOut> Rollout = new List<VaccineRollOut>();
         // int holds the "index" of chart type from chart menu items
-        int cIndex = -1;
+        int cIndex = -1, DataIndex = 0, tIndex = 1;
         string AppTitle = "Covid Vaccine Tracker", DataErrorMsg = "Could not find data to match search filter, please try again later";
         bool dataSelected = false;
-        bool barChart, lineChart, pieChart, stackedBar, column, stackedCol, stepLine, area, stackedArea, kagi, bubble, funnel, pyrmaid;
+        bool barChart, lineChart, pieChart;
+        string currentAxisLabel = string.Empty;
         // need a basic list to store data lists inorder to have only one Create bar&line chart method
         List<Stats> statsList = new List<Stats>();
         Dictionary<int, string> Titles = new Dictionary<int, string>()
         {
+            {0, "Vaccine Information" },
             {1, "Dose Ranking" },
             {2, "Top 3 Doses" },
             {3, "Vaccine Roll Out" },
@@ -42,18 +44,28 @@ namespace Covid_Vaccine_Tracker.UI
         {
             barChart = true;
             lineChart = false;
+            cIndex = 1;
+            // enable load btn
+            LoadControl("enable");
         }
 
         private void LineBtn_Click(object sender, EventArgs e)
         {
             lineChart = true;
             barChart = false;
+            cIndex = 2;
+            // enable load btn
+            LoadControl("enable");
         }
+
         private void PieBtn_Click(object sender, EventArgs e)
         {
             pieChart = true;
             lineChart = false;
             barChart = false;
+            cIndex = 3;
+            // enable load btn
+            LoadControl("enable");
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -72,6 +84,11 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void RankingBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Ranking";
+            tIndex = 1;
+            
             // create a list to store data from db
             List<DoseRank> rankings = new List<DoseRank>();
             try
@@ -94,6 +111,8 @@ namespace Covid_Vaccine_Tracker.UI
                         // add to stat list
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else // no data
                     DisplayError(DataErrorMsg, AppTitle);
@@ -105,6 +124,10 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void TopDBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Doses";
+            tIndex = 2;
             // create list to hold data
             List<TopDose> Top3D = new List<TopDose>();
             try
@@ -128,6 +151,8 @@ namespace Covid_Vaccine_Tracker.UI
                         // add to the stats list
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -139,6 +164,10 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void RollOutBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list values
+            statsList.Clear();
+            currentAxisLabel = "Dates";
+            tIndex = 3;
             // follow the same logic as above
             //List<VaccineRollOut> rollout = new List<VaccineRollOut>();
             try
@@ -154,6 +183,8 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = vr.Vaccines_Administered;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -165,6 +196,10 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void SeriesBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Sereis Status";
+            tIndex = 4;
             List<VaccineStatus> statuses = new List<VaccineStatus>();
             try
             {
@@ -178,6 +213,8 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = vs.Patients;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -188,6 +225,10 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void CityBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "City";
+            tIndex = 5;
             List<VaccineCity> cities = new List<VaccineCity>();
             try
             {
@@ -201,6 +242,8 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = c.People_Vaccinated;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -213,6 +256,10 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void CountyBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "County";
+            tIndex = 6;
             List<VaccineCounty> counties = new List<VaccineCounty>();
             try
             {
@@ -226,6 +273,8 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = c.People_Vaccinated;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -237,6 +286,10 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void SexBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Sex";
+            tIndex = 7;
             List<SexVaccine> sexes = new List<SexVaccine>();
             try
             {
@@ -250,6 +303,8 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = s.People_Vaccinated;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
@@ -261,11 +316,15 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void RaceBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Primary Race";
+            tIndex = 8;
             List<RaceVaccine> races = new List<RaceVaccine>();
             try
             {
                 // need to double check that race1 and race2 list get merged correctly in StatsDB
-                races = StatsDB.GetRaceVaccines();
+                races = StatsDB.GetPrimaryRaceVaccines();
                 if (races.Count > 0)
                 {
                     foreach (RaceVaccine r in races)
@@ -275,79 +334,53 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = r.Doses_Administered;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
-
 
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
 
-        private void StackedBarBtn_Click(object sender, EventArgs e)
+        private void SecondaryRaceBtn_Click_1(object sender, EventArgs e)
         {
-            cIndex = 1;
-        }
-        private void ColumnBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 2;
-        }
-        private void StackedColumnBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 3;
-        }
-        private void StepLineBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 4;
-        }
-
-        private void SplineAreaBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 5;
-        }
-        private void StackedAreaBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 6;
-        }
-
-        private void KagiBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 7;
-        }
-
-        private void BubbleBtn_Click(object sender, EventArgs e)
-        {
-            // buble chart requires atleaset 2 y values
-            cIndex = 8;
-        }
-
-
-        private void FunnelBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 9;
-        }
-
-        private void LoadBtn_Click(object sender, EventArgs e)
-        {
-            if (statsList.Count > 0)
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Secondary Race";
+            tIndex = 9;
+            List<RaceVaccine> races = new List<RaceVaccine>();
+            try
             {
-                if (barChart)
-                    CreateBarChart(statsList, 1);
-                else if (lineChart)
-                    CreateLineChart(statsList, 1);
-                else if (pieChart)
-                    CreatePieChart(statsList, 1);
+                // need to double check that race1 and race2 list get merged correctly in StatsDB
+                races = StatsDB.GetSecondaryRaceVaccines();
+                if (races.Count > 0)
+                {
+                    foreach (RaceVaccine r in races)
+                    {
+                        Stats stat = new Stats();
+                        stat.DataName = r.Race;
+                        stat.DataValue = r.Doses_Administered;
+                        statsList.Add(stat);
+                    }
+                    // enable controls
+                    ChartControl("enable");
+                }
+                else
+                    DisplayError(DataErrorMsg, AppTitle);
+
             }
+            catch (Exception ex)
+            { DisplayError(ex.Message, AppTitle); }
         }
-
-        private void PyrimidBtn_Click(object sender, EventArgs e)
-        {
-            cIndex = 10;
-        }
-
         private void EthnicityBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Ethnicity";
+            tIndex = 10;
             List<EthnicityVaccine> ethnicities = new List<EthnicityVaccine>();
             try
             {
@@ -361,16 +394,22 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = ev.People_Vaccinated;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
         private void manufacturerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Manufacturer";
+            tIndex = 11;
             List<ManufacturerVaccine> manufacturers = new List<ManufacturerVaccine>();
             try
             {
@@ -380,21 +419,27 @@ namespace Covid_Vaccine_Tracker.UI
                     foreach (ManufacturerVaccine m in manufacturers)
                     {
                         Stats stat = new Stats();
-                        stat.DataName = m.Vaccine_Manufacturer;
+                        stat.DataName = m.Manufacturer;
                         stat.DataValue = m.Doses_Administered;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
         private void TopMBtn_Click(object sender, EventArgs e)
         {
+            // clear out old list
+            statsList.Clear();
+            currentAxisLabel = "Manufacturer";
+            tIndex = 12;
             List<ManufacturerVaccine> top3M = new List<ManufacturerVaccine>();
             try
             {
@@ -404,107 +449,130 @@ namespace Covid_Vaccine_Tracker.UI
                     foreach (ManufacturerVaccine m in top3M)
                     {
                         Stats stat = new Stats();
-                        stat.DataName = m.Vaccine_Manufacturer;
+                        stat.DataName = m.Manufacturer;
                         stat.DataValue = m.Doses_Administered;
                         statsList.Add(stat);
                     }
+                    // enable controls
+                    ChartControl("enable");
                 }
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
         }
+
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            if (statsList.Count > 0)
+            {
+                if (barChart)
+                    CreateBarChart(statsList, cIndex, currentAxisLabel);
+                else if (lineChart)
+                    CreateLineChart(statsList, cIndex, currentAxisLabel);
+                else if (pieChart)
+                    CreatePieChart(statsList, cIndex, currentAxisLabel);
+            }
+        }
+
         // create a method that takes and returns a generic list that way any type of stat class list can be passed in
-        private void CreateBarChart(List<Stats> vaccineList, int titleKey)
+        private void CreateBarChart(List<Stats> vaccineList, int titleKey, string axisLabel)
         {
             // clear any existing data
             ClearChartData();
+            Series series = this.VaxChart.Series.Add(Titles[titleKey]);
             // if there is data in the list the create barchart
             if (vaccineList.Count > 0)
             {
+                this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                //this.VaxChart.Titles.FindByName(axisLabel);
+                this.VaxChart.DataSource = vaccineList;
+                // create the name for the sereies ie the line
+                //series.ChartType = SeriesChartType.Bar;
+                series.AxisLabel = axisLabel;
                 // create the chart title by using values stored in Titles dict
-                this.VaxChart.Titles.Add(Titles[titleKey]);
+                //this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
                 // loop through each data item in list
                 for (int datapoint = 0; datapoint < vaccineList.Count; datapoint++)
                 {
-                    // assign each data point name ie Dose Number to chart series
-                    Series series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
-                    
-                    // now add the data values ie the number of doses administered for respective dose number
+                    //// assign each data point name ie Dose Number to chart series
+                    ////Series series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
+                    series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
+                    series.AxisLabel = axisLabel;
+                    //// now add the data values ie the number of doses administered for respective dose number
                     series.Points.Add(vaccineList.ElementAt(datapoint).DataValue);
+                    VaxChart.Series[datapoint].LegendText = vaccineList.ElementAt(datapoint).DataName;
+                    VaxChart.Series[datapoint].Label = vaccineList.ElementAt(datapoint).DataValue.ToString();
+
                 }
+                
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
         }
         // create a method that takes and returns a generic list that way any type of stat class list can be passed in
-        private void CreateLineChart(List<Stats> vaccineList, int titleKey)
+        private void CreateLineChart(List<Stats> vaccineList, int titleKey, string axisLabel)
         {
             // clear any existing data
             ClearChartData();
 
-            // if there is data in the list create linechart
-            if (vaccineList.Count > 0)
+            try
             {
-                // use Titles dict to create chart title
-                this.VaxChart.Titles.Add(Titles[titleKey]);
-                this.VaxChart.DataSource = vaccineList;
-                // loop through the list and assign each x,y cordinate to chart
-                for (int dp = 0; dp < vaccineList.Count; dp++)
+                // if there is data in the list create linechart
+                if (vaccineList.Count > 0)
                 {
-                    // get the x y values for each item in list
-                    string xPoint = vaccineList.ElementAt(dp).DataName;
-                    int yPoint = vaccineList.ElementAt(dp).DataValue;
+                    // use Titles dict to create chart title
+                    this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                    this.VaxChart.DataSource = vaccineList;
                     // create the name for the sereies ie the line
                     Series series = this.VaxChart.Series.Add(Titles[titleKey]);
-                    // now add the x, y values
-                    series.Points.AddXY(xPoint, yPoint);
-                }
+                    series.ChartType = SeriesChartType.Line;
+                    series.AxisLabel = axisLabel;
+                    // loop through the list and assign each x,y cordinate to chart
+                    for (int dp = 0; dp < vaccineList.Count; dp++)
+                    {
+                        // get the x y values for each item in list
+                        string xPoint = vaccineList.ElementAt(dp).DataName;
+                        int yPoint = vaccineList.ElementAt(dp).DataValue;
+                        // now add the x, y values
+                        series.Points.AddXY(xPoint, yPoint);
+                    }
 
+                }
+                else // no data in list
+                    DisplayError(DataErrorMsg, AppTitle);
             }
-            else // no data in list
-                DisplayError(DataErrorMsg, AppTitle);
+            catch(Exception ex)
+            { DisplayError(ex.Message, AppTitle); }
         }
-        private void CreatePieChart(List<Stats> vaccineList, int titleKey)
+        private void CreatePieChart(List<Stats> vaccineList, int titleKey, string axisLabel)
         {
             ClearChartData();
-            // set the chart type to pie
-            VaxChart.Series[0].ChartType = SeriesChartType.Pie;
             // set the title
-            this.VaxChart.Titles.Add(Titles[titleKey]);
-            // create the chart if there is data in list
-            if (vaccineList.Count > 0)
+            try
             {
-                for (int dp = 0; dp < vaccineList.Count; dp++)
+                this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                Series series = this.VaxChart.Series.Add(Titles[titleKey]);
+                series.ChartType = SeriesChartType.Pie;
+                series.AxisLabel = axisLabel;
+                // create the chart if there is data in list
+                if (vaccineList.Count > 0)
                 {
-                    // get the datavalues for the chart from list
-                    string xPoint = vaccineList.ElementAt(dp).DataName;
-                    int yPoint = vaccineList.ElementAt(dp).DataValue;
-                    VaxChart.Series[0].Points.AddXY(xPoint, yPoint);
+                    for (int dp = 0; dp < vaccineList.Count; dp++)
+                    {
+                        // get the datavalues for the chart from list
+                        string xPoint = vaccineList.ElementAt(dp).DataName;
+                        int yPoint = vaccineList.ElementAt(dp).DataValue;
+                        series.Points.AddXY(xPoint, yPoint);
+                    }
                 }
+                else // no data in list
+                    DisplayError(DataErrorMsg, AppTitle);
             }
-            else // no data in list
-                DisplayError(DataErrorMsg, AppTitle);
-        }
-        private void CreateChart(List<Stats> vaccineList, int chartIdx, int titleKey)
-        {
-            ClearChartData();
-            SetChartType(chartIdx);
-            this.VaxChart.Titles.Add(Titles[titleKey]);
-            // this.VaxChart.DataSource = vaccineList;
-            if (vaccineList.Count > 0)
-            {
-                for (int dp = 0; dp < vaccineList.Count; dp++)
-                {
-                    string xPoint = vaccineList.ElementAt(dp).DataName;
-                    int yPoint = vaccineList.ElementAt(dp).DataValue;
-                    VaxChart.Series[0].Points.AddXY(xPoint, yPoint);
-                }
-            }
-            else // no data in list
-                DisplayError(DataErrorMsg, AppTitle);
+            catch(Exception ex)
+            { DisplayError(ex.Message, AppTitle); }
         }
         private void ChartForm_Load(object sender, EventArgs e)
         {
@@ -517,12 +585,12 @@ namespace Covid_Vaccine_Tracker.UI
                 // calc some descriptive statistics
                 totalDose = StatsDB.GetDoseCount();
                 numPpl = StatsDB.GetPatientCount();
-                mean = StatsDB.GetAverageDose();
+                mean = Math.Round(StatsDB.GetAverageDose(),4);
                 // calculate a 7 day rolling average
-                movinAvg = VaccineStatistics.CalculateMovingAverage(totalDose, 7);
+                movinAvg = Math.Round(VaccineStatistics.CalculateMovingAverage(totalDose, 7),4);
                 // Get the the list of data
-                std = VaccineStatistics.CalculateSampleStandardDev(Rollout);
-                variance = VaccineStatistics.CalculateSampleVarriance(Rollout);
+                std = Math.Round(VaccineStatistics.CalculateSampleStandardDev(Rollout),4);
+                variance = Math.Round(VaccineStatistics.CalculateSampleVarriance(Rollout),4);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -534,6 +602,14 @@ namespace Covid_Vaccine_Tracker.UI
             MovingAvgTxt.Text = movinAvg.ToString();
             StdTxt.Text = std.ToString();
             VarTxt.Text = variance.ToString();
+            
+
+            // disable controls
+            DataControl("enable");
+            ChartControl("Disable");
+            LoadControl("Disable");
+            // give chart the focus
+            VaxChart.Focus();
         }
         private void SetChartType(int chartIndx)
         {
@@ -582,8 +658,52 @@ namespace Covid_Vaccine_Tracker.UI
             // clear out anything in chart
             this.VaxChart.Series.Clear();
             this.VaxChart.Titles.Clear();
-            this.VaxChart.DataSource = null;
         }
+
+        private void DataControl(string command)
+        {
+            string commandLOWER = command.ToLower();
+            switch(commandLOWER)
+            {
+                case "disable":
+                    DataBtn.Enabled = false;
+                    break;
+                case "enable":
+                    DataBtn.Enabled = true;
+                    break;
+            }
+        }
+        private void ChartControl(string command)
+        {
+            string commandLOWER = command.ToLower();
+            switch (commandLOWER)
+            {
+                case "disable":
+                    BarBtn.Enabled = false;
+                    LineBtn.Enabled = false;
+                    PieBtn.Enabled = false;
+                    break;
+                case "enable":
+                    BarBtn.Enabled = true;
+                    LineBtn.Enabled = true;
+                    PieBtn.Enabled = true;
+                    break;
+            }
+        }
+        private void LoadControl(string command)
+        {
+            string commandLOWER = command.ToLower();
+            switch (commandLOWER)
+            {
+                case "disable":
+                    LoadBtn.Enabled = false;
+                    break;
+                case "enable":
+                    LoadBtn.Enabled = true;
+                    break;
+            }
+        }
+
         private void DisplaySuccess(string msg, string title)
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

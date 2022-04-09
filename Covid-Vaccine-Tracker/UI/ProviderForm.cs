@@ -28,7 +28,7 @@ namespace Covid_Vaccine_Tracker.UI
         // Therefor every method on this form has access to them
 
         // Title of app used in DisplayError and DisplaySuccess methods
-        readonly string appTitle = "Covid Vaccine Tracker";
+        readonly string AppTitle = "Covid Vaccine Tracker";
 
         // Newly generated patient id and PPRL if new patient menu item clicked
         string GeneratedPatientId;
@@ -58,6 +58,7 @@ namespace Covid_Vaccine_Tracker.UI
         // tuple to check patients age
         (bool, string) OfAge;
         bool IsAdd, IdExist, PprlExist, ErrorOccured = false;
+        bool possibleDataLoss = true, dataSubmitted = false;
 
         public ProviderForm()
         {
@@ -173,6 +174,11 @@ namespace Covid_Vaccine_Tracker.UI
             Race1Cbx.SelectedIndex = -1;
             Race2Cbx.SelectedIndex = -1;
             EthnicityCbx.SelectedIndex = -1;
+
+            // reset data loss flags
+            dataSubmitted = false;
+            // redundant for testing purposes
+            possibleDataLoss = true;
         }
         private (bool,string) CheckForm(ref int Tbx)
         {
@@ -726,7 +732,7 @@ namespace Covid_Vaccine_Tracker.UI
             IsValid = CheckForm(ref tbx);
             // Holds status of patient insert and PPRl insert
             bool WasSuccess, GoodAdd;
-
+            dataSubmitted = false;
             // If IsValid item1 aka the bool is true
             if (IsValid.Item1)
             {
@@ -750,7 +756,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                             if (WasSuccess)
                             {
-                                DisplaySuccess("Patient has been succesfully added", appTitle);
+                                DisplaySuccess("Patient has been succesfully added", AppTitle);
                                 // Now check PprlExist flag to double check pprl number does not exist then add to db
                                 if (!PprlExist)
                                 {
@@ -764,7 +770,10 @@ namespace Covid_Vaccine_Tracker.UI
                                     // If pprl added successful do nothing
                                     // If add is unsuccessful display err Msg
                                     if (!GoodAdd)
-                                        DisplayError("An error occured while storing patient's PPRL", appTitle);
+                                        DisplayError("An error occured while storing patient's PPRL", AppTitle);
+
+                                    dataSubmitted = true;
+                                    possibleDataLoss = false;
                                 }
 
                                 // Disable groupbox and controls if was success
@@ -782,30 +791,24 @@ namespace Covid_Vaccine_Tracker.UI
 
                             }
                             else if (!WasSuccess)
-                                DisplayError("Error patient has not been added", appTitle);
+                                DisplayError("Error patient has not been added", AppTitle);
 
                         }
                         else
-                            DisplayError("There was an issue creating patient", appTitle);
+                            DisplayError("There was an issue creating patient", AppTitle);
 
                     }
                     else // If not a valid age display errorMsg with errorPv 
                         SetErrorPv(tbx, OfAge.Item2);
                 }
                 catch (Exception ex) // If there are any patient input errors display in error label
-                {DisplayError(ex.Message,appTitle); }
+                {DisplayError(ex.Message,AppTitle); }
             }
             // If IsValid Item1 false then display the error on the textbox with ErrorPV
             // IsValid.Item2 holds the error msg
             else
                 SetErrorPv(tbx, IsValid.Item2);
         }
-
-        private void MnameTxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             // Reset any errors from bfore
@@ -841,24 +844,27 @@ namespace Covid_Vaccine_Tracker.UI
                             // Display success or error msgs
                             if (WasSuccess)
                             {
-                                DisplaySuccess("Patient was successfully updated", appTitle);
+                                DisplaySuccess("Patient was successfully updated", AppTitle);
                                 // Disable groupbox and buttons
                                 InputControls("Disable");
+                                dataSubmitted = true;
+                                possibleDataLoss = false;
                                 DisableButtons();
                                 ResetForm();
+
                             }
                             else if (!WasSuccess)
-                                DisplayError("Error patient was not updated", appTitle);
+                                DisplayError("Error patient was not updated", AppTitle);
                         }
                         else
-                            DisplayError("There was an error updating patient information", appTitle);
+                            DisplayError("There was an error updating patient information", AppTitle);
                     }
                     else // Display errorMsg with erroPv
                         SetErrorPv(tbx, OfAge.Item2);
                 }
                 // If there were any errors caught display err msg
                 catch (Exception ex)
-                { DisplayError(ex.Message, appTitle); }
+                { DisplayError(ex.Message, AppTitle); }
             }
             // If there were missing or incorrect data then display set error msg on textbox with error
             else
@@ -869,11 +875,53 @@ namespace Covid_Vaccine_Tracker.UI
             ResetForm();
             ResetErrorLbl();
         }
+
+        private void ProviderForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
+                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    // Checks to see if yes button was selected
+                    if (closeForm == DialogResult.Yes)
+                        this.Close();
+                    // Check to see if no btn was selected the raise closeSelectir event
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                    // Dont need to check if cancel was selected because not closing app or not closing form
+                    // is what cancel should do
+                }
+            }
+        }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            // This will close out the application completely and this.Close() would take just close 
-            // this form and give control back to the login screen
-            Application.Exit();
+            // the two messages to ask the user
+            string dataSavedMsg = "Do you wish to close the entire application?";
+            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
+            string Msg = string.Empty;
+
+            // determine which message needs to be displayed
+            if (!dataSubmitted)
+                Msg = dataNotSavedMsg;
+            else if (dataSubmitted)
+                Msg = dataSavedMsg;
+
+            // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+            DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
+                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
+            // Check to see if no btn was selected the raise closeSelectir event
+            else if (closeForm == DialogResult.No)
+                this.Close();
+            // Dont need to check if cancel was selected because not closing app or not closing form
+            // is what cancel should do
         }
     }
 }

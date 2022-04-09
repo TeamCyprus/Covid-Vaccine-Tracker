@@ -30,9 +30,9 @@ namespace Covid_Vaccine_Tracker.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
             this.VaxChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -44,30 +44,17 @@ namespace Covid_Vaccine_Tracker.UI
             this.CityBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.CountyBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.SexBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.RaceBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrimaryRaceBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.SecondaryRaceBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.EthnicityBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.manufacturerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TopMBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.BarBtn1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.BarBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.StackedBarBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColumnBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.StackedColumnBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.LineBtn1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.LineBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.StepLineBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.AreaBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.KagiBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.BubbleBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.PieBtn1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.PieBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.FunnelBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.PyrimidBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.LoadBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -84,8 +71,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.label6 = new System.Windows.Forms.Label();
             this.MovingAvgTxt = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.LoadBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.BarBtn = new System.Windows.Forms.ToolStripButton();
+            this.LineBtn = new System.Windows.Forms.ToolStripButton();
+            this.PieBtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.VaxChart)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -97,18 +85,24 @@ namespace Covid_Vaccine_Tracker.UI
             this.VaxChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VaxChart.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             this.VaxChart.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            chartArea1.Name = "ChartArea1";
-            this.VaxChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.VaxChart.Legends.Add(legend1);
+            chartArea5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            chartArea5.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            chartArea5.Name = "ChartArea1";
+            this.VaxChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.VaxChart.Legends.Add(legend5);
             this.VaxChart.Location = new System.Drawing.Point(15, 14);
             this.VaxChart.Name = "VaxChart";
             this.VaxChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.VaxChart.Series.Add(series1);
-            this.VaxChart.Size = new System.Drawing.Size(703, 376);
+            series5.ChartArea = "ChartArea1";
+            series5.Font = new System.Drawing.Font("Perpetua Titling MT", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series5.IsValueShownAsLabel = true;
+            series5.LabelAngle = 12;
+            series5.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.VaxChart.Series.Add(series5);
+            this.VaxChart.Size = new System.Drawing.Size(884, 376);
             this.VaxChart.TabIndex = 9;
             this.VaxChart.Text = "chart1";
             // 
@@ -119,18 +113,18 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DataBtn,
             this.toolStripSeparator4,
-            this.BarBtn1,
+            this.BarBtn,
             this.toolStripSeparator1,
-            this.LineBtn1,
+            this.LineBtn,
             this.toolStripSeparator2,
-            this.PieBtn1,
+            this.PieBtn,
             this.toolStripSeparator3,
             this.LoadBtn,
             this.toolStripSeparator5,
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(985, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1198, 27);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "Data";
             // 
@@ -144,7 +138,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.CityBtn,
             this.CountyBtn,
             this.SexBtn,
-            this.RaceBtn,
+            this.PrimaryRaceBtn,
+            this.SecondaryRaceBtn,
             this.EthnicityBtn,
             this.manufacturerToolStripMenuItem,
             this.TopMBtn});
@@ -219,14 +214,23 @@ namespace Covid_Vaccine_Tracker.UI
             this.SexBtn.Text = "Sex";
             this.SexBtn.Click += new System.EventHandler(this.SexBtn_Click);
             // 
-            // RaceBtn
+            // PrimaryRaceBtn
             // 
-            this.RaceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.RaceBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.RaceBtn.Name = "RaceBtn";
-            this.RaceBtn.Size = new System.Drawing.Size(213, 24);
-            this.RaceBtn.Text = "Race";
-            this.RaceBtn.Click += new System.EventHandler(this.RaceBtn_Click);
+            this.PrimaryRaceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.PrimaryRaceBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.PrimaryRaceBtn.Name = "PrimaryRaceBtn";
+            this.PrimaryRaceBtn.Size = new System.Drawing.Size(213, 24);
+            this.PrimaryRaceBtn.Text = "Primary Race";
+            this.PrimaryRaceBtn.Click += new System.EventHandler(this.RaceBtn_Click);
+            // 
+            // SecondaryRaceBtn
+            // 
+            this.SecondaryRaceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.SecondaryRaceBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.SecondaryRaceBtn.Name = "SecondaryRaceBtn";
+            this.SecondaryRaceBtn.Size = new System.Drawing.Size(213, 24);
+            this.SecondaryRaceBtn.Text = "Secondary Race";
+            this.SecondaryRaceBtn.Click += new System.EventHandler(this.SecondaryRaceBtn_Click_1);
             // 
             // EthnicityBtn
             // 
@@ -260,183 +264,36 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
-            // BarBtn1
-            // 
-            this.BarBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BarBtn,
-            this.StackedBarBtn,
-            this.ColumnBtn,
-            this.StackedColumnBtn});
-            this.BarBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BarBtn1.Image = ((System.Drawing.Image)(resources.GetObject("BarBtn1.Image")));
-            this.BarBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BarBtn1.Name = "BarBtn1";
-            this.BarBtn1.Size = new System.Drawing.Size(29, 24);
-            this.BarBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BarBtn1.ToolTipText = "Differnt bar chart types";
-            // 
-            // BarBtn
-            // 
-            this.BarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.BarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BarBtn.Name = "BarBtn";
-            this.BarBtn.Size = new System.Drawing.Size(224, 24);
-            this.BarBtn.Text = "Bar Chart";
-            this.BarBtn.Click += new System.EventHandler(this.BarBtn_Click);
-            // 
-            // StackedBarBtn
-            // 
-            this.StackedBarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StackedBarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StackedBarBtn.Name = "StackedBarBtn";
-            this.StackedBarBtn.Size = new System.Drawing.Size(224, 24);
-            this.StackedBarBtn.Text = "Stacked Bar Chart";
-            this.StackedBarBtn.Click += new System.EventHandler(this.StackedBarBtn_Click);
-            // 
-            // ColumnBtn
-            // 
-            this.ColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.ColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.ColumnBtn.Name = "ColumnBtn";
-            this.ColumnBtn.Size = new System.Drawing.Size(224, 24);
-            this.ColumnBtn.Text = "Column Chart";
-            this.ColumnBtn.Click += new System.EventHandler(this.ColumnBtn_Click);
-            // 
-            // StackedColumnBtn
-            // 
-            this.StackedColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StackedColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StackedColumnBtn.Name = "StackedColumnBtn";
-            this.StackedColumnBtn.Size = new System.Drawing.Size(224, 24);
-            this.StackedColumnBtn.Text = "Stacked Column Chart";
-            this.StackedColumnBtn.Click += new System.EventHandler(this.StackedColumnBtn_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // LineBtn1
-            // 
-            this.LineBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LineBtn,
-            this.StepLineBtn,
-            this.AreaBtn,
-            this.toolStripMenuItem1,
-            this.KagiBtn,
-            this.BubbleBtn});
-            this.LineBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.LineBtn1.Image = ((System.Drawing.Image)(resources.GetObject("LineBtn1.Image")));
-            this.LineBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LineBtn1.Name = "LineBtn1";
-            this.LineBtn1.Size = new System.Drawing.Size(29, 24);
-            this.LineBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.LineBtn1.ToolTipText = "Different line and area graph types";
-            // 
-            // LineBtn
-            // 
-            this.LineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.LineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.LineBtn.Name = "LineBtn";
-            this.LineBtn.Size = new System.Drawing.Size(204, 24);
-            this.LineBtn.Text = "Line Graph";
-            this.LineBtn.Click += new System.EventHandler(this.LineBtn_Click);
-            // 
-            // StepLineBtn
-            // 
-            this.StepLineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StepLineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StepLineBtn.Name = "StepLineBtn";
-            this.StepLineBtn.Size = new System.Drawing.Size(204, 24);
-            this.StepLineBtn.Text = "Step Line Graph";
-            this.StepLineBtn.Click += new System.EventHandler(this.StepLineBtn_Click);
-            // 
-            // AreaBtn
-            // 
-            this.AreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.AreaBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.AreaBtn.Name = "AreaBtn";
-            this.AreaBtn.Size = new System.Drawing.Size(204, 24);
-            this.AreaBtn.Text = "Area Chart";
-            this.AreaBtn.Click += new System.EventHandler(this.SplineAreaBtn_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
-            this.toolStripMenuItem1.Text = "Stacked Area Chart";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.StackedAreaBtn_Click);
-            // 
-            // KagiBtn
-            // 
-            this.KagiBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.KagiBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.KagiBtn.Name = "KagiBtn";
-            this.KagiBtn.Size = new System.Drawing.Size(204, 24);
-            this.KagiBtn.Text = "Kagi Chart";
-            this.KagiBtn.Click += new System.EventHandler(this.KagiBtn_Click);
-            // 
-            // BubbleBtn
-            // 
-            this.BubbleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.BubbleBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BubbleBtn.Name = "BubbleBtn";
-            this.BubbleBtn.Size = new System.Drawing.Size(204, 24);
-            this.BubbleBtn.Text = "Bubble Plot";
-            this.BubbleBtn.Click += new System.EventHandler(this.BubbleBtn_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // PieBtn1
-            // 
-            this.PieBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PieBtn,
-            this.FunnelBtn,
-            this.PyrimidBtn});
-            this.PieBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PieBtn1.Image = ((System.Drawing.Image)(resources.GetObject("PieBtn1.Image")));
-            this.PieBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PieBtn1.Name = "PieBtn1";
-            this.PieBtn1.Size = new System.Drawing.Size(29, 24);
-            this.PieBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.PieBtn1.ToolTipText = "Different pie chart types";
-            // 
-            // PieBtn
-            // 
-            this.PieBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.PieBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PieBtn.Name = "PieBtn";
-            this.PieBtn.Size = new System.Drawing.Size(180, 24);
-            this.PieBtn.Text = "Pie Chart";
-            this.PieBtn.Click += new System.EventHandler(this.PieBtn_Click);
-            // 
-            // FunnelBtn
-            // 
-            this.FunnelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.FunnelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.FunnelBtn.Name = "FunnelBtn";
-            this.FunnelBtn.Size = new System.Drawing.Size(180, 24);
-            this.FunnelBtn.Text = "Funnel Chart";
-            this.FunnelBtn.Click += new System.EventHandler(this.FunnelBtn_Click);
-            // 
-            // PyrimidBtn
-            // 
-            this.PyrimidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.PyrimidBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PyrimidBtn.Name = "PyrimidBtn";
-            this.PyrimidBtn.Size = new System.Drawing.Size(180, 24);
-            this.PyrimidBtn.Text = "Pyramid Chart";
-            this.PyrimidBtn.Click += new System.EventHandler(this.PyrimidBtn_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // LoadBtn
+            // 
+            this.LoadBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.LoadBtn.Image = ((System.Drawing.Image)(resources.GetObject("LoadBtn.Image")));
+            this.LoadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(62, 24);
+            this.LoadBtn.Text = "Load";
+            this.LoadBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
             // ExitBtn
             // 
@@ -456,7 +313,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.panel1.Controls.Add(this.VaxChart);
             this.panel1.Location = new System.Drawing.Point(12, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(736, 409);
+            this.panel1.Size = new System.Drawing.Size(921, 409);
             this.panel1.TabIndex = 11;
             // 
             // label5
@@ -595,7 +452,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.groupBox1.Location = new System.Drawing.Point(787, 44);
+            this.groupBox1.Location = new System.Drawing.Point(982, 44);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(186, 362);
             this.groupBox1.TabIndex = 10;
@@ -633,28 +490,45 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.toolTip1.IsBalloon = true;
             // 
-            // LoadBtn
+            // BarBtn
             // 
-            this.LoadBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.LoadBtn.Image = ((System.Drawing.Image)(resources.GetObject("LoadBtn.Image")));
-            this.LoadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LoadBtn.Name = "LoadBtn";
-            this.LoadBtn.Size = new System.Drawing.Size(62, 24);
-            this.LoadBtn.Text = "Load";
-            this.LoadBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            this.BarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.BarBtn.Image = ((System.Drawing.Image)(resources.GetObject("BarBtn.Image")));
+            this.BarBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BarBtn.Name = "BarBtn";
+            this.BarBtn.Size = new System.Drawing.Size(23, 24);
+            this.BarBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BarBtn.ToolTipText = "After clicking chart type load chart";
+            this.BarBtn.Click += new System.EventHandler(this.BarBtn_Click);
             // 
-            // toolStripSeparator5
+            // LineBtn
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            this.LineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.LineBtn.Image = ((System.Drawing.Image)(resources.GetObject("LineBtn.Image")));
+            this.LineBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LineBtn.Name = "LineBtn";
+            this.LineBtn.Size = new System.Drawing.Size(23, 24);
+            this.LineBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LineBtn.ToolTipText = "After clicking chart type load chart";
+            this.LineBtn.Click += new System.EventHandler(this.LineBtn_Click);
+            // 
+            // PieBtn
+            // 
+            this.PieBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.PieBtn.Image = ((System.Drawing.Image)(resources.GetObject("PieBtn.Image")));
+            this.PieBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PieBtn.Name = "PieBtn";
+            this.PieBtn.Size = new System.Drawing.Size(23, 24);
+            this.PieBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.PieBtn.ToolTipText = "After clicking chart type load chart";
+            this.PieBtn.Click += new System.EventHandler(this.PieBtn_Click);
             // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            this.ClientSize = new System.Drawing.Size(985, 465);
+            this.ClientSize = new System.Drawing.Size(1198, 465);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
@@ -701,7 +575,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.TextBox TotalDoseTxt;
         private System.Windows.Forms.TextBox TotalPatientTxt;
         private System.Windows.Forms.ToolStripMenuItem SexBtn;
-        private System.Windows.Forms.ToolStripMenuItem RaceBtn;
+        private System.Windows.Forms.ToolStripMenuItem PrimaryRaceBtn;
         private System.Windows.Forms.ToolStripMenuItem EthnicityBtn;
         private System.Windows.Forms.ToolStripMenuItem manufacturerToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -710,23 +584,11 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.TextBox MovingAvgTxt;
         private System.Windows.Forms.ToolStripMenuItem TopMBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripDropDownButton BarBtn1;
-        private System.Windows.Forms.ToolStripMenuItem BarBtn;
-        private System.Windows.Forms.ToolStripMenuItem StackedBarBtn;
-        private System.Windows.Forms.ToolStripMenuItem ColumnBtn;
-        private System.Windows.Forms.ToolStripMenuItem StackedColumnBtn;
-        private System.Windows.Forms.ToolStripDropDownButton LineBtn1;
-        private System.Windows.Forms.ToolStripMenuItem AreaBtn;
-        private System.Windows.Forms.ToolStripMenuItem KagiBtn;
-        private System.Windows.Forms.ToolStripMenuItem BubbleBtn;
-        private System.Windows.Forms.ToolStripDropDownButton PieBtn1;
-        private System.Windows.Forms.ToolStripMenuItem PieBtn;
-        private System.Windows.Forms.ToolStripMenuItem FunnelBtn;
-        private System.Windows.Forms.ToolStripMenuItem PyrimidBtn;
-        private System.Windows.Forms.ToolStripMenuItem LineBtn;
-        private System.Windows.Forms.ToolStripMenuItem StepLineBtn;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton LoadBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem SecondaryRaceBtn;
+        private System.Windows.Forms.ToolStripButton BarBtn;
+        private System.Windows.Forms.ToolStripButton LineBtn;
+        private System.Windows.Forms.ToolStripButton PieBtn;
     }
 }
