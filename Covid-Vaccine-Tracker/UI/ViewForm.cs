@@ -398,7 +398,10 @@ namespace Covid_Vaccine_Tracker.UI
         }
         // The chart button is out of scope for sprint on 2/17/22 so just display notification 
         private void ChartBtn_Click(object sender, EventArgs e)
-        { DisplaySuccess("This feature is coming soom!!!! This Button has Business Events out of scope for this sprint", AppTitle); }
+        {
+            ChartForm charts = new ChartForm();
+            charts.ShowDialog();
+        }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
