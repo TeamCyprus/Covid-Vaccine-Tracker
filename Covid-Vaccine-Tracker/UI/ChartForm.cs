@@ -560,6 +560,7 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void CreateChart(List<Stats> vaccineList, int chartIdx, int titleKey)
         {
+            this.VaxChart.Series.Clear();
             SetChartType(chartIdx);
             this.VaxChart.Titles.Add(Titles[titleKey]);
 

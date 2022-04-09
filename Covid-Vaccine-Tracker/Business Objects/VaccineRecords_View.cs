@@ -8,5 +8,6 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 {
     public class VaccineRecords_View
     {
+
     }
 }
