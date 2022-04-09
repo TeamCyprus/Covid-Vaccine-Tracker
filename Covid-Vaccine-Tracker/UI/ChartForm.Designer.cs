@@ -68,6 +68,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.FunnelBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.PyrimidBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ViewBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.label6 = new System.Windows.Forms.Label();
             this.MovingAvgTxt = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ViewChart = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.VaxChart)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -105,8 +105,10 @@ namespace Covid_Vaccine_Tracker.UI
             this.VaxChart.Name = "VaxChart";
             this.VaxChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
             series1.ChartArea = "ChartArea1";
+            series1.CustomProperties = "DrawingStyle=LightToDark";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Star6;
+            series1.Name = "Vaccines";
             this.VaxChart.Series.Add(series1);
             this.VaxChart.Size = new System.Drawing.Size(703, 376);
             this.VaxChart.TabIndex = 0;
@@ -125,7 +127,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator2,
             this.PieBtn1,
             this.toolStripSeparator3,
-            this.ViewChart,
+            this.ViewBtn,
             this.toolStripSeparator5,
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -411,7 +413,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.PieBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.PieBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.PieBtn.Name = "PieBtn";
-            this.PieBtn.Size = new System.Drawing.Size(180, 24);
+            this.PieBtn.Size = new System.Drawing.Size(171, 24);
             this.PieBtn.Text = "Pie Chart";
             this.PieBtn.Click += new System.EventHandler(this.PieBtn_Click);
             // 
@@ -420,7 +422,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.FunnelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.FunnelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.FunnelBtn.Name = "FunnelBtn";
-            this.FunnelBtn.Size = new System.Drawing.Size(180, 24);
+            this.FunnelBtn.Size = new System.Drawing.Size(171, 24);
             this.FunnelBtn.Text = "Funnel Chart";
             this.FunnelBtn.Click += new System.EventHandler(this.FunnelBtn_Click);
             // 
@@ -429,7 +431,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.PyrimidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.PyrimidBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.PyrimidBtn.Name = "PyrimidBtn";
-            this.PyrimidBtn.Size = new System.Drawing.Size(180, 24);
+            this.PyrimidBtn.Size = new System.Drawing.Size(171, 24);
             this.PyrimidBtn.Text = "Pyramid Chart";
             this.PyrimidBtn.Click += new System.EventHandler(this.PyrimidBtn_Click);
             // 
@@ -437,6 +439,22 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // ViewBtn
+            // 
+            this.ViewBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.ViewBtn.Image = ((System.Drawing.Image)(resources.GetObject("ViewBtn.Image")));
+            this.ViewBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ViewBtn.Name = "ViewBtn";
+            this.ViewBtn.Size = new System.Drawing.Size(100, 24);
+            this.ViewBtn.Text = "View Chart";
+            this.ViewBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ViewBtn.Click += new System.EventHandler(this.ViewChart_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
             // ExitBtn
             // 
@@ -639,22 +657,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.toolTip1.IsBalloon = true;
             // 
-            // ViewChart
-            // 
-            this.ViewChart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.ViewChart.Image = ((System.Drawing.Image)(resources.GetObject("ViewChart.Image")));
-            this.ViewChart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ViewChart.Name = "ViewChart";
-            this.ViewChart.Size = new System.Drawing.Size(100, 24);
-            this.ViewChart.Text = "View Chart";
-            this.ViewChart.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.ViewChart.Click += new System.EventHandler(this.ViewChart_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-            // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -732,7 +734,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripMenuItem LineBtn;
         private System.Windows.Forms.ToolStripMenuItem StepLineBtn;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripButton ViewChart;
+        private System.Windows.Forms.ToolStripButton ViewBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

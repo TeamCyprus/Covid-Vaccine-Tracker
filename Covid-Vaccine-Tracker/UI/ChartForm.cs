@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Aspose.Words.Drawing.Charts;
 using Covid_Vaccine_Tracker.Business_Objects;
 using Covid_Vaccine_Tracker.Data_Access_Layer;
 
@@ -34,7 +35,6 @@ namespace Covid_Vaccine_Tracker.UI
             {10, "Vaccine Administered by Manufacturer" },
             {11, "Top 3 Vaccine Manufacturers" }
         };
-        
         public ChartForm()
         {
             InitializeComponent();
@@ -45,10 +45,6 @@ namespace Covid_Vaccine_Tracker.UI
             barChart = true;
             lineChart = false;
             pieChart = false;
-            string cTitle = this.VaxChart.Titles.ToString();
-            cIndex = 1;
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
 
         private void LineBtn_Click(object sender, EventArgs e)
@@ -58,8 +54,6 @@ namespace Covid_Vaccine_Tracker.UI
             pieChart = false;
             string cTitle = this.VaxChart.Titles.ToString();
             cIndex = 5;
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
         private void PieBtn_Click(object sender, EventArgs e)
         {
@@ -68,60 +62,50 @@ namespace Covid_Vaccine_Tracker.UI
             barChart = false;
             string cTitle = this.VaxChart.Titles.ToString();
             cIndex = 11;
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
 
         private void StackedBarBtn_Click(object sender, EventArgs e)
         {
             cIndex = 2;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
         private void ColumnBtn_Click(object sender, EventArgs e)
         {
             cIndex = 3;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
         private void StackedColumnBtn_Click(object sender, EventArgs e)
         {
             cIndex = 4;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
         private void StepLineBtn_Click(object sender, EventArgs e)
         {
             cIndex = 6;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
 
         private void SplineAreaBtn_Click(object sender, EventArgs e)
         {
             cIndex = 7;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
         private void StackedAreaBtn_Click(object sender, EventArgs e)
         {
             cIndex = 8;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
 
         private void KagiBtn_Click(object sender, EventArgs e)
         {
             cIndex = 9;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
+
         }
 
         private void BubbleBtn_Click(object sender, EventArgs e)
@@ -129,8 +113,6 @@ namespace Covid_Vaccine_Tracker.UI
             // buble chart requires atleaset 2 y values
             cIndex = 10;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
 
 
@@ -138,16 +120,12 @@ namespace Covid_Vaccine_Tracker.UI
         {
             cIndex = 12;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
 
         private void PyrimidBtn_Click(object sender, EventArgs e)
         {
             cIndex = 13;
             string cTitle = this.VaxChart.Titles.ToString();
-            if (statsList.Count > 0)
-                CreateChart(statsList, cIndex, cTitle);
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -188,21 +166,25 @@ namespace Covid_Vaccine_Tracker.UI
                         // add to stat list
                         statsList.Add(stat);
                     }
-
+                    ChartControls("Enable");
                     //barChart, lineChart, pieChart, stackedBar, column, stackedCol, stepLine, area, stackedArea, kagi, bubble, funnel, pyrmaid;
                     // create selected chart pass in list and title key
-                    if (barChart)
-                        CreateBarChart(statsList, 1);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 1);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 1);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 1);
+                    //if (barChart)
+                    //    CreateBarChart(statsList, 1);
+                    //else if (lineChart)
+                    //    CreateLineChart(statsList, 1);
+                    //else if (pieChart)
+                    //    CreatePieChart(statsList, 1);
+                    //// if not any of 3 base charts get create specific chart
+                    //else
+                    //    CreateChart(statsList, cIndex, 1);
                 }
                 else // no data
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
                
             }
             catch (Exception ex)
@@ -234,20 +216,16 @@ namespace Covid_Vaccine_Tracker.UI
                         // add to the stats list
                         statsList.Add(stat);
                     }
-                    // create selected chart pass in the list and title key
-                    if (barChart)
-                        CreateBarChart(statsList, 2);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 2);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 2);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 2);
+                    ChartControls("Enable");
+
+
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
-
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }    
                 
             }
             catch (Exception ex)
@@ -271,19 +249,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = vr.Vaccines_Administered;
                         statsList.Add(stat);
                     }
+                    ChartControls("Enable");
 
-                    if (barChart)
-                        CreateBarChart(statsList, 3);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 3);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 3);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 3);
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
             }
             catch(Exception ex)
@@ -305,18 +279,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = vs.Patients;
                         statsList.Add(stat);
                     }
-                    if (barChart)
-                        CreateBarChart(statsList, 4);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 4);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 4);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 4);
+                    ChartControls("Enable");  
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+
+                 }
 
                 
             }
@@ -338,19 +309,14 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = c.People_Vaccinated;
                         statsList.Add(stat);
                     }
-
-                    if (barChart)
-                        CreateBarChart(statsList, 5);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 5);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 5);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 5);
+                    ChartControls("Enable");
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
             }
             catch (Exception ex)
@@ -372,18 +338,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = c.People_Vaccinated;
                         statsList.Add(stat);
                     }
-                    if (barChart)
-                        CreateBarChart(statsList, 6);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 6);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 6);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 6);
+                    ChartControls("Enable");
+              
                 }
                 else
+                    {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
               
             }
@@ -405,18 +368,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = s.People_Vaccinated;
                         statsList.Add(stat);
                     }
-                    if (barChart)
-                        CreateBarChart(statsList, 7);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 7);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 7);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 7);
+                    ChartControls("Enable");
+                 
                 }
                 else
+                    {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
               
             }
@@ -440,18 +400,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = r.Doses_Administered;
                         statsList.Add(stat);
                     }
-                    if (barChart)
-                        CreateBarChart(statsList, 8);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 8);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 8);
-                    // if not any of 3 base charts get create specific chart
-                    else
-                        CreateChart(statsList, cIndex, 8);
+                    ChartControls("Enable");
+                  
                 }
                 else
+                    {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
                
             }
@@ -474,15 +431,15 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = ev.People_Vaccinated;
                         statsList.Add(stat);
                     }
-                    if (barChart)
-                        CreateBarChart(statsList, 9);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 9);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 9);
+                    ChartControls("Enable");
+                
                 }
                 else
+                    {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
                
             }
@@ -504,16 +461,14 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = m.Doses_Administered;
                         statsList.Add(stat);
                     }
-
-                    if (barChart)
-                        CreateBarChart(statsList, 10);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 10);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 10);
+                    ChartControls("Enable");
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
             }
             catch(Exception ex)
@@ -534,16 +489,14 @@ namespace Covid_Vaccine_Tracker.UI
                         stat.DataValue = m.Doses_Administered;
                         statsList.Add(stat);
                     }
-
-                    if (barChart)
-                        CreateBarChart(statsList, 11);
-                    else if (lineChart)
-                        CreateLineChart(statsList, 11);
-                    else if (pieChart)
-                        CreatePieChart(statsList, 11);
+                    ChartControls("Enable");
                 }
                 else
+                {
                     DisplayError(DataErrorMsg, AppTitle);
+                    ChartControls("Disable");
+                    ViewControl("Disable");
+                }
 
             }
             catch(Exception ex)
@@ -555,19 +508,29 @@ namespace Covid_Vaccine_Tracker.UI
             // clear any existing data
             ClearChartData();
             series = new Series();
+            
             // if there is data in the list the create barchart
             if (vaccineList.Count > 0)
             {
                 // create the chart title by using values stored in Titles dict
                 this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
-                // loop through each data item in list
+                //loop through each data item in list
                 for (int datapoint = 0; datapoint < vaccineList.Count; datapoint++)
                 {
                     // assign each data point name ie Dose Number to chart series
                     series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
                     // now add the data values ie the number of doses administered for respective dose number
                     series.Points.Add(vaccineList.ElementAt(datapoint).DataValue);
+                    VaxChart.Series.Add(series);
                 }
+                
+                //for (int datapoint = 0; datapoint < vaccineList.Count; datapoint++)
+                //{
+                //    VaxChart.Series["Vaccines"].Points.Add(vaccineList[datapoint].DataValue);
+                //    VaxChart.Series["Vaccines"].Points[datapoint].AxisLabel = vaccineList[datapoint].DataName;
+                //    VaxChart.Series["Vaccines"].Points[datapoint].LegendText = vaccineList[datapoint].DataName;
+                //    VaxChart.Series["Vaccines"].Points[datapoint].Label = vaccineList[datapoint].DataValue.ToString();
+                //}
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
@@ -594,7 +557,7 @@ namespace Covid_Vaccine_Tracker.UI
                     // now add the x, y values
                     series.Points.AddXY(xPoint, yPoint);
                 }
-
+                VaxChart.Series.Add(series);
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
@@ -616,6 +579,7 @@ namespace Covid_Vaccine_Tracker.UI
                     int yPoint = vaccineList.ElementAt(dp).DataValue;
                     VaxChart.Series[0].Points.AddXY(xPoint, yPoint);
                 }
+                VaxChart.Series.Add(series);
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
@@ -690,11 +654,62 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void ViewChart_Click(object sender, EventArgs e)
         {
-            if (dataClicked)
+            try
             {
-                
+                if (statsList.Count > 0)
+                {
+                    if (barChart)
+                        CreateBarChart(statsList, 1);
+                    if (lineChart)
+                        CreateLineChart(statsList, 1);
+                }
+                else
+                    DisplayError("Please select data to view in the chart", AppTitle);
+            }
+            catch(Exception ex)
+            { DisplayError(ex.Message, AppTitle); }
+        }
+        private void DataControls(string command)
+        {
+            switch(command)
+            {
+                case "Disable":
+                    DataBtn.Enabled = false;
+                    break;
+                case "Enable":
+                    DataBtn.Enabled = true;
+                    break;
             }
         }
+        private void ChartControls(string command)
+        {
+            switch(command)
+            {
+                case "Disable":
+                    BarBtn1.Enabled = false;
+                    LineBtn1.Enabled = false;
+                    PieBtn1.Enabled = false;
+                    break;
+                case "Enable":
+                    BarBtn1.Enabled = true;
+                    LineBtn1.Enabled = true;
+                    PieBtn1.Enabled = true;
+                    break;
+            }
+        }
+        private void ViewControl(string commnad )
+        {
+            switch(commnad)
+            {
+                case "Disable":
+                    ViewBtn.Enabled = false;
+                    break;
+                case "Enable":
+                    ViewBtn.Enabled = true;
+                    break;
+            }
+        }
+
 
         private void SetChartType(int chartIndx)
         {
@@ -705,7 +720,7 @@ namespace Covid_Vaccine_Tracker.UI
                 switch (chartIndx)
                 {
                     case 1:
-                        series.ChartType = SeriesChartType.Bar;                       
+                        VaxChart.Series[0].ChartType = SeriesChartType.Bar;                       
                         //VaxChart.Series[0].ChartType = SeriesChartType.Bar;
                         break;
                     case 2:
