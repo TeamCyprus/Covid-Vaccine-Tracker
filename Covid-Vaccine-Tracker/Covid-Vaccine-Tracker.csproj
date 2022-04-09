@@ -202,11 +202,6 @@
     <Compile Include="UI\VaccineRecordForm.Designer.cs">
       <DependentUpon>VaccineRecordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VaccineRecordDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VaccineRecordDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Data Access Layer\VaccineReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -226,7 +221,6 @@
     <EmbeddedResource Include="UI\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\VaccineReport.rdlc" />
     <EmbeddedResource Include="UI\VaccineReportForm.resx">
       <DependentUpon>VaccineReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,17 +249,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="VaccineRecordDataSet.xsc">
-      <DependentUpon>VaccineRecordDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="VaccineRecordDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VaccineRecordDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="VaccineRecordDataSet.xss">
-      <DependentUpon>VaccineRecordDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
