@@ -521,7 +521,7 @@ namespace Covid_Vaccine_Tracker.UI
                     series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
                     // now add the data values ie the number of doses administered for respective dose number
                     series.Points.Add(vaccineList.ElementAt(datapoint).DataValue);
-                    VaxChart.Series.Add(series);
+                   // VaxChart.Series.Add(series);
                 }
                 
                 //for (int datapoint = 0; datapoint < vaccineList.Count; datapoint++)
@@ -557,7 +557,7 @@ namespace Covid_Vaccine_Tracker.UI
                     // now add the x, y values
                     series.Points.AddXY(xPoint, yPoint);
                 }
-                VaxChart.Series.Add(series);
+               // VaxChart.Series.Add(series);
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
@@ -579,7 +579,7 @@ namespace Covid_Vaccine_Tracker.UI
                     int yPoint = vaccineList.ElementAt(dp).DataValue;
                     VaxChart.Series[0].Points.AddXY(xPoint, yPoint);
                 }
-                VaxChart.Series.Add(series);
+                //VaxChart.Series.Add(series);
             }
             else // no data in list
                 DisplayError(DataErrorMsg, AppTitle);
