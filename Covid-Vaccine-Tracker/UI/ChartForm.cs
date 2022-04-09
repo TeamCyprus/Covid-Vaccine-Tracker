@@ -10,6 +10,7 @@ namespace Covid_Vaccine_Tracker.UI
 {
     public partial class ChartForm : Form
     {
+        List<VaccineRollOut> Rollout = new List<VaccineRollOut>();
         // int holds the "index" of chart type from chart menu items
         int cIndex = -1;
         string AppTitle = "Covid Vaccine Tracker", DataErrorMsg = "Could not find data to match search filter, please try again later";
@@ -159,13 +160,13 @@ namespace Covid_Vaccine_Tracker.UI
         private void RollOutBtn_Click(object sender, EventArgs e)
         {
             // follow the same logic as above
-            List<VaccineRollOut> rollout = new List<VaccineRollOut>();
+            //List<VaccineRollOut> rollout = new List<VaccineRollOut>();
             try
             {
-                rollout = StatsDB.GetVaccineRollout();
-                if (rollout.Count > 0)
+                //Rollout = StatsDB.GetVaccineRollout();
+                if (Rollout.Count > 0)
                 {
-                    foreach (VaccineRollOut vr in rollout)
+                    foreach (VaccineRollOut vr in Rollout)
                     {
                         Stats stat = new Stats();
                         // convert the date to short date 00/00/0000 format
@@ -494,7 +495,7 @@ namespace Covid_Vaccine_Tracker.UI
         private void CreateBarChart(List<Stats> vaccineList, int titleKey)
         {
             // clear any existing data
-            this.VaxChart.Series.Clear();
+            ClearChartData();
             // if there is data in the list the create barchart
             if (vaccineList.Count > 0)
             {
@@ -516,12 +517,14 @@ namespace Covid_Vaccine_Tracker.UI
         private void CreateLineChart(List<Stats> vaccineList, int titleKey)
         {
             // clear any existing data
-            this.VaxChart.Series.Clear();
+            ClearChartData();
+
             // if there is data in the list create linechart
             if (vaccineList.Count > 0)
             {
                 // use Titles dict to create chart title
                 this.VaxChart.Titles.Add(Titles[titleKey]);
+                this.VaxChart.DataSource = vaccineList;
                 // loop through the list and assign each x,y cordinate to chart
                 for (int dp = 0; dp < vaccineList.Count; dp++)
                 {
@@ -540,6 +543,7 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void CreatePieChart(List<Stats> vaccineList, int titleKey)
         {
+            ClearChartData();
             // set the chart type to pie
             VaxChart.Series[0].ChartType = SeriesChartType.Pie;
             // set the title
@@ -560,10 +564,10 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void CreateChart(List<Stats> vaccineList, int chartIdx, int titleKey)
         {
-            this.VaxChart.Series.Clear();
+            ClearChartData();
             SetChartType(chartIdx);
             this.VaxChart.Titles.Add(Titles[titleKey]);
-
+            // this.VaxChart.DataSource = vaccineList;
             if (vaccineList.Count > 0)
             {
                 for (int dp = 0; dp < vaccineList.Count; dp++)
@@ -579,11 +583,11 @@ namespace Covid_Vaccine_Tracker.UI
         private void ChartForm_Load(object sender, EventArgs e)
         {
             int totalDose = 0, numPpl = 0;
-            double mean = 0, movinAvg = 0, std = 0, variance = 0;
-            List<VaccineRollOut> rollOut = StatsDB.GetVaccineRollout();
+            double mean = 0, movinAvg = 0, std = 0, variance = 0;           
 
             try
             {
+                Rollout = StatsDB.GetVaccineRollout();
                 // calc some descriptive statistics
                 totalDose = StatsDB.GetDoseCount();
                 numPpl = StatsDB.GetPatientCount();
@@ -591,8 +595,8 @@ namespace Covid_Vaccine_Tracker.UI
                 // calculate a 7 day rolling average
                 movinAvg = VaccineStatistics.CalculateMovingAverage(totalDose, 7);
                 // Get the the list of data
-                std = VaccineStatistics.CalculateSampleStandardDev(rollOut);
-                variance = VaccineStatistics.CalculateSampleVarriance(rollOut);
+                std = VaccineStatistics.CalculateSampleStandardDev(Rollout);
+                variance = VaccineStatistics.CalculateSampleVarriance(Rollout);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -646,6 +650,13 @@ namespace Covid_Vaccine_Tracker.UI
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
+        }
+        private void ClearChartData()
+        {
+            // clear out anything in chart
+            this.VaxChart.Series.Clear();
+            this.VaxChart.Titles.Clear();
+            this.VaxChart.DataSource = null;
         }
         private void DisplaySuccess(string msg, string title)
         {

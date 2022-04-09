@@ -44,7 +44,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
                 
                 using (IDbConnection db = new SqlConnection(conStr))
                 {
-                    avg = db.QuerySingle(procedure, commandType: CommandType.StoredProcedure);
+                    avg = db.QuerySingle<double>(procedure, commandType: CommandType.StoredProcedure);
                 }
             }
             catch(Exception ex)
