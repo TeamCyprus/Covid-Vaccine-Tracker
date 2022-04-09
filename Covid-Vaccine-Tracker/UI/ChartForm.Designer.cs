@@ -36,6 +36,19 @@ namespace Covid_Vaccine_Tracker.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
             this.VaxChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.DataBtn = new System.Windows.Forms.ToolStripDropDownButton();
+            this.RankingBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.TopDBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.RollOutBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeriesBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.CityBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.CountyBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.SexBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.RaceBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.EthnicityBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.manufacturerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TopMBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.BarBtn1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.BarBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.StackedBarBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,19 +68,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.FunnelBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.PyrimidBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.DataBtn = new System.Windows.Forms.ToolStripDropDownButton();
-            this.RankingBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.TopDBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.RollOutBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.SeriesBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.CityBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.CountyBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.SexBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.RaceBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.EthnicityBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.manufacturerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TopMBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -129,187 +129,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStrip1.Size = new System.Drawing.Size(985, 27);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "Data";
-            // 
-            // BarBtn1
-            // 
-            this.BarBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BarBtn,
-            this.StackedBarBtn,
-            this.ColumnBtn,
-            this.StackedColumnBtn});
-            this.BarBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BarBtn1.Image = ((System.Drawing.Image)(resources.GetObject("BarBtn1.Image")));
-            this.BarBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BarBtn1.Name = "BarBtn1";
-            this.BarBtn1.Size = new System.Drawing.Size(29, 24);
-            this.BarBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.BarBtn1.ToolTipText = "Differnt bar chart types";
-            this.BarBtn1.Click += new System.EventHandler(this.BarBtn_Click);
-            // 
-            // BarBtn
-            // 
-            this.BarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.BarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BarBtn.Name = "BarBtn";
-            this.BarBtn.Size = new System.Drawing.Size(224, 24);
-            this.BarBtn.Text = "Bar Chart";
-            this.BarBtn.Click += new System.EventHandler(this.BarBtn_Click);
-            // 
-            // StackedBarBtn
-            // 
-            this.StackedBarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StackedBarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StackedBarBtn.Name = "StackedBarBtn";
-            this.StackedBarBtn.Size = new System.Drawing.Size(224, 24);
-            this.StackedBarBtn.Text = "Stacked Bar Chart";
-            this.StackedBarBtn.Click += new System.EventHandler(this.StackedBarBtn_Click);
-            // 
-            // ColumnBtn
-            // 
-            this.ColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.ColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.ColumnBtn.Name = "ColumnBtn";
-            this.ColumnBtn.Size = new System.Drawing.Size(224, 24);
-            this.ColumnBtn.Text = "Column Chart";
-            this.ColumnBtn.Click += new System.EventHandler(this.ColumnBtn_Click);
-            // 
-            // StackedColumnBtn
-            // 
-            this.StackedColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StackedColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StackedColumnBtn.Name = "StackedColumnBtn";
-            this.StackedColumnBtn.Size = new System.Drawing.Size(224, 24);
-            this.StackedColumnBtn.Text = "Stacked Column Chart";
-            this.StackedColumnBtn.Click += new System.EventHandler(this.StackedColumnBtn_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // LineBtn1
-            // 
-            this.LineBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LineBtn,
-            this.StepLineBtn,
-            this.AreaBtn,
-            this.toolStripMenuItem1,
-            this.KagiBtn,
-            this.BubbleBtn});
-            this.LineBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.LineBtn1.Image = ((System.Drawing.Image)(resources.GetObject("LineBtn1.Image")));
-            this.LineBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LineBtn1.Name = "LineBtn1";
-            this.LineBtn1.Size = new System.Drawing.Size(29, 24);
-            this.LineBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.LineBtn1.ToolTipText = "Different line and area graph types";
-            this.LineBtn1.Click += new System.EventHandler(this.LineBtn_Click);
-            // 
-            // LineBtn
-            // 
-            this.LineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.LineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.LineBtn.Name = "LineBtn";
-            this.LineBtn.Size = new System.Drawing.Size(204, 24);
-            this.LineBtn.Text = "Line Graph";
-            this.LineBtn.Click += new System.EventHandler(this.LineBtn_Click);
-            // 
-            // StepLineBtn
-            // 
-            this.StepLineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.StepLineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.StepLineBtn.Name = "StepLineBtn";
-            this.StepLineBtn.Size = new System.Drawing.Size(204, 24);
-            this.StepLineBtn.Text = "Step Line Graph";
-            this.StepLineBtn.Click += new System.EventHandler(this.StepLineBtn_Click);
-            // 
-            // AreaBtn
-            // 
-            this.AreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.AreaBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.AreaBtn.Name = "AreaBtn";
-            this.AreaBtn.Size = new System.Drawing.Size(204, 24);
-            this.AreaBtn.Text = "Area Chart";
-            this.AreaBtn.Click += new System.EventHandler(this.SplineAreaBtn_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
-            this.toolStripMenuItem1.Text = "Stacked Area Chart";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.StackedAreaBtn_Click);
-            // 
-            // KagiBtn
-            // 
-            this.KagiBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.KagiBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.KagiBtn.Name = "KagiBtn";
-            this.KagiBtn.Size = new System.Drawing.Size(204, 24);
-            this.KagiBtn.Text = "Kagi Chart";
-            this.KagiBtn.Click += new System.EventHandler(this.KagiBtn_Click);
-            // 
-            // BubbleBtn
-            // 
-            this.BubbleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.BubbleBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.BubbleBtn.Name = "BubbleBtn";
-            this.BubbleBtn.Size = new System.Drawing.Size(204, 24);
-            this.BubbleBtn.Text = "Bubble Plot";
-            this.BubbleBtn.Click += new System.EventHandler(this.BubbleBtn_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // PieBtn1
-            // 
-            this.PieBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PieBtn,
-            this.FunnelBtn,
-            this.PyrimidBtn});
-            this.PieBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PieBtn1.Image = ((System.Drawing.Image)(resources.GetObject("PieBtn1.Image")));
-            this.PieBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PieBtn1.Name = "PieBtn1";
-            this.PieBtn1.Size = new System.Drawing.Size(29, 24);
-            this.PieBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.PieBtn1.ToolTipText = "Different pie chart types";
-            this.PieBtn1.Click += new System.EventHandler(this.PieBtn_Click);
-            // 
-            // PieBtn
-            // 
-            this.PieBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.PieBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PieBtn.Name = "PieBtn";
-            this.PieBtn.Size = new System.Drawing.Size(171, 24);
-            this.PieBtn.Text = "Pie Chart";
-            this.PieBtn.Click += new System.EventHandler(this.PieBtn_Click);
-            // 
-            // FunnelBtn
-            // 
-            this.FunnelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.FunnelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.FunnelBtn.Name = "FunnelBtn";
-            this.FunnelBtn.Size = new System.Drawing.Size(171, 24);
-            this.FunnelBtn.Text = "Funnel Chart";
-            this.FunnelBtn.Click += new System.EventHandler(this.FunnelBtn_Click);
-            // 
-            // PyrimidBtn
-            // 
-            this.PyrimidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.PyrimidBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.PyrimidBtn.Name = "PyrimidBtn";
-            this.PyrimidBtn.Size = new System.Drawing.Size(171, 24);
-            this.PyrimidBtn.Text = "Pyramid Chart";
-            this.PyrimidBtn.Click += new System.EventHandler(this.PyrimidBtn_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // DataBtn
             // 
@@ -436,6 +255,184 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
+            // BarBtn1
+            // 
+            this.BarBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BarBtn,
+            this.StackedBarBtn,
+            this.ColumnBtn,
+            this.StackedColumnBtn});
+            this.BarBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.BarBtn1.Image = ((System.Drawing.Image)(resources.GetObject("BarBtn1.Image")));
+            this.BarBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BarBtn1.Name = "BarBtn1";
+            this.BarBtn1.Size = new System.Drawing.Size(29, 24);
+            this.BarBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.BarBtn1.ToolTipText = "Differnt bar chart types";
+            // 
+            // BarBtn
+            // 
+            this.BarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.BarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.BarBtn.Name = "BarBtn";
+            this.BarBtn.Size = new System.Drawing.Size(224, 24);
+            this.BarBtn.Text = "Bar Chart";
+            this.BarBtn.Click += new System.EventHandler(this.BarBtn_Click);
+            // 
+            // StackedBarBtn
+            // 
+            this.StackedBarBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.StackedBarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.StackedBarBtn.Name = "StackedBarBtn";
+            this.StackedBarBtn.Size = new System.Drawing.Size(224, 24);
+            this.StackedBarBtn.Text = "Stacked Bar Chart";
+            this.StackedBarBtn.Click += new System.EventHandler(this.StackedBarBtn_Click);
+            // 
+            // ColumnBtn
+            // 
+            this.ColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.ColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.ColumnBtn.Name = "ColumnBtn";
+            this.ColumnBtn.Size = new System.Drawing.Size(224, 24);
+            this.ColumnBtn.Text = "Column Chart";
+            this.ColumnBtn.Click += new System.EventHandler(this.ColumnBtn_Click);
+            // 
+            // StackedColumnBtn
+            // 
+            this.StackedColumnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.StackedColumnBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.StackedColumnBtn.Name = "StackedColumnBtn";
+            this.StackedColumnBtn.Size = new System.Drawing.Size(224, 24);
+            this.StackedColumnBtn.Text = "Stacked Column Chart";
+            this.StackedColumnBtn.Click += new System.EventHandler(this.StackedColumnBtn_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // LineBtn1
+            // 
+            this.LineBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LineBtn,
+            this.StepLineBtn,
+            this.AreaBtn,
+            this.toolStripMenuItem1,
+            this.KagiBtn,
+            this.BubbleBtn});
+            this.LineBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.LineBtn1.Image = ((System.Drawing.Image)(resources.GetObject("LineBtn1.Image")));
+            this.LineBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LineBtn1.Name = "LineBtn1";
+            this.LineBtn1.Size = new System.Drawing.Size(29, 24);
+            this.LineBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LineBtn1.ToolTipText = "Different line and area graph types";
+            // 
+            // LineBtn
+            // 
+            this.LineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.LineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.LineBtn.Name = "LineBtn";
+            this.LineBtn.Size = new System.Drawing.Size(204, 24);
+            this.LineBtn.Text = "Line Graph";
+            this.LineBtn.Click += new System.EventHandler(this.LineBtn_Click);
+            // 
+            // StepLineBtn
+            // 
+            this.StepLineBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.StepLineBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.StepLineBtn.Name = "StepLineBtn";
+            this.StepLineBtn.Size = new System.Drawing.Size(204, 24);
+            this.StepLineBtn.Text = "Step Line Graph";
+            this.StepLineBtn.Click += new System.EventHandler(this.StepLineBtn_Click);
+            // 
+            // AreaBtn
+            // 
+            this.AreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.AreaBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.AreaBtn.Name = "AreaBtn";
+            this.AreaBtn.Size = new System.Drawing.Size(204, 24);
+            this.AreaBtn.Text = "Area Chart";
+            this.AreaBtn.Click += new System.EventHandler(this.SplineAreaBtn_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 24);
+            this.toolStripMenuItem1.Text = "Stacked Area Chart";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.StackedAreaBtn_Click);
+            // 
+            // KagiBtn
+            // 
+            this.KagiBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.KagiBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.KagiBtn.Name = "KagiBtn";
+            this.KagiBtn.Size = new System.Drawing.Size(204, 24);
+            this.KagiBtn.Text = "Kagi Chart";
+            this.KagiBtn.Click += new System.EventHandler(this.KagiBtn_Click);
+            // 
+            // BubbleBtn
+            // 
+            this.BubbleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.BubbleBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.BubbleBtn.Name = "BubbleBtn";
+            this.BubbleBtn.Size = new System.Drawing.Size(204, 24);
+            this.BubbleBtn.Text = "Bubble Plot";
+            this.BubbleBtn.Click += new System.EventHandler(this.BubbleBtn_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // PieBtn1
+            // 
+            this.PieBtn1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PieBtn,
+            this.FunnelBtn,
+            this.PyrimidBtn});
+            this.PieBtn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.PieBtn1.Image = ((System.Drawing.Image)(resources.GetObject("PieBtn1.Image")));
+            this.PieBtn1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PieBtn1.Name = "PieBtn1";
+            this.PieBtn1.Size = new System.Drawing.Size(29, 24);
+            this.PieBtn1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.PieBtn1.ToolTipText = "Different pie chart types";
+            // 
+            // PieBtn
+            // 
+            this.PieBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.PieBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.PieBtn.Name = "PieBtn";
+            this.PieBtn.Size = new System.Drawing.Size(180, 24);
+            this.PieBtn.Text = "Pie Chart";
+            this.PieBtn.Click += new System.EventHandler(this.PieBtn_Click);
+            // 
+            // FunnelBtn
+            // 
+            this.FunnelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.FunnelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.FunnelBtn.Name = "FunnelBtn";
+            this.FunnelBtn.Size = new System.Drawing.Size(180, 24);
+            this.FunnelBtn.Text = "Funnel Chart";
+            this.FunnelBtn.Click += new System.EventHandler(this.FunnelBtn_Click);
+            // 
+            // PyrimidBtn
+            // 
+            this.PyrimidBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.PyrimidBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            this.PyrimidBtn.Name = "PyrimidBtn";
+            this.PyrimidBtn.Size = new System.Drawing.Size(180, 24);
+            this.PyrimidBtn.Text = "Pyramid Chart";
+            this.PyrimidBtn.Click += new System.EventHandler(this.PyrimidBtn_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // ExitBtn
             // 

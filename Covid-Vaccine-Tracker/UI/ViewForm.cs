@@ -70,7 +70,7 @@ namespace Covid_Vaccine_Tracker.UI
             ViewsCbx.DisplayMember = "View_Type";
             ViewsCbx.ValueMember = "Id";
             // Disable chart button
-            ChartControl("Disable");
+            //ChartControl("Disable");
         }
         private void ChartControl(string command)
         {
