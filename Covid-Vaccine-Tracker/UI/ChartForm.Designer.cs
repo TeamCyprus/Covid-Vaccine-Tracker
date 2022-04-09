@@ -84,6 +84,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.label6 = new System.Windows.Forms.Label();
             this.MovingAvgTxt = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.LoadBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.VaxChart)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,6 +125,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator2,
             this.PieBtn1,
             this.toolStripSeparator3,
+            this.LoadBtn,
+            this.toolStripSeparator5,
             this.ExitBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -629,6 +633,22 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.toolTip1.IsBalloon = true;
             // 
+            // LoadBtn
+            // 
+            this.LoadBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.LoadBtn.Image = ((System.Drawing.Image)(resources.GetObject("LoadBtn.Image")));
+            this.LoadBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(62, 24);
+            this.LoadBtn.Text = "Load";
+            this.LoadBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,5 +726,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripMenuItem LineBtn;
         private System.Windows.Forms.ToolStripMenuItem StepLineBtn;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripButton LoadBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

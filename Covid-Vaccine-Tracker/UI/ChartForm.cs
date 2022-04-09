@@ -97,17 +97,7 @@ namespace Covid_Vaccine_Tracker.UI
                 }
                 else // no data
                     DisplayError(DataErrorMsg, AppTitle);
-                //barChart, lineChart, pieChart, stackedBar, column, stackedCol, stepLine, area, stackedArea, kagi, bubble, funnel, pyrmaid;
-                // create selected chart pass in list and title key
-                if (barChart)
-                    CreateBarChart(statsList, 1);
-                else if (lineChart)
-                    CreateLineChart(statsList, 1);
-                else if (pieChart)
-                    CreatePieChart(statsList, 1);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 1);
+
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -142,16 +132,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                // create selected chart pass in the list and title key
-                if (barChart)
-                    CreateBarChart(statsList, 2);
-                else if (lineChart)
-                    CreateLineChart(statsList, 2);
-                else if (pieChart)
-                    CreatePieChart(statsList, 2);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 2);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -178,15 +158,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 3);
-                else if (lineChart)
-                    CreateLineChart(statsList, 3);
-                else if (pieChart)
-                    CreatePieChart(statsList, 3);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 3);
             }
             catch(Exception ex)
             { DisplayError(ex.Message,AppTitle); }
@@ -211,15 +182,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 4);
-                else if (lineChart)
-                    CreateLineChart(statsList, 4);
-                else if (pieChart)
-                    CreatePieChart(statsList, 4);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 4);
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -243,15 +205,7 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 5);
-                else if (lineChart)
-                    CreateLineChart(statsList, 5);
-                else if (pieChart)
-                    CreatePieChart(statsList, 5);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 5);
+
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -276,15 +230,7 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 6);
-                else if (lineChart)
-                    CreateLineChart(statsList, 6);
-                else if (pieChart)
-                    CreatePieChart(statsList, 6);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 6);
+
             }
             catch (Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -308,15 +254,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 7);
-                else if (lineChart)
-                    CreateLineChart(statsList, 7);
-                else if (pieChart)
-                    CreatePieChart(statsList, 7);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 7);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -342,15 +279,7 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 8);
-                else if (lineChart)
-                    CreateLineChart(statsList, 8);
-                else if (pieChart)
-                    CreatePieChart(statsList, 8);
-                // if not any of 3 base charts get create specific chart
-                else
-                    CreateChart(statsList, cIndex, 8);
+
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -399,6 +328,19 @@ namespace Covid_Vaccine_Tracker.UI
             cIndex = 9;
         }
 
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            if (statsList.Count > 0)
+            {
+                if (barChart)
+                    CreateBarChart(statsList, 1);
+                else if (lineChart)
+                    CreateLineChart(statsList, 1);
+                else if (pieChart)
+                    CreatePieChart(statsList, 1);
+            }
+        }
+
         private void PyrimidBtn_Click(object sender, EventArgs e)
         {
             cIndex = 10;
@@ -423,12 +365,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 9);
-                else if (lineChart)
-                    CreateLineChart(statsList, 9);
-                else if (pieChart)
-                    CreatePieChart(statsList, 9);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -452,12 +388,7 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 10);
-                else if (lineChart)
-                    CreateLineChart(statsList, 10);
-                else if (pieChart)
-                    CreatePieChart(statsList, 10);
+
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -481,12 +412,6 @@ namespace Covid_Vaccine_Tracker.UI
                 else
                     DisplayError(DataErrorMsg, AppTitle);
 
-                if (barChart)
-                    CreateBarChart(statsList, 11);
-                else if (lineChart)
-                    CreateLineChart(statsList, 11);
-                else if (pieChart)
-                    CreatePieChart(statsList, 11);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -506,6 +431,7 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     // assign each data point name ie Dose Number to chart series
                     Series series = this.VaxChart.Series.Add(vaccineList.ElementAt(datapoint).DataName);
+                    
                     // now add the data values ie the number of doses administered for respective dose number
                     series.Points.Add(vaccineList.ElementAt(datapoint).DataValue);
                 }
