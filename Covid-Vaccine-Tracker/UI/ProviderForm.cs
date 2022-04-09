@@ -396,7 +396,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                     // If patient not found then display a error message
                     if (!PatientFound)
-                        DisplayError("Error, patient not found double check patient id", appTitle);
+                        DisplayError("Error, patient not found double check patient id", AppTitle);
                     // If patient is found then set patient values
                     else
                         CreatePatient(NewPatient);
@@ -644,7 +644,7 @@ namespace Covid_Vaccine_Tracker.UI
             }
             catch (Exception ex)
             // If there are any errors then take the error message IE ex.Message and display it in a message box
-            { DisplayError(ex.Message, appTitle); }
+            { DisplayError(ex.Message, AppTitle); }
         }
         private void ViewItem_Click(object sender, EventArgs e)
         {
@@ -692,7 +692,7 @@ namespace Covid_Vaccine_Tracker.UI
                 PatientIdTxt.ReadOnly = true;
             }
             catch (Exception ex)
-            { DisplayError(ex.Message, appTitle); }
+            { DisplayError(ex.Message, AppTitle); }
 
         }
 
