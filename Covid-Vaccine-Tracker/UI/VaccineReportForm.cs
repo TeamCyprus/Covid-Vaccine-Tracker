@@ -19,8 +19,15 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void VaccineReportForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'newDataSet.Vaccine_Records' table. You can move, or remove it, as needed.
+            this.vaccine_RecordsTableAdapter.Fill(this.newDataSet.Vaccine_Records);
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
