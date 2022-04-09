@@ -189,7 +189,7 @@ namespace Covid_Vaccine_Tracker.UI
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // ReportBtn
             // 
@@ -198,7 +198,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ReportBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportBtn.Image")));
             this.ReportBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ReportBtn.Name = "ReportBtn";
-            this.ReportBtn.Size = new System.Drawing.Size(122, 29);
+            this.ReportBtn.Size = new System.Drawing.Size(106, 25);
             this.ReportBtn.Text = "Full Report";
             this.ReportBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ReportBtn.Click += new System.EventHandler(this.ReportBtn_Click);
@@ -216,17 +216,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(54, 25);
-            this.ExitBtn.Text = "Exit";
-            this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Image = ((System.Drawing.Image)(resources.GetObject("ExitBtn.Image")));
-            this.ExitBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(54, 29);
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);

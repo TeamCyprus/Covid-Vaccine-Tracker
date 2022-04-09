@@ -83,6 +83,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.label1.Location = new System.Drawing.Point(123, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 20);
@@ -93,6 +94,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.label2.Location = new System.Drawing.Point(123, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
@@ -102,7 +104,7 @@ namespace Covid_Vaccine_Tracker.UI
             // CreateAccountLbl
             // 
             this.CreateAccountLbl.AutoSize = true;
-            this.CreateAccountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.CreateAccountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.CreateAccountLbl.Location = new System.Drawing.Point(160, 133);
             this.CreateAccountLbl.Name = "CreateAccountLbl";
             this.CreateAccountLbl.Size = new System.Drawing.Size(136, 13);
@@ -149,6 +151,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.LoginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
