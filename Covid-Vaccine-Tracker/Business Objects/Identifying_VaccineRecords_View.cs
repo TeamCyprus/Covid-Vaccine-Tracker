@@ -29,6 +29,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         public string Id { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
+        public string Middle { get; set; }
 
 
     }
