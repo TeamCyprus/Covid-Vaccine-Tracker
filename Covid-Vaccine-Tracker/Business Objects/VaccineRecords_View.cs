@@ -35,6 +35,17 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         public string pprl;//10
 
         public string Extract_Type { get; set; }
-        public string MyProperty { get; set; }
+        public string Vaccine_Event_Id { get; set; }
+        public DateTime Administration_Date { get; set; }
+        public string Vaccnie_Type { get; set; }
+        public string Vaccine_Product { get; set; }
+        public string Vaccine_Manufacturer { get; set; }
+        public string Lot_Number { get; set; }
+        public DateTime Vaccine_Experation_Date { get; set; }
+        public string Vaccine_Admin_Site { get; set; }
+        public string Vaccine_Admin_Route { get; set; }
+        public string Dose_Number { get; set; }
+        public string Vaccine_Series_Complete { get; set; }
+        public string Responsible_Organization { get; set; }
     }
 }
