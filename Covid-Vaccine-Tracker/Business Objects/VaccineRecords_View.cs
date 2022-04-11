@@ -37,6 +37,33 @@ namespace Covid_Vaccine_Tracker.Business_Objects
         public string Extract_Type { get; set; }
         public string Vaccine_Event_Id { get; set; }
         public DateTime Administration_Date { get; set; }
+        public string Vaccine_Type { get; set; }
+        public string Vaccine_Product { get; set; }
+        public string Vaccine_Manufacturer { get; set; }
+        public string Lot_Number { get; set; }
+        public DateTime Vaccine_Experation_Date { get; set; }
+        public string Vaccine_Admin_Site { get; set; }
+        public string Vaccine_Admin_Route { get; set; }
+        public string Dose_Number { get; set; }
+        public string Vaccine_Series_Complete { get; set; }
+        public string Responsibile_Organization { get; set; }
+        public string Administrated_Location { get; set; }
+        public string Vtcks_Pin { get; set; }
+        public string Administrated_Loc_Type { get; set; }
+        public string Admin_Street_Address { get; set; }
+        public string Admin_City { get; set; }
+        public string Admin_County { get; set; }
+        public string Admin_State { get; set; }
+        public string Admin_Zip { get; set; }
+        public string Admin_Suffix { get; set; }
+        public string Comorbidity_Status { get; set; }
+        public string Serology_Results { get; set; }
+        public string PPRL { get; set; }
+
+
+        public string Extract_Type { get; set; }
+        public string Vaccine_Event_Id { get; set; }
+        public DateTime Administration_Date { get; set; }
         public string Vaccnie_Type { get; set; }
         public string Vaccine_Product { get; set; }
         public string Vaccine_Manufacturer { get; set; }
