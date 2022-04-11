@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Vaccine Record Model View by Omar 4/11/22
+///<summary>
+/// This class is a view model class for the Vaccine Record model
+/// When data is read in from the database it is stored in this class
+/// this allows us to display the vaccine records in what ever way we please
+/// it also prevents any errors from occuring because of the input validation implemented in the Vaccine Record base class
+/// </summary>
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

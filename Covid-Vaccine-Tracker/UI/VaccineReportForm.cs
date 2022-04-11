@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Report Form by Ryan 4/11/22
+///<summary>
+/// This form displays the vaccine records from the database as a report
+/// the Report View control allows the data displayed to be printed or exported as a Excel file
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

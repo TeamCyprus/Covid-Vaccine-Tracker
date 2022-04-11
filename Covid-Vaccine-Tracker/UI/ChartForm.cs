@@ -1,4 +1,17 @@
-﻿using System;
+﻿// Chart forms by Zachary Palmer 4/10/22
+
+///<summary>
+/// This form is used by the users to view the vaccine data applied against different filters
+/// There are 3 chart types Bar, Line, and Pie 
+/// When this form is first opened there is a certain order that must be followed
+///  1) The only button enabled on the toolbar is the Data button. The user must select a data filter option
+///  2) After a data option is selected the chart buttons are enabled. Next the user must select a click a chart button
+///  3) Lastly after a chart button is clicked the load button is enabled. The user must click the load button for the chart to display
+///  After a chart has been displayed the user can switch between different data filter options and different chart types
+/// 
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;

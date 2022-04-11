@@ -5,6 +5,8 @@
 /// It only accesses the Vaccine Records table. Since there are two types of users with different privlages
 /// There querys that return joins result rows so this class uses VaccineRecord and Identifying_VaccineRecord classes
 /// to display the correct data to the correct data
+/// 
+/// Note Sergio switch the appropriate Vaccine Record and Vaccine Record Identifiying DB methods to the View Model classes
 /// </summary>
 using System;
 using System.Collections.Generic;
