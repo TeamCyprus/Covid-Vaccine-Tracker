@@ -499,7 +499,7 @@ namespace Covid_Vaccine_Tracker.UI
             // if there is data in the list the create barchart
             if (vaccineList.Count > 0)
             {
-                this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                //this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
                 //this.VaxChart.Titles.FindByName(axisLabel);
                 this.VaxChart.DataSource = vaccineList;
                 // create the name for the sereies ie the line
@@ -537,7 +537,7 @@ namespace Covid_Vaccine_Tracker.UI
                 if (vaccineList.Count > 0)
                 {
                     // use Titles dict to create chart title
-                    this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                    //this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
                     this.VaxChart.DataSource = vaccineList;
                     // create the name for the sereies ie the line
                     Series series = this.VaxChart.Series.Add(Titles[titleKey]);
@@ -566,7 +566,7 @@ namespace Covid_Vaccine_Tracker.UI
             // set the title
             try
             {
-                this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
+                
                 Series series = this.VaxChart.Series.Add(Titles[titleKey]);
                 series.ChartType = SeriesChartType.Pie;
                 series.AxisLabel = axisLabel;
@@ -616,6 +616,11 @@ namespace Covid_Vaccine_Tracker.UI
             StdTxt.Text = std.ToString();
             VarTxt.Text = variance.ToString();
             
+            // set chart titles
+            for (int t = 0; t < Titles.Count; t++)
+            {
+                this.VaxChart.Titles.Add(Titles.ElementAt(t).Value);
+            }
 
             // disable controls
             DataControl("enable");
