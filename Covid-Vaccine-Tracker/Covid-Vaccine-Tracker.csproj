@@ -75,6 +75,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -153,57 +154,39 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="UI\AccountSelector.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\AccountSelector.cs" />
     <Compile Include="UI\AccountSelector.Designer.cs">
       <DependentUpon>AccountSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ChartForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\ChartForm.cs" />
     <Compile Include="UI\ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SplashForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\SplashForm.cs" />
     <Compile Include="UI\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\VaccineReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\VaccineReportForm.cs" />
     <Compile Include="UI\VaccineReportForm.Designer.cs">
       <DependentUpon>VaccineReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\ViewForm.cs" />
     <Compile Include="UI\ViewForm.Designer.cs">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ProviderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\ProviderForm.cs" />
     <Compile Include="UI\ProviderForm.Designer.cs">
       <DependentUpon>ProviderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\LoginForm.cs" />
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SignupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\SignupForm.cs" />
     <Compile Include="UI\SignupForm.Designer.cs">
       <DependentUpon>SignupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\VaccineRecordForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\VaccineRecordForm.cs" />
     <Compile Include="UI\VaccineRecordForm.Designer.cs">
       <DependentUpon>VaccineRecordForm.cs</DependentUpon>
     </Compile>

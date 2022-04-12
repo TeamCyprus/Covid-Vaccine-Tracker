@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.DataVisualization.Charting;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Covid_Vaccine_Tracker.Business_Objects;
@@ -566,8 +567,8 @@ namespace Covid_Vaccine_Tracker.UI
             // set the title
             try
             {
-                this.VaxChart.Titles.Add(Titles.ElementAt(titleKey).Value);
-                Series series = this.VaxChart.Series.Add(Titles[titleKey]);
+                VaxChart.ChartAreas.Series.Title
+                Series Series = this.VaxChart.Series.Add(Titles[titleKey]);
                 series.ChartType = SeriesChartType.Pie;
                 series.AxisLabel = axisLabel;
                 // create the chart if there is data in list
