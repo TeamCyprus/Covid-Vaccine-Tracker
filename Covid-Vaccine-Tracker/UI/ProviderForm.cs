@@ -897,6 +897,22 @@ namespace Covid_Vaccine_Tracker.UI
                     // is what cancel should do
                 }
             }
+            // if looping uncomment below
+            //// if the user clicked the X btn or Alt F4
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+            //    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
+            //         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            //    // Checks to see if yes button was selected
+            //    if (closeForm == DialogResult.Yes)
+            //        this.Close();
+            //    // Check to see if no btn was selected the raise closeSelectir event
+            //    else if (closeForm == DialogResult.No)
+            //        e.Cancel = true;
+            //    // Dont need to check if cancel was selected because not closing app or not closing form
+            //    // is what cancel should do
+            //}
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
