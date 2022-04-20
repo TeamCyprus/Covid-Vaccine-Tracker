@@ -224,15 +224,31 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
                 using(IDbConnection db = new SqlConnection(conStr))
                 {
-                    requstedPatient = db.QuerySingle<Patient>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                    patientFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
                 }
-
-                if (requstedPatient != null)
-                    patientFound = true;
-                else
-                    patientFound = false;
             }
             catch(Exception ex)
+            { throw ex; }
+
+            return patientFound;
+        }
+        public static bool IsExistingPatient(string patientId)
+        {
+            bool patientFound;
+            string procedure = "[SpCheckForPatientId]";
+            var parameters = new
+            {id = patientId, };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    patientFound = db.ExecuteScalar<bool>(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
             { throw ex; }
 
             return patientFound;

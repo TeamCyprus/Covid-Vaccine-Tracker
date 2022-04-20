@@ -35,7 +35,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             if (string.IsNullOrEmpty(encrypted))
                 throw new ArgumentException("Encrypted data is null or empty");
             if (string.IsNullOrEmpty(str))
-                throw new ArgumentException("String data is null or emtpty");
+                throw new ArgumentException("Password data is null or emtpty");
 
             try
             {

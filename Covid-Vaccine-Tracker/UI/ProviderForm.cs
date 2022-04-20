@@ -36,7 +36,7 @@ namespace Covid_Vaccine_Tracker.UI
 
         // Variable for a new patient dont create instance until new patient menu item click
         // so every time new patient menu item is clicked there is a new id generated and old one is gone 
-        Patient FreshPatient;
+        Patient FreshPatient, OldPatient;
 
         // Holds the current providers data
         readonly Provider ActiveProvider = new Provider();
@@ -60,6 +60,7 @@ namespace Covid_Vaccine_Tracker.UI
         bool IsAdd, IdExist, PprlExist, ErrorOccured = false;
         bool possibleDataLoss = true, dataSubmitted = false;
 
+        bool UpdateFromView = false;
         public ProviderForm()
         {
             InitializeComponent();
@@ -72,6 +73,14 @@ namespace Covid_Vaccine_Tracker.UI
         }
         // SetErrorPv take the index of the textbox that is missing data or has the error and takes the error
         // message to display.
+
+        // constructor for update method from the view form
+        public ProviderForm(Patient patientRecord)
+        {
+            OldPatient = new Patient();
+            OldPatient = patientRecord.CopyPatient();
+            UpdateFromView = true;
+        }
         private void SetErrorPv(int txtBx, string emsg)
         {
             // Switch statement looks at the value of txtBx, when txtBx matches the value of a case
@@ -198,32 +207,32 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     Tbx = 0;
                     valid = false;
-                    errMsg = "Must enter a patient id";
+                    errMsg = Errors.GetInputErrorMsg(0, "Patient Id");
                 }
                 else if (string.IsNullOrEmpty(FnameTxt.Text))
                 {
                     Tbx = 1;
                     valid = false;
-                    errMsg = "Must enter a first name";
+                    errMsg = Errors.GetInputErrorMsg(0, "First name");
                 }
                 else if (string.IsNullOrEmpty(MnameTxt.Text))
                 {
                     Tbx = 2;
                     valid = false;
-                    errMsg = "Must enter a middle name";
+                    errMsg = Errors.GetInputErrorMsg(0, "Middle name");
                 }
                 else if (string.IsNullOrEmpty(LnameTxt.Text))
                 {
                     Tbx = 3;
                     valid = false;
-                    errMsg = "Must enter a last name";
+                    errMsg = Errors.GetInputErrorMsg(0, "Last name");
                 }
                 // Determine if a date was selected in Datepicker control
                 else if (!DOBpicker.Checked)
                 {
                     Tbx = 4;
                     valid = false ;
-                    errMsg = "Must enter data of birth";
+                    errMsg = Errors.GetInputErrorMsg(11, "Date of birth");
                 }// is sex selected
                  // To check if user selected a item in the comboboxs check in selected index is greater then -1 which is the 
                  // default value for a combo box.
@@ -231,55 +240,55 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     Tbx = 5;
                     valid = false;
-                    errMsg = "A sex must be selected";
+                    errMsg = Errors.GetInputErrorMsg(11, "Sex");
                 }
                 else if (string.IsNullOrEmpty(StreetTxt.Text))
                 {
                     Tbx = 6;
                     valid = false;
-                    errMsg = "Must enter a street address";
+                    errMsg = Errors.GetInputErrorMsg(0, "Street");
                 }
                 else if (string.IsNullOrEmpty(CityTxt.Text))
                 {
                     Tbx = 7;
                     valid = false;
-                    errMsg = "Must enter a city";
+                    errMsg = Errors.GetInputErrorMsg(0, "City");
                 }
                 else if (string.IsNullOrEmpty(CountyTxt.Text))
                 {
                     Tbx = 8;
                     valid = false ;
-                    errMsg = "Must enter a county";
+                    errMsg = Errors.GetInputErrorMsg(0, "County");
                 }
                 else if (StatesCbx.SelectedIndex <= -1)
                 {
                     Tbx = 9;
                     valid = false;
-                    errMsg = "A state must be selectd";
+                    errMsg = Errors.GetInputErrorMsg(11, "State");
                 }
                 else if (string.IsNullOrEmpty(ZipTxt.Text))
                 {
                     Tbx = 10;
                     valid = false;
-                    errMsg = "Must enter a zipcode";
+                    errMsg = Errors.GetInputErrorMsg(0, "Zipcode");
                 }
                 else if(Race1Cbx.SelectedIndex <= -1)
                 {
                     Tbx = 11;
                     valid = false;
-                    errMsg = "A race must be selected";
+                    errMsg = Errors.GetInputErrorMsg(11, "Race");
                 }
                 else if(Race2Cbx.SelectedIndex <= -1)
                 {
                     Tbx = 12;
                     valid = false;
-                    errMsg = "Must select a value";
+                    errMsg = Errors.GetInputErrorMsg(11, "Race");
                 }
                 else if (EthnicityCbx.SelectedIndex <= -1)
                 {
                     Tbx = 13;
                     valid = false;
-                    errMsg = "A ethnicity must be selected";
+                    errMsg = Errors.GetInputErrorMsg(11, "Ethnicity");
                 }
                 // Now check to see 
             }
@@ -307,19 +316,20 @@ namespace Covid_Vaccine_Tracker.UI
                 // Give ErrorTip tooltip a title
                 ErrorTip.ToolTipTitle = "Max Digits";
                 // Display a tool tip error messsage
-                ErrorTip.Show("Patient Id cannot only be 10 digits long",PatientIdTxt,25,-20,2500);
+                ErrorTip.Show(Errors.GetInputErrorMsg(28, "Patient Id"),PatientIdTxt,25,-20,2500);
             }
             // If usr tries to start entering characters at end of MaskedTxtBx display error
             else if (e.Position == PatientIdTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", PatientIdTxt, 25 ,-20, 2500);
+                ErrorTip.Show(Errors.GetInputErrorMsg(31, "Patient Id"), PatientIdTxt, 25 ,-20, 2500);
             }
             // If invalid data is entered display error
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", PatientIdTxt, 25, -20, 2500);
+                string exampleFormat = "1234567AAA";
+                ErrorTip.Show(Errors.GetFormatErrorMsg(32, "Patient Id", exampleFormat), PatientIdTxt, 25, -20, 2500);
             }
         }
         void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
@@ -328,17 +338,17 @@ namespace Covid_Vaccine_Tracker.UI
             if (ZipTxt.MaskFull)
             {
                 ErrorTip.ToolTipTitle = "Max Digits";
-                ErrorTip.Show("Max number of digits reached for Zipcode", ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetInputErrorMsg(31, "Zipcode"), ZipTxt, 25, -20, 2500);
             }
             else if (e.Position == ZipTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Zipcode", ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetInputErrorMsg(32, "Zipcode"), ZipTxt, 25, -20, 2500);
             }
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Zipcode format, Zipcode must be in 00000 format", ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetInputErrorMsg(27, "Zipcode"), ZipTxt, 25, -20, 2500);
             }
         }
         // CreatePatient is used to 
@@ -396,7 +406,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                     // If patient not found then display a error message
                     if (!PatientFound)
-                        DisplayError("Error, patient not found double check patient id", AppTitle);
+                        DisplayError(Errors.GetGeneralErrorMsg(33,"Patient", "Patient Id"), AppTitle);
                     // If patient is found then set patient values
                     else
                         CreatePatient(NewPatient);
@@ -547,17 +557,17 @@ namespace Covid_Vaccine_Tracker.UI
             if (patientDOB > todaysDate)
             {
                 oldEnough = false;
-                errMsg = "Invalid date of birth";
+                errMsg = Errors.GetInputErrorMsg(27, "Date of birth");
             }
             else if (patientDOB >= fiveYearsAgo)
             {
                 oldEnough = false;
-                errMsg = "Patient's must be 5 years or older to recieve vaccine";
+                errMsg = Errors.GetErrorMsg(8);
             }
             else if (patientDOB <= hundred10YearsAgo)
             {
                 oldEnough = false;
-                errMsg = "Invalid date of birth, cannot vaccinate the dead";
+                errMsg = Errors.GetErrorMsg(9);
             }
             else
                 oldEnough = true;
@@ -641,6 +651,28 @@ namespace Covid_Vaccine_Tracker.UI
                 ExtractTxt.Text = ExtractType.Extract_Type;
                 // Make sure the buttons are not displaying
                 DisableButtons();
+
+                if (UpdateFromView)
+                {
+                    ExtractTxt.Text = OldPatient.Extract_Type;
+                    PatientIdTxt.Text = OldPatient.Id;
+                    FnameTxt.Text = OldPatient.First_name;
+                    MnameTxt.Text = OldPatient.Middle_name;
+                    LnameTxt.Text = OldPatient.Last_name;
+                    DOBpicker.Value = OldPatient.Date_of_birth;
+
+                    SexCbx.SelectedIndex = SexCbx.FindString(OldPatient.Sex);
+                    StreetTxt.Text = OldPatient.Street_address;
+                    CityTxt.Text = OldPatient.City;
+                    CountyTxt.Text = OldPatient.County;
+                    StatesCbx.SelectedIndex = StatesCbx.FindString(OldPatient.State);
+                    ZipTxt.Text = OldPatient.Zipcode;
+                    Race1Cbx.SelectedIndex = Race1Cbx.FindString(OldPatient.Race1);
+                    Race2Cbx.SelectedIndex = Race2Cbx.FindString(OldPatient.Race2);
+                    EthnicityCbx.SelectedIndex = EthnicityCbx.FindString(OldPatient.Ethnicity);
+
+                    EnableUpdateControls();
+                }
             }
             catch (Exception ex)
             // If there are any errors then take the error message IE ex.Message and display it in a message box
@@ -724,90 +756,98 @@ namespace Covid_Vaccine_Tracker.UI
             // Reset any errors from before
             ResetErrorPv();
             ResetErrorLbl();
-            // New patient is being added 
-            // tbx will hold the index of any textboxes that have an error
-            // It is set to a number that is outside the number of textboxs could be different
-            int tbx = -1;
-            // IsValid is a tuple that holds the (bool,string) from CheckForm
-            IsValid = CheckForm(ref tbx);
-            // Holds status of patient insert and PPRl insert
-            bool WasSuccess, GoodAdd;
-            dataSubmitted = false;
-            // If IsValid item1 aka the bool is true
-            if (IsValid.Item1)
+            // if pateitn not in the db add them
+            bool PatientExists = PatientDB.CheckPatientId(PatientIdTxt.Text);
+
+            if (!PatientExists)
             {
-                try
+                // New patient is being added 
+                // tbx will hold the index of any textboxes that have an error
+                // It is set to a number that is outside the number of textboxs could be different
+                int tbx = -1;
+                // IsValid is a tuple that holds the (bool,string) from CheckForm
+                IsValid = CheckForm(ref tbx);
+                // Holds status of patient insert and PPRl insert
+                bool WasSuccess, GoodAdd;
+                dataSubmitted = false;
+                // If IsValid item1 aka the bool is true
+                if (IsValid.Item1)
                 {
-                    // If inside this if block then Reset tbx value so it can be used again
-                    tbx = -1;
-                    // Verify patient is of age pass in dob picked
-                    OfAge = VerifyAge(DOBpicker.Value, ref tbx);
-
-                    // If patient dob was a valid date
-                    if (OfAge.Item1)
+                    try
                     {
-                        SetNewPatient(FreshPatient, false);
+                        // If inside this if block then Reset tbx value so it can be used again
+                        tbx = -1;
+                        // Verify patient is of age pass in dob picked
+                        OfAge = VerifyAge(DOBpicker.Value, ref tbx);
 
-                        // If there was an error setting a patient property then ErrorOccured is true
-                        // If ErrorOccured is false then add to db
-                        if (!ErrorOccured)
+                        // If patient dob was a valid date
+                        if (OfAge.Item1)
                         {
-                            WasSuccess = PatientDB.AddPatient(FreshPatient);
+                            SetNewPatient(FreshPatient, false);
 
-                            if (WasSuccess)
+                            // If there was an error setting a patient property then ErrorOccured is true
+                            // If ErrorOccured is false then add to db
+                            if (!ErrorOccured)
                             {
-                                DisplaySuccess("Patient has been succesfully added", AppTitle);
-                                // Now check PprlExist flag to double check pprl number does not exist then add to db
-                                if (!PprlExist)
+                                WasSuccess = PatientDB.AddPatient(FreshPatient);
+
+                                if (WasSuccess)
                                 {
-                                    // Set PPRL
-                                    PPRL pRL = new PPRL();
-                                    pRL.Patient_Id = GeneratedPatientId;
-                                    pRL.PPRL_Number = GeneratedPPRL;
-                                    // Store PPRL
-                                    GoodAdd = PPRLDB.AddPPRL(pRL);
+                                    DisplaySuccess("Patient has been succesfully added", AppTitle);
+                                    // Now check PprlExist flag to double check pprl number does not exist then add to db
+                                    if (!PprlExist)
+                                    {
+                                        // Set PPRL
+                                        PPRL pRL = new PPRL();
+                                        pRL.Patient_Id = GeneratedPatientId;
+                                        pRL.PPRL_Number = GeneratedPPRL;
+                                        // Store PPRL
+                                        GoodAdd = PPRLDB.AddPPRL(pRL);
 
-                                    // If pprl added successful do nothing
-                                    // If add is unsuccessful display err Msg
-                                    if (!GoodAdd)
-                                        DisplayError("An error occured while storing patient's PPRL", AppTitle);
+                                        // If pprl added successful do nothing
+                                        // If add is unsuccessful display err Msg
+                                        if (!GoodAdd)
+                                            DisplayError(Errors.GetInputErrorMsg(34, "PPRL"), AppTitle);
 
-                                    dataSubmitted = true;
-                                    possibleDataLoss = false;
+                                        dataSubmitted = true;
+                                        possibleDataLoss = false;
+                                    }
+
+                                    // Disable groupbox and controls if was success
+                                    InputControls("Disable");
+                                    DisableButtons();
+                                    ResetForm();
+                                    // Reset the IsAdd flag for next patientAdd
+                                    IsAdd = false;
+
+                                    // Vaccine form is out of scope for this sprint so display message box notification
+                                    // Now call vax form to enter all vaccine information
+                                    // In the future must pass in the provider to the vaccineForm also but for this sprint dont
+                                    VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient, GeneratedPPRL);
+                                    VaxForm.ShowDialog();
+
                                 }
-
-                                // Disable groupbox and controls if was success
-                                InputControls("Disable");
-                                DisableButtons();
-                                ResetForm();
-                                // Reset the IsAdd flag for next patientAdd
-                                IsAdd = false;
-
-                                // Vaccine form is out of scope for this sprint so display message box notification
-                                // Now call vax form to enter all vaccine information
-                                // In the future must pass in the provider to the vaccineForm also but for this sprint dont
-                                VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient,GeneratedPPRL);
-                                VaxForm.ShowDialog();
+                                else if (!WasSuccess)
+                                    DisplayError(Errors.GetInputErrorMsg(36, "Patient"), AppTitle);
 
                             }
-                            else if (!WasSuccess)
-                                DisplayError("Error patient has not been added", AppTitle);
+                            else
+                                DisplayError(Errors.GetInputErrorMsg(35, "Patient"), AppTitle);
 
                         }
-                        else
-                            DisplayError("There was an issue creating patient", AppTitle);
-
+                        else // If not a valid age display errorMsg with errorPv 
+                            SetErrorPv(tbx, OfAge.Item2);
                     }
-                    else // If not a valid age display errorMsg with errorPv 
-                        SetErrorPv(tbx, OfAge.Item2);
+                    catch (Exception ex) // If there are any patient input errors display in error label
+                    { DisplayError(ex.Message, AppTitle); }
                 }
-                catch (Exception ex) // If there are any patient input errors display in error label
-                {DisplayError(ex.Message,AppTitle); }
+                // If IsValid Item1 false then display the error on the textbox with ErrorPV
+                // IsValid.Item2 holds the error msg
+                else
+                    SetErrorPv(tbx, IsValid.Item2);
             }
-            // If IsValid Item1 false then display the error on the textbox with ErrorPV
-            // IsValid.Item2 holds the error msg
             else
-                SetErrorPv(tbx, IsValid.Item2);
+                DisplaySuccess(Errors.GetInputErrorMsg(25, "Patient"), AppTitle);
         }
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -854,10 +894,10 @@ namespace Covid_Vaccine_Tracker.UI
 
                             }
                             else if (!WasSuccess)
-                                DisplayError("Error patient was not updated", AppTitle);
+                                DisplayError(Errors.GetInputErrorMsg(37, "Patient"), AppTitle);
                         }
                         else
-                            DisplayError("There was an error updating patient information", AppTitle);
+                            DisplayError(Errors.GetInputErrorMsg(37, "Patient"), AppTitle);
                     }
                     else // Display errorMsg with erroPv
                         SetErrorPv(tbx, OfAge.Item2);
@@ -885,7 +925,7 @@ namespace Covid_Vaccine_Tracker.UI
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
                     // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
+                    DialogResult closeForm = MessageBox.Show(Errors.GetErrorMsg(38), AppTitle,
                          MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
@@ -917,8 +957,8 @@ namespace Covid_Vaccine_Tracker.UI
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // the two messages to ask the user
-            string dataSavedMsg = "Do you wish to close the entire application?";
-            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
+            string dataSavedMsg = Errors.GetErrorMsg(39);
+            string dataNotSavedMsg = Errors.GetErrorMsg(38);
             string Msg = string.Empty;
 
             // determine which message needs to be displayed

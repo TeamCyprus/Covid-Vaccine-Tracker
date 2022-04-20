@@ -138,6 +138,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.RecordsDg.ReadOnly = true;
             this.RecordsDg.Size = new System.Drawing.Size(1524, 275);
             this.RecordsDg.TabIndex = 5;
+            this.RecordsDg.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RecordsDg_CellMouseDoubleClick);
             // 
             // toolStrip1
             // 

@@ -94,6 +94,7 @@
     <Compile Include="Business Objects\CDC.cs" />
     <Compile Include="Business Objects\CDCRecordcs.cs" />
     <Compile Include="Business Objects\Dose.cs" />
+    <Compile Include="Business Objects\Errors.cs" />
     <Compile Include="Business Objects\Ethnicity.cs" />
     <Compile Include="Business Objects\Extracts.cs" />
     <Compile Include="Business Objects\Identifying_VaccineRecords_View.cs" />

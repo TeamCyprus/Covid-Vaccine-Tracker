@@ -30,6 +30,7 @@ namespace Covid_Vaccine_Tracker.UI
         readonly bool IsCdcUser;
         List<Views> RecordViews = new List<Views>();
         readonly string AppTitle = "Covid Vaccine Tracker";
+        Patient patient;
 
         public ViewForm()
         {
@@ -323,6 +324,32 @@ namespace Covid_Vaccine_Tracker.UI
 
             return patientRecords;
         }
+        private void CreatePatient(List<string> cols, DateTime dob)
+        {
+            int valueIndex;            // try blocks go around code that could throw an error then passes any errors to the catch block
+            try
+            {
+                patient = new Patient();
+                patient.Id = cols[0];
+                patient.First_name = cols[1];
+                patient.Middle_name = cols[2];
+                patient.Last_name = cols[3];
+                patient.Date_of_birth = dob;
+                patient.Street_address = cols[4];
+                patient.City = cols[5];
+                patient.County = cols[6];
+                patient.State = cols[7];
+                patient.Zipcode = cols[8];
+                patient.Race1 = cols[9];
+                patient.Race2 = cols[10];
+                patient.Ethnicity = cols[11];
+                patient.Sex = cols[12];
+                patient.Extract_Type = cols[13];
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+        }
         private void EnterBtn_Click(object sender, EventArgs e)
         {           
             // Lists to hold respective records
@@ -382,7 +409,7 @@ namespace Covid_Vaccine_Tracker.UI
                         }
                     }
                     else // something unexpected happened this is probably unessacary and redundant
-                        DisplayError("Error, Unknown view selection please select a view type in combo-box", AppTitle);
+                        DisplayError("Error, unknown operation please select a view type in combo-box", AppTitle);
 
                     // Check to make sure that list being used has values before enabling chart button
                     if (vaxRecords_CDC.Count > 0 || vaxRecords_Provider.Count > 0 || patientRecords.Count > 0)
@@ -491,6 +518,45 @@ namespace Covid_Vaccine_Tracker.UI
             // need to add code that disables the report btn for providers
             VaccineReportForm vaccineReport = new VaccineReportForm();
             vaccineReport.ShowDialog();
+        }
+
+        // get the current cell data and then update
+        private void RecordsDg_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (ViewsCbx.SelectedIndex == 8 || ViewsCbx.SelectedIndex == 9)
+            {
+                string id, fname, mname, lname, street, city, county, state, zip, race1, race2, ethnicity, sex, extract, bday;
+                
+                DateTime dob;
+
+                try
+                {
+                    id = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    fname = RecordsDg.CurrentRow.Cells[1].Value.ToString();
+                    mname = RecordsDg.CurrentRow.Cells[2].Value.ToString();
+                    lname = RecordsDg.CurrentRow.Cells[3].Value.ToString();
+                    bday = RecordsDg.CurrentRow.Cells[4].Value.ToString();
+                    DateTime.TryParse(bday, out dob);
+                    street = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    city = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    county = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    state = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    zip = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    race1 = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    race2 = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    ethnicity = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    sex = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    extract = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+
+                    // put values in list then create patient obj
+                    List<string> columns = new List<string> { id, fname, mname, lname, street, city, county, state, zip, race1, race2, ethnicity, sex, extract};
+                    CreatePatient(columns, dob);
+                    ProviderForm pForm = new ProviderForm(patient);
+                    pForm.ShowDialog();
+                }
+                catch(Exception ex)
+                { DisplayError(ex.Message, AppTitle); }
+            }
         }
     }
 }
