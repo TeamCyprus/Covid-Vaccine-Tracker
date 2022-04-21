@@ -107,6 +107,8 @@
     <Compile Include="Business Objects\Provider_Suffix.cs" />
     <Compile Include="Business Objects\Race.cs" />
     <Compile Include="Business Objects\Response.cs" />
+    <Compile Include="Business Objects\SecurityAnwser.cs" />
+    <Compile Include="Business Objects\SecurityQuestion.cs" />
     <Compile Include="Business Objects\Sex.cs" />
     <Compile Include="Business Objects\States.cs" />
     <Compile Include="Business Objects\Stats.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Data Access Layer\Provider_SuffixDB.cs" />
     <Compile Include="Data Access Layer\RacesDB.cs" />
     <Compile Include="Data Access Layer\ResponsesDB.cs" />
+    <Compile Include="Data Access Layer\SecurityQuestionDB.cs" />
     <Compile Include="Data Access Layer\SexesDB.cs" />
     <Compile Include="Data Access Layer\StatesDB.cs" />
     <Compile Include="Data Access Layer\StatsDB.cs" />
@@ -169,11 +172,23 @@
     <Compile Include="UI\ChartForm.Designer.cs">
       <DependentUpon>ChartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\RecoveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RecoveryForm.Designer.cs">
+      <DependentUpon>RecoveryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateAccountForm.Designer.cs">
+      <DependentUpon>UpdateAccountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\VaccineReportForm.cs">
       <SubType>Form</SubType>
@@ -220,6 +235,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\RecoveryForm.resx">
+      <DependentUpon>RecoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Rpt.rdlc" />
     <EmbeddedResource Include="UI\AccountSelector.resx">
       <DependentUpon>AccountSelector.cs</DependentUpon>
@@ -229,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpdateAccountForm.resx">
+      <DependentUpon>UpdateAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VaccineReportForm.resx">
       <DependentUpon>VaccineReportForm.cs</DependentUpon>

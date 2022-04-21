@@ -176,8 +176,9 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void ForgotPwdLbl_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To be implemented in another sprint", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // account recovery form needs to be called not sure if we are putting this in the current sprint
+            // user is trying to recover password so pass in "Password"
+            RecoveryForm Rform = new RecoveryForm("Password");
+            Rform.ShowDialog();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -185,6 +186,13 @@ namespace Covid_Vaccine_Tracker.UI
             // displays the splash screen .. splash screen is set on a timer then will close
             SplashForm splash = new SplashForm();
             splash.ShowDialog();
+        }
+
+        private void UsrRecoverBtn_Click(object sender, EventArgs e)
+        {
+            // user is trying to recover their username so pass "Username" into constructor
+            RecoveryForm Rform = new RecoveryForm("Username");
+            Rform.ShowDialog();
         }
     }
 }

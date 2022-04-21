@@ -128,6 +128,66 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return requestedUsr;
         }
+        public static User GetUserInfo(string username)
+        {
+            User requestedUsr = new User();
+            string procedure = "[SpGetUserInfo]";
+            var parameter = new { usrname = username };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    requestedUsr = db.QuerySingle<User>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return requestedUsr;
+        }
+        public static string RecoverProviderUsername(string firstname, string lastname)
+        {
+            string usrname = string.Empty;
+            string procedure = "[SpRecoverProviderUsername]";
+            var parameter = new { fname = firstname, lname = lastname };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
+        public static string RecoverCDCUsername(string firstname, string lastname)
+        {
+            string usrname = string.Empty;
+            string procedure = "[SpRecoverCDCUsername]";
+            var parameter = new { fname = firstname, lname = lastname };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
         public static bool AddUser(User user, string encryptPW)
         {
             // variable to determine if succesful insert or not
@@ -208,6 +268,40 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // return insert status
             return isSuccess;
         }
-        
+        public static bool UpdatePassword(string usrname, string passwd)
+        {
+            // variable to determine if succesful insert or not
+            bool isSuccess;
+            // variable to hold number of rows changed
+            int rowsAffected;
+            // specify stored procedure
+            string procedure = "[SpUpdatePwd]";
+            // this is how you specify multiple parameters to pass into a stored procedure
+            // note the name of the parameters has to be the same inside the stored procedure
+
+            var parameters = new { user = usrname, pwd = passwd };
+
+            try
+            {
+                // get connection string
+                string connectionStr = GetConnection();
+
+                //create connection to database
+                using (IDbConnection db = new SqlConnection(connectionStr))
+                {
+                    // since this is not a query must use execute
+                    // execute will return the number of rows affected
+                    // pass in the procedure the parameters and specify the command type
+                    rowsAffected = db.Execute(procedure, parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            // if rowsAffected is greater then zero isSuccess = true if not = false
+            isSuccess = rowsAffected > 0 ? true : false;
+            // return insert status
+            return isSuccess;
+        }
     }
 }

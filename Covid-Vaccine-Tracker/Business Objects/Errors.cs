@@ -47,6 +47,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {37, $"Error, {field} was not updated" },
             {38, $"Warning, any data entered is not saved. Do still you wish to close the application?" },
             {39, $"Do you wish to close the entire application?" },
+            {40, $"Error, you must {field}" }
             
         };
 

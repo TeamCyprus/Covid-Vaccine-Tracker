@@ -38,9 +38,11 @@ namespace Covid_Vaccine_Tracker.UI
             this.label2 = new System.Windows.Forms.Label();
             this.CreateAccountLbl = new System.Windows.Forms.Label();
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ForgotPwdLbl = new System.Windows.Forms.Label();
+            this.PwdRecoveryBtn = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.UsrRecoverBtn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +85,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.label1.Location = new System.Drawing.Point(123, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 20);
@@ -93,6 +96,7 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.label2.Location = new System.Drawing.Point(123, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
@@ -102,7 +106,7 @@ namespace Covid_Vaccine_Tracker.UI
             // CreateAccountLbl
             // 
             this.CreateAccountLbl.AutoSize = true;
-            this.CreateAccountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            this.CreateAccountLbl.ForeColor = System.Drawing.Color.Yellow;
             this.CreateAccountLbl.Location = new System.Drawing.Point(160, 133);
             this.CreateAccountLbl.Name = "CreateAccountLbl";
             this.CreateAccountLbl.Size = new System.Drawing.Size(136, 13);
@@ -115,16 +119,16 @@ namespace Covid_Vaccine_Tracker.UI
             this.ErrorPv.ContainerControl = this;
             this.ErrorPv.Icon = ((System.Drawing.Icon)(resources.GetObject("ErrorPv.Icon")));
             // 
-            // ForgotPwdLbl
+            // PwdRecoveryBtn
             // 
-            this.ForgotPwdLbl.AutoSize = true;
-            this.ForgotPwdLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.ForgotPwdLbl.Location = new System.Drawing.Point(264, 291);
-            this.ForgotPwdLbl.Name = "ForgotPwdLbl";
-            this.ForgotPwdLbl.Size = new System.Drawing.Size(86, 13);
-            this.ForgotPwdLbl.TabIndex = 1;
-            this.ForgotPwdLbl.Text = "Forgot Password";
-            this.ForgotPwdLbl.Click += new System.EventHandler(this.ForgotPwdLbl_Click);
+            this.PwdRecoveryBtn.AutoSize = true;
+            this.PwdRecoveryBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.PwdRecoveryBtn.Location = new System.Drawing.Point(264, 291);
+            this.PwdRecoveryBtn.Name = "PwdRecoveryBtn";
+            this.PwdRecoveryBtn.Size = new System.Drawing.Size(86, 13);
+            this.PwdRecoveryBtn.TabIndex = 1;
+            this.PwdRecoveryBtn.Text = "Forgot Password";
+            this.PwdRecoveryBtn.Click += new System.EventHandler(this.ForgotPwdLbl_Click);
             // 
             // groupBox1
             // 
@@ -147,14 +151,35 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(280, 308);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 8;
+            // 
+            // UsrRecoverBtn
+            // 
+            this.UsrRecoverBtn.AutoSize = true;
+            this.UsrRecoverBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.UsrRecoverBtn.Location = new System.Drawing.Point(264, 308);
+            this.UsrRecoverBtn.Name = "UsrRecoverBtn";
+            this.UsrRecoverBtn.Size = new System.Drawing.Size(88, 13);
+            this.UsrRecoverBtn.TabIndex = 9;
+            this.UsrRecoverBtn.Text = "Forgot Username";
+            this.UsrRecoverBtn.Click += new System.EventHandler(this.UsrRecoverBtn_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            this.ClientSize = new System.Drawing.Size(608, 329);
+            this.ClientSize = new System.Drawing.Size(608, 332);
+            this.Controls.Add(this.UsrRecoverBtn);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ForgotPwdLbl);
+            this.Controls.Add(this.PwdRecoveryBtn);
             this.Controls.Add(this.LoginBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
@@ -177,8 +202,10 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label CreateAccountLbl;
         private System.Windows.Forms.ErrorProvider ErrorPv;
-        private System.Windows.Forms.Label ForgotPwdLbl;
+        private System.Windows.Forms.Label PwdRecoveryBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label UsrRecoverBtn;
+        private System.Windows.Forms.Label label3;
     }
 }

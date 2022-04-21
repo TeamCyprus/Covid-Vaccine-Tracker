@@ -120,32 +120,29 @@
   <metadata name="ErrorPv.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>37</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAA
-        ABYAAAAJAAAAMwAhQaIAL1qzADdkngFGdpMBV4iVAWKUogAtV70ALVe8AC1XvAAtWLwALVi8ACJClwAA
-        ADMAAAAsAAAAEgEPGgABN2Ogqe3//6Tn/P+c3/j/lNb0/4vP8P9mvN7/ZsLk/2bK7P9m0vT/Ztr8/wE3
-        Y6ABDxoAAAAAAAAAAAABS3wAAUt8jWaqyv9orM7/bLDS/26x0/9qrtD/VZ2//1Wgwv9Vpcr/VavT/1q4
-        3v8BSnuPAUp8AAEVIQAAAAAAAmafAAJmn4el6f//nN/6/5TX9P+Mzu7/g8fo/1601/9eut7/XsLo/17K
-        8v9i1vv/AmWcigJlnQACZZ0AARsqAAN9uwADfbqKZqrK/2iszv9ssNL/brHT/2qu0P9Vnb//VaDC/1Wl
-        yv9Vq9P/Wrje/wN6to8De7gAA3u4AAN7uAADgcAAA4G/i6Xp//+c3/r/lNf0/4zO7v+Dx+j/XrTX/166
-        3v9ewuj/Xsry/2LW+/8DfruQA3+9AAN/vQADf70AA4HAAAOBv4tmqsr/aKzO/2yw0v9usdP/aq7Q/1Wd
-        v/9VoML/VaXK/1Wr0/9auN7/A367kAN/vQADf70AAnCnAAOBwAADgb+Lpen//5zf+v+U1/T/jM7u/4PH
-        6P9etNf/Xrre/17C6P9eyvL/Ytb7/wN+u5ADf70AAmeZAAFgkAADgcAAA4G/aQN9uo8CeLOVAnOrnAJu
-        o6IBaZypAFeDygBZhqhLkbX/AWaYrQJ2sJsDfrttAnKpAAFejQABYJAAA4HAAAOBvwADfboAAnizAAJz
-        qwACbqMAAWmcAAFahwABYJCjeLzd/wFklLICcqoAA3exAAFklIYBYJCjAWGSegOBwAADgb8AA326AAJ4
-        swACc6sAAm6jAAJqngACaZ0AAmmdl4TJ5v0GZZS5AV+OAAFfjgAGZZS5hMnm/QJpnZcDgcAAA4G/AAN9
-        ugACeLMAAnOrAAJwpgACcqoAAnKqAAJyqnp8yOfmOIqy1QFbiJEBW4iROIqy1XzI5+YCcqp6A4HAAAOB
-        vwADfboAAnizAAJzqwACeLMAAnizAAJ4swADebU1HYzCm37N6+FqtdHqarXR6n7N6+EdjMKbA3m1NQOB
-        wAADgb8AA326AAJ4swACc6sAAnizAAJ4swACeLMAA3q2AAOAvjMDgL9yA4C/iQOAv4kDgL9yA4C+MwN6
-        tgD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
-        /wD///8AAAAAAAAAAACABwAAgAcAAIAHAACABwAAgAcAAIAHAACABwAAgAcAAP8YAAD/GAAA/wAAAP8A
-        AAD/gQAA//8AAA==
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8AAAAACQAAABYAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAA
+        ABoAAAAWAAAACQ0NDWcQEBCFEBAQhRAQEIUQEBCFEBAQhRAQEIUQEBCFEBAQhRAQEIUQEBCFEBAQhRAQ
+        EIUQEBCFEBAQhQ0NDWcnJyd76+vr/+fn5//n5+f/5+fn/+fn5//n5+f/5+fn/+fn5//n5+f/5+fn/+fn
+        5//n5+f/5+fn/+vr6/8nJyd7MjIydurq6v/dvIf/1JIo/9SSKP/Ukij/1JIo/9WlX/+rq6v/lpaW/5aW
+        lv+Wlpb/lpaW/76+vv/q6ur/MjIydjg4OHPt7e3/1JdG/+fXvP/n17z/59e8/+fXvP/Ul0b/urq6/9ra
+        2v/a2tr/2tra/9ra2v+qqqr/7e3t/zg4OHM+Pj5x8PDw/+y0af/8/Pz//Pz8//z8/P/8/Pz/7LRp/8nJ
+        yf/8/Pz//Pz8//z8/P/8/Pz/t7e3//Dw8P8+Pj5xREREbvPz8//y2bP/9cJ2//XCdv/1wnb/9cJ2//HI
+        j//Nzc3/wcHB/8HBwf/BwcH/wcHB/9jY2P/z8/P/REREbklJSWz39/f/9PT0//T09P/09PT/9PT0//T0
+        9P/09PT/9PT0//T09P/09PT/9PT0//T09P/09PT/9/f3/0lJSWxNTU1q+vr6//j4+P/4+Pj/+Pj4//j4
+        +P/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//r6+v9NTU1qUVFRaP39/f/8/Pz//Pz8//z8
+        /P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/9/f3/UVFRaFVVVWf/////////////
+        /////////////////////////////////////////////////////////////1VVVWdQUFBpu7u7/7q6
+        uv+4uLj/tra2/7Ozs/+wsLD/rq6u/6urq/+oqKj/pqam/6Ojo/+goKD/np6e/5ycnP8DAwNmUlJSW8bG
+        xtTc3Nz/2NnZ/9XV1f/Q0dH/zMzM/8jIyP/Gxsb/xsXF/8nFxf/Nxsb/0cfH/9fLy//EuLjUUlJSW1VV
+        VSJVVVVZVVVVZlVVVWZVVVVmVVVVZlVVVWZVVVVmVVVVZlVVVWZVVVVmVVVVZlVVVWZVVVVmVVVVWVVV
+        VSL///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA//8AAA==
 </value>
   </data>
   <data name="ErrorPv.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -172,7 +169,4 @@
         AAD4HwAA/D8AAA==
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>320, 17</value>
-  </metadata>
 </root>
