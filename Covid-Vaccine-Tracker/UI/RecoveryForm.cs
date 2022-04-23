@@ -59,6 +59,9 @@ namespace Covid_Vaccine_Tracker.UI
                 // if password recovery set InputLbl1 and InputLbl2 text with the InputLbl1.Text = "Username" ..etc
 
                 // if username recovery set InputLbl and InputLbl2 text with the InputLbl2.Text = "Firt Name" ..etc
+            } catch(Exception ex)
+            {
+                throw ex;
             }
 
         }
@@ -123,7 +126,7 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // add the validation for your story here see provider form UpdateAccountForm and login form for example of checkform method
             // note that i started implementing the new error messages in the provider and started on the login form
-           
+            throw new NotImplementedException();
         }
     }
 }
