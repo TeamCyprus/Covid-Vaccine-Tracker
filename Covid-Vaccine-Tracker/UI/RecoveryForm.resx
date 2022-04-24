@@ -117,20 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>To recover your password they need to enter the username and the securtiy question
-There is a stored procedure that will allow you to get the security question base on the username or first and last name and display it in the form so they know what question </value>
-  </data>
-  <data name="textBox2.Text" xml:space="preserve">
-    <value>To recover the username they need to enter first name last name the account type and the security question 
-There is a stored procedure that will allow you to get the security question base on the username or first and last name and display it in the form so they know what question </value>
-  </data>
-  <data name="textBox6.Text" xml:space="preserve">
-    <value>When the form load just change the label above the text boxs to display they value the user needs to enter for your story.
-Take out these 3 text boxs and labels then shorten the width of the form so it looks right. Also if the credentials and security question match send the 
-username or the first name and lastname to the UpdateAccountForm. If the credentials do not match then display a error message 
-with display error. I added the DB class and the event methods for this form</value>
-  </data>
+  <metadata name="ErrorPv.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

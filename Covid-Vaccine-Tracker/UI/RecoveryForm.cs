@@ -16,7 +16,7 @@ namespace Covid_Vaccine_Tracker.UI
     {
         bool usernameRecovery = false, passwordRecovery = false;
         (bool, string) IsValid;
-        string appTitle = "Covid Vaccine Trackdr";
+        string appTitle = "Covid Vaccine Tracker";
         List<User_Type> accountTypes = new List<User_Type>();
         public RecoveryForm()
         {
@@ -51,12 +51,28 @@ namespace Covid_Vaccine_Tracker.UI
                 // load the account options combo box
                 accountTypes = User_TypesDB.GetUserTypes();
                 AccountCbx.DataSource = accountTypes;
-                AccountCbx.DisplayMember = "User_Type";
+                AccountCbx.DisplayMember = "UserType";
                 AccountCbx.ValueMember = "Id";
 
                 //detemine if they are trying to get the username or password
 
                 // if password recovery set InputLbl1 and InputLbl2 text with the InputLbl1.Text = "Username" ..etc
+                if(passwordRecovery && !usernameRecovery)
+                {
+                    InputLbl1.Text = "Username";
+                    InputLbl2.Enabled = false;
+                    InputLbl2.Visible = false;
+                    InputTxt2.Enabled = false;
+                    InputTxt2.Visible = false;
+                    AccountLbl.Top -= 75;
+                    AccountCbx.Top -= 75;
+                    panel1.Height -= 75;
+                    groupBox1.Top -= 75;
+                    ClearBtn.Top -= 75;
+                    SubmitBtn.Top -= 75;
+                    this.Height -= 75;
+                    AnwserTxt.Enabled = false;
+                }
 
                 // if username recovery set InputLbl and InputLbl2 text with the InputLbl2.Text = "Firt Name" ..etc
             } catch(Exception ex)
@@ -68,21 +84,31 @@ namespace Covid_Vaccine_Tracker.UI
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             // clear labels
-            InputLbl1.Text = string.Empty;
+            //InputLbl1.Text = string.Empty;
             InputLbl2.Text = string.Empty;
             // clear text boxs
             InputTxt1.Text = string.Empty;
             InputTxt2.Text = string.Empty;
             AccountCbx.SelectedIndex = -1;
+            AnwserTxt.Text = string.Empty;
             // give input1Txt focus
             InputTxt1.Focus();
         }
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
+            ResetErrorPv();
             // Sergio's section
             // when the user submits check the recovery type
             if (passwordRecovery)
             {
+                int Tbx = -1;
+                IsValid = CheckForm(ref Tbx);
+                if (IsValid.Item1)
+                {
+                    AnwserTxt.Enabled = true;
+                }
+                else
+                    SetErrorPv(Tbx, IsValid.Item2);
                 // use UserDB to check that the username is in the database and get the user id associated with username
                 // then use the id to get the question from the database using one of the SecurityQuestionDB class methods 
 
@@ -112,6 +138,23 @@ namespace Covid_Vaccine_Tracker.UI
                 // Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id") returns a string with Patient and Patient Id inserted into string
             }
         }
+        private void SetErrorPv(int tbx, string emsg)
+        {
+            switch(tbx)
+            {
+                case 0:
+                    ErrorPv.SetError(InputTxt1, emsg);
+                    break;
+                case 1:
+                    ErrorPv.SetError(AccountCbx, emsg);
+                    break;
+            }
+        }
+        private void ResetErrorPv()
+        {
+            // clears the current positionn of ErrorProvider if any
+            ErrorPv.Clear();
+        }
         private void DisplaySuccess(string msg, string title)
         {
             // displays a message box with ok button and information icon used for successful actions
@@ -122,11 +165,40 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box iwth ok button and error icon used for unsuccessful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        //private void InputTxt1_Leave(object sender, EventArgs e)
+        //{
+        //    //check if username exists. If yes, gets the security question, if not, displays an error. 
+        //    string username = InputTxt1.Text.Trim();
+        //    bool usernameFound = UserDB.VerifyUsername(username);
+        //    if(usernameFound)
+        //    {
+        //        //if username is found, retrieve the user's security question and update the sec ? label
+
+        //    }
+        //}
+
         public (bool,string) CheckForm(ref int tbx)
         {
             // add the validation for your story here see provider form UpdateAccountForm and login form for example of checkform method
             // note that i started implementing the new error messages in the provider and started on the login form
-            throw new NotImplementedException();
+            bool valid = true;
+            string errMsg = string.Empty;
+
+            if (string.IsNullOrEmpty(InputTxt1.Text))
+            {
+                valid = false;
+                errMsg = Errors.GetInputErrorMsg(0, "Username");
+                tbx = 0;
+            }
+            else if (AccountCbx.SelectedIndex <=-1)
+            {
+                valid = false;
+                errMsg = Errors.GetInputErrorMsg(11, "Account type");
+                tbx = 1;
+            }
+
+            return (valid, errMsg);
         }
     }
 }

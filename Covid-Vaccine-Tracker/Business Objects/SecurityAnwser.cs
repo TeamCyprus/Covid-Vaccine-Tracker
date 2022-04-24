@@ -8,7 +8,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
 {
     public class SecurityAnwser
     {
-        public int User_Id { get; set; }
+        public string User_Id { get; set; }
         public string Question { get; set; }
         public string Anwser { get; set; }
     }
