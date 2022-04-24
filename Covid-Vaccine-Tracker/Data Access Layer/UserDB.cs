@@ -303,5 +303,45 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             // return insert status
             return isSuccess;
         }
+        public static string GetUserId_Provider(string username)
+        {
+            string procedure = "[SpGetUserId_provider]";
+            string usrname = string.Empty;
+            var parameter = new { usr = username };
+
+            try
+            {
+                string con = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(con))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch(Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
+        public static string GetUserId_Cdc(string username)
+        {
+            string procedure = "[SpGetUserId_cdc]";
+            string usrname = string.Empty;
+            var parameter = new { usr = username };
+
+            try
+            {
+                string con = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(con))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
     }
 }
