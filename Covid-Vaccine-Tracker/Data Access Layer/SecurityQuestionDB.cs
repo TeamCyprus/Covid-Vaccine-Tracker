@@ -97,7 +97,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         public static List<SecurityQuestion> GetAllSecurityQuestions()
         {
             List<SecurityQuestion> questions = new List<SecurityQuestion>();
-            string procedure = "[SpGetUserSecurityQuestions]";
+            string procedure = "[SpGetAllQuestions]";
 
             try
             {
