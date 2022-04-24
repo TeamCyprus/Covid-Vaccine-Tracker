@@ -302,7 +302,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             isSuccess = rowsAffected > 0 ? true : false;
             // return insert status
             return isSuccess;
-        }
+        }// methods to recive user ids from username
         public static string GetUserId_Provider(string username)
         {
             string procedure = "[SpGetUserId_provider]";
