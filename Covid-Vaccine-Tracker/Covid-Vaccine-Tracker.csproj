@@ -142,7 +142,6 @@
     <Compile Include="Data Access Layer\SexesDB.cs" />
     <Compile Include="Data Access Layer\StatesDB.cs" />
     <Compile Include="Data Access Layer\StatsDB.cs" />
-    <Compile Include="Data Access Layer\TestDB.cs" />
     <Compile Include="Data Access Layer\UserDB.cs" />
     <Compile Include="Data Access Layer\User_TypesDB.cs" />
     <Compile Include="Data Access Layer\VaccineRecordDB.cs" />
