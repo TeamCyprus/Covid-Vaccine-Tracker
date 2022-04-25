@@ -331,7 +331,7 @@ namespace Covid_Vaccine_Tracker.UI
                 SecAnsInstance.User_Id = GenerateProviderOrCdcId.Trim();
                 valueindex = SecQuestCbx.SelectedIndex;
                 SecAnsInstance.Question = secQuestions[valueindex].Question;
-                SecAnsInstance.Anwser = SecQuestAnsTxt.Text.Trim();
+                SecAnsInstance.Anwser = Protector.Encryptor(SecQuestAnsTxt.Text);
             } catch(Exception ex)
             {
                 ErrorOccured = true;

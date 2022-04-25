@@ -18,11 +18,18 @@ namespace Covid_Vaccine_Tracker.UI
         List<SecurityAnwser> userSecAnswers = new List<SecurityAnwser>();
         SecurityAnwser userAnswer;
         User user = new User();
+        UpdateAccountForm resetPWForm;
         (bool, string) IsValid;
         private bool usernameRecovery = false, passwordRecovery = false;
         private bool errorOccurred = default;
         private bool isSecondPanel = false;
         string appTitle = "Covid Vaccine Tracker";
+
+        private void HandleCloseRecoveryForm(object sender, EventArgs args)
+        {
+            this.Close();
+        }
+
         public RecoveryForm()
         {
             InitializeComponent();
@@ -137,6 +144,7 @@ namespace Covid_Vaccine_Tracker.UI
             errorOccurred = false;
             ResetErrorPv();
             int Tbx = -1;
+            bool validAns;
             //Checks that the form is filled in...
             IsValid = CheckForm(ref Tbx);
             //Checks if the program is in the user info panel or security question panel
@@ -206,10 +214,12 @@ namespace Covid_Vaccine_Tracker.UI
                 if(IsValid.Item1)
                 {
                     //Compares user's answer with that of the database's
-                    if (AnwserTxt.Text.Trim() == userAnswer.Anwser)
+                    validAns = Protector.Compare(userAnswer.Anwser, AnwserTxt.Text);
+                    if (validAns)
                     {
                         //If correct, calls the UpdateAccountForm with username passed as a parameter
-                        UpdateAccountForm resetPWForm = new UpdateAccountForm(user.Username);
+                        resetPWForm = new UpdateAccountForm(user.Username);
+                        resetPWForm.CloseRecoveryForm += HandleCloseRecoveryForm;
                         resetPWForm.ShowDialog();
                     }
                     else DisplayError("That answer is incorrect.", appTitle);

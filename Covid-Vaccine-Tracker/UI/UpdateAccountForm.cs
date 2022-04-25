@@ -14,11 +14,19 @@ namespace Covid_Vaccine_Tracker.UI
 {
     public partial class UpdateAccountForm : Form
     {
-        bool usernameRecovery = false, passwordRecovery = false;
+        bool usernameRecovery = false, passwordRecovery = false, possibleDataLoss = true;
         (bool, string) IsValid;
         string _Username, _Fname, _Lname;
         string appTitle = "Covid Vaccine Trackdr";
         string _AccountType;
+
+        public event EventHandler CloseRecoveryForm;
+        private void RaiseCloseRecoveryForm()
+        {
+            var handler = CloseRecoveryForm;
+            if (handler != null)
+                CloseRecoveryForm(this, EventArgs.Empty);
+        }
         public UpdateAccountForm()
         {
             InitializeComponent();
@@ -89,9 +97,10 @@ namespace Covid_Vaccine_Tracker.UI
                 if (wasSuccess)
                 {
                     DisplaySuccess("Your password has been updated succesfully", appTitle);
-                    // add event to close this and prior form
-                    /// but for now use this.close
+                    possibleDataLoss = false;
+                    RaiseCloseRecoveryForm();
                     this.Close();
+
                 }
                 else if (!wasSuccess)
                     DisplayError(Errors.GetInputErrorMsg(37, "Password"), appTitle);
@@ -165,6 +174,8 @@ namespace Covid_Vaccine_Tracker.UI
                     InputLbl2.Enabled = true;
                     PasswordTxt.Enabled = true;
                     PasswordTxt.Visible = true;
+                    PasswordTxt.PasswordChar = '*';
+                    PwdVerifyTxt.PasswordChar = '*';
                     break;
                 case "disable":
                     PasswordRecovPanel.Enabled = false;
@@ -203,6 +214,26 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box with ok button and information icon used for successful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void UpdateAccountForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", appTitle,
+                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (closeForm == DialogResult.Yes)
+                        RaiseCloseRecoveryForm();
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                }
+            }
+        }
+
         private void DisplayError(string msg, string title)
         {
             // displays a message box iwth ok button and error icon used for unsuccessful actions
