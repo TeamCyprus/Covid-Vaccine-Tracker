@@ -149,7 +149,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.AnwserTxt.Name = "AnwserTxt";
             this.AnwserTxt.Size = new System.Drawing.Size(260, 24);
             this.AnwserTxt.TabIndex = 5;
-            this.AnwserTxt.Enter += new System.EventHandler(this.AnwserTxt_Enter);
             // 
             // ClearBtn
             // 
@@ -173,7 +172,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(92, 32);
             this.SubmitBtn.TabIndex = 7;
-            this.SubmitBtn.Text = "Submit";
+            this.SubmitBtn.Text = "Next";
             this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 

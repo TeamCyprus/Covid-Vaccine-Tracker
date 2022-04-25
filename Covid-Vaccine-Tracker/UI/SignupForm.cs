@@ -546,48 +546,11 @@ namespace Covid_Vaccine_Tracker.UI
                             dataSubmitted = false;
                             DisplayError("Account with that username already exists.", AppTitle);
                         }
-
-
-                        //if(!VerifyUserStatus(AccountType)) add this if statement before line 427, "userSucess = UserDB....."
-                        //{
-                        //    DisplaySuccess("Success", AppTitle);
-                        //} else {
-                        //      display user already exists and close signup form, open login form. 
                     }
-
                 }
-                catch (Exception ex)
-                {
-                    DisplayError(ex.Message, AppTitle);
-                }
+                catch (Exception ex) {DisplayError(ex.Message, AppTitle);}
             }
-            else
-                SetErrorPv(tbx, isValid.Item2);
-                
-            // This method will add the provider or CDC user into the db
-            // You need to check that all fields on form are filled out and has correct data
-            // use the provider class & the providerDB class 
-
-            // if user is found tell them that they already have an account and then use this.Close to go 
-            // back to login form
-
-            // Use VerifyUserStatus to make sure user does not already exist
-            // if patient exist then display message saying so can use display success or display error method
-
-            // if patient does not exist in DB already then use GenerateID method to create a new id
-            // Note** GenerateID returns a string so set the global variable GeneratedProviderID and set it to the methods return val
-
-
-            // If user not found then verify all data and then
-
-            // Insert Username and Password and Account Type in to the Usertable with UserDB
-            // user UserDB.AddUser valid account types are "Provider" and "CDC" they need to be passed in as strings to the DB Crud methods
-
-
-            // and then Insert the the rest of information on form in to the Provider or CDC table 
-            // then use this.Close to exit to go back to the login form
-
-
+            else SetErrorPv(tbx, isValid.Item2);
         }
         private void ClearBtn_Click(object sender, EventArgs e)
         {

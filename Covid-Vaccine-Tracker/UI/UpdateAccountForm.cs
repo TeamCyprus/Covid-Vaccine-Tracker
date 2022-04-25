@@ -83,7 +83,7 @@ namespace Covid_Vaccine_Tracker.UI
 
             if (IsValid.Item1)
             {
-                string pwd = PwdVerifyTxt.Text.Trim();
+                string pwd = Protector.Encryptor(PwdVerifyTxt.Text.Trim());
                 bool wasSuccess = UserDB.UpdatePassword(_Username, pwd);
 
                 if (wasSuccess)
