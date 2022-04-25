@@ -34,7 +34,7 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
         public static List<User_Type> GetUserTypes()
         {
             List<User_Type> types = new List<User_Type>();
-            string procedure = "[SpGetuserTypes]";
+            string procedure = "[SpGetUserTypes]";
 
             try
             {

@@ -34,10 +34,12 @@ namespace Covid_Vaccine_Tracker.UI
         Provider NewProvider = new Provider();
         CDC NewCDCuser = new CDC();
         User newUser = new User();
+        SecurityAnwser SecAnsInstance = new SecurityAnwser();
 
         // List to hold combo box values
         List<States> daStates = new List<States>();
         List<Provider_Suffix> suffixes = new List<Provider_Suffix>();
+        List<SecurityQuestion> secQuestions = new List<SecurityQuestion>();
 
         // create event to close account selector form
         public event EventHandler CloseAccountSelector;
@@ -80,7 +82,8 @@ namespace Covid_Vaccine_Tracker.UI
                 label8.Visible = false;
                 label9.Enabled = false;
                 label9.Visible = false;
-                Size = new Size(719, 255);
+                groupBox3.Top -= 220;
+                this.Height -= 220;
             }
         }
         private void DisableFacilityControls()
@@ -241,6 +244,12 @@ namespace Covid_Vaccine_Tracker.UI
                 case 14:
                     ErrorPv.SetError(ZipTxt, emsg);
                     break;
+                case 15:
+                    ErrorPv.SetError(SecQuestCbx, emsg);
+                    break;
+                case 16:
+                    ErrorPv.SetError(SecQuestAnsTxt, emsg);
+                    break;
             }
         }
         private void ResetErrorPv()
@@ -313,8 +322,21 @@ namespace Covid_Vaccine_Tracker.UI
                 newUser.User_Type = userType;
             } catch(Exception ex)
             { throw ex; }
-
-
+        }
+        private void CreateSecurityAnswer()
+        {
+            int valueindex;
+            try
+            {
+                SecAnsInstance.User_Id = GenerateProviderOrCdcId.Trim();
+                valueindex = SecQuestCbx.SelectedIndex;
+                SecAnsInstance.Question = secQuestions[valueindex].Question;
+                SecAnsInstance.Anwser = SecQuestAnsTxt.Text.Trim();
+            } catch(Exception ex)
+            {
+                ErrorOccured = true;
+                throw ex;
+            }
         }
         private (bool,string) CheckForm(ref int Tbx)
         {
@@ -353,7 +375,17 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         Tbx = 6;
                         valid = false;
-                        errMsg = Errors.GetGeneralError2(8, "your Password");
+                        errMsg = Errors.GetInputErrorMsg(40, "Verify your Password");
+                    } else if(SecQuestCbx.SelectedIndex <= -1)
+                    {
+                        Tbx = 15;
+                        valid = false;
+                        errMsg = Errors.GetInputErrorMsg(11, "Question");
+                    } else if(string.IsNullOrEmpty(SecQuestAnsTxt.Text))
+                    {
+                        Tbx = 16;
+                        valid = false;
+                        errMsg = Errors.GetInputErrorMsg(0, "Answer");
                     }
                 } catch(Exception ex)
                 {
@@ -467,27 +499,34 @@ namespace Covid_Vaccine_Tracker.UI
             ErrorOccured = false;
             ResetErrorPv();
             int tbx = -1;
+            //checking for no empty control inputs
             isValid = CheckForm(ref tbx);
-            bool Success = default, userSuccess = default;
+            bool Success = default, userSuccess = default, addQuestionSucc = default;
             if (isValid.Item1)
             {
                 try
                 {
-
+                    //making objects
                     if (AccountType == "CDC")
                         CreateCDC(NewCDCuser);
                     else if (AccountType == "Provider")
                         CreateProvider(NewProvider);
+                    CreateSecurityAnswer();
                     if(!ErrorOccured)
                     {
+                        //validating data
                         if (!VerifyUserStatus(AccountType))
                         {
+                            //finally, adding data to the database
                             userSuccess = UserDB.AddUser(newUser, encryptedPW);
                             if (AccountType == "Provider")
                                 Success = ProviderDB.AddProvider(NewProvider);
                             else if (AccountType == "CDC")
                                 Success = CDCDB.AddCDCuser(NewCDCuser);
-                            if (userSuccess && Success)
+                            //add security questions
+                            addQuestionSucc = SecurityQuestionDB.AddSecurityQuestion(
+                                SecAnsInstance.User_Id, SecAnsInstance.Question, SecAnsInstance.Anwser);
+                            if (userSuccess && Success && addQuestionSucc)
                             {
                                 DisplaySuccess("User created successfully", AppTitle);
                                 dataSubmitted = true;
@@ -610,7 +649,14 @@ namespace Covid_Vaccine_Tracker.UI
             ProviderSuffixCBX.DataSource = suffixes;
             ProviderSuffixCBX.DisplayMember = "Suffix";
             ProviderSuffixCBX.ValueMember = "Code";
+
+            //load the security questions combo box
+            secQuestions = SecurityQuestionDB.GetAllSecurityQuestions();
+            SecQuestCbx.DataSource = secQuestions;
+            SecQuestCbx.DisplayMember = "Question";
+            SecQuestCbx.ValueMember = "Id";
         }
+
         // code to help prevent data loss
         private void SignupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
