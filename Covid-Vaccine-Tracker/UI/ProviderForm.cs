@@ -207,32 +207,32 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     Tbx = 0;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "Patient Id");
+                    errMsg = Errors.GetGeneralError2(0, "Patient Id");
                 }
                 else if (string.IsNullOrEmpty(FnameTxt.Text))
                 {
                     Tbx = 1;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "First name");
+                    errMsg = Errors.GetGeneralError2(0, "First name");
                 }
                 else if (string.IsNullOrEmpty(MnameTxt.Text))
                 {
                     Tbx = 2;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "Middle name");
+                    errMsg = Errors.GetGeneralError2(0, "Middle name");
                 }
                 else if (string.IsNullOrEmpty(LnameTxt.Text))
                 {
                     Tbx = 3;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "Last name");
+                    errMsg = Errors.GetGeneralError2(0, "Last name");
                 }
                 // Determine if a date was selected in Datepicker control
                 else if (!DOBpicker.Checked)
                 {
                     Tbx = 4;
                     valid = false ;
-                    errMsg = Errors.GetInputErrorMsg(11, "Date of birth");
+                    errMsg = Errors.GetGeneralError2(2, "Date of birth");
                 }// is sex selected
                  // To check if user selected a item in the comboboxs check in selected index is greater then -1 which is the 
                  // default value for a combo box.
@@ -240,55 +240,55 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     Tbx = 5;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(11, "Sex");
+                    errMsg = Errors.GetGeneralError2(2, "Sex");
                 }
                 else if (string.IsNullOrEmpty(StreetTxt.Text))
                 {
                     Tbx = 6;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "Street");
+                    errMsg = Errors.GetGeneralError2(0, "Street");
                 }
                 else if (string.IsNullOrEmpty(CityTxt.Text))
                 {
                     Tbx = 7;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "City");
+                    errMsg = Errors.GetGeneralError2(0, "City");
                 }
                 else if (string.IsNullOrEmpty(CountyTxt.Text))
                 {
                     Tbx = 8;
                     valid = false ;
-                    errMsg = Errors.GetInputErrorMsg(0, "County");
+                    errMsg = Errors.GetGeneralError2(0, "County");
                 }
                 else if (StatesCbx.SelectedIndex <= -1)
                 {
                     Tbx = 9;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(11, "State");
+                    errMsg = Errors.GetGeneralError2(2, "State");
                 }
                 else if (string.IsNullOrEmpty(ZipTxt.Text))
                 {
                     Tbx = 10;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(0, "Zipcode");
+                    errMsg = Errors.GetGeneralError2(0, "Zipcode");
                 }
                 else if(Race1Cbx.SelectedIndex <= -1)
                 {
                     Tbx = 11;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(11, "Race");
+                    errMsg = Errors.GetGeneralError2(2, "Race");
                 }
                 else if(Race2Cbx.SelectedIndex <= -1)
                 {
                     Tbx = 12;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(11, "Race");
+                    errMsg = Errors.GetGeneralError2(2, "Race");
                 }
                 else if (EthnicityCbx.SelectedIndex <= -1)
                 {
                     Tbx = 13;
                     valid = false;
-                    errMsg = Errors.GetInputErrorMsg(11, "Ethnicity");
+                    errMsg = Errors.GetGeneralError2(2, "Ethnicity");
                 }
                 // Now check to see 
             }
@@ -316,20 +316,20 @@ namespace Covid_Vaccine_Tracker.UI
                 // Give ErrorTip tooltip a title
                 ErrorTip.ToolTipTitle = "Max Digits";
                 // Display a tool tip error messsage
-                ErrorTip.Show(Errors.GetInputErrorMsg(28, "Patient Id"),PatientIdTxt,25,-20,2500);
+                ErrorTip.Show(Errors.GetError(19),PatientIdTxt,25,-20,2500);
             }
             // If usr tries to start entering characters at end of MaskedTxtBx display error
             else if (e.Position == PatientIdTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show(Errors.GetInputErrorMsg(31, "Patient Id"), PatientIdTxt, 25 ,-20, 2500);
+                ErrorTip.Show(Errors.GetError(20), PatientIdTxt, 25 ,-20, 2500);
             }
             // If invalid data is entered display error
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
                 string exampleFormat = "1234567AAA";
-                ErrorTip.Show(Errors.GetFormatErrorMsg(32, "Patient Id", exampleFormat), PatientIdTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(5, "Patient Id"), PatientIdTxt, 25, -20, 2500);
             }
         }
         void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
@@ -338,17 +338,17 @@ namespace Covid_Vaccine_Tracker.UI
             if (ZipTxt.MaskFull)
             {
                 ErrorTip.ToolTipTitle = "Max Digits";
-                ErrorTip.Show(Errors.GetInputErrorMsg(31, "Zipcode"), ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetError(19), ZipTxt, 25, -20, 2500);
             }
             else if (e.Position == ZipTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show(Errors.GetInputErrorMsg(32, "Zipcode"), ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetError(20), ZipTxt, 25, -20, 2500);
             }
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show(Errors.GetInputErrorMsg(27, "Zipcode"), ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(5, "Zipcode"), ZipTxt, 25, -20, 2500);
             }
         }
         // CreatePatient is used to 
@@ -406,7 +406,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                     // If patient not found then display a error message
                     if (!PatientFound)
-                        DisplayError(Errors.GetGeneralErrorMsg(33,"Patient", "Patient Id"), AppTitle);
+                        DisplayError(Errors.GetGeneralError(9, "Patient"), AppTitle);
                     // If patient is found then set patient values
                     else
                         CreatePatient(NewPatient);
@@ -557,17 +557,17 @@ namespace Covid_Vaccine_Tracker.UI
             if (patientDOB > todaysDate)
             {
                 oldEnough = false;
-                errMsg = Errors.GetInputErrorMsg(27, "Date of birth");
+                errMsg = Errors.GetGeneralError2(5, "Date of birth");
             }
             else if (patientDOB >= fiveYearsAgo)
             {
                 oldEnough = false;
-                errMsg = Errors.GetErrorMsg(8);
+                errMsg = Errors.GetError(2);
             }
             else if (patientDOB <= hundred10YearsAgo)
             {
                 oldEnough = false;
-                errMsg = Errors.GetErrorMsg(9);
+                errMsg = Errors.GetError(3);
             }
             else
                 oldEnough = true;
@@ -807,7 +807,7 @@ namespace Covid_Vaccine_Tracker.UI
                                         // If pprl added successful do nothing
                                         // If add is unsuccessful display err Msg
                                         if (!GoodAdd)
-                                            DisplayError(Errors.GetInputErrorMsg(34, "PPRL"), AppTitle);
+                                            DisplayError(Errors.GetGeneralError(10, "PPRL"), AppTitle);
 
                                         dataSubmitted = true;
                                         possibleDataLoss = false;
@@ -828,11 +828,11 @@ namespace Covid_Vaccine_Tracker.UI
 
                                 }
                                 else if (!WasSuccess)
-                                    DisplayError(Errors.GetInputErrorMsg(36, "Patient"), AppTitle);
+                                    DisplayError(Errors.GetGeneralError(10, "Patient"), AppTitle);
 
                             }
                             else
-                                DisplayError(Errors.GetInputErrorMsg(35, "Patient"), AppTitle);
+                                DisplayError(Errors.GetGeneralError2(3, "Patient"), AppTitle);
 
                         }
                         else // If not a valid age display errorMsg with errorPv 
@@ -847,7 +847,7 @@ namespace Covid_Vaccine_Tracker.UI
                     SetErrorPv(tbx, IsValid.Item2);
             }
             else
-                DisplaySuccess(Errors.GetInputErrorMsg(25, "Patient"), AppTitle);
+                DisplaySuccess(Errors.GetGeneralError(7, "Patient"), AppTitle);
         }
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -894,10 +894,10 @@ namespace Covid_Vaccine_Tracker.UI
 
                             }
                             else if (!WasSuccess)
-                                DisplayError(Errors.GetInputErrorMsg(37, "Patient"), AppTitle);
+                                DisplayError(Errors.GetGeneralError(11, "Patient"), AppTitle);
                         }
                         else
-                            DisplayError(Errors.GetInputErrorMsg(37, "Patient"), AppTitle);
+                            DisplayError(Errors.GetGeneralError2(6, "Patient"), AppTitle);
                     }
                     else // Display errorMsg with erroPv
                         SetErrorPv(tbx, OfAge.Item2);
@@ -925,7 +925,7 @@ namespace Covid_Vaccine_Tracker.UI
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
                     // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-                    DialogResult closeForm = MessageBox.Show(Errors.GetErrorMsg(38), AppTitle,
+                    DialogResult closeForm = MessageBox.Show(Errors.GetError(16), AppTitle,
                          MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
@@ -957,8 +957,8 @@ namespace Covid_Vaccine_Tracker.UI
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // the two messages to ask the user
-            string dataSavedMsg = Errors.GetErrorMsg(39);
-            string dataNotSavedMsg = Errors.GetErrorMsg(38);
+            string dataSavedMsg = Errors.GetError(17);
+            string dataNotSavedMsg = Errors.GetError(16);
             string Msg = string.Empty;
 
             // determine which message needs to be displayed

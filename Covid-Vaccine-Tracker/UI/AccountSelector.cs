@@ -107,9 +107,9 @@ namespace Covid_Vaccine_Tracker.UI
                     SignUp.ShowDialog();
                 }
                 else if (!vtckExists)
-                    DisplayError("Vtcks Pin not found, access denied", AppTitle);
+                    DisplayError(Errors.GetGeneralError(12, "Vtcks Pin"), AppTitle);
                 else if (accountExists)
-                    DisplayError("Vtcks pin entered already has an account registered", AppTitle);
+                    DisplayError(Errors.GetGeneralError(7, "Vtcks Pin"), AppTitle);
             }
 
 

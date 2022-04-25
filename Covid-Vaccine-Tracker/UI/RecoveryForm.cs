@@ -60,7 +60,8 @@ namespace Covid_Vaccine_Tracker.UI
 
                 // if username recovery set InputLbl and InputLbl2 text with the InputLbl2.Text = "Firt Name" ..etc
             }
-
+            catch(Exception ex)
+            { throw ex; }
         }
         private void ClearBtn_Click(object sender, EventArgs e)
         {
@@ -123,6 +124,8 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // add the validation for your story here see provider form UpdateAccountForm and login form for example of checkform method
             // note that i started implementing the new error messages in the provider and started on the login form
+
+            return (true, "");
            
         }
     }

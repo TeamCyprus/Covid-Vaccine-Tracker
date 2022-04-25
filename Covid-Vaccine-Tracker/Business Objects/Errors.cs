@@ -2,78 +2,94 @@
 
 namespace Covid_Vaccine_Tracker.Business_Objects
 {
-    public  class Errors
+    public  static class Errors
     {
         public static string field, number, format, obj;
+        public static string charLenErr = " characters or less";
+        public static string digitLenErr = " digits or less";
+        public static string err = "Error,";
+        public static string errorStart = "Must be ";
+        public static string formatStr = " format only";
         public static Dictionary<int, string> ErrorsDict = new Dictionary<int, string>()
-        {
-            {0, $"Error, You must enter a {field}" },
-            {1, $"Error, {field} cannot be blank or empty." },
-            {2, $"Error, {field} must contain {number} characters or less." },
-            {3, $"Error, {field} cannot contain numbers" },
-            {4, $"Error, {field} must contain numbers only" },
-            {5, $"Error, {field} must contain letters only" },
-            {6, $"Error, {field} cannot contain letter or symbols, ie @,#,$,%,^,&,*,(,),-,+,!,~." },
-            {7, $"Error, date must be prior to today's date." },
-            {8, $"Error, vaccines cannot be administered to people under 5 years of age." },
-            {9, $"Invalid birthday, the would be dead." },
-            {10, $"Password must contain one upper case letter and one special character." },
-            {11, $"Error, you must select a {field}." },
-            {12, $"Error, id does not exist." },
-            {13, $"Error, date cannot be in the future" },
-            {14, $"Error, you must select a way to agregate the data" },
-            {15, $"Error, you must select a data option" },
-            {16, $"Error, {field} is null or empty" },
-            {17,$"Error, password cannot be blank or empty" },
-            {18, $"Error, passwords do not match" },
-            {19, $"Error, invalid password" },
-            {20,$"You must enter a value to search by" },
-            {21,$"You must select a way to view the record(s)" },
-            {22,$"There were no {field}(s) found for specified search criteria" },
-            {23, $"Error, unknown operation please try again" },
-            {24, $"Error, invalid operation please select a value" },
-            {25, $"Error, that {field} already exists" },
-            {26, $"Error, {field} already exists" },
-            {27, $"Error, invalid {field}" },
-            {28, $"Error, {field} must be {number} digits long" },
-            {29, $"Error, {field} must be {number} digits or less" },
-            {30, $"Error, {field} must be less than {number} digits" },
-            {31, $"Error, you cannot add extra digits to {field}" },
-            {32, $"Invalid {field} format, must be in {format} format only" },
-            {33, $"Error, {field} not found double check {obj} id"  },
-            {34, $"An error occured while storing {field}" },
-            {35, $"There was an error while creating {field}" },
-            {36, $"Error, {field} was not added" },
-            {37, $"Error, {field} was not updated" },
-            {38, $"Warning, any data entered is not saved. Do still you wish to close the application?" },
-            {39, $"Do you wish to close the entire application?" },
-            {40, $"Error, you must {field}" }
+        {           
+            {1, " cannot be blank or empty." },
+            {2, " must contain " },
+            {3, " digits long" },
+            {4, "Error, you must " }
             
         };
+        public static Dictionary<int, string> GeneralErrors = new Dictionary<int, string>()
+        {
+            {1, " cannot contain numbers" },
+            {2, " must contain numbers only" },
+            {3, " must contain letters only" },
+            {4, " cannot contain letter or symbols, ie @,#,$,%,^,&,*,(,),-,+,!,~." },
+            {5, " id does not exist." },
+            {6, " is null or empty" },
+            {7, " already exists" },
+            {8, " format error, must be in " },
+            {9, " not found"  },
+            {10,  " was not added" },
+            {11, " was not updated" },
+            {12, " not found, access denied" },
 
-        public static string GetLengthErrorMsg(int eCode, string input, string num)
+
+        };
+        public static Dictionary<int, string> GeneralErrors2 = new Dictionary<int, string>()
         {
-            field = input;
-            number = num;
-            return ErrorsDict[eCode];
-        }
-        public static string GetInputErrorMsg(int eCode, string input)
+            {0, "You must enter a " },
+            {1, "Error unknown " },
+            {2, "You must select a " },
+            {3, "An error occured while storing " },
+            {4, "There was an error while creating " },
+            {5, "Invalid " },
+            {6, "An error occured while updating " },
+            {7, "An error occured while adding " },
+            {8, "You must verify " },
+        };
+        public static Dictionary<int, string> SimpleErrors = new Dictionary<int, string>()
+        {          
+            {1, "Date must be prior to today's date." },
+            {2, "Vaccines cannot be administered to people under 5 years of age." },
+            {3, "Invalid birthday, the would be dead." },
+            {4, "Password must contain one upper case letter and one special character." },
+            {5, "Date cannot be in the future" },
+            {6, "You must select a way to agregate the data" },
+            {7, "You must select a data option" },
+            {8,"Password cannot be blank or empty" },
+            {9, "Passwords do not match" },
+            {10, "Invalid password" },
+            {11,"You must enter a value to search by" },
+            {12,"You must select a way to view the record(s)" },
+            {13,"There were no results found for specified search criteria" },
+            {14, "Unknown operation please try again" },
+            {15, "Invalid operation please select a value" },
+            {16, "Warning, any data entered is not saved. Do still you wish to close the application?" },
+            {17, "Do you wish to close the entire application?" },
+            {18, "Invalid username" },
+            {19, "Reached max digits allowed" },
+            {20, "End of field you cannot add more data" },
+        };
+        public static string GetCharLengthError(string input, string num)
         {
-            field = input;
-            return ErrorsDict[eCode];
+            return err + input + ErrorsDict[2] + num + charLenErr;
         }
-        public static string GetFormatErrorMsg(int eCode, string input, string formt)
+        public static string GetDigitLengthError(string input, string num)
         {
-            field = input;
-            format = formt;
-            return ErrorsDict[eCode];
+            return err + input + ErrorsDict[2] + num + digitLenErr;
         }
-        public static string GetGeneralErrorMsg(int ecode, string input, string idType)
+        public static string GetFormatError(string input, string formt)
         {
-            field = input;
-            idType = obj;
-            return ErrorsDict[ecode];
+            return input + ErrorsDict[32] + formt + formatStr;
         }
-        public static string GetErrorMsg(int ecode) => ErrorsDict[ecode];
+        public static string GetGeneralError(int ecode, string input)
+        {
+            return input + GeneralErrors[ecode];
+        }
+        public static string GetGeneralError2(int code, string input)
+        {
+            return GeneralErrors2[code] + input;
+        }
+        public static string GetError(int ecode) => SimpleErrors[ecode];
     }
 }

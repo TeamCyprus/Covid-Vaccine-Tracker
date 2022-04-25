@@ -308,7 +308,7 @@ namespace Covid_Vaccine_Tracker.UI
                     throw new Exception(validData.Item2);
                 newUser.Password = PwdTxt.Text;
                 if (PwdTxt.Text != VerifyPwdTxt.Text)
-                    throw new Exception(Errors.GetErrorMsg(18));
+                    throw new Exception(Errors.GetError(9));
                 encryptedPW = Protector.Encryptor(PwdTxt.Text);
                 newUser.User_Type = userType;
             } catch(Exception ex)
@@ -329,31 +329,31 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         Tbx = 0;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "First name");
+                        errMsg = Errors.GetGeneralError2(0, "First name");
                     }
                     else if (string.IsNullOrEmpty(LnameTxt.Text))
                     {
                         Tbx = 1;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Last name");
+                        errMsg = Errors.GetGeneralError2(0, "Last name");
                     }
                     else if (string.IsNullOrEmpty(UsernameTxt.Text))
                     {
                         Tbx = 4;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Username");
+                        errMsg = Errors.GetGeneralError2(0, "Username");
                     }
                     else if (string.IsNullOrEmpty(PwdTxt.Text))
                     {
                         Tbx = 5;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Password");
+                        errMsg = Errors.GetGeneralError2(0, "Password");
                     }
                     else if (string.IsNullOrEmpty(VerifyPwdTxt.Text))
                     {
                         Tbx = 6;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(40, "Verify your Password");
+                        errMsg = Errors.GetGeneralError2(8, "your Password");
                     }
                 } catch(Exception ex)
                 {
@@ -368,91 +368,91 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         Tbx = 0;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "First name");
+                        errMsg = Errors.GetGeneralError2(0, "First name");
                     }
                     else if (string.IsNullOrEmpty(LnameTxt.Text))
                     {
                         Tbx = 1;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Last name");
+                        errMsg = Errors.GetGeneralError2(0, "Last name");
                     }
                     else if (string.IsNullOrEmpty(VtckPinTxt.Text))
                     {
                         Tbx = 2;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Vtcks pin");
+                        errMsg = Errors.GetGeneralError2(0, "Vtcks pin");
                     }
                     else if (ProviderSuffixCBX.SelectedIndex <= -1)
                     {
                         Tbx = 3;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(11, "Suffix");
+                        errMsg = Errors.GetGeneralError2(2, "Suffix");
                     }
                     else if (string.IsNullOrEmpty(UsernameTxt.Text))
                     {
                         Tbx = 4;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Username");
+                        errMsg = Errors.GetGeneralError2(0, "Username");
                     }
                     else if (string.IsNullOrEmpty(PwdTxt.Text))
                     {
                         Tbx = 5;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Password");
+                        errMsg = Errors.GetGeneralError2(0, "Password");
                     }
                     else if (string.IsNullOrEmpty(VerifyPwdTxt.Text))
                     {
                         Tbx = 6;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(40, "Verify your Password");
+                        errMsg = Errors.GetGeneralError2(8, "your Password");
                     }
                     else if (string.IsNullOrEmpty(OrganizationTxt.Text))
                     {
                         Tbx = 7;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Organization");
+                        errMsg = Errors.GetGeneralError2(0, "Organization");
                     }
                     else if (string.IsNullOrEmpty(FacilityTxt.Text))
                     {
                         Tbx = 8;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Primary Facility");
+                        errMsg = Errors.GetGeneralError2(0, "Primary Facility");
                     }
                     else if (string.IsNullOrEmpty(LocationTypeTxt.Text))
                     {
                         Tbx = 9;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Location type");
+                        errMsg = Errors.GetGeneralError2(0, "Location type");
                     }
                     else if (string.IsNullOrEmpty(StreetAddressTxt.Text))
                     {
                         Tbx = 10;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Street");
+                        errMsg = Errors.GetGeneralError2(0, "Street");
                     }
                     else if (string.IsNullOrEmpty(CityTxt.Text))
                     {
                         Tbx = 11;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "City"); ;
+                        errMsg = Errors.GetGeneralError2(0, "City"); ;
                     }
                     else if (string.IsNullOrEmpty(CountyTxt.Text))
                     {
                         Tbx = 12;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "County"); ;
+                        errMsg = Errors.GetGeneralError2(0, "County"); ;
                     }
                     else if (StateCbx.SelectedIndex <= -1)
                     {
                         Tbx = 13;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(11, "State"); ;
+                        errMsg = Errors.GetGeneralError2(2, "State"); ;
                     }
                     else if (string.IsNullOrEmpty(ZipTxt.Text))
                     {
                         Tbx = 14;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(1, "Zipcode"); ;
+                        errMsg = Errors.GetGeneralError2(0, "Zipcode"); ;
                     }
                 } catch(Exception ex)
                 {

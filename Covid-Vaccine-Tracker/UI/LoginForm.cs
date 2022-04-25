@@ -37,13 +37,13 @@ namespace Covid_Vaccine_Tracker.UI
             if (string.IsNullOrEmpty(UsernameTxt.Text))
             {
                 valid = false;
-                errMsg = "Enter a username";
+                errMsg = Errors.GetGeneralError2(0, "username.");
                 Tbx = 0;
             }
             else if (string.IsNullOrEmpty(PasswordTxt.Text))
             {
                 valid = false;
-                errMsg = "Enter a password";
+                errMsg = Errors.GetGeneralError2(0, "password.");
                 Tbx = 1;
             }
 
@@ -148,16 +148,16 @@ namespace Covid_Vaccine_Tracker.UI
                                     CdcView.ShowDialog();
                                     break;
                                 default:
-                                    DisplayError("Error unknown user type", appTitle);
+                                    DisplayError(Errors.GetGeneralError2(1, "user type"), appTitle);
                                     break;
                             }
                             
                         }
                         else
-                            DisplayError("Error invalid password", appTitle);
+                            DisplayError(Errors.GetError(10), appTitle);
                     }
                     else
-                        DisplayError("Error invalid username", appTitle);
+                        DisplayError(Errors.GetError(18), appTitle);
 
 
                 }

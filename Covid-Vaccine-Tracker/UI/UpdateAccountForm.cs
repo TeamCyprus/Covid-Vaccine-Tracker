@@ -94,7 +94,7 @@ namespace Covid_Vaccine_Tracker.UI
                     this.Close();
                 }
                 else if (!wasSuccess)
-                    DisplayError(Errors.GetInputErrorMsg(37, "Password"), appTitle);
+                    DisplayError(Errors.GetGeneralError(11, "Password"), appTitle);
             }
             else if (!IsValid.Item1)
                 SetErrorPv(tbox, IsValid.Item2);
@@ -113,19 +113,19 @@ namespace Covid_Vaccine_Tracker.UI
             {
                 tbx = 0;
                 valid = false;
-                eMsg = Errors.GetInputErrorMsg(0, "Password");
+                eMsg = Errors.GetGeneralError2(0, "Password");
             }
             else if (string.IsNullOrEmpty(PwdVerifyTxt.Text))
             {
                 tbx = 1;
                 valid = false;
-                eMsg = Errors.GetInputErrorMsg(40, "Verify your new password");
+                eMsg = Errors.GetGeneralError2(8, "your new password");
             }
             else if (PwdVerifyTxt.Text != PasswordTxt.Text)
             {
                 tbx = 1;
                 valid = false;
-                eMsg = Errors.GetErrorMsg(18);
+                eMsg = Errors.GetError(9);
             }
 
             return (valid, eMsg);

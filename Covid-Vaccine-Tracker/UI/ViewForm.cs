@@ -335,16 +335,16 @@ namespace Covid_Vaccine_Tracker.UI
                 patient.Middle_name = cols[2];
                 patient.Last_name = cols[3];
                 patient.Date_of_birth = dob;
-                patient.Street_address = cols[4];
-                patient.City = cols[5];
-                patient.County = cols[6];
-                patient.State = cols[7];
-                patient.Zipcode = cols[8];
-                patient.Race1 = cols[9];
-                patient.Race2 = cols[10];
-                patient.Ethnicity = cols[11];
-                patient.Sex = cols[12];
-                patient.Extract_Type = cols[13];
+                patient.Street_address = cols[5];
+                patient.City = cols[6];
+                patient.County = cols[7];
+                patient.State = cols[8];
+                patient.Zipcode = cols[9];
+                patient.Race1 = cols[10];
+                patient.Race2 = cols[11];
+                patient.Ethnicity = cols[12];
+                patient.Sex = cols[13];
+                patient.Extract_Type = cols[14];
             }
             catch (Exception ex)
             { throw ex; }
@@ -527,7 +527,7 @@ namespace Covid_Vaccine_Tracker.UI
             {
                 string id, fname, mname, lname, street, city, county, state, zip, race1, race2, ethnicity, sex, extract, bday;
                 
-                DateTime dob;
+                DateTime dob, d;
 
                 try
                 {
@@ -535,18 +535,18 @@ namespace Covid_Vaccine_Tracker.UI
                     fname = RecordsDg.CurrentRow.Cells[1].Value.ToString();
                     mname = RecordsDg.CurrentRow.Cells[2].Value.ToString();
                     lname = RecordsDg.CurrentRow.Cells[3].Value.ToString();
-                    bday = RecordsDg.CurrentRow.Cells[4].Value.ToString();
-                    DateTime.TryParse(bday, out dob);
-                    street = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    city = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    county = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    state = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    zip = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    race1 = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    race2 = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    ethnicity = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    sex = RecordsDg.CurrentRow.Cells[0].Value.ToString();
-                    extract = RecordsDg.CurrentRow.Cells[0].Value.ToString();
+                    //bday = RecordsDg.CurrentRow.Cells[4].Value.ToString();
+                    dob = DateTime.Parse(RecordsDg.CurrentRow.Cells[4].Value.ToString());
+                    street = RecordsDg.CurrentRow.Cells[5].Value.ToString();
+                    city = RecordsDg.CurrentRow.Cells[6].Value.ToString();
+                    county = RecordsDg.CurrentRow.Cells[7].Value.ToString();
+                    state = RecordsDg.CurrentRow.Cells[8].Value.ToString();
+                    zip = RecordsDg.CurrentRow.Cells[9].Value.ToString();
+                    race1 = RecordsDg.CurrentRow.Cells[10].Value.ToString();
+                    race2 = RecordsDg.CurrentRow.Cells[11].Value.ToString();
+                    ethnicity = RecordsDg.CurrentRow.Cells[12].Value.ToString();
+                    sex = RecordsDg.CurrentRow.Cells[13].Value.ToString();
+                    extract = RecordsDg.CurrentRow.Cells[14].Value.ToString();
 
                     // put values in list then create patient obj
                     List<string> columns = new List<string> { id, fname, mname, lname, street, city, county, state, zip, race1, race2, ethnicity, sex, extract};
