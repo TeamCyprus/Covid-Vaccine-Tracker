@@ -133,5 +133,24 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return question;
         }
+        public static bool CheckSecurityQuestion(string Userid, string Anwser)
+        {
+            bool anwserFound;
+            string procedure = "[SpCheckSecurityQuestion]";
+            var parameter = new { uid = Userid, anwser = Anwser };
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    anwserFound = db.ExecuteScalar<bool>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return anwserFound;
+        }
     }
 }

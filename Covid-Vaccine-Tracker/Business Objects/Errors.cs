@@ -69,6 +69,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {18, "Invalid username" },
             {19, "Reached max digits allowed" },
             {20, "End of field you cannot add more data" },
+            {21, "The security question anwsers do not match" },
         };
         public static string GetCharLengthError(string input, string num)
         {

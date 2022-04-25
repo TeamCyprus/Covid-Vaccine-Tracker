@@ -18,6 +18,15 @@ namespace Covid_Vaccine_Tracker.UI
         (bool, string) IsValid;
         string appTitle = "Covid Vaccine Tracker";
         List<User_Type> accountTypes = new List<User_Type>();
+        // add event to form class
+        UsernameForm userForm;
+        
+       // event handler method
+       private void HandleCloseBothForms(object sender, EventArgs args)
+        {
+            userForm.Close();
+            this.Close();
+        }
         public RecoveryForm()
         {
             InitializeComponent();
@@ -122,11 +131,59 @@ namespace Covid_Vaccine_Tracker.UI
 
             }
             // Amar's section
-            if (usernameRecovery) 
+            if (usernameRecovery)
             {
+
                 // check the provider table and the cdc table for the first name and last name amd account type
                 // and then check that the anwser matches 
+                bool correctAnwser;
+                string userId = string.Empty;
+                string username = string.Empty;
+                string fname, lname, anwser;
+                string account = accountTypes[AccountCbx.SelectedIndex].UserType;
+                try
+                {
+                    fname = InputTxt1.Text.Trim();
+                    lname = InputTxt2.Text.Trim();
+                    anwser = AnwserTxt.Text.Trim();
 
+                    switch (account.ToLower())
+                    {
+                        case "provider":
+                            userId = UserDB.RecoverProviderUserId(fname, lname);
+                            break;
+                        case "cdc":
+                            userId = UserDB.RecoverCDCUserId(fname, lname);
+                            break;
+                    }
+
+                    // check database for user id with matching anwser
+                    correctAnwser = SecurityQuestionDB.CheckSecurityQuestion(userId, anwser);
+
+                    // if userid and anwser matcheed
+                    if (correctAnwser)
+                    {
+                        switch(account.ToLower())
+                        {
+                            case "provider":
+                                username = UserDB.GetUsername_ProviderId(userId);
+                                break;
+                            case "cdc":
+                                username = UserDB.GetUsername_CdcId(userId);
+                                break;
+                        }
+
+                        userForm = new UsernameForm(username);
+                        userForm.CloseBothForms += HandleCloseBothForms;
+                        userForm.ShowDialog();
+                    }
+                    else if (!correctAnwser)
+                    { 
+                        DisplayError(Errors.GetError(21), appTitle);
+                    }
+                }
+                catch(Exception ex)
+                { DisplayError(ex.Message, appTitle); }
                 // if the first name last name and anwser match then call the
                 // UpdateAccountForm  and pass in the first name last name
 
@@ -136,6 +193,10 @@ namespace Covid_Vaccine_Tracker.UI
                 // DisplayError(Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id"), AppTitle);
                 // Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id") returns a string with Patient and Patient Id inserted into string
             }
+        }
+        private void DisplayUsername(string msg, string title)
+        {
+            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         private void SetErrorPv(int tbx, string emsg)
         {
@@ -187,13 +248,13 @@ namespace Covid_Vaccine_Tracker.UI
             if (string.IsNullOrEmpty(InputTxt1.Text))
             {
                 valid = false;
-                errMsg = Errors.GetInputErrorMsg(0, "Username");
+                errMsg = Errors.GetGeneralError2(0, "Username");
                 tbx = 0;
             }
             else if (AccountCbx.SelectedIndex <=-1)
             {
                 valid = false;
-                errMsg = Errors.GetInputErrorMsg(11, "Account type");
+                errMsg = Errors.GetGeneralError2(2, "Account type");
                 tbx = 1;
             }
 

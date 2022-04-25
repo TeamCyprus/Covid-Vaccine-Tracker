@@ -38,6 +38,7 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void HandleCloseAccountSelector(object sender, EventArgs args)
         {
+            SignUp.Close();
             this.Close();
         }
         public AccountSelector()

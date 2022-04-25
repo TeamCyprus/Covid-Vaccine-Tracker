@@ -188,6 +188,46 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
 
             return usrname;
         }
+        public static string RecoverCDCUserId(string firstname, string lastname)
+        {
+            string usrID = string.Empty;
+            string procedure = "[SpFindId_cdc]";
+            var parameter = new { fname = firstname, lname = lastname };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usrID = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrID;
+        }
+        public static string RecoverProviderUserId(string firstname, string lastname)
+        {
+            string usrID = string.Empty;
+            string procedure = "[SpFindId_provider]";
+            var parameter = new { fname = firstname, lname = lastname };
+
+            try
+            {
+                string conStr = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(conStr))
+                {
+                    usrID = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrID;
+        }
         public static bool AddUser(User user, string encryptPW)
         {
             // variable to determine if succesful insert or not
@@ -328,6 +368,46 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             string procedure = "[SpGetUserId_cdc]";
             string usrname = string.Empty;
             var parameter = new { usr = username };
+
+            try
+            {
+                string con = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(con))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
+        public static string GetUsername_ProviderId(string userID)
+        {
+            string procedure = "[SpGetUsername_providerId]";
+            string usrname = string.Empty;
+            var parameter = new { uid = userID };
+
+            try
+            {
+                string con = GetConnection();
+
+                using (IDbConnection db = new SqlConnection(con))
+                {
+                    usrname = db.QuerySingle<string>(procedure, parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            { throw ex; }
+
+            return usrname;
+        }
+        public static string GetUsername_CdcId(string userID)
+        {
+            string procedure = "[SpGetUsername_CdcId]";
+            string usrname = string.Empty;
+            var parameter = new { uid = userID };
 
             try
             {
