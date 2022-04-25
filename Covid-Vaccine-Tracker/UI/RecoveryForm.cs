@@ -153,7 +153,7 @@ namespace Covid_Vaccine_Tracker.UI
                             userId = UserDB.RecoverProviderUserId(fname, lname);
                             break;
                         case "cdc":
-                            userId = UserDB.RecoverCDCUserId(fname, lname);
+                            //userId = UserDB.RecoverCDCUserId(fname, lname);
                             break;
                     }
 
@@ -166,7 +166,8 @@ namespace Covid_Vaccine_Tracker.UI
                         switch(account.ToLower())
                         {
                             case "provider":
-                                username = UserDB.GetUsername_ProviderId(userId);
+                               username = UserDB.GetUsername_ProviderId(userId);
+
                                 break;
                             case "cdc":
                                 username = UserDB.GetUsername_CdcId(userId);
