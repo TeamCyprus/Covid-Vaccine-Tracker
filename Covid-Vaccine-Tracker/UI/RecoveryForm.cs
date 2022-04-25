@@ -79,8 +79,6 @@ namespace Covid_Vaccine_Tracker.UI
             {
                 throw ex;
             }
-            catch(Exception ex)
-            { throw ex; }
         }
         private void ClearBtn_Click(object sender, EventArgs e)
         {
