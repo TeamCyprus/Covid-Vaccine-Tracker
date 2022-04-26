@@ -39,8 +39,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.InputTxt1 = new System.Windows.Forms.TextBox();
             this.InputLbl1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.AnwserLbl = new System.Windows.Forms.Label();
-            this.AnwserTxt = new System.Windows.Forms.TextBox();
+            this.AnswerLbl = new System.Windows.Forms.Label();
+            this.AnswerTxt = new System.Windows.Forms.TextBox();
             this.ClearBtn = new System.Windows.Forms.Button();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
@@ -122,8 +122,8 @@ namespace Covid_Vaccine_Tracker.UI
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.groupBox1.Controls.Add(this.AnwserLbl);
-            this.groupBox1.Controls.Add(this.AnwserTxt);
+            this.groupBox1.Controls.Add(this.AnswerLbl);
+            this.groupBox1.Controls.Add(this.AnswerTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.groupBox1.Location = new System.Drawing.Point(29, 237);
@@ -133,22 +133,22 @@ namespace Covid_Vaccine_Tracker.UI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Security Question";
             // 
-            // AnwserLbl
+            // AnswerLbl
             // 
-            this.AnwserLbl.AutoSize = true;
-            this.AnwserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AnwserLbl.Location = new System.Drawing.Point(32, 26);
-            this.AnwserLbl.Name = "AnwserLbl";
-            this.AnwserLbl.Size = new System.Drawing.Size(92, 18);
-            this.AnwserLbl.TabIndex = 6;
-            this.AnwserLbl.Text = "Your Anwser";
+            this.AnswerLbl.AutoSize = true;
+            this.AnswerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AnswerLbl.Location = new System.Drawing.Point(32, 26);
+            this.AnswerLbl.Name = "AnswerLbl";
+            this.AnswerLbl.Size = new System.Drawing.Size(92, 18);
+            this.AnswerLbl.TabIndex = 6;
+            this.AnswerLbl.Text = "Your Anwser";
             // 
-            // AnwserTxt
+            // AnswerTxt
             // 
-            this.AnwserTxt.Location = new System.Drawing.Point(33, 47);
-            this.AnwserTxt.Name = "AnwserTxt";
-            this.AnwserTxt.Size = new System.Drawing.Size(260, 24);
-            this.AnwserTxt.TabIndex = 5;
+            this.AnswerTxt.Location = new System.Drawing.Point(33, 47);
+            this.AnswerTxt.Name = "AnswerTxt";
+            this.AnswerTxt.Size = new System.Drawing.Size(260, 24);
+            this.AnswerTxt.TabIndex = 5;
             // 
             // ClearBtn
             // 
@@ -172,7 +172,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(92, 32);
             this.SubmitBtn.TabIndex = 7;
-            this.SubmitBtn.Text = "Submit";
+            this.SubmitBtn.Text = "Next";
             this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
@@ -211,8 +211,8 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.TextBox InputTxt1;
         private System.Windows.Forms.Label InputLbl1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label AnwserLbl;
-        private System.Windows.Forms.TextBox AnwserTxt;
+        private System.Windows.Forms.Label AnswerLbl;
+        private System.Windows.Forms.TextBox AnswerTxt;
         private System.Windows.Forms.Button ClearBtn;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.Label AccountLbl;

@@ -124,6 +124,7 @@
     <Compile Include="Business Objects\Vaccine_Type.cs" />
     <Compile Include="Business Objects\Views.cs" />
     <Compile Include="Business Objects\Vtcks.cs" />
+    <Compile Include="Data Access Layer\AddPatientData.cs" />
     <Compile Include="Data Access Layer\AnwsersDB.cs" />
     <Compile Include="Data Access Layer\CDCDB.cs" />
     <Compile Include="Data Access Layer\DBConnector.cs" />

@@ -600,8 +600,8 @@ namespace Covid_Vaccine_Tracker.UI
                         {
                             DisplaySuccess("Vaccine record has been successfully added", AppTitle);
                             // set dataSubmitted to true so new vaccine event it will be created
-                            dataSubmitted = true;
-                            possibleDataLoss = false;
+                            //dataSubmitted = true;
+                            //possibleDataLoss = false;
                             ResetInputs(true);
                             VaxEventIdTxt.Text = GeneratedVaxEventId;
                             SetIdControlType("Patient");
@@ -716,11 +716,15 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
-            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+            if (!exitClicked)
+            {
+               DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            // Checks to see if yes button was selected
-            if (closeForm == DialogResult.Yes)
-                Application.Exit();
+                // Checks to see if yes button was selected
+                if (!exitClicked)
+                    if (closeForm == DialogResult.Yes)
+                        Application.Exit();
+            }
         }
 
         void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
