@@ -1,0 +1,22 @@
+0128986THY,Blake,Mike,Johnson,1999-03-11,999 Green ave,Hazelwood,Saint Louis,Missouri,78499,Asian,White,NONHIS,Male,Identified
+8497483URH,Ryan,Hamilton,Gregory,1999-03-11,Blue ave,Fenton,Weston,Missouri,98976,White,Black,NONHIS,Male,Identified
+7389932RYT,Heugh,Frank,Lionide,1978-04-09,Grey ave,Fenton,Weston,Missouri,98937,White,Black,HIS,Male,Idenfified
+9384738OPL,Jessey,Renea,Galagar,1987-03-03,Black ave,Kingston,Warrenton,Missouri,38494,Black,White,HIS,Female,Identified
+8947589RLK,Hannah,Deedee,Palmer,1998-09-3,Green ave,Kingston,Warrenton,Missouri,83946,Black,White,HIS,Female,Identified
+7648394BGD,Hannah,Gee,Delmer,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+6648394LKD,Hannah,Bee,Katen,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+5648394KRL,Bob,Gee,Delmer,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Male,Identified
+4648394RTK,Tony,Omni,Tipton,1990-03-09,Blue ave,Fenton,North County,Missouri,83748,Black,White,HIS,Male,Identified
+3648394DSS,Jim,Koi,Holmes,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Male,Identified
+2648394SDE,Erin,Frank,Holmes,1990-03-09,Blue ave,Blackton,North County,Missouri,83748,Black,White,HIS,Female,Identified
+7678394EDS,Paul,Geed,Phelm,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Male,Identified
+7898394ADE,Allan,Hue,Lopont,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Male,Identified
+2348394KJD,Kate,Marie,Kingston,1990-03-09,Blue ave,Blackton,North County,Missouri,83748,Black,White,HIS,Female,Identified
+9458394LMF,Whitney,Jess,Kingston,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+4548394FML,Anna,Lee,Belmer,1990-03-09,Blue ave,Kingston,Warrenton,Missouri,83748,Black,White,HIS,Female,Identified
+3448394RKE,Katty,Lee,Rehman,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+3348394LRO,Hannah,Renea,Rehman,1990-03-09,Blue ave,Kingston,Warrenton,Missouri,83748,Black,White,HIS,Female,Identified
+2348394HFN,Beth,Greeke,Polish,1990-03-09,Blue ave,Kingston,Warrenton,Missouri,83748,Black,White,HIS,Female,Identified
+3248394NFG,Mary,Beth,Delmer,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+1248394GFD,Betty,Harmin,Karmin,1990-03-09,Blue ave,Festus,Saint Louis,Missouri,83748,Black,White,HIS,Female,Identified
+2148394DGF,Melvin,Killan,Lopoplom,1990-03-09,Blue ave,Kingston,Warrenton,Missouri,83748,Black,White,HIS,Male,Identified

@@ -771,11 +771,15 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
-            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            // Checks to see if yes button was selected
-            if (closeForm == DialogResult.Yes)
-                Application.Exit();
+            if (!exitClicked)
+            {
+              DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                // Checks to see if yes button was selected
+                if (closeForm == DialogResult.Yes)
+                    Application.Exit();
+            }
+           
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -836,8 +840,8 @@ namespace Covid_Vaccine_Tracker.UI
                                         if (!GoodAdd)
                                             DisplayError(Errors.GetGeneralError(10, "PPRL"), AppTitle);
 
-                                        dataSubmitted = true;
-                                        possibleDataLoss = false;
+                                        //dataSubmitted = true;
+                                        //possibleDataLoss = false;
                                         
                                     }
 
@@ -880,6 +884,7 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+
             // Reset any errors from bfore
             ResetErrorPv();
             ResetErrorLbl();
@@ -916,10 +921,10 @@ namespace Covid_Vaccine_Tracker.UI
                                 DisplaySuccess("Patient was successfully updated", AppTitle);
                                 // Disable groupbox and buttons
                                 InputControls("Disable");
-                                dataSubmitted = true;
-                                possibleDataLoss = false;
+                                //dataSubmitted = true;
+                                //possibleDataLoss = false;
                                 DisableButtons();
-                                ResetForm();
+                                //ResetForm();
 
                             }
                             else if (!WasSuccess)
@@ -988,8 +993,8 @@ namespace Covid_Vaccine_Tracker.UI
             //else if (closeForm == DialogResult.No)
             //    this.Close();
             // after they are told reset the flag
-            possibleDataLoss = false;
-            dataSubmitted = true;
+            //possibleDataLoss = false;
+            //dataSubmitted = true;
 
         }
     }
