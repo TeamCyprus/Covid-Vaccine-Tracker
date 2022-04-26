@@ -125,12 +125,13 @@ namespace Covid_Vaccine_Tracker.UI
             int Tbx = -1;
             bool validAns;
             //Checks that the form is filled in...
-            // Sergio's section
+            IsValid = CheckForm(ref Tbx);
             // when the user submits check the recovery type
             if (!isSecondPanel)
             {
                 string id;
                 // when the user submits check the recovery type
+                // Coded by Sergio
                 if (passwordRecovery && !usernameRecovery)
                 {
                     if (IsValid.Item1)
@@ -176,64 +177,63 @@ namespace Covid_Vaccine_Tracker.UI
                     }
                     else SetErrorPv(Tbx, IsValid.Item2);
                 }
-                // Amar's section
-            if (usernameRecovery)
-            {
-
-                // check the provider table and the cdc table for the first name and last name amd account type
-                // and then check that the anwser matches 
-                bool correctAnwser;
-                string userId = string.Empty;
-                string username = string.Empty;
-                string fname, lname, anwser;
-                string account = accountTypes[AccountCbx.SelectedIndex].UserType;
-                try
+                // Coded by Amar
+                else if (usernameRecovery && !passwordRecovery)
                 {
-                    fname = InputTxt1.Text.Trim();
-                    lname = InputTxt2.Text.Trim();
-                    anwser = AnwserTxt.Text.Trim();
-
-                    switch (account.ToLower())
+                    // check the provider table and the cdc table for the first name and last name amd account type
+                    // and then check that the anwser matches 
+                    bool correctAnwser;
+                    string userId = string.Empty;
+                    string username = string.Empty;
+                    string fname, lname, anwser;
+                    string account = accountTypes[AccountCbx.SelectedIndex].UserType;
+                    try
                     {
-                        case "healthcare provider":
-                            userId = UserDB.RecoverProviderUserId(fname, lname);
-                            break;
-                        case "cdc user":
-                            //userId = UserDB.RecoverCDCUserId(fname, lname);
-                            break;
-                    }
+                        fname = InputTxt1.Text.Trim();
+                        lname = InputTxt2.Text.Trim();
+                        anwser = AnwserTxt.Text.Trim();
 
-                    // check database for user id with matching anwser
-                    correctAnwser = SecurityQuestionDB.CheckSecurityQuestion(userId, anwser);
-
-                    // if userid and anwser matcheed
-                    if (correctAnwser)
-                    {
-                        switch(account.ToLower())
+                        switch (account.ToLower())
                         {
                             case "healthcare provider":
-                               username = UserDB.GetUsername_ProviderId(userId);
-
+                                userId = UserDB.RecoverProviderUserId(fname, lname);
                                 break;
                             case "cdc user":
-                                username = UserDB.GetUsername_CdcId(userId);
+                                //userId = UserDB.RecoverCDCUserId(fname, lname);
                                 break;
                         }
 
-                        userForm = new UsernameForm(username);
-                        userForm.GoToPrevForm += HandleGoToPrevForm;
-                        userForm.ShowDialog();
-                    }
-                    else if (!correctAnwser)
-                    { 
-                        DisplayError(Errors.GetError(21), appTitle);
-                    }
-                }
-                catch(Exception ex)
-                { DisplayError(ex.Message, appTitle); }
+                        // check database for user id with matching anwser
+                        correctAnwser = SecurityQuestionDB.CheckSecurityQuestion(userId, anwser);
 
+                        // if userid and anwser matcheed
+                        if (correctAnwser)
+                        {
+                            switch(account.ToLower())
+                            {
+                                case "healthcare provider":
+                                   username = UserDB.GetUsername_ProviderId(userId);
+
+                                    break;
+                                case "cdc user":
+                                    username = UserDB.GetUsername_CdcId(userId);
+                                    break;
+                            }
+
+                            userForm = new UsernameForm(username);
+                            userForm.GoToPrevForm += HandleGoToPrevForm;
+                            userForm.ShowDialog();
+                        }
+                        else if (!correctAnwser)
+                        { 
+                            DisplayError(Errors.GetError(21), appTitle);
+                        }
+                    }
+                    catch(Exception ex)
+                    { DisplayError(ex.Message, appTitle); }
+
+                }
             }
-        }
             //If program is on the security question panel
             else if (isSecondPanel)
             {
