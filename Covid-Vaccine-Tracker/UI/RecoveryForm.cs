@@ -20,11 +20,23 @@ namespace Covid_Vaccine_Tracker.UI
         List<User_Type> accountTypes = new List<User_Type>();
         // add event to form class
         UsernameForm userForm;
-        
-       // event handler method
-       private void HandleCloseBothForms(object sender, EventArgs args)
+        List<SecurityAnwser> userSecAnswers = new List<SecurityAnwser>();
+        SecurityAnwser userAnswer;
+        User user = new User();
+        UpdateAccountForm resetPWForm;
+        private bool errorOccurred = default;
+        private bool isSecondPanel = false;
+
+        // event handler for closeing this and username form
+        private void HandleGoToPrevForm(object sender, EventArgs args)
         {
             userForm.Close();
+            this.Close();
+        }
+        // event handler for clsing this form and updateAccount form
+        private void HandleGoToLogin(object sender, EventArgs args)
+        {
+            resetPWForm.Close();
             this.Close();
         }
         public RecoveryForm()
@@ -69,24 +81,28 @@ namespace Covid_Vaccine_Tracker.UI
                 if(passwordRecovery && !usernameRecovery)
                 {
                     InputLbl1.Text = "Username";
+                    //Disable "password" textbox
                     InputLbl2.Enabled = false;
                     InputLbl2.Visible = false;
                     InputTxt2.Enabled = false;
                     InputTxt2.Visible = false;
+                    //Re-adjust the AccountCbx and panel1
                     AccountLbl.Top -= 75;
                     AccountCbx.Top -= 75;
                     panel1.Height -= 75;
-                    groupBox1.Top -= 75;
-                    ClearBtn.Top -= 75;
-                    SubmitBtn.Top -= 75;
-                    this.Height -= 75;
+                    ClearBtn.Top -= 173;
+                    SubmitBtn.Top -= 173;
+                    this.Height -= 173;
+                    //Disable the security question group box
+                    groupBox1.Enabled = false;
+                    groupBox1.Visible = false;
                     AnwserTxt.Enabled = false;
                 }
 
                 // if username recovery set InputLbl and InputLbl2 text with the InputLbl2.Text = "Firt Name" ..etc
             } catch(Exception ex)
             {
-                throw ex;
+               DisplayError(ex.Message,appTitle);
             }
         }
         private void ClearBtn_Click(object sender, EventArgs e)
@@ -104,33 +120,63 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
+            errorOccurred = false;
             ResetErrorPv();
+            int Tbx = -1;
+            bool validAns;
+            //Checks that the form is filled in...
             // Sergio's section
             // when the user submits check the recovery type
-            if (passwordRecovery)
+            if (!isSecondPanel)
             {
-                int Tbx = -1;
-                IsValid = CheckForm(ref Tbx);
-                if (IsValid.Item1)
+                string id;
+                // when the user submits check the recovery type
+                if (passwordRecovery && !usernameRecovery)
                 {
-                    AnwserTxt.Enabled = true;
+                    if (IsValid.Item1)
+                    {
+                        try
+                        {
+                            //Create an object based on what the user is
+                            if (accountTypes[AccountCbx.SelectedIndex].UserType == "CDC User")
+                                CreateUser("CDC");
+                            else if (accountTypes[AccountCbx.SelectedIndex].UserType == "Healthcare Provider")
+                                CreateUser("Provider");
+                            if (!errorOccurred)
+                            {
+                                //Verifies that the username exists in the database
+                                if (VerifyUsername())
+                                {
+                                    //Gets ID from the database based on what the user is (CDC/Provider)
+                                    id = GetUserId(user);
+                                    try
+                                    {
+                                        //Gets security question(s) and answer(s) from the database linked to the user based on user ID
+                                        userSecAnswers = SecurityQuestionDB.GetUserSecurityQuestions(id);
+                                        userAnswer = userSecAnswers[0];
+                                        //Presets the question and hides current panel; shows security question group box
+                                        AnwserLbl.Text = userAnswer.Question;
+                                        SwitchPanels();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        DisplayError(Errors.GetError(23), appTitle);
+                                        AnwserLbl.Text = "Your answer";
+                                    }
+                                }
+                                else
+                                {
+                                    DisplayError(Errors.GetError(18), appTitle);
+                                    AnwserLbl.Text = "Your answer";
+                                }
+                            }
+                        }
+                        catch (Exception ex) 
+                        { DisplayError(ex.Message, appTitle); }
+                    }
+                    else SetErrorPv(Tbx, IsValid.Item2);
                 }
-                else
-                    SetErrorPv(Tbx, IsValid.Item2);
-                // use UserDB to check that the username is in the database and get the user id associated with username
-                // then use the id to get the question from the database using one of the SecurityQuestionDB class methods 
-
-                // if the anwser matches then call the UpdateAccountForm and pass in the username
-
-                // if anwser dont match display error message with DisplayError and use the new Errors class
-                // you might have to look up the specific message code but a example of the new way to get error messages and
-                // display through a DisplayErorrMethod would be :
-                // DisplayError(Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id"), AppTitle);
-                // Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id") returns a string with Patient and Patient Id inserted into string
-
-
-            }
-            // Amar's section
+                // Amar's section
             if (usernameRecovery)
             {
 
@@ -149,10 +195,10 @@ namespace Covid_Vaccine_Tracker.UI
 
                     switch (account.ToLower())
                     {
-                        case "provider":
+                        case "healthcare provider":
                             userId = UserDB.RecoverProviderUserId(fname, lname);
                             break;
-                        case "cdc":
+                        case "cdc user":
                             //userId = UserDB.RecoverCDCUserId(fname, lname);
                             break;
                     }
@@ -165,17 +211,17 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         switch(account.ToLower())
                         {
-                            case "provider":
+                            case "healthcare provider":
                                username = UserDB.GetUsername_ProviderId(userId);
 
                                 break;
-                            case "cdc":
+                            case "cdc user":
                                 username = UserDB.GetUsername_CdcId(userId);
                                 break;
                         }
 
                         userForm = new UsernameForm(username);
-                        userForm.CloseBothForms += HandleCloseBothForms;
+                        userForm.GoToPrevForm += HandleGoToPrevForm;
                         userForm.ShowDialog();
                     }
                     else if (!correctAnwser)
@@ -185,16 +231,93 @@ namespace Covid_Vaccine_Tracker.UI
                 }
                 catch(Exception ex)
                 { DisplayError(ex.Message, appTitle); }
-                // if the first name last name and anwser match then call the
-                // UpdateAccountForm  and pass in the first name last name
 
-                // if anwser does not match display error message with DisplayError and use the new Errors class
-                // you might have to look up the specific message code but a example of the new way to get error messages and
-                // display through a DisplayErorrMethod would be :
-                // DisplayError(Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id"), AppTitle);
-                // Errors.GetGeneralErrorMsg(33, "Patient", "Patient Id") returns a string with Patient and Patient Id inserted into string
             }
         }
+            //If program is on the security question panel
+            else if (isSecondPanel)
+            {
+                if (IsValid.Item1)
+                {
+                    //Compares user's answer with that of the database's
+                    validAns = Protector.Compare(userAnswer.Anwser, AnwserTxt.Text);
+                    if (validAns)
+                    {
+                        //If correct, calls the UpdateAccountForm with username passed as a parameter
+                        resetPWForm = new UpdateAccountForm(user.Username);
+                        resetPWForm.GoToLogin += HandleGoToLogin;
+                        resetPWForm.ShowDialog();
+                    }
+                    else DisplayError("That answer is incorrect.", appTitle);
+                }
+                else SetErrorPv(Tbx, IsValid.Item2);
+            }
+        }
+        private void SwitchPanels()
+        {
+            //Set flag and toggle panels
+            isSecondPanel = true;
+            panel1.Enabled = false;
+            panel1.Visible = false;
+            SubmitBtn.Text = "Submit";
+            groupBox1.Enabled = true;
+            groupBox1.Visible = true;
+            groupBox1.Top = 26;
+            ClearBtn.Enabled = false;
+            ClearBtn.Visible = false;
+            SubmitBtn.Left = 162;
+        }
+        private void CreateUser(string type)
+        {
+            try
+            {
+                //Sets User object depending on user type. 
+                //This object holds Username and Account Type.
+                //Account type determines from which table to get ID from in database.
+                user.Username = InputTxt1.Text.Trim();
+                switch (type)
+                {
+                    case "CDC":
+                        user.user_type = "CDC";
+                        break;
+                    case "Provider":
+                        user.user_type = "Provider";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                errorOccurred = true;
+                throw ex;
+            }
+        }
+        private string GetUserId(User user)
+        {
+            string returnedId = string.Empty;
+            //UserType helps determine what method to use for getting the ID
+            try
+            {
+                if (user.user_type == "CDC")
+                    returnedId = UserDB.GetUserId_Cdc(user.Username);
+                else if (user.user_type == "Provider")
+                    returnedId = UserDB.GetUserId_Provider(user.Username);
+            }
+            catch (Exception ex) { DisplayError("We couldn't find that user.", appTitle); }
+            return returnedId;
+        }
+        private bool VerifyUsername()
+        {
+            bool usernameFound = default;
+            string username = user.username;
+            //Checks the username in the database
+            try
+            {
+                usernameFound = UserDB.VerifyUsername(username);
+            }
+            catch (Exception ex) { DisplayError(ex.Message, appTitle); }
+            return usernameFound;
+        }
+
         private void DisplayUsername(string msg, string title)
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -208,6 +331,9 @@ namespace Covid_Vaccine_Tracker.UI
                     break;
                 case 1:
                     ErrorPv.SetError(AccountCbx, emsg);
+                    break;
+                case 2:
+                    ErrorPv.SetError(AnwserTxt, emsg);
                     break;
             }
         }
@@ -226,18 +352,6 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box iwth ok button and error icon used for unsuccessful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        //private void InputTxt1_Leave(object sender, EventArgs e)
-        //{
-        //    //check if username exists. If yes, gets the security question, if not, displays an error. 
-        //    string username = InputTxt1.Text.Trim();
-        //    bool usernameFound = UserDB.VerifyUsername(username);
-        //    if(usernameFound)
-        //    {
-        //        //if username is found, retrieve the user's security question and update the sec ? label
-
-        //    }
-        //}
 
         public (bool,string) CheckForm(ref int tbx)
         {

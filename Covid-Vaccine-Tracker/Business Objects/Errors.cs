@@ -32,7 +32,9 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {10,  " was not added" },
             {11, " was not updated" },
             {12, " not found, access denied" },
-
+            {13, " date must be past current date" },
+            {14, " date must be before current date" },
+            {15, " does not exist" },
 
         };
         public static Dictionary<int, string> GeneralErrors2 = new Dictionary<int, string>()
@@ -46,6 +48,9 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {6, "An error occured while updating " },
             {7, "An error occured while adding " },
             {8, "You must verify " },
+            {9, "Max number of digits reached for " },
+            {10, "You cannot add extra digits to end of " },
+            {11, "Error invalid " },
         };
         public static Dictionary<int, string> SimpleErrors = new Dictionary<int, string>()
         {          
@@ -70,6 +75,12 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {19, "Reached max digits allowed" },
             {20, "End of field you cannot add more data" },
             {21, "The security question anwsers do not match" },
+            {22, "Error, data set is empty" },
+            {23, "Unknown security question" },
+            {24, "Username already exists" },
+            {25, "Invalid format" },
+            {26, "Invalid date" },
+            
         };
         public static string GetCharLengthError(string input, string num)
         {

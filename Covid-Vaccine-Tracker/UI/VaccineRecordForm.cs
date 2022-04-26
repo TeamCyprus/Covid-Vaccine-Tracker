@@ -263,164 +263,164 @@ namespace Covid_Vaccine_Tracker.UI
                 if (string.IsNullOrEmpty(ExtractTxt.Text))
                 {
                     valid = false;
-                    emsg = "Extract Type cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "extract type");
                     tbx = 0;
                 }
                 else if (string.IsNullOrEmpty(VaxEventIdTxt.Text))
                 {
                     valid = false;
-                    emsg = "Vaccine Event Id cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "vaccine event id");
                     tbx = 1;
                 }
                 else if (VaxTypeCbx.SelectedIndex == -1)
                 {
                     valid = false;
-                    emsg = "Must select a vaccine type";
+                    emsg = Errors.GetGeneralError2(2, "vaccine type"); ;
                     tbx = 2;
                 }
                 //sergio
                 else if (VaxProductCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a vaccine product";
+                    emsg = Errors.GetGeneralError2(2, "vaccine product");
                     tbx = 3;
                 }
                 else if (VaxManufacturerCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a vaccine manufacturer";
+                    emsg = Errors.GetGeneralError2(2, "vaccine manufacturer");
                     tbx = 4;
                 }
                 else if (string.IsNullOrEmpty(LotNumberTxt.Text))
                 {
                     valid = false;
-                    emsg = "Lot Number cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "lot number"); ;
                     tbx = 5;
                 }
                 else if (!ExperationDateDp.Checked)
                 {
                     valid = false;
-                    emsg = "Must enter expiration date";
+                    emsg = Errors.GetGeneralError2(2, "experation date");
                     tbx = 6;
                 }
                 else if (ExperationDateDp.Value <= Today)
                 {
                     valid = false;
-                    emsg = "Vaccine experation date is today, cannot administer vaccine";
+                    emsg = Errors.GetGeneralError(13, "Experation date");
                     tbx = 6;
                 }
                 else if (!DateAdminDp.Checked)
                 {
                     valid = false;
-                    emsg = "Must enter date administered";
+                    emsg = Errors.GetGeneralError2(2, "date administered");
                     tbx = 7;
                 }
                 else if (DateAdminDp.Value <= Past)
                 {
                     valid = false;
-                    emsg = "Date administered must be after vaccines were created";
+                    emsg = Errors.GetError(26);
                     tbx = 7;
                 }
                 else if (DateAdminDp.Value > Today)
                 {
                     valid = false;
-                    emsg = "Date administered cannot be in the future";
+                    emsg = Errors.GetGeneralError(14, "date administered");
                     tbx = 7;
                 }
                 else if (ComorbitiyCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a comorbidity status";
+                    emsg = Errors.GetGeneralError2(2, "comorbidity status");
                     tbx = 8;
                 }
                 else if (SerologyCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a serology result";
+                    emsg = Errors.GetGeneralError2(2, "serology result"); ;
                     tbx = 9;
                 }
                 else if (DoseNumberCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a dose number";
+                    emsg = Errors.GetGeneralError2(2, "dose number");
                     tbx = 10;
                 }
                 else if (SeriesCompleteCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a series complete option";
+                    emsg = Errors.GetGeneralError2(2, "value for series status");
                     tbx = 11;
                 }
                 else if (AdminSiteCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a vaccination site";
+                    emsg = Errors.GetGeneralError2(2, "vaccine administration site");
                     tbx = 12;
                 }
                 else if (AdminRouteCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a vaccination route";
+                    emsg = Errors.GetGeneralError2(2, "vaccine route");
                     tbx = 13;
                 }
                 else if (string.IsNullOrEmpty(IdTxt.Text))
                 {
                     valid = false;
-                    emsg = "Patient Id cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "patient id");
                     tbx = 14;
                 }
                 else if (string.IsNullOrEmpty(OrganizationTxt.Text))
                 {
                     valid = false;
-                    emsg = "Organization cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "organization");
                     tbx = 15;
                 }
                 else if (string.IsNullOrEmpty(AdminLocTxt.Text))
                 {
                     valid = false;
-                    emsg = "Administered location cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "administered location");
                     tbx = 16;
                 }
                 else if (LocTypeCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select location type";
+                    emsg = Errors.GetGeneralError2(2, "administered location type");
                     tbx = 17;
                 }
                 else if (string.IsNullOrEmpty(AdminStreetTxt.Text))
                 {
                     valid = false;
-                    emsg = "Street address cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "street address");
                     tbx = 18;
                 }
                 else if (string.IsNullOrEmpty(AdminCityTxt.Text))
                 {
                     valid = false;
-                    emsg = "City cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "city");
                     tbx = 19;
                 }
                 else if (string.IsNullOrEmpty(AdminCountyTxt.Text))
                 {
                     valid = false;
-                    emsg = "County cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "county");
                     tbx = 20;
                 }
                 else if (AdminStateCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a state";
+                    emsg = Errors.GetGeneralError2(2, "state");
                     tbx = 21;
                 }
                 else if (string.IsNullOrEmpty(AdminZipTxt.Text))
                 {
                     valid = false;
-                    emsg = "Zipcode cannot be blank";
+                    emsg = Errors.GetGeneralError2(0, "zipcode");
                     tbx = 22;
                 }
                 else if (ProviderSuffixCbx.SelectedIndex <= -1)
                 {
                     valid = false;
-                    emsg = "Must select a provider suffix";
+                    emsg = Errors.GetGeneralError2(2, "provider suffix");
                     tbx = 23;
                 }
             }
@@ -524,7 +524,7 @@ namespace Covid_Vaccine_Tracker.UI
                         vaxRecord.PPRL = PPRLDB.ReturnPPRL(pId);
                     }
                     else
-                        DisplayError("Patient does not exist", AppTitle);
+                        DisplayError(Errors.GetGeneralError(15,"patient"), AppTitle);
                 }
                 else
                     vaxRecord.PPRL = IdTxt.Text.Trim();
@@ -596,7 +596,7 @@ namespace Covid_Vaccine_Tracker.UI
                             SetIdControlType("Patient");
                         }
                         else
-                            DisplayError("Vaccine record has not been added", AppTitle);
+                            DisplayError(Errors.GetGeneralError(11,"vaccine record"), AppTitle);
                     }
                     //else
                     //    DisplayError("There was an issue creating a vaccine record", AppTitle);
@@ -620,6 +620,7 @@ namespace Covid_Vaccine_Tracker.UI
                 SetIdControlType("Patient");
                 // Then exit this method
                 VaxEventIdTxt.Text = GeneratedVaxEventId;
+                dataSubmitted = false;
             }
         }
 
@@ -631,8 +632,8 @@ namespace Covid_Vaccine_Tracker.UI
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // the two messages to ask the user
-            string dataSavedMsg = "Do you wish to close the entire application?";
-            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
+            string dataSavedMsg = Errors.GetError(17);
+            string dataNotSavedMsg = Errors.GetError(16);
             string Msg = string.Empty;
 
             // determine which message needs to be displayed
@@ -664,19 +665,19 @@ namespace Covid_Vaccine_Tracker.UI
                 // Give ErrorTip tooltip a title
                 ErrorTip.ToolTipTitle = "Max Digits";
                 // Display a tool tip error messsage
-                ErrorTip.Show("Patient Id cannot only be 10 digits long", LotNumberTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(9,"lot number"), LotNumberTxt, 25, -20, 2500);
             }
             // If usr tries to start entering characters at end of MaskedTxtBx display error
             else if (e.Position == LotNumberTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", LotNumberTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(10, "lot number"), LotNumberTxt, 25, -20, 2500);
             }
             // If invalid data is entered display error
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", LotNumberTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(11, "lot number"), LotNumberTxt, 25, -20, 2500);
             }
         }
         void Id_Rejected(object sender, MaskInputRejectedEventArgs e)
@@ -690,22 +691,73 @@ namespace Covid_Vaccine_Tracker.UI
                 // Give ErrorTip tooltip a title
                 ErrorTip.ToolTipTitle = "Max Digits";
                 // Display a tool tip error messsage
-                ErrorTip.Show("Patient Id cannot only be 10 digits long", IdTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(9, "patient id"), IdTxt, 25, -20, 2500);
             }
             // If usr tries to start entering characters at end of MaskedTxtBx display error
             else if (e.Position == IdTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", IdTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(10, "patient id"), IdTxt, 25, -20, 2500);
             }
             // If invalid data is entered display error
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", IdTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(11, "patient id"), IdTxt, 25, -20, 2500);
             }
         }
+        void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
 
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (AdminZipTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show(Errors.GetGeneralError2(9, "zipcode"), AdminZipTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == AdminZipTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show(Errors.GetGeneralError2(10, "zipcode"), AdminZipTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show(Errors.GetGeneralError2(11, "zipcode"), AdminZipTxt, 25, -20, 2500);
+            }
+        }
+        void Vtcks_Rejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            // Create a tool tip object to display message in
+            ToolTip ErrorTip = new ToolTip();
+
+            // If usr starts at begining of MaskedTxtBx and type to many characters
+            if (VtckPinTxt.MaskFull)
+            {
+                // Give ErrorTip tooltip a title
+                ErrorTip.ToolTipTitle = "Max Digits";
+                // Display a tool tip error messsage
+                ErrorTip.Show(Errors.GetGeneralError2(9, "vtcks pin"), VtckPinTxt, 25, -20, 2500);
+            }
+            // If usr tries to start entering characters at end of MaskedTxtBx display error
+            else if (e.Position == VtckPinTxt.Mask.Length)
+            {
+                ErrorTip.ToolTipTitle = "End of Field";
+                ErrorTip.Show(Errors.GetGeneralError2(10, "vtcks pin"), VtckPinTxt, 25, -20, 2500);
+            }
+            // If invalid data is entered display error
+            else
+            {
+                ErrorTip.ToolTipTitle = "Input Rejected";
+                ErrorTip.Show(Errors.GetGeneralError2(11, "vtcks pin"), VtckPinTxt, 25, -20, 2500);
+            }
+        }
         private void VaccineRecordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // if data has not been entered to db
@@ -726,75 +778,6 @@ namespace Covid_Vaccine_Tracker.UI
                     // Dont need to check if cancel was selected because not closing app or not closing form
                     // is what cancel should do
                 }
-            }
-            // if looping occurs then un comment below
-            //// if the user clicked the X btn or Alt F4
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            //    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
-            //         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            //    // Checks to see if yes button was selected
-            //    if (closeForm == DialogResult.Yes)
-            //        this.Close();
-            //    // Check to see if no btn was selected the raise closeSelectir event
-            //    else if (closeForm == DialogResult.No)
-            //        e.Cancel = true;
-            //    // Dont need to check if cancel was selected because not closing app or not closing form
-            //    // is what cancel should do
-            //}
-        }
-
-        void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
-        {
-            // Create a tool tip object to display message in
-            ToolTip ErrorTip = new ToolTip();
-
-            // If usr starts at begining of MaskedTxtBx and type to many characters
-            if (AdminZipTxt.MaskFull)
-            {
-                // Give ErrorTip tooltip a title
-                ErrorTip.ToolTipTitle = "Max Digits";
-                // Display a tool tip error messsage
-                ErrorTip.Show("Patient Id cannot only be 10 digits long", AdminZipTxt, 25, -20, 2500);
-            }
-            // If usr tries to start entering characters at end of MaskedTxtBx display error
-            else if (e.Position == AdminZipTxt.Mask.Length)
-            {
-                ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", AdminZipTxt, 25, -20, 2500);
-            }
-            // If invalid data is entered display error
-            else
-            {
-                ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", AdminZipTxt, 25, -20, 2500);
-            }
-        }
-        void Vtcks_Rejected(object sender, MaskInputRejectedEventArgs e)
-        {
-            // Create a tool tip object to display message in
-            ToolTip ErrorTip = new ToolTip();
-
-            // If usr starts at begining of MaskedTxtBx and type to many characters
-            if (VtckPinTxt.MaskFull)
-            {
-                // Give ErrorTip tooltip a title
-                ErrorTip.ToolTipTitle = "Max Digits";
-                // Display a tool tip error messsage
-                ErrorTip.Show("Patient Id cannot only be 10 digits long", VtckPinTxt, 25, -20, 2500);
-            }
-            // If usr tries to start entering characters at end of MaskedTxtBx display error
-            else if (e.Position == VtckPinTxt.Mask.Length)
-            {
-                ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Paitient Id", VtckPinTxt, 25, -20, 2500);
-            }
-            // If invalid data is entered display error
-            else
-            {
-                ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Patient Id format, example Paitent Id: 1234567AAA", VtckPinTxt, 25, -20, 2500);
             }
         }
         private void VaccineRecordForm_Load(object sender, EventArgs e)

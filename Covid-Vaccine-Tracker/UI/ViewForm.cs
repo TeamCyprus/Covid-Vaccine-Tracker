@@ -335,16 +335,16 @@ namespace Covid_Vaccine_Tracker.UI
                 patient.Middle_name = cols[2];
                 patient.Last_name = cols[3];
                 patient.Date_of_birth = dob;
-                patient.Street_address = cols[5];
-                patient.City = cols[6];
-                patient.County = cols[7];
-                patient.State = cols[8];
-                patient.Zipcode = cols[9];
-                patient.Race1 = cols[10];
-                patient.Race2 = cols[11];
-                patient.Ethnicity = cols[12];
-                patient.Sex = cols[13];
-                patient.Extract_Type = cols[14];
+                patient.Street_address = cols[4];
+                patient.City = cols[5];
+                patient.County = cols[6];
+                patient.State = cols[7];
+                patient.Zipcode = cols[8];
+                patient.Race1 = cols[9];
+                patient.Race2 = cols[10];
+                patient.Ethnicity = cols[11];
+                patient.Sex = cols[12];
+                patient.Extract_Type = cols[13];
             }
             catch (Exception ex)
             { throw ex; }

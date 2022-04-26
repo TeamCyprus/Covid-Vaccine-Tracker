@@ -375,17 +375,17 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         Tbx = 6;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(40, "Verify your Password");
+                        errMsg = Errors.GetGeneralError2(8, "your Password");
                     } else if(SecQuestCbx.SelectedIndex <= -1)
                     {
                         Tbx = 15;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(11, "Question");
+                        errMsg = Errors.GetGeneralError2(2, "Question");
                     } else if(string.IsNullOrEmpty(SecQuestAnsTxt.Text))
                     {
                         Tbx = 16;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Answer");
+                        errMsg = Errors.GetGeneralError2(0, "Answer");
                     }
                 } catch(Exception ex)
                 {
@@ -538,13 +538,13 @@ namespace Covid_Vaccine_Tracker.UI
                             {
                                 dataSubmitted = false;
                                 possibleDataLoss = true;
-                                DisplayError("Error. User has not been added", AppTitle);
+                                DisplayError(Errors.GetGeneralError2(7,"user"), AppTitle);
                             }
                         }
                         else
                         {
                             dataSubmitted = false;
-                            DisplayError("Account with that username already exists.", AppTitle);
+                            DisplayError(Errors.GetError(24), AppTitle);
                         }
 
 
@@ -563,30 +563,6 @@ namespace Covid_Vaccine_Tracker.UI
             }
             else
                 SetErrorPv(tbx, isValid.Item2);
-                
-            // This method will add the provider or CDC user into the db
-            // You need to check that all fields on form are filled out and has correct data
-            // use the provider class & the providerDB class 
-
-            // if user is found tell them that they already have an account and then use this.Close to go 
-            // back to login form
-
-            // Use VerifyUserStatus to make sure user does not already exist
-            // if patient exist then display message saying so can use display success or display error method
-
-            // if patient does not exist in DB already then use GenerateID method to create a new id
-            // Note** GenerateID returns a string so set the global variable GeneratedProviderID and set it to the methods return val
-
-
-            // If user not found then verify all data and then
-
-            // Insert Username and Password and Account Type in to the Usertable with UserDB
-            // user UserDB.AddUser valid account types are "Provider" and "CDC" they need to be passed in as strings to the DB Crud methods
-
-
-            // and then Insert the the rest of information on form in to the Provider or CDC table 
-            // then use this.Close to exit to go back to the login form
-
 
         }
         private void ClearBtn_Click(object sender, EventArgs e)
@@ -679,22 +655,6 @@ namespace Covid_Vaccine_Tracker.UI
                     // is what cancel should do
                 }
             }
-            // if looping uncomment below
-            //// if the user clicked the X btn or Alt F4
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            //    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
-            //         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            //    // Checks to see if yes button was selected
-            //    if (closeForm == DialogResult.Yes)
-            //        RaiseCloseSelector();
-            //    // Check to see if no btn was selected the raise closeSelectir event
-            //    else if (closeForm == DialogResult.No)
-            //        e.Cancel = true;
-            //    // Dont need to check if cancel was selected because not closing app or not closing form
-            //    // is what cancel should do
-            //}
         }
         private void ZipTxt_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
@@ -703,17 +663,17 @@ namespace Covid_Vaccine_Tracker.UI
             if (ZipTxt.MaskFull)
             {
                 ErrorTip.ToolTipTitle = "Max Digits";
-                ErrorTip.Show("Max number of digits reached for Zipcode", ZipTxt, 25, -20, 2500);
+                ErrorTip.Show(Errors.GetGeneralError2(9,"Zipcode"), ZipTxt, 25, -20, 2500);
             }
             else if (e.Position == ZipTxt.Mask.Length)
             {
                 ErrorTip.ToolTipTitle = "End of Field";
-                ErrorTip.Show("You cannot add extra digits to end of Zipcode", ZipTxt, 25, -20, 2500);
+                ErrorTip.Show( Errors.GetGeneralError2(10,"Zipcode"), ZipTxt, 25, -20, 2500);
             }
             else
             {
                 ErrorTip.ToolTipTitle = "Input Rejected";
-                ErrorTip.Show("Invalid Zipcode format, Zipcode must be in 00000 format", ZipTxt, 25, -20, 2500);           
+                ErrorTip.Show(Errors.GetError(25), ZipTxt, 25, -20, 2500);           
             }
         }
     }

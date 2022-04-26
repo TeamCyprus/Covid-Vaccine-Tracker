@@ -128,7 +128,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else // no data
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(13), AppTitle);
 
             }
             catch (Exception ex)
@@ -168,7 +168,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch (Exception ex)
@@ -200,7 +200,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch(Exception ex)
@@ -230,7 +230,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch (Exception ex)
@@ -259,7 +259,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
 
             }
@@ -290,7 +290,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
 
             }
@@ -320,7 +320,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch(Exception ex)
@@ -351,7 +351,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch(Exception ex)
@@ -382,7 +382,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch (Exception ex)
@@ -411,7 +411,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch (Exception ex)
@@ -440,7 +440,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
 
             }
@@ -470,7 +470,7 @@ namespace Covid_Vaccine_Tracker.UI
                     ChartControl("enable");
                 }
                 else
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
 
             }
             catch (Exception ex)
@@ -523,7 +523,7 @@ namespace Covid_Vaccine_Tracker.UI
                 
             }
             else // no data in list
-                DisplayError(DataErrorMsg, AppTitle);
+                DisplayError(Errors.GetError(22), AppTitle);
         }
         // create a method that takes and returns a generic list that way any type of stat class list can be passed in
         private void CreateLineChart(List<Stats> vaccineList, int titleKey, string axisLabel)
@@ -555,7 +555,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                 }
                 else // no data in list
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -582,7 +582,7 @@ namespace Covid_Vaccine_Tracker.UI
                     }
                 }
                 else // no data in list
-                    DisplayError(DataErrorMsg, AppTitle);
+                    DisplayError(Errors.GetError(22), AppTitle);
             }
             catch(Exception ex)
             { DisplayError(ex.Message, AppTitle); }
@@ -615,12 +615,9 @@ namespace Covid_Vaccine_Tracker.UI
             MovingAvgTxt.Text = movinAvg.ToString();
             StdTxt.Text = std.ToString();
             VarTxt.Text = variance.ToString();
-            
+
             // set chart titles
-            for (int t = 0; t < Titles.Count; t++)
-            {
-                this.VaxChart.Titles.Add(Titles.ElementAt(t).Value);
-            }
+            this.VaxChart.Titles.Add("Vaccine Data");
 
             // disable controls
             DataControl("enable");

@@ -39,8 +39,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn = new System.Windows.Forms.Button();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.UsernameRecovPanel = new System.Windows.Forms.Panel();
-            this.UsrLbl = new System.Windows.Forms.Label();
             this.UsernameTxt = new System.Windows.Forms.TextBox();
+            this.UsrLbl = new System.Windows.Forms.Label();
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
             this.PasswordRecovPanel.SuspendLayout();
             this.UsernameRecovPanel.SuspendLayout();
@@ -101,7 +101,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.ClearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.ClearBtn.Location = new System.Drawing.Point(37, 201);
+            this.ClearBtn.Location = new System.Drawing.Point(114, 201);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(174, 32);
             this.ClearBtn.TabIndex = 7;
@@ -114,7 +114,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.SubmitBtn.Location = new System.Drawing.Point(222, 201);
+            this.SubmitBtn.Location = new System.Drawing.Point(331, 201);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(174, 32);
             this.SubmitBtn.TabIndex = 8;
@@ -133,16 +133,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.UsernameRecovPanel.Size = new System.Drawing.Size(484, 137);
             this.UsernameRecovPanel.TabIndex = 4;
             // 
-            // UsrLbl
-            // 
-            this.UsrLbl.AutoSize = true;
-            this.UsrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsrLbl.Location = new System.Drawing.Point(177, 32);
-            this.UsrLbl.Name = "UsrLbl";
-            this.UsrLbl.Size = new System.Drawing.Size(124, 18);
-            this.UsrLbl.TabIndex = 0;
-            this.UsrLbl.Text = "Your username is";
-            // 
             // UsernameTxt
             // 
             this.UsernameTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
@@ -156,6 +146,16 @@ namespace Covid_Vaccine_Tracker.UI
             this.UsernameTxt.TabIndex = 1;
             this.UsernameTxt.Text = "username goes here";
             this.UsernameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UsrLbl
+            // 
+            this.UsrLbl.AutoSize = true;
+            this.UsrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsrLbl.Location = new System.Drawing.Point(177, 32);
+            this.UsrLbl.Name = "UsrLbl";
+            this.UsrLbl.Size = new System.Drawing.Size(124, 18);
+            this.UsrLbl.TabIndex = 0;
+            this.UsrLbl.Text = "Your username is";
             // 
             // ErrorPv
             // 
@@ -175,6 +175,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateAccountForm";
             this.Text = "Update Account Info";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateAccountForm_FormClosing);
             this.Load += new System.EventHandler(this.UpdateAccountForm_Load);
             this.PasswordRecovPanel.ResumeLayout(false);
             this.PasswordRecovPanel.PerformLayout();

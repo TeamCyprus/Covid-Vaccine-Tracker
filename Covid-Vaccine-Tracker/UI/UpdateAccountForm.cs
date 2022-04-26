@@ -19,6 +19,15 @@ namespace Covid_Vaccine_Tracker.UI
         string _Username, _Fname, _Lname;
         string appTitle = "Covid Vaccine Trackdr";
         string _AccountType;
+
+        public event EventHandler GoToLogin;
+        // event for closing this form and prev form
+        private void RaiseGoToLogin()
+        {
+            var handler = GoToLogin;
+            if (handler != null)
+                GoToLogin(this, EventArgs.Empty);
+        }
         public UpdateAccountForm()
         {
             InitializeComponent();
@@ -89,9 +98,8 @@ namespace Covid_Vaccine_Tracker.UI
                 if (wasSuccess)
                 {
                     DisplaySuccess("Your password has been updated succesfully", appTitle);
-                    // add event to close this and prior form
-                    /// but for now use this.close
-                    this.Close();
+                    // go back to login
+                    RaiseGoToLogin();
                 }
                 else if (!wasSuccess)
                     DisplayError(Errors.GetGeneralError(11, "Password"), appTitle);
@@ -203,6 +211,12 @@ namespace Covid_Vaccine_Tracker.UI
             // displays a message box with ok button and information icon used for successful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void UpdateAccountForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            RaiseGoToLogin();
+        }
+
         private void DisplayError(string msg, string title)
         {
             // displays a message box iwth ok button and error icon used for unsuccessful actions
