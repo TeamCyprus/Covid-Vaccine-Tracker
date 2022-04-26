@@ -120,6 +120,9 @@
   <metadata name="ErrorPv.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>108, 17</value>
   </metadata>
@@ -127,13 +130,13 @@
   <data name="EnterBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFRSURBVDhPzY7NK0RhFMYnNEWkUUopJGs7+7uxYGFroWSh
-        qClb/wMiJUoppcud+zX3+869dzNlx8bCihoLWzU005XP45y3o2zGdBfKU7/enuc8533f3J8KzkYlUMeB
-        bXZ9KmNAsM2uj9MRINhm1/vJMBBs28vzvEIURUuId2usFl+Ph4BAX6SMZtShbpIkVVVV82KRFMfxHFJD
-        ALm7UVcWXo4Ggbh0dyTMNMoVRXnD8556lUplQizjzTN4c8P3/YcwDJcdx+mh/PlwAAhRQlGOnRou0jIE
-        QTArBrh8gQZwOC8CVnrQDwRb6lWp9w0+tiYGruumCFiW1ScCVnOvFwi2rYWLV7ZtA35xiiOhxm43EGxb
-        Cy9YLJfLYJqm//MXT9t5INj+LsMw1pGmruvneE7Lslx43OoCgivtpWnaJLJfKpWu8UzrGx1Q3+yUePwv
-        lct9AXe84g9J3q3nAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFRSURBVDhPzY7PKwRhGMcntEWkVUopJGc397k4cHB1UHJQ
+        1Jar/wGREqWU0hgzszOzO79/XLbcuDg4UevgqpZ2G/n5eJ63R7msbQ/Ktz69fb/P93nfV/pTgToqgz4O
+        bNvX59kYEGzb18fpCBBs29f7yTAQbFvL87x8HMdLiHdrrhZej4eAQF+gjGbUoW6aphVd13NikZQkyRxS
+        RQC5u9FXFl6OBoG4dHdkzAzKVVV9w/OeelEUTYhlvHkGb677vv8QhuGy4zg9lD8fDgAhSijKsVPFRVqG
+        IAhmxQCXL9AADudFwMoO+oFgS70K9b7Bx9bEwHXdDIFSqdQnAlZjrxcIts2Fi1flchnwi1McCdV3u4Fg
+        21x4waJt22BZlv/zF0/bOSDY/i7TNNeRRrFYPMdzWlGU/ONWFxBcaS3DMCaRfU3TrvHMahsdUNvslHn8
+        LyVJX3C04gwaBa1FAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="ChartBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
