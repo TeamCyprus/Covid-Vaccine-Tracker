@@ -16,7 +16,7 @@ namespace Covid_Vaccine_Tracker.UI
     {
         bool usernameRecovery = false, passwordRecovery = false;
         (bool, string) IsValid;
-        string appTitle = "Covid Vaccine Tracker";
+        string appTitle = "Covid Vaccine Tracker", id;
         List<User_Type> accountTypes = new List<User_Type>();
         // add event to form class
         UsernameForm userForm;
@@ -30,13 +30,11 @@ namespace Covid_Vaccine_Tracker.UI
         // event handler for closeing this and username form
         private void HandleGoToPrevForm(object sender, EventArgs args)
         {
-            userForm.Close();
             this.Close();
         }
         // event handler for clsing this form and updateAccount form
         private void HandleGoToLogin(object sender, EventArgs args)
         {
-            resetPWForm.Close();
             this.Close();
         }
         public RecoveryForm()
@@ -96,9 +94,21 @@ namespace Covid_Vaccine_Tracker.UI
                     //Disable the security question group box
                     groupBox1.Enabled = false;
                     groupBox1.Visible = false;
-                    AnwserTxt.Enabled = false;
+                    AnswerTxt.Enabled = false;
+                    AnswerTxt.Visible = false;
                 }
-
+                else if(usernameRecovery && !passwordRecovery)
+                {
+                    InputLbl1.Text = "First Name";
+                    InputLbl2.Text = "Last Name";
+                    ClearBtn.Top -= 98;
+                    SubmitBtn.Top -= 98;
+                    this.Height -= 98;
+                    groupBox1.Enabled = false;
+                    groupBox1.Visible = false;
+                    AnswerTxt.Enabled = false;
+                    AnswerTxt.Visible = false;
+                }
                 // if username recovery set InputLbl and InputLbl2 text with the InputLbl2.Text = "Firt Name" ..etc
             } catch(Exception ex)
             {
@@ -114,7 +124,7 @@ namespace Covid_Vaccine_Tracker.UI
             InputTxt1.Text = string.Empty;
             InputTxt2.Text = string.Empty;
             AccountCbx.SelectedIndex = -1;
-            AnwserTxt.Text = string.Empty;
+            AnswerTxt.Text = string.Empty;
             // give input1Txt focus
             InputTxt1.Focus();
         }
@@ -123,13 +133,14 @@ namespace Covid_Vaccine_Tracker.UI
             errorOccurred = false;
             ResetErrorPv();
             int Tbx = -1;
-            bool validAns;
-            //Checks that the form is filled in...
             IsValid = CheckForm(ref Tbx);
+            bool validAns;
+            string username = string.Empty;
+            string fname, lname, anwser;
+            //Checks that the form is filled in...
             // when the user submits check the recovery type
             if (!isSecondPanel)
             {
-                string id;
                 // when the user submits check the recovery type
                 // Coded by Sergio
                 if (passwordRecovery && !usernameRecovery)
@@ -156,19 +167,19 @@ namespace Covid_Vaccine_Tracker.UI
                                         userSecAnswers = SecurityQuestionDB.GetUserSecurityQuestions(id);
                                         userAnswer = userSecAnswers[0];
                                         //Presets the question and hides current panel; shows security question group box
-                                        AnwserLbl.Text = userAnswer.Question;
+                                        AnswerLbl.Text = userAnswer.Question;
                                         SwitchPanels();
                                     }
                                     catch (Exception ex)
                                     {
                                         DisplayError(Errors.GetError(23), appTitle);
-                                        AnwserLbl.Text = "Your answer";
+                                        AnswerLbl.Text = "Your answer";
                                     }
                                 }
                                 else
                                 {
                                     DisplayError(Errors.GetError(18), appTitle);
-                                    AnwserLbl.Text = "Your answer";
+                                    AnswerLbl.Text = "Your answer";
                                 }
                             }
                         }
@@ -177,80 +188,90 @@ namespace Covid_Vaccine_Tracker.UI
                     }
                     else SetErrorPv(Tbx, IsValid.Item2);
                 }
-                // Coded by Amar
+                // Coded by Amar. Modified by Sergio
                 else if (usernameRecovery && !passwordRecovery)
                 {
-                    // check the provider table and the cdc table for the first name and last name amd account type
-                    // and then check that the anwser matches 
-                    bool correctAnwser;
-                    string userId = string.Empty;
-                    string username = string.Empty;
-                    string fname, lname, anwser;
-                    string account = accountTypes[AccountCbx.SelectedIndex].UserType;
-                    try
+                    if(IsValid.Item1)
                     {
-                        fname = InputTxt1.Text.Trim();
-                        lname = InputTxt2.Text.Trim();
-                        anwser = AnwserTxt.Text.Trim();
-
-                        switch (account.ToLower())
+                        // check the provider table and the cdc table for the first name and last name amd account type
+                        // and then check that the answer matches 
+                        try
                         {
-                            case "healthcare provider":
-                                userId = UserDB.RecoverProviderUserId(fname, lname);
-                                break;
-                            case "cdc user":
-                                //userId = UserDB.RecoverCDCUserId(fname, lname);
-                                break;
-                        }
-
-                        // check database for user id with matching anwser
-                        correctAnwser = SecurityQuestionDB.CheckSecurityQuestion(userId, anwser);
-
-                        // if userid and anwser matcheed
-                        if (correctAnwser)
-                        {
-                            switch(account.ToLower())
+                            fname = InputTxt1.Text.Trim();
+                            lname = InputTxt2.Text.Trim();
+                            //Retrieve Provider/CDC ID based on first and last name
+                            id = GetUserId(accountTypes[AccountCbx.SelectedIndex].UserType, fname, lname);
+                            try
                             {
-                                case "healthcare provider":
-                                   username = UserDB.GetUsername_ProviderId(userId);
-
-                                    break;
-                                case "cdc user":
-                                    username = UserDB.GetUsername_CdcId(userId);
-                                    break;
+                                //Gets security question(s) and answer(s) from the database linked to the user based on user ID
+                                userSecAnswers = SecurityQuestionDB.GetUserSecurityQuestions(id);
+                                userAnswer = userSecAnswers[0];
+                                //Presets the question and hides current panel; shows security question group box
+                                AnswerLbl.Text = userAnswer.Question;
+                                SwitchPanels();
                             }
-
-                            userForm = new UsernameForm(username);
-                            userForm.GoToPrevForm += HandleGoToPrevForm;
-                            userForm.ShowDialog();
+                            catch (Exception ex)
+                            {
+                                DisplayError(Errors.GetError(23), appTitle);
+                                AnswerLbl.Text = "Your answer";
+                            }
                         }
-                        else if (!correctAnwser)
-                        { 
-                            DisplayError(Errors.GetError(21), appTitle);
-                        }
+                        catch (Exception ex) { DisplayError(ex.Message, appTitle); }
                     }
-                    catch(Exception ex)
-                    { DisplayError(ex.Message, appTitle); }
-
+                    else SetErrorPv(Tbx, IsValid.Item2);
                 }
             }
             //If program is on the security question panel
             else if (isSecondPanel)
             {
-                if (IsValid.Item1)
+                if(passwordRecovery)
                 {
-                    //Compares user's answer with that of the database's
-                    validAns = Protector.Compare(userAnswer.Anwser, AnwserTxt.Text);
-                    if (validAns)
+                    if (IsValid.Item1)
                     {
-                        //If correct, calls the UpdateAccountForm with username passed as a parameter
-                        resetPWForm = new UpdateAccountForm(user.Username);
-                        resetPWForm.GoToLogin += HandleGoToLogin;
-                        resetPWForm.ShowDialog();
+                        //Compares user's answer with that of the database's
+                        validAns = Protector.Compare(userAnswer.Anwser, AnswerTxt.Text);
+                        if (validAns)
+                        {
+                            //If correct, calls the UpdateAccountForm with username passed as a parameter
+                            resetPWForm = new UpdateAccountForm(user.Username);
+                            resetPWForm.GoToLogin += HandleGoToLogin;
+                            resetPWForm.ShowDialog();
+                        }
+                        else DisplayError("That answer is incorrect.", appTitle);
                     }
-                    else DisplayError("That answer is incorrect.", appTitle);
+                    else SetErrorPv(Tbx, IsValid.Item2);
                 }
-                else SetErrorPv(Tbx, IsValid.Item2);
+                else if(usernameRecovery)
+                {
+                    bool correctAnwser;
+                    if (IsValid.Item1)
+                    {
+                        string account = accountTypes[AccountCbx.SelectedIndex].UserType;
+                        //Encrypt answer
+                        anwser = Protector.Encryptor(AnswerTxt.Text);
+                        //Checks if user's answer is correct
+                        correctAnwser = SecurityQuestionDB.CheckSecurityQuestion(id, anwser);
+                        // if userid and anwser matcheed
+                        if (correctAnwser)
+                        {
+                            switch (account.ToLower())
+                            {
+                                case "healthcare provider":
+                                    username = UserDB.GetUsername_ProviderId(id);
+                                    break;
+                                case "cdc user":
+                                    username = UserDB.GetUsername_CdcId(id);
+                                    break;
+                            }
+                            userForm = new UsernameForm(username);
+                            userForm.GoToPrevForm += HandleGoToPrevForm;
+                            userForm.ShowDialog();
+                        }
+                        else if (!correctAnwser)
+                            DisplayError(Errors.GetError(21), appTitle);
+                    }
+                    else SetErrorPv(Tbx, IsValid.Item2);
+                }
             }
         }
         private void SwitchPanels()
@@ -266,6 +287,14 @@ namespace Covid_Vaccine_Tracker.UI
             ClearBtn.Enabled = false;
             ClearBtn.Visible = false;
             SubmitBtn.Left = 162;
+            AnswerTxt.Enabled = true;
+            AnswerTxt.Visible = true;
+            AnswerTxt.Focus();
+            if(usernameRecovery)
+            {
+                SubmitBtn.Top -= 65;
+                this.Height -= 65;
+            }
         }
         private void CreateUser(string type)
         {
@@ -305,6 +334,21 @@ namespace Covid_Vaccine_Tracker.UI
             catch (Exception ex) { DisplayError("We couldn't find that user.", appTitle); }
             return returnedId;
         }
+        private string GetUserId(string type, string fname, string lname)
+        {
+            //Overloaded method that gets ID by first and last name
+            string returnedId = string.Empty;
+            //type helps determine what method to use for getting the ID
+            try
+            {
+                if (type == "Healthcare Provider")
+                    returnedId = UserDB.RecoverProviderUserId(fname, lname);
+                else if (type == "CDC User")
+                    returnedId = UserDB.RecoverCDCUserId(fname, lname);
+            }
+            catch (Exception ex) { DisplayError("We couldn't find that user.", appTitle); }
+            return returnedId;
+        }
         private bool VerifyUsername()
         {
             bool usernameFound = default;
@@ -333,7 +377,10 @@ namespace Covid_Vaccine_Tracker.UI
                     ErrorPv.SetError(AccountCbx, emsg);
                     break;
                 case 2:
-                    ErrorPv.SetError(AnwserTxt, emsg);
+                    ErrorPv.SetError(AnswerTxt, emsg);
+                    break;
+                case 3:
+                    ErrorPv.SetError(InputTxt2, emsg);
                     break;
             }
         }
@@ -357,32 +404,59 @@ namespace Covid_Vaccine_Tracker.UI
         {
             bool valid = true;
             string errMsg = string.Empty;
+            //while on first panel
             if(!isSecondPanel)
             {
-                if (string.IsNullOrEmpty(InputTxt1.Text))
+                //if it's the PwdReset panel
+                if(passwordRecovery && !usernameRecovery)
                 {
-                    valid = false;
-                    errMsg = Errors.GetGeneralError2(0, "Username");
-                    tbx = 0;
+                    if (string.IsNullOrEmpty(InputTxt1.Text))
+                    {
+                        valid = false;
+                        errMsg = Errors.GetGeneralError2(0, "Username");
+                        tbx = 0;
+                    }
+                    else if (AccountCbx.SelectedIndex <= -1)
+                    {
+                        valid = false;
+                        errMsg = Errors.GetGeneralError2(2, "Account type");
+                        tbx = 1;
+                    }
                 }
-                else if (AccountCbx.SelectedIndex <= -1)
+                //if it's the usernameRecovery panel
+                else if(usernameRecovery && !passwordRecovery) 
                 {
-                    valid = false;
-                    errMsg = Errors.GetGeneralError2(2, "Account type");
-                    tbx = 1;
+                    if (string.IsNullOrEmpty(InputTxt1.Text))
+                    {
+                        valid = false;
+                        errMsg = Errors.GetGeneralError2(0, "First Name");
+                        tbx = 0;
+                    }
+                    else if (string.IsNullOrEmpty(InputTxt2.Text))
+                    {
+                        valid = false;
+                        errMsg = Errors.GetGeneralError2(0, "Last Name");
+                        tbx = 3;
+                    }
+                    else if (AccountCbx.SelectedIndex <= -1)
+                    {
+                        valid = false;
+                        errMsg = Errors.GetGeneralError2(2, "Account type");
+                        tbx = 1;
+                    }
                 }
+ 
             }
+            //if it's the security questions panel
             else
             {
-                if (string.IsNullOrEmpty(AnwserTxt.Text))
+                if (string.IsNullOrEmpty(AnswerTxt.Text))
                 {
                     valid = false;
                     errMsg = Errors.GetGeneralError2(0, " response");
                     tbx = 2;
                 }
             }
-
-
             return (valid, errMsg);
         }
     }

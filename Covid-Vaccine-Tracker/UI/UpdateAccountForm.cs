@@ -37,6 +37,7 @@ namespace Covid_Vaccine_Tracker.UI
             InitializeComponent();
             passwordRecovery = true;
             _Username = username;
+            this.Text = "Success! Please enter your new password.";
         }
         public UpdateAccountForm(string fname, string lname, string account)
         {
@@ -92,7 +93,7 @@ namespace Covid_Vaccine_Tracker.UI
 
             if (IsValid.Item1)
             {
-                string pwd = PwdVerifyTxt.Text.Trim();
+                string pwd = Protector.Encryptor(PwdVerifyTxt.Text);
                 bool wasSuccess = UserDB.UpdatePassword(_Username, pwd);
 
                 if (wasSuccess)
@@ -100,6 +101,7 @@ namespace Covid_Vaccine_Tracker.UI
                     DisplaySuccess("Your password has been updated succesfully", appTitle);
                     // go back to login
                     RaiseGoToLogin();
+                    this.Close();
                 }
                 else if (!wasSuccess)
                     DisplayError(Errors.GetGeneralError(11, "Password"), appTitle);
@@ -173,6 +175,8 @@ namespace Covid_Vaccine_Tracker.UI
                     InputLbl2.Enabled = true;
                     PasswordTxt.Enabled = true;
                     PasswordTxt.Visible = true;
+                    PasswordTxt.PasswordChar = '*';
+                    PwdVerifyTxt.PasswordChar = '*';
                     break;
                 case "disable":
                     PasswordRecovPanel.Enabled = false;

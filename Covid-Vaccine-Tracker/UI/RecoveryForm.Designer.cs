@@ -39,8 +39,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.InputTxt1 = new System.Windows.Forms.TextBox();
             this.InputLbl1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.AnwserLbl = new System.Windows.Forms.Label();
-            this.AnwserTxt = new System.Windows.Forms.TextBox();
+            this.AnswerLbl = new System.Windows.Forms.Label();
+            this.AnswerTxt = new System.Windows.Forms.TextBox();
             this.ClearBtn = new System.Windows.Forms.Button();
             this.SubmitBtn = new System.Windows.Forms.Button();
             this.ErrorPv = new System.Windows.Forms.ErrorProvider(this.components);
@@ -59,31 +59,27 @@ namespace Covid_Vaccine_Tracker.UI
             this.panel1.Controls.Add(this.InputTxt1);
             this.panel1.Controls.Add(this.InputLbl1);
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.panel1.Location = new System.Drawing.Point(39, 32);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(29, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(473, 241);
+            this.panel1.Size = new System.Drawing.Size(355, 196);
             this.panel1.TabIndex = 2;
-
             // 
             // AccountCbx
             // 
             this.AccountCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountCbx.FormattingEnabled = true;
-            this.AccountCbx.Location = new System.Drawing.Point(47, 190);
-            this.AccountCbx.Margin = new System.Windows.Forms.Padding(4);
+            this.AccountCbx.Location = new System.Drawing.Point(35, 154);
             this.AccountCbx.Name = "AccountCbx";
-            this.AccountCbx.Size = new System.Drawing.Size(208, 32);
+            this.AccountCbx.Size = new System.Drawing.Size(157, 26);
             this.AccountCbx.TabIndex = 5;
             // 
             // AccountLbl
             // 
             this.AccountLbl.AutoSize = true;
             this.AccountLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccountLbl.Location = new System.Drawing.Point(43, 164);
-            this.AccountLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AccountLbl.Location = new System.Drawing.Point(32, 133);
             this.AccountLbl.Name = "AccountLbl";
-            this.AccountLbl.Size = new System.Drawing.Size(128, 24);
+            this.AccountLbl.Size = new System.Drawing.Size(98, 18);
             this.AccountLbl.TabIndex = 4;
             this.AccountLbl.Text = "Account Type";
             // 
@@ -91,86 +87,77 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             this.InputLbl2.AutoSize = true;
             this.InputLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputLbl2.Location = new System.Drawing.Point(41, 89);
-            this.InputLbl2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InputLbl2.Location = new System.Drawing.Point(31, 72);
             this.InputLbl2.Name = "InputLbl2";
-            this.InputLbl2.Size = new System.Drawing.Size(92, 24);
+            this.InputLbl2.Size = new System.Drawing.Size(75, 18);
             this.InputLbl2.TabIndex = 3;
             this.InputLbl2.Text = "Password";
             // 
             // InputTxt2
             // 
             this.InputTxt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputTxt2.Location = new System.Drawing.Point(45, 114);
-            this.InputTxt2.Margin = new System.Windows.Forms.Padding(4);
+            this.InputTxt2.Location = new System.Drawing.Point(34, 93);
             this.InputTxt2.Name = "InputTxt2";
-            this.InputTxt2.Size = new System.Drawing.Size(321, 29);
+            this.InputTxt2.Size = new System.Drawing.Size(242, 24);
             this.InputTxt2.TabIndex = 2;
             // 
             // InputTxt1
             // 
             this.InputTxt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputTxt1.Location = new System.Drawing.Point(45, 43);
-            this.InputTxt1.Margin = new System.Windows.Forms.Padding(4);
+            this.InputTxt1.Location = new System.Drawing.Point(34, 35);
             this.InputTxt1.Name = "InputTxt1";
-            this.InputTxt1.Size = new System.Drawing.Size(324, 29);
+            this.InputTxt1.Size = new System.Drawing.Size(244, 24);
             this.InputTxt1.TabIndex = 1;
             // 
             // InputLbl1
             // 
             this.InputLbl1.AutoSize = true;
             this.InputLbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputLbl1.Location = new System.Drawing.Point(41, 17);
-            this.InputLbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InputLbl1.Location = new System.Drawing.Point(31, 14);
             this.InputLbl1.Name = "InputLbl1";
-            this.InputLbl1.Size = new System.Drawing.Size(97, 24);
+            this.InputLbl1.Size = new System.Drawing.Size(77, 18);
             this.InputLbl1.TabIndex = 0;
             this.InputLbl1.Text = "Username";
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.groupBox1.Controls.Add(this.AnwserLbl);
-            this.groupBox1.Controls.Add(this.AnwserTxt);
+            this.groupBox1.Controls.Add(this.AnswerLbl);
+            this.groupBox1.Controls.Add(this.AnswerTxt);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.groupBox1.Location = new System.Drawing.Point(39, 292);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(29, 237);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(473, 121);
+            this.groupBox1.Size = new System.Drawing.Size(355, 98);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Security Question";
             // 
-            // AnwserLbl
+            // AnswerLbl
             // 
-            this.AnwserLbl.AutoSize = true;
-            this.AnwserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AnwserLbl.Location = new System.Drawing.Point(43, 32);
-            this.AnwserLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.AnwserLbl.Name = "AnwserLbl";
-            this.AnwserLbl.Size = new System.Drawing.Size(119, 24);
-            this.AnwserLbl.TabIndex = 6;
-            this.AnwserLbl.Text = "Your Anwser";
+            this.AnswerLbl.AutoSize = true;
+            this.AnswerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AnswerLbl.Location = new System.Drawing.Point(32, 26);
+            this.AnswerLbl.Name = "AnswerLbl";
+            this.AnswerLbl.Size = new System.Drawing.Size(92, 18);
+            this.AnswerLbl.TabIndex = 6;
+            this.AnswerLbl.Text = "Your Anwser";
             // 
-            // AnwserTxt
+            // AnswerTxt
             // 
-            this.AnwserTxt.Location = new System.Drawing.Point(44, 58);
-            this.AnwserTxt.Margin = new System.Windows.Forms.Padding(4);
-            this.AnwserTxt.Name = "AnwserTxt";
-            this.AnwserTxt.Size = new System.Drawing.Size(345, 29);
-            this.AnwserTxt.TabIndex = 5;
+            this.AnswerTxt.Location = new System.Drawing.Point(33, 47);
+            this.AnswerTxt.Name = "AnswerTxt";
+            this.AnswerTxt.Size = new System.Drawing.Size(260, 24);
+            this.AnswerTxt.TabIndex = 5;
             // 
             // ClearBtn
             // 
             this.ClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.ClearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.ClearBtn.Location = new System.Drawing.Point(85, 426);
-            this.ClearBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearBtn.Location = new System.Drawing.Point(64, 346);
             this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(123, 39);
+            this.ClearBtn.Size = new System.Drawing.Size(92, 32);
             this.ClearBtn.TabIndex = 6;
             this.ClearBtn.Text = "Clear";
             this.ClearBtn.UseVisualStyleBackColor = false;
@@ -181,12 +168,11 @@ namespace Covid_Vaccine_Tracker.UI
             this.SubmitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             this.SubmitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            this.SubmitBtn.Location = new System.Drawing.Point(328, 426);
-            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.SubmitBtn.Location = new System.Drawing.Point(246, 346);
             this.SubmitBtn.Name = "SubmitBtn";
-            this.SubmitBtn.Size = new System.Drawing.Size(123, 39);
+            this.SubmitBtn.Size = new System.Drawing.Size(92, 32);
             this.SubmitBtn.TabIndex = 7;
-            this.SubmitBtn.Text = "Submit";
+            this.SubmitBtn.Text = "Next";
             this.SubmitBtn.UseVisualStyleBackColor = false;
             this.SubmitBtn.Click += new System.EventHandler(this.SubmitBtn_Click);
             // 
@@ -196,16 +182,15 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // RecoveryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            this.ClientSize = new System.Drawing.Size(540, 479);
+            this.ClientSize = new System.Drawing.Size(405, 389);
             this.Controls.Add(this.SubmitBtn);
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RecoveryForm";
             this.Text = "Recovery";
             this.Load += new System.EventHandler(this.RecoveryForm_Load);
@@ -225,8 +210,8 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.TextBox InputTxt1;
         private System.Windows.Forms.Label InputLbl1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label AnwserLbl;
-        private System.Windows.Forms.TextBox AnwserTxt;
+        private System.Windows.Forms.Label AnswerLbl;
+        private System.Windows.Forms.TextBox AnswerTxt;
         private System.Windows.Forms.Button ClearBtn;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.Label AccountLbl;
