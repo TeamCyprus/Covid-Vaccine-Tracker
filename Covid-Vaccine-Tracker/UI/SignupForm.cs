@@ -375,17 +375,17 @@ namespace Covid_Vaccine_Tracker.UI
                     {
                         Tbx = 6;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(40, "Verify your Password");
+                        errMsg = Errors.GetGeneralError2(8, "your Password");
                     } else if(SecQuestCbx.SelectedIndex <= -1)
                     {
                         Tbx = 15;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(11, "Question");
+                        errMsg = Errors.GetGeneralError2(2, "Question");
                     } else if(string.IsNullOrEmpty(SecQuestAnsTxt.Text))
                     {
                         Tbx = 16;
                         valid = false;
-                        errMsg = Errors.GetInputErrorMsg(0, "Answer");
+                        errMsg = Errors.GetGeneralError2(2, "Answer");
                     }
                 } catch(Exception ex)
                 {
