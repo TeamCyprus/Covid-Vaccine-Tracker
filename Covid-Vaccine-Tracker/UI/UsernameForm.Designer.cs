@@ -42,9 +42,11 @@ namespace Covid_Vaccine_Tracker.UI
             // 
             // UsernameTxt
             // 
+            this.UsernameTxt.Enabled = false;
             this.UsernameTxt.Location = new System.Drawing.Point(73, 36);
             this.UsernameTxt.Multiline = true;
             this.UsernameTxt.Name = "UsernameTxt";
+            this.UsernameTxt.ReadOnly = true;
             this.UsernameTxt.Size = new System.Drawing.Size(276, 39);
             this.UsernameTxt.TabIndex = 0;
             this.UsernameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

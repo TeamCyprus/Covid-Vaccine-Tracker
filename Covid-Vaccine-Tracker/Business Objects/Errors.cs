@@ -69,8 +69,8 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {13,"There were no results found for specified search criteria" },
             {14, "Unknown operation please try again" },
             {15, "Invalid operation please select a value" },
-            {16, "Warning, any data entered is not saved. Do still you wish to close the application?" },
-            {17, "Do you wish to close the entire application?" },
+            {16, "Warning, any data entered is not saved. Do still you wish to close the form?" },
+            {17, "There is unsaved data, Do you wish to close the form?" },
             {18, "Invalid username" },
             {19, "Reached max digits allowed" },
             {20, "End of field you cannot add more data" },
@@ -80,6 +80,7 @@ namespace Covid_Vaccine_Tracker.Business_Objects
             {24, "Username already exists" },
             {25, "Invalid format" },
             {26, "Invalid date" },
+            {27, "Do you wish to exit the entire application? Any unsaved data will be lost!" }
             
         };
         public static string GetCharLengthError(string input, string num)

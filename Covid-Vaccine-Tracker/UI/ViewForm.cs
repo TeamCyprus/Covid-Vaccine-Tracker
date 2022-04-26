@@ -442,7 +442,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                 // Checks to see if yes button was selected
                 if (closeForm == DialogResult.Yes)
-                    Application.Exit();
+                    this.Close();
                 // Check to see if no btn was selected
                 else if (closeForm == DialogResult.No)
                     this.Close();
@@ -557,6 +557,15 @@ namespace Covid_Vaccine_Tracker.UI
                 catch(Exception ex)
                 { DisplayError(ex.Message, AppTitle); }
             }
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }

@@ -60,7 +60,15 @@ namespace Covid_Vaccine_Tracker.UI
         bool IsAdd, IdExist, PprlExist, ErrorOccured = false;
         bool possibleDataLoss = true, dataSubmitted = false;
 
+        bool exitClicked;
         bool UpdateFromView = false;
+        VaccineRecordForm vaxForm;
+        // event handler for closeing this and username form
+        private void HandleExitForms(object sender, EventArgs args)
+        {
+            vaxForm.Close();
+            this.Close();
+        }
         public ProviderForm()
         {
             InitializeComponent();
@@ -77,6 +85,7 @@ namespace Covid_Vaccine_Tracker.UI
         // constructor for update method from the view form
         public ProviderForm(Patient patientRecord)
         {
+            InitializeComponent();
             OldPatient = new Patient();
             OldPatient = patientRecord.CopyPatient();
             UpdateFromView = true;
@@ -188,6 +197,8 @@ namespace Covid_Vaccine_Tracker.UI
             dataSubmitted = false;
             // redundant for testing purposes
             possibleDataLoss = true;
+
+            exitClicked = false;
         }
         private (bool,string) CheckForm(ref int Tbx)
         {
@@ -660,16 +671,21 @@ namespace Covid_Vaccine_Tracker.UI
                     MnameTxt.Text = OldPatient.Middle_name;
                     LnameTxt.Text = OldPatient.Last_name;
                     DOBpicker.Value = OldPatient.Date_of_birth;
-
                     SexCbx.SelectedIndex = SexCbx.FindString(OldPatient.Sex);
                     StreetTxt.Text = OldPatient.Street_address;
                     CityTxt.Text = OldPatient.City;
                     CountyTxt.Text = OldPatient.County;
-                    StatesCbx.SelectedIndex = StatesCbx.FindString(OldPatient.State);
                     ZipTxt.Text = OldPatient.Zipcode;
                     Race1Cbx.SelectedIndex = Race1Cbx.FindString(OldPatient.Race1);
                     Race2Cbx.SelectedIndex = Race2Cbx.FindString(OldPatient.Race2);
-                    EthnicityCbx.SelectedIndex = EthnicityCbx.FindString(OldPatient.Ethnicity);
+
+                    // since states and ethnicities use the key for the value get Displaymember 
+                    for (int elm = 0; elm < States50.Count; elm++)
+                        if (States50[elm].Abbreviation == OldPatient.State)
+                            StatesCbx.SelectedIndex = StatesCbx.FindString(States50[elm].Name);
+                    for (int elm = 0; elm < Ethnicities.Count; elm++)
+                        if (Ethnicities[elm].Code == OldPatient.Ethnicity)
+                            EthnicityCbx.SelectedIndex = EthnicityCbx.FindString(Ethnicities[elm].Ethnicity_Type);
 
                     EnableUpdateControls();
                 }
@@ -748,9 +764,20 @@ namespace Covid_Vaccine_Tracker.UI
             // create at sign in with providers username
 
             // Start of code for sprint that includes input vaccine record
-            VaccineRecordForm vaxForm = new VaccineRecordForm(ActiveProvider);
+            vaxForm = new VaccineRecordForm(ActiveProvider);
+            vaxForm.ExitForms += HandleExitForms;
             vaxForm.ShowDialog();
         }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
+        }
+
         private void AddBtn_Click(object sender, EventArgs e)
         {
             // Reset any errors from before
@@ -811,6 +838,7 @@ namespace Covid_Vaccine_Tracker.UI
 
                                         dataSubmitted = true;
                                         possibleDataLoss = false;
+                                        
                                     }
 
                                     // Disable groupbox and controls if was success
@@ -823,8 +851,9 @@ namespace Covid_Vaccine_Tracker.UI
                                     // Vaccine form is out of scope for this sprint so display message box notification
                                     // Now call vax form to enter all vaccine information
                                     // In the future must pass in the provider to the vaccineForm also but for this sprint dont
-                                    VaccineRecordForm VaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient, GeneratedPPRL);
-                                    VaxForm.ShowDialog();
+                                    vaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient, GeneratedPPRL);
+                                    vaxForm.ExitForms += HandleExitForms;
+                                    vaxForm.ShowDialog();
 
                                 }
                                 else if (!WasSuccess)
@@ -919,65 +948,49 @@ namespace Covid_Vaccine_Tracker.UI
         private void ProviderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // if data has not been entered to db
-            if (possibleDataLoss)
+            if (possibleDataLoss && !exitClicked)
             {
                 // if the user clicked the X btn or Alt F4
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
                     // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
                     DialogResult closeForm = MessageBox.Show(Errors.GetError(16), AppTitle,
-                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
                         this.Close();
                     // Check to see if no btn was selected the raise closeSelectir event
                     else if (closeForm == DialogResult.No)
                         e.Cancel = true;
-                    // Dont need to check if cancel was selected because not closing app or not closing form
-                    // is what cancel should do
+                    // after they are told reset the flag
+                    possibleDataLoss = false;
+                    dataSubmitted = true;
                 }
             }
-            // if looping uncomment below
-            //// if the user clicked the X btn or Alt F4
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            //    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
-            //         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            //    // Checks to see if yes button was selected
-            //    if (closeForm == DialogResult.Yes)
-            //        this.Close();
-            //    // Check to see if no btn was selected the raise closeSelectir event
-            //    else if (closeForm == DialogResult.No)
-            //        e.Cancel = true;
-            //    // Dont need to check if cancel was selected because not closing app or not closing form
-            //    // is what cancel should do
-            //}
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
+            exitClicked = true;
             // the two messages to ask the user
             string dataSavedMsg = Errors.GetError(17);
-            string dataNotSavedMsg = Errors.GetError(16);
             string Msg = string.Empty;
 
             // determine which message needs to be displayed
-            if (!dataSubmitted)
-                Msg = dataNotSavedMsg;
-            else if (dataSubmitted)
-                Msg = dataSavedMsg;
+            Msg = dataSavedMsg;
 
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
             DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
-                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
-                Application.Exit();
-            // Check to see if no btn was selected the raise closeSelectir event
-            else if (closeForm == DialogResult.No)
                 this.Close();
-            // Dont need to check if cancel was selected because not closing app or not closing form
-            // is what cancel should do
+            // Check to see if no btn was selected the raise closeSelectir event
+            //else if (closeForm == DialogResult.No)
+            //    this.Close();
+            // after they are told reset the flag
+            possibleDataLoss = false;
+            dataSubmitted = true;
+
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Covid_Vaccine_Tracker.UI
         List<States> daStates = new List<States>();
         List<Provider_Suffix> suffixes = new List<Provider_Suffix>();
         List<SecurityQuestion> secQuestions = new List<SecurityQuestion>();
-
+        bool exitClicked = false;
         // create event to close account selector form
         public event EventHandler CloseAccountSelector;
         // method to raise the event
@@ -586,6 +586,7 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
+            exitClicked = true;
             // the two messages to ask the user
             string dataSavedMsg = "Do you wish to close the entire application?";
             string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
@@ -599,15 +600,11 @@ namespace Covid_Vaccine_Tracker.UI
 
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
             DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
-                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
-                Application.Exit();
-            // Check to see if no btn was selected the raise closeSelectir event
-            else if (closeForm == DialogResult.No)
                 RaiseCloseSelector();
-            // Dont need to check if cancel was selected because not closing app or not closing form
-            // is what cancel should do
+
         }
 
         private void SignupForm_Load(object sender, EventArgs e)
@@ -633,26 +630,33 @@ namespace Covid_Vaccine_Tracker.UI
             SecQuestCbx.ValueMember = "Id";
         }
 
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
+        }
+
         // code to help prevent data loss
         private void SignupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // if data has not been entered to db
-            if (possibleDataLoss)
+            if (possibleDataLoss && !exitClicked)
             {
                 // if the user clicked the X btn or Alt F4
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
                     // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-                    DialogResult closeForm = MessageBox.Show("Warning, any data entered is not saved. Do still you wish to close the application?", AppTitle,
-                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult closeForm = MessageBox.Show(Errors.GetError(16), AppTitle,
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
                         RaiseCloseSelector();
                     // Check to see if no btn was selected the raise closeSelectir event
                     else if (closeForm == DialogResult.No)
                         e.Cancel = true;
-                    // Dont need to check if cancel was selected because not closing app or not closing form
-                    // is what cancel should do
                 }
             }
         }

@@ -79,6 +79,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
+            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             this.patientGB.SuspendLayout();
@@ -540,7 +542,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator2,
             this.ClearBtn,
             this.toolStripSeparator3,
-            this.ExitBtn});
+            this.ExitBtn,
+            this.toolStripSeparator4,
+            this.LogoutBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(994, 27);
@@ -613,6 +617,22 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExitBtn.ToolTipText = "Exit Application";
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
+            // LogoutBtn
+            // 
+            this.LogoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.LogoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("LogoutBtn.Image")));
+            this.LogoutBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(73, 24);
+            this.LogoutBtn.Text = "Logout";
+            this.LogoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // ProviderForm
             // 
@@ -691,5 +711,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton ExitBtn;
         private System.Windows.Forms.Label ErrorLbl;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton LogoutBtn;
     }
 }

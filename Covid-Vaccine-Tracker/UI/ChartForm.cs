@@ -47,7 +47,6 @@ namespace Covid_Vaccine_Tracker.UI
             {10, "Vaccine Administered by Manufacturer" },
             {11, "Top 3 Vaccine Manufacturers" }
         };
-        
         public ChartForm()
         {
             InitializeComponent();
@@ -83,17 +82,11 @@ namespace Covid_Vaccine_Tracker.UI
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
-            DialogResult closeForm = MessageBox.Show("Do You wish to close the entire application?", AppTitle,
-             MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(17), AppTitle,
+                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
-                Application.Exit();
-            // Check to see if no btn was selected
-            else if (closeForm == DialogResult.No)
                 this.Close();
-            // Dont need to check if cancel was selected because not closing app or not closing form
-            // is what cancel should do
         }
         private void RankingBtn_Click(object sender, EventArgs e)
         {
@@ -673,6 +666,15 @@ namespace Covid_Vaccine_Tracker.UI
             // clear out anything in chart
             this.VaxChart.Series.Clear();
             this.VaxChart.Titles.Clear();
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
         }
 
         private void DataControl(string command)

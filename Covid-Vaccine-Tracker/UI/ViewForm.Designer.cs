@@ -48,6 +48,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.ReportBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsDg)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -110,8 +112,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.RecordsDg.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.RecordsDg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.RecordsDg.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -123,15 +125,16 @@ namespace Covid_Vaccine_Tracker.UI
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.RecordsDg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.RecordsDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RecordsDg.Cursor = System.Windows.Forms.Cursors.No;
+            this.RecordsDg.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkKhaki;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.RecordsDg.DefaultCellStyle = dataGridViewCellStyle3;
+            this.RecordsDg.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.RecordsDg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.RecordsDg.Location = new System.Drawing.Point(10, 166);
             this.RecordsDg.Name = "RecordsDg";
@@ -151,7 +154,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator2,
             this.ReportBtn,
             this.toolStripSeparator3,
-            this.ExitBtn});
+            this.ExitBtn,
+            this.toolStripSeparator4,
+            this.LogoutBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1544, 28);
@@ -221,6 +226,23 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // LogoutBtn
+            // 
+            this.LogoutBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.LogoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("LogoutBtn.Image")));
+            this.LogoutBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(79, 25);
+            this.LogoutBtn.Text = "Logout";
+            this.LogoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,5 +284,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripDropDownButton ChartBtn;
         private System.Windows.Forms.ToolStripButton ReportBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton LogoutBtn;
     }
 }

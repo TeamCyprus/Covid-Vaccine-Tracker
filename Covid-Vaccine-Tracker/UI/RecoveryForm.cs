@@ -26,6 +26,7 @@ namespace Covid_Vaccine_Tracker.UI
         UpdateAccountForm resetPWForm;
         private bool errorOccurred = default;
         private bool isSecondPanel = false;
+        bool possibleDataLoss = false;
 
         // event handler for closeing this and username form
         private void HandleGoToPrevForm(object sender, EventArgs args)
@@ -351,6 +352,29 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // displays a message box iwth ok button and error icon used for unsuccessful actions
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void RecoveryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show(Errors.GetError(16), appTitle,
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    // Checks to see if yes button was selected
+                    if (closeForm == DialogResult.Yes)
+                        this.Close();
+                    // Check to see if no btn was selected the raise closeSelectir event
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                    // after they are told reset the flag
+                    possibleDataLoss = false;
+                }
+            }
         }
 
         public (bool,string) CheckForm(ref int tbx)

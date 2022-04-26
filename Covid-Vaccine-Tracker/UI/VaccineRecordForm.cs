@@ -48,6 +48,17 @@ namespace Covid_Vaccine_Tracker.UI
         // Error Occured will be true if the vaccine record object is not created so bad data wont go to db
         bool ErrorOccured, dataSubmitted;
         (bool, string) FormIsValid;
+        bool exitClicked = false;
+
+        //event
+        public event EventHandler ExitForms;
+        // event for closing this form and prev form
+        private void RaiseExitForms()
+        {
+            var handler = ExitForms;
+            if (handler != null)
+                ExitForms(this, EventArgs.Empty);
+        }
 
         public VaccineRecordForm()
         {
@@ -631,9 +642,10 @@ namespace Covid_Vaccine_Tracker.UI
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
+            exitClicked = true;
             // the two messages to ask the user
-            string dataSavedMsg = Errors.GetError(17);
-            string dataNotSavedMsg = Errors.GetError(16);
+            string dataSavedMsg = "Do you wish to close the entire application?";
+            string dataNotSavedMsg = "Warning, any data entered is not saved. Do still you wish to close the application?";
             string Msg = string.Empty;
 
             // determine which message needs to be displayed
@@ -644,15 +656,10 @@ namespace Covid_Vaccine_Tracker.UI
 
             // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
             DialogResult closeForm = MessageBox.Show(Msg, AppTitle,
-                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // Checks to see if yes button was selected
             if (closeForm == DialogResult.Yes)
-                Application.Exit();
-            // Check to see if no btn was selected the raise closeSelectir event
-            else if (closeForm == DialogResult.No)
-                this.Close();
-            // Dont need to check if cancel was selected because not closing app or not closing form
-            // is what cancel should do
+                RaiseExitForms();
         }
         void LotNumber_Rejected(object sender, MaskInputRejectedEventArgs e)
         {
@@ -706,6 +713,16 @@ namespace Covid_Vaccine_Tracker.UI
                 ErrorTip.Show(Errors.GetGeneralError2(11, "patient id"), IdTxt, 25, -20, 2500);
             }
         }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult closeForm = MessageBox.Show(Errors.GetError(27), AppTitle,
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Checks to see if yes button was selected
+            if (closeForm == DialogResult.Yes)
+                Application.Exit();
+        }
+
         void Zip_Rejected(object sender, MaskInputRejectedEventArgs e)
         {
             // Create a tool tip object to display message in
@@ -761,7 +778,7 @@ namespace Covid_Vaccine_Tracker.UI
         private void VaccineRecordForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // if data has not been entered to db
-            if (possibleDataLoss)
+            if (possibleDataLoss && !exitClicked)
             {
                 // if the user clicked the X btn or Alt F4
                 if (e.CloseReason == CloseReason.UserClosing)
@@ -771,7 +788,7 @@ namespace Covid_Vaccine_Tracker.UI
                          MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
-                        this.Close();
+                        RaiseExitForms();
                     // Check to see if no btn was selected the raise closeSelectir event
                     else if (closeForm == DialogResult.No)
                         e.Cancel = true;

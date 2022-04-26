@@ -30,9 +30,9 @@ namespace Covid_Vaccine_Tracker.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
             this.VaxChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -74,6 +74,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.label6 = new System.Windows.Forms.Label();
             this.MovingAvgTxt = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.VaxChart)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -85,23 +87,23 @@ namespace Covid_Vaccine_Tracker.UI
             this.VaxChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.VaxChart.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.HorizontalCenter;
             this.VaxChart.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
-            chartArea1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
-            chartArea1.Name = "Covid Vaccines";
-            this.VaxChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.VaxChart.Legends.Add(legend1);
+            chartArea3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
+            chartArea3.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            chartArea3.Name = "Covid Vaccines";
+            this.VaxChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.VaxChart.Legends.Add(legend3);
             this.VaxChart.Location = new System.Drawing.Point(15, 14);
             this.VaxChart.Name = "VaxChart";
             this.VaxChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.ChartArea = "Covid Vaccines";
-            series1.Font = new System.Drawing.Font("Perpetua Titling MT", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.IsValueShownAsLabel = true;
-            series1.LabelAngle = 12;
-            series1.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.VaxChart.Series.Add(series1);
+            series3.ChartArea = "Covid Vaccines";
+            series3.Font = new System.Drawing.Font("Perpetua Titling MT", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series3.IsValueShownAsLabel = true;
+            series3.LabelAngle = 12;
+            series3.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.VaxChart.Series.Add(series3);
             this.VaxChart.Size = new System.Drawing.Size(884, 376);
             this.VaxChart.TabIndex = 9;
             this.VaxChart.Text = "Covid Vaccines";
@@ -121,7 +123,9 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolStripSeparator3,
             this.LoadBtn,
             this.toolStripSeparator5,
-            this.ExitBtn});
+            this.ExitBtn,
+            this.toolStripSeparator6,
+            this.LogoutBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1198, 27);
@@ -523,6 +527,22 @@ namespace Covid_Vaccine_Tracker.UI
             this.toolTip1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
             this.toolTip1.IsBalloon = true;
             // 
+            // LogoutBtn
+            // 
+            this.LogoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
+            this.LogoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("LogoutBtn.Image")));
+            this.LogoutBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(76, 24);
+            this.LogoutBtn.Text = "Logout";
+            this.LogoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,5 +610,7 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripButton BarBtn;
         private System.Windows.Forms.ToolStripButton LineBtn;
         private System.Windows.Forms.ToolStripButton PieBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton LogoutBtn;
     }
 }

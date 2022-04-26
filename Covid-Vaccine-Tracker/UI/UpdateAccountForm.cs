@@ -19,6 +19,7 @@ namespace Covid_Vaccine_Tracker.UI
         string _Username, _Fname, _Lname;
         string appTitle = "Covid Vaccine Trackdr";
         string _AccountType;
+        bool possibleDataLoss = true;
 
         public event EventHandler GoToLogin;
         // event for closing this form and prev form
@@ -214,7 +215,24 @@ namespace Covid_Vaccine_Tracker.UI
 
         private void UpdateAccountForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            RaiseGoToLogin();
+            // if data has not been entered to db
+            if (possibleDataLoss)
+            {
+                // if the user clicked the X btn or Alt F4
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    // closeForm is a DialogResult object it holds the value of the button selected in the messagebox
+                    DialogResult closeForm = MessageBox.Show(Errors.GetError(16), appTitle,
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    // Checks to see if yes button was selected
+                    if (closeForm == DialogResult.Yes)
+                        RaiseGoToLogin();
+                    // Check to see if no btn was selected the raise closeSelectir event
+                    else if (closeForm == DialogResult.No)
+                        e.Cancel = true;
+                }
+            }
+            
         }
 
         private void DisplayError(string msg, string title)
