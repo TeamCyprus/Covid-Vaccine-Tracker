@@ -355,23 +355,33 @@ namespace Covid_Vaccine_Tracker.UI
 
         public (bool,string) CheckForm(ref int tbx)
         {
-            // add the validation for your story here see provider form UpdateAccountForm and login form for example of checkform method
-            // note that i started implementing the new error messages in the provider and started on the login form
             bool valid = true;
             string errMsg = string.Empty;
+            if(!isSecondPanel)
+            {
+                if (string.IsNullOrEmpty(InputTxt1.Text))
+                {
+                    valid = false;
+                    errMsg = Errors.GetGeneralError2(0, "Username");
+                    tbx = 0;
+                }
+                else if (AccountCbx.SelectedIndex <= -1)
+                {
+                    valid = false;
+                    errMsg = Errors.GetGeneralError2(2, "Account type");
+                    tbx = 1;
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(AnwserTxt.Text))
+                {
+                    valid = false;
+                    errMsg = Errors.GetGeneralError2(0, " response");
+                    tbx = 2;
+                }
+            }
 
-            if (string.IsNullOrEmpty(InputTxt1.Text))
-            {
-                valid = false;
-                errMsg = Errors.GetGeneralError2(0, "Username");
-                tbx = 0;
-            }
-            else if (AccountCbx.SelectedIndex <=-1)
-            {
-                valid = false;
-                errMsg = Errors.GetGeneralError2(2, "Account type");
-                tbx = 1;
-            }
 
             return (valid, errMsg);
         }
