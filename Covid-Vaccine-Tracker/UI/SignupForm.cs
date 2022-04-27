@@ -653,7 +653,10 @@ namespace Covid_Vaccine_Tracker.UI
                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     // Checks to see if yes button was selected
                     if (closeForm == DialogResult.Yes)
-                        RaiseCloseSelector();
+                    {
+                        this.Close();
+                    }
+                        //RaiseCloseSelector();
                     // Check to see if no btn was selected the raise closeSelectir event
                     else if (closeForm == DialogResult.No)
                         e.Cancel = true;

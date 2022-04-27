@@ -101,7 +101,8 @@ namespace Covid_Vaccine_Tracker.UI
                 {
                     DisplaySuccess("Your password has been updated succesfully", appTitle);
                     // go back to login
-                    RaiseGoToLogin();
+                    //RaiseGoToLogin();
+                    possibleDataLoss = false;
                     this.Close();
                 }
                 else if (!wasSuccess)
