@@ -174,6 +174,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.PasswordRecovPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateAccountForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Account Info";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateAccountForm_FormClosing);
             this.Load += new System.EventHandler(this.UpdateAccountForm_Load);

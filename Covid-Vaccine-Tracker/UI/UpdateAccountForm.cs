@@ -17,7 +17,7 @@ namespace Covid_Vaccine_Tracker.UI
         bool usernameRecovery = false, passwordRecovery = false;
         (bool, string) IsValid;
         string _Username, _Fname, _Lname;
-        string appTitle = "Covid Vaccine Trackdr";
+        string appTitle = "Covid Vaccine Tracker";
         string _AccountType;
         bool possibleDataLoss = true;
 
