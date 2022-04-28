@@ -236,7 +236,9 @@ namespace Covid_Vaccine_Tracker.UI
                             //If correct, calls the UpdateAccountForm with username passed as a parameter
                             resetPWForm = new UpdateAccountForm(user.Username);
                             resetPWForm.GoToLogin += HandleGoToLogin;
+                            this.Hide();
                             resetPWForm.ShowDialog();
+                            this.Show();
                         }
                         else DisplayError("That answer is incorrect.", appTitle);
                     }
@@ -266,7 +268,9 @@ namespace Covid_Vaccine_Tracker.UI
                             }
                             userForm = new UsernameForm(username);
                             userForm.GoToPrevForm += HandleGoToPrevForm;
+                            this.Hide();
                             userForm.ShowDialog();
+                            this.Show();
                         }
                         else if (!correctAnwser)
                             DisplayError(Errors.GetError(21), appTitle);

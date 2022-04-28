@@ -427,7 +427,9 @@ namespace Covid_Vaccine_Tracker.UI
         private void ChartBtn_Click(object sender, EventArgs e)
         {
             ChartForm charts = new ChartForm();
+            this.Hide();
             charts.ShowDialog();
+            this.Show();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -517,7 +519,9 @@ namespace Covid_Vaccine_Tracker.UI
         {
             // need to add code that disables the report btn for providers
             VaccineReportForm vaccineReport = new VaccineReportForm();
+            this.Hide();
             vaccineReport.ShowDialog();
+            this.Show();
         }
 
         // get the current cell data and then update
@@ -552,7 +556,9 @@ namespace Covid_Vaccine_Tracker.UI
                     List<string> columns = new List<string> { id, fname, mname, lname, street, city, county, state, zip, race1, race2, ethnicity, sex, extract};
                     CreatePatient(columns, dob);
                     ProviderForm pForm = new ProviderForm(patient);
+                    this.Hide();
                     pForm.ShowDialog();
+                    this.Show();
                 }
                 catch(Exception ex)
                 { DisplayError(ex.Message, AppTitle); }

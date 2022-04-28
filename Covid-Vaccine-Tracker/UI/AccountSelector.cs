@@ -91,7 +91,9 @@ namespace Covid_Vaccine_Tracker.UI
                 // adds event handler so when signup form is closed it will send event
                 // to this form then both forms will close so login screen is active form
                 SignUp.CloseAccountSelector += HandleCloseAccountSelector;
+                this.Hide();
                 SignUp.ShowDialog();
+                this.Show();
             }
            else if (IsProvider)
             {
@@ -105,7 +107,9 @@ namespace Covid_Vaccine_Tracker.UI
                     // adds event handler so when signup form is closed it will send event
                     // to this form then both forms will close so login screen is active form
                     SignUp.CloseAccountSelector += HandleCloseAccountSelector;
+                    this.Hide();
                     SignUp.ShowDialog();
+                    this.Show();
                 }
                 else if (!vtckExists)
                     DisplayError(Errors.GetGeneralError(12, "Vtcks Pin"), AppTitle);

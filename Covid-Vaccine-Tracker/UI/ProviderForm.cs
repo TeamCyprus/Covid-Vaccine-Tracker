@@ -703,9 +703,11 @@ namespace Covid_Vaccine_Tracker.UI
             ResetErrorLbl();
             // Create an instance of the provider form
             ViewForm ProviderView = new ViewForm(false);
+            this.Hide();
             //// .ShowDialog brings up the form and gives control to the provider form
             //// This calling form will not regain control until ProviderView form is closed
             ProviderView.ShowDialog();
+            this.Show();
         }
 
         private void NewPatientItem_Click(object sender, EventArgs e)
@@ -766,7 +768,9 @@ namespace Covid_Vaccine_Tracker.UI
             // Start of code for sprint that includes input vaccine record
             vaxForm = new VaccineRecordForm(ActiveProvider);
             vaxForm.ExitForms += HandleExitForms;
+            this.Hide();
             vaxForm.ShowDialog();
+            this.Show();
         }
 
         private void LogoutBtn_Click(object sender, EventArgs e)
@@ -857,8 +861,9 @@ namespace Covid_Vaccine_Tracker.UI
                                     // In the future must pass in the provider to the vaccineForm also but for this sprint dont
                                     vaxForm = new VaccineRecordForm(ActiveProvider, FreshPatient, GeneratedPPRL);
                                     vaxForm.ExitForms += HandleExitForms;
+                                    this.Hide();
                                     vaxForm.ShowDialog();
-
+                                    this.Show();
                                 }
                                 else if (!WasSuccess)
                                     DisplayError(Errors.GetGeneralError(10, "Patient"), AppTitle);

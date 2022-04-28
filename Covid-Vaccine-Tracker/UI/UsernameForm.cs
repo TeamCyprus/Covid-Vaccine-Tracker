@@ -90,7 +90,7 @@ namespace Covid_Vaccine_Tracker.UI
                 Timer.Stop();
                 for (int elm = 0; elm <= 10; elm++)
                 {
-                    UsernameTxt.Text += "*";
+                    UsernameTxt.Text = "*";
                 }
             }
         }
