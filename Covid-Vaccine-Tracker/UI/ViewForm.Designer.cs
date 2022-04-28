@@ -48,11 +48,14 @@ namespace Covid_Vaccine_Tracker.UI
             this.ReportBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsDg)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +63,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.label1.Location = new System.Drawing.Point(29, 45);
+            this.label1.Location = new System.Drawing.Point(3, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 20);
             this.label1.TabIndex = 1;
@@ -72,7 +75,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.ViewsCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewsCbx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
             this.ViewsCbx.FormattingEnabled = true;
-            this.ViewsCbx.Location = new System.Drawing.Point(33, 68);
+            this.ViewsCbx.Location = new System.Drawing.Point(199, 5);
             this.ViewsCbx.Name = "ViewsCbx";
             this.ViewsCbx.Size = new System.Drawing.Size(253, 28);
             this.ViewsCbx.TabIndex = 2;
@@ -83,7 +86,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.IdLbl.AutoSize = true;
             this.IdLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IdLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(104)))), ((int)(((byte)(89)))));
-            this.IdLbl.Location = new System.Drawing.Point(30, 104);
+            this.IdLbl.Location = new System.Drawing.Point(477, 9);
             this.IdLbl.Name = "IdLbl";
             this.IdLbl.Size = new System.Drawing.Size(68, 18);
             this.IdLbl.TabIndex = 3;
@@ -95,7 +98,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.SearchValTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             this.SearchValTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchValTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.SearchValTxt.Location = new System.Drawing.Point(33, 125);
+            this.SearchValTxt.Location = new System.Drawing.Point(551, 8);
             this.SearchValTxt.Name = "SearchValTxt";
             this.SearchValTxt.Size = new System.Drawing.Size(100, 24);
             this.SearchValTxt.TabIndex = 4;
@@ -134,12 +137,12 @@ namespace Covid_Vaccine_Tracker.UI
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.RecordsDg.DefaultCellStyle = dataGridViewCellStyle3;
-            this.RecordsDg.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.RecordsDg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RecordsDg.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            this.RecordsDg.Location = new System.Drawing.Point(10, 166);
+            this.RecordsDg.Location = new System.Drawing.Point(0, 0);
             this.RecordsDg.Name = "RecordsDg";
             this.RecordsDg.ReadOnly = true;
-            this.RecordsDg.Size = new System.Drawing.Size(1524, 275);
+            this.RecordsDg.Size = new System.Drawing.Size(676, 378);
             this.RecordsDg.TabIndex = 5;
             this.RecordsDg.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RecordsDg_CellMouseDoubleClick);
             // 
@@ -159,7 +162,7 @@ namespace Covid_Vaccine_Tracker.UI
             this.LogoutBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1544, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(676, 28);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -226,35 +229,35 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // toolStripSeparator4
+            // splitContainer1
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // LogoutBtn
+            // splitContainer1.Panel1
             // 
-            this.LogoutBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.LogoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("LogoutBtn.Image")));
-            this.LogoutBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LogoutBtn.Name = "LogoutBtn";
-            this.LogoutBtn.Size = new System.Drawing.Size(79, 25);
-            this.LogoutBtn.Text = "Logout";
-            this.LogoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.ViewsCbx);
+            this.splitContainer1.Panel1.Controls.Add(this.IdLbl);
+            this.splitContainer1.Panel1.Controls.Add(this.SearchValTxt);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.RecordsDg);
+            this.splitContainer1.Size = new System.Drawing.Size(676, 416);
+            this.splitContainer1.SplitterDistance = 34;
+            this.splitContainer1.TabIndex = 6;
             // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(228)))), ((int)(((byte)(201)))));
-            this.ClientSize = new System.Drawing.Size(1544, 460);
+            this.ClientSize = new System.Drawing.Size(676, 444);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.RecordsDg);
-            this.Controls.Add(this.SearchValTxt);
-            this.Controls.Add(this.IdLbl);
-            this.Controls.Add(this.ViewsCbx);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -264,6 +267,11 @@ namespace Covid_Vaccine_Tracker.UI
             ((System.ComponentModel.ISupportInitialize)(this.RecordsDg)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +292,6 @@ namespace Covid_Vaccine_Tracker.UI
         private System.Windows.Forms.ToolStripDropDownButton ChartBtn;
         private System.Windows.Forms.ToolStripButton ReportBtn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton LogoutBtn;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
