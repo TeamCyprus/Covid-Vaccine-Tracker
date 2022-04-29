@@ -20,9 +20,9 @@ namespace Covid_Vaccine_Tracker.Data_Access_Layer
             {
                 using (var sha256 = SHA256.Create())
                 {
-                    var Salted = Combine(Encoding.UTF8.GetBytes(pwd), _salty);
-                    var saltyHash = sha256.ComputeHash(Salted);
-                    return Convert.ToBase64String(saltyHash);
+                    var combinedHash = Combine(Encoding.UTF8.GetBytes(pwd), _salty);
+                    var saltedHash = sha256.ComputeHash(combinedHash);
+                    return Convert.ToBase64String(saltedHash);
                 }
             }
             catch (Exception ex)
