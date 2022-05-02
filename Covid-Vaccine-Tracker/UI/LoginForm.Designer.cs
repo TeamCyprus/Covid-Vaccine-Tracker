@@ -106,10 +106,11 @@ namespace Covid_Vaccine_Tracker.UI
             // CreateAccountLbl
             // 
             this.CreateAccountLbl.AutoSize = true;
+            this.CreateAccountLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateAccountLbl.ForeColor = System.Drawing.Color.Yellow;
             this.CreateAccountLbl.Location = new System.Drawing.Point(160, 133);
             this.CreateAccountLbl.Name = "CreateAccountLbl";
-            this.CreateAccountLbl.Size = new System.Drawing.Size(136, 13);
+            this.CreateAccountLbl.Size = new System.Drawing.Size(167, 16);
             this.CreateAccountLbl.TabIndex = 2;
             this.CreateAccountLbl.Text = "Create Account, Click Here";
             this.CreateAccountLbl.Click += new System.EventHandler(this.CreateAccountLbl_Click);
@@ -122,10 +123,11 @@ namespace Covid_Vaccine_Tracker.UI
             // PwdRecoveryBtn
             // 
             this.PwdRecoveryBtn.AutoSize = true;
+            this.PwdRecoveryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PwdRecoveryBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.PwdRecoveryBtn.Location = new System.Drawing.Point(264, 291);
+            this.PwdRecoveryBtn.Location = new System.Drawing.Point(248, 291);
             this.PwdRecoveryBtn.Name = "PwdRecoveryBtn";
-            this.PwdRecoveryBtn.Size = new System.Drawing.Size(86, 13);
+            this.PwdRecoveryBtn.Size = new System.Drawing.Size(110, 16);
             this.PwdRecoveryBtn.TabIndex = 1;
             this.PwdRecoveryBtn.Text = "Forgot Password";
             this.PwdRecoveryBtn.Click += new System.EventHandler(this.ForgotPwdLbl_Click);
@@ -162,10 +164,11 @@ namespace Covid_Vaccine_Tracker.UI
             // UsrRecoverBtn
             // 
             this.UsrRecoverBtn.AutoSize = true;
+            this.UsrRecoverBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsrRecoverBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
-            this.UsrRecoverBtn.Location = new System.Drawing.Point(264, 308);
+            this.UsrRecoverBtn.Location = new System.Drawing.Point(248, 308);
             this.UsrRecoverBtn.Name = "UsrRecoverBtn";
-            this.UsrRecoverBtn.Size = new System.Drawing.Size(88, 13);
+            this.UsrRecoverBtn.Size = new System.Drawing.Size(113, 16);
             this.UsrRecoverBtn.TabIndex = 9;
             this.UsrRecoverBtn.Text = "Forgot Username";
             this.UsrRecoverBtn.Click += new System.EventHandler(this.UsrRecoverBtn_Click);
