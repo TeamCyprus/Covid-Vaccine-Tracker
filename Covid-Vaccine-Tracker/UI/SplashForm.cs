@@ -25,8 +25,13 @@ namespace Covid_Vaccine_Tracker.UI
             if (_ticks == 15)
             {
                 timer.Stop();
+                LoginForm login = new LoginForm();
+                this.Hide();
+                login.ShowDialog();
                 this.Close();
             }
         }
+
+
     }
 }

@@ -31,17 +31,27 @@ namespace Covid_Vaccine_Tracker.UI
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.vaccineRecordsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.newDataSet = new Covid_Vaccine_Tracker.NewDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.vaccineRecordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vaccine_RecordsTableAdapter = new Covid_Vaccine_Tracker.NewDataSetTableAdapters.Vaccine_RecordsTableAdapter();
             this.vaccineRecordsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.vaccineRecordsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // vaccineRecordsBindingSource2
+            // 
+            this.vaccineRecordsBindingSource2.DataMember = "Vaccine_Records";
+            this.vaccineRecordsBindingSource2.DataSource = this.newDataSet;
+            // 
+            // newDataSet
+            // 
+            this.newDataSet.DataSetName = "NewDataSet";
+            this.newDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -57,11 +67,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // newDataSet
-            // 
-            this.newDataSet.DataSetName = "NewDataSet";
-            this.newDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // vaccineRecordsBindingSource
             // 
             this.vaccineRecordsBindingSource.DataMember = "Vaccine_Records";
@@ -76,25 +81,22 @@ namespace Covid_Vaccine_Tracker.UI
             this.vaccineRecordsBindingSource1.DataMember = "Vaccine_Records";
             this.vaccineRecordsBindingSource1.DataSource = this.newDataSet;
             // 
-            // vaccineRecordsBindingSource2
-            // 
-            this.vaccineRecordsBindingSource2.DataMember = "Vaccine_Records";
-            this.vaccineRecordsBindingSource2.DataSource = this.newDataSet;
-            // 
             // VaccineReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1445, 450);
             this.Controls.Add(this.reportViewer1);
+            this.MaximumSize = new System.Drawing.Size(1461, 489);
+            this.MinimumSize = new System.Drawing.Size(1461, 489);
             this.Name = "VaccineReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VaccineReportForm";
             this.Load += new System.EventHandler(this.VaccineReportForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vaccineRecordsBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }

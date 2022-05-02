@@ -113,6 +113,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.UncoverBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(463, 205);
+            this.MinimumSize = new System.Drawing.Size(463, 205);
             this.Name = "UsernameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Username Recovery";

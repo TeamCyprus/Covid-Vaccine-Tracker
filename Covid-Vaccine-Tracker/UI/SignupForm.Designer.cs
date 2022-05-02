@@ -603,6 +603,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(719, 619);
+            this.MinimumSize = new System.Drawing.Size(719, 619);
             this.Name = "SignupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";

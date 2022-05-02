@@ -141,6 +141,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NextBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(491, 249);
+            this.MinimumSize = new System.Drawing.Size(491, 249);
             this.Name = "AccountSelector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Creator";

@@ -188,10 +188,10 @@ namespace Covid_Vaccine_Tracker.UI
         private void LoginForm_Load(object sender, EventArgs e)
         {
             // displays the splash screen .. splash screen is set on a timer then will close
-            SplashForm splash = new SplashForm();
-            this.Hide();
-            splash.ShowDialog();
-            this.Show();
+            //SplashForm splash = new SplashForm();
+            //this.Hide();
+            //splash.ShowDialog();
+            //this.Show();
         }
 
         private void UsrRecoverBtn_Click(object sender, EventArgs e)

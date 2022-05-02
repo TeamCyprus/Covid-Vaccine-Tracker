@@ -573,5 +573,6 @@ namespace Covid_Vaccine_Tracker.UI
             if (closeForm == DialogResult.Yes)
                 Application.Exit();
         }
+
     }
 }

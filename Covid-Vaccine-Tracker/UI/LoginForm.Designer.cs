@@ -182,6 +182,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.PwdRecoveryBtn);
             this.Controls.Add(this.LoginBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(624, 371);
+            this.MinimumSize = new System.Drawing.Size(624, 371);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.LoginForm_Load);

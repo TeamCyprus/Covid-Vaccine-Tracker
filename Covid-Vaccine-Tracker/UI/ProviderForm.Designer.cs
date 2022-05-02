@@ -79,8 +79,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.ClearBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitBtn = new System.Windows.Forms.ToolStripButton();
-            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.LogoutBtn = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPv)).BeginInit();
             this.patientGB.SuspendLayout();
@@ -618,6 +618,11 @@ namespace Covid_Vaccine_Tracker.UI
             this.ExitBtn.ToolTipText = "Exit Application";
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            // 
             // LogoutBtn
             // 
             this.LogoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(85)))), ((int)(((byte)(35)))));
@@ -628,11 +633,6 @@ namespace Covid_Vaccine_Tracker.UI
             this.LogoutBtn.Text = "Logout";
             this.LogoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // ProviderForm
             // 
@@ -645,6 +645,8 @@ namespace Covid_Vaccine_Tracker.UI
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1010, 452);
+            this.MinimumSize = new System.Drawing.Size(1010, 452);
             this.Name = "ProviderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Portal";
