@@ -1,0 +1,34 @@
+A Health Care Providre creds: username-psochoa password-Password1
+A CDC user creds: username-csochoa password-Password1
+
+if you have login credentials then use those to login if you forget the password and you used a security question you will be able to recover your password or username
+if you want to create an account you can create a CDC user account but you will not be able to see patient's private inforamtion or perform CRUD on any data.
+if you create a health care provider account you will be able to perform CRUD and see private information. As a provider you will not be able to see the graphs
+of the vaccine data. You also must use a registered vtcks pin when creating a health care provider account see below:
+
+In order to create a new user health care provider you have to use one of these registered vtcks pins Note I do not remember which ones were used or not
+if the vtcks has been used already you will get an error message stating so:
+  1212AA
+  1313BB
+  1414CC
+  1515DD
+  1616EE
+  1717AB
+  1413AD
+  2134HK
+  4235BD
+  1716DE
+  1567FD
+  1873GR
+  7839KJ
+  5653FS
+  7383RF
+  9029SD
+  6535DT
+  4389DV
+  3215RF
+  7452XD
+  4692DD
+  4747AA
+  5252AA
+  9494AA
